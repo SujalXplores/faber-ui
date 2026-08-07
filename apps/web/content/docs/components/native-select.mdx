@@ -1,0 +1,65 @@
+---
+title: NativeSelect
+description: A styled native HTML select.
+---
+
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@workspace/ui/components/native-select";
+
+`NativeSelect` is a styled wrapper around the native HTML `select` element, preserving platform-specific behavior and accessibility.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add native-select
+```
+
+## Usage
+
+```tsx
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@workspace/ui/components/native-select";
+
+export default function Example() {
+  return (
+    <NativeSelect>
+      <NativeSelectOption value="apple">Apple</NativeSelectOption>
+      <NativeSelectOption value="banana">Banana</NativeSelectOption>
+    </NativeSelect>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <NativeSelect defaultValue="apple">
+    <NativeSelectOption value="apple">Apple</NativeSelectOption>
+    <NativeSelectOption value="banana">Banana</NativeSelectOption>
+    <NativeSelectOption value="cherry">Cherry</NativeSelectOption>
+  </NativeSelect>
+</div>
+
+### Small
+
+<div className="rounded-lg border p-4">
+  <NativeSelect size="sm" defaultValue="apple">
+    <NativeSelectOption value="apple">Apple</NativeSelectOption>
+    <NativeSelectOption value="banana">Banana</NativeSelectOption>
+  </NativeSelect>
+</div>
+
+## API
+
+| Component              | Description                                                         |
+| ---------------------- | ------------------------------------------------------------------- |
+| `NativeSelect`         | Root. Accepts `size?: "sm" \| "default"` and native `select` props. |
+| `NativeSelectOptGroup` | Groups related options.                                             |
+| `NativeSelectOption`   | A single option.                                                    |

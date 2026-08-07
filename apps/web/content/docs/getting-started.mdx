@@ -1,0 +1,78 @@
+---
+title: Getting Started
+description: Install Faber UI and add your first component.
+---
+
+import { Steps } from "fumadocs-ui/components/steps";
+
+## Prerequisites
+
+Faber UI requires the following tools installed on your machine:
+
+- Node.js 20 or newer
+- pnpm 10 or newer
+- Tailwind CSS v4
+
+The documentation app (`apps/web`) runs on Next.js 16 with Turbopack.
+
+## Add a component
+
+<Steps>
+
+### Run the shadcn CLI
+
+From the repository root, change into the `packages/ui` workspace and add a component with the shadcn CLI:
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add button
+```
+
+The CLI reads `packages/ui/components.json` for the style, aliases, and icon library, then copies the component source into `src/components/`.
+
+### Verify the export
+
+Open `packages/ui/package.json` and confirm the component is reachable through the `./components/*` export:
+
+```json
+{
+  "exports": {
+    "./components/*": "./src/components/*.tsx"
+  }
+}
+```
+
+Every component file in `src/components/` is automatically available as `@workspace/ui/components/<name>`.
+
+### Use it in your app
+
+Import the component from the workspace package and render it:
+
+```tsx
+import { Button } from "@workspace/ui/components/button";
+
+export default function Page() {
+  return <Button variant="default">Hello</Button>;
+}
+```
+
+</Steps>
+
+## Customizing a component
+
+Because the source lives in your repository, you can edit any component directly. Open `packages/ui/src/components/button.tsx` and adjust the `buttonVariants` cva config, the className, or the props. Changes apply everywhere the component is imported.
+
+## Theming
+
+Colors, radii, and fonts are driven by CSS variables defined in `packages/ui/src/styles/globals.css`. Override the `:root` and `.dark` tokens to retheme the entire kit without touching component source.
+
+```css
+:root {
+  --primary: oklch(0.457 0.24 277.023);
+  --radius: 0.625rem;
+}
+```
+
+## Next steps
+
+Now that you have a component running, explore the full catalog in the [Components](/docs/components/button) section.

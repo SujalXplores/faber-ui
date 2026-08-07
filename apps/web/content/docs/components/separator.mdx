@@ -1,0 +1,47 @@
+---
+title: Separator
+description: A visual divider between content sections.
+---
+
+import { Separator } from "@workspace/ui/components/separator";
+
+`Separator` is built on the Base UI `Separator` primitive. It renders as a horizontal or vertical line and carries the appropriate ARIA `separator` role.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add separator
+```
+
+## Usage
+
+```tsx
+import { Separator } from "@workspace/ui/components/separator";
+
+export default function Example() {
+  return <Separator />;
+}
+```
+
+## Examples
+
+### Horizontal
+
+<div className="flex flex-col gap-2 rounded-lg border p-4">
+  <span>Above</span>
+  <Separator />
+  <span>Below</span>
+</div>
+
+### Vertical
+
+<div className="flex items-center gap-4 rounded-lg border p-4">
+  <span>Left</span>
+  <Separator orientation="vertical" className="h-8" />
+  <span>Right</span>
+</div>
+
+## API
+
+The `Separator` accepts an `orientation` prop (`"horizontal"` or `"vertical"`) and all `Separator` props from `@base-ui/react/separator`.

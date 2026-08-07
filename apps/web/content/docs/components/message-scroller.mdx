@@ -1,0 +1,86 @@
+---
+title: Message Scroller
+description: A scrollable message container with auto-scroll and a jump button.
+---
+
+import {
+  MessageScroller,
+  MessageScrollerButton,
+  MessageScrollerContent,
+  MessageScrollerItem,
+  MessageScrollerProvider,
+  MessageScrollerViewport,
+} from "@workspace/ui/components/message-scroller";
+
+`MessageScroller` is a scrollable container for chat-style message lists. It auto-scrolls to the latest message and shows a floating button to jump back to the start or end.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add message-scroller
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  MessageScroller,
+  MessageScrollerButton,
+  MessageScrollerContent,
+  MessageScrollerItem,
+  MessageScrollerProvider,
+  MessageScrollerViewport,
+} from "@workspace/ui/components/message-scroller";
+
+export default function Example() {
+  return (
+    <MessageScrollerProvider>
+      <MessageScroller className="h-[300px]">
+        <MessageScrollerViewport>
+          <MessageScrollerContent>
+            <MessageScrollerItem>First message</MessageScrollerItem>
+            <MessageScrollerItem>Second message</MessageScrollerItem>
+            <MessageScrollerItem>Third message</MessageScrollerItem>
+          </MessageScrollerContent>
+        </MessageScrollerViewport>
+        <MessageScrollerButton />
+      </MessageScroller>
+    </MessageScrollerProvider>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <MessageScrollerProvider>
+    <MessageScroller className="h-[300px]">
+      <MessageScrollerViewport>
+        <MessageScrollerContent>
+          <MessageScrollerItem>First message</MessageScrollerItem>
+          <MessageScrollerItem>Second message</MessageScrollerItem>
+          <MessageScrollerItem>Third message</MessageScrollerItem>
+          <MessageScrollerItem>Fourth message</MessageScrollerItem>
+          <MessageScrollerItem>Fifth message</MessageScrollerItem>
+        </MessageScrollerContent>
+      </MessageScrollerViewport>
+      <MessageScrollerButton />
+    </MessageScroller>
+  </MessageScrollerProvider>
+</div>
+
+## API
+
+| Component                 | Description                                                   |
+| ------------------------- | ------------------------------------------------------------- |
+| `MessageScrollerProvider` | Context provider for the scroller.                            |
+| `MessageScroller`         | Root scroll container.                                        |
+| `MessageScrollerViewport` | The scrollable viewport.                                      |
+| `MessageScrollerContent`  | Inner content wrapper.                                        |
+| `MessageScrollerItem`     | A single message item.                                        |
+| `MessageScrollerButton`   | Floating jump button. Accepts `direction?: "start" \| "end"`. |

@@ -1,0 +1,63 @@
+---
+title: Collapsible
+description: An expandable container for hiding content.
+---
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@workspace/ui/components/collapsible";
+
+`Collapsible` is built on the Base UI `Collapsible` primitive. It toggles the visibility of content with animated transitions.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add collapsible
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@workspace/ui/components/collapsible";
+
+export default function Example() {
+  return (
+    <Collapsible>
+      <CollapsibleTrigger render={<Button variant="outline">Toggle</Button>} />
+      <CollapsibleContent>Hidden content.</CollapsibleContent>
+    </Collapsible>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <Collapsible>
+    <CollapsibleTrigger render={<Button variant="outline">Toggle</Button>} />
+    <CollapsibleContent className="pt-2 text-sm text-muted-foreground">
+      This content is revealed when the trigger is activated.
+    </CollapsibleContent>
+  </Collapsible>
+</div>
+
+## API
+
+| Component            | Description                                          |
+| -------------------- | ---------------------------------------------------- |
+| `Collapsible`        | Root. Accepts `open`, `defaultOpen`, `onOpenChange`. |
+| `CollapsibleTrigger` | The element that toggles the content. Use `render`.  |
+| `CollapsibleContent` | The expandable content area.                         |

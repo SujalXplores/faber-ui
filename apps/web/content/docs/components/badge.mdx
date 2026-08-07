@@ -1,0 +1,54 @@
+---
+title: Badge
+description: A small status descriptor for labels, counts, and categories.
+---
+
+import { Badge } from "@workspace/ui/components/badge";
+
+`Badge` uses the Base UI `useRender` hook so it can be rendered as any element via the `render` prop while keeping its variants.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add badge
+```
+
+## Usage
+
+```tsx
+import { Badge } from "@workspace/ui/components/badge";
+
+export default function Example() {
+  return <Badge>New</Badge>;
+}
+```
+
+## Examples
+
+### Variants
+
+<div className="flex flex-wrap items-center gap-2 rounded-lg border p-4">
+  <Badge>Default</Badge>
+  <Badge variant="secondary">Secondary</Badge>
+  <Badge variant="outline">Outline</Badge>
+  <Badge variant="destructive">Destructive</Badge>
+  <Badge variant="ghost">Ghost</Badge>
+  <Badge variant="link">Link</Badge>
+</div>
+
+### As a link
+
+Use the `render` prop to turn the badge into an anchor:
+
+```tsx
+import { Badge } from "@workspace/ui/components/badge";
+
+export default function Example() {
+  return <Badge render={<a href="/changelog" />}>v1.0</Badge>;
+}
+```
+
+## API
+
+The `Badge` accepts a `variant` prop (`"default"`, `"secondary"`, `"outline"`, `"destructive"`, `"ghost"`, `"link"`), a `render` prop for composition, and all `<span>` attributes.

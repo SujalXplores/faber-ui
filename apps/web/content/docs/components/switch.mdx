@@ -1,0 +1,47 @@
+---
+title: Switch
+description: A toggle switch for binary on/off states.
+---
+
+import { Switch } from "@workspace/ui/components/switch";
+
+`Switch` is built on the Base UI `Switch` primitive. It animates its thumb between checked and unchecked states and supports RTL automatically.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add switch
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Switch } from "@workspace/ui/components/switch";
+
+export default function Example() {
+  return <Switch />;
+}
+```
+
+## Examples
+
+### Default
+
+<div className="flex items-center gap-4 rounded-lg border p-4">
+  <Switch />
+  <Switch defaultChecked />
+</div>
+
+### Sizes
+
+<div className="flex items-center gap-4 rounded-lg border p-4">
+  <Switch size="sm" />
+  <Switch size="default" defaultChecked />
+</div>
+
+## API
+
+The `Switch` accepts all `Switch.Root` props from `@base-ui/react/switch`, plus an optional `size` prop (`"sm"` or `"default"`).

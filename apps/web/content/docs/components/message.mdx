@@ -1,0 +1,114 @@
+---
+title: Message
+description: A chat-style message row with avatar and content slots.
+---
+
+import {
+  Message,
+  MessageAvatar,
+  MessageContent,
+  MessageFooter,
+  MessageGroup,
+  MessageHeader,
+} from "@workspace/ui/components/message";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@workspace/ui/components/avatar";
+
+`Message` is a chat-style message row. It pairs an avatar with a header, content, and footer, and supports left or right alignment.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add message
+```
+
+## Usage
+
+```tsx
+import {
+  Message,
+  MessageAvatar,
+  MessageContent,
+  MessageGroup,
+  MessageHeader,
+} from "@workspace/ui/components/message";
+import {
+  Avatar,
+  AvatarFallback,
+} from "@workspace/ui/components/avatar";
+
+export default function Example() {
+  return (
+    <MessageGroup>
+      <Message>
+        <MessageAvatar>
+          <Avatar>
+            <AvatarFallback>AB</AvatarFallback>
+          </Avatar>
+        </MessageAvatar>
+        <MessageHeader>Anna</MessageHeader>
+        <MessageContent>Hello there!</MessageContent>
+      </Message>
+    </MessageGroup>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <MessageGroup>
+    <Message>
+      <MessageAvatar>
+        <Avatar>
+          <AvatarFallback>AB</AvatarFallback>
+        </Avatar>
+      </MessageAvatar>
+      <MessageHeader>Anna</MessageHeader>
+      <MessageContent>Hello there!</MessageContent>
+    </Message>
+    <Message align="end">
+      <MessageAvatar>
+        <Avatar>
+          <AvatarFallback>ME</AvatarFallback>
+        </Avatar>
+      </MessageAvatar>
+      <MessageHeader>You</MessageHeader>
+      <MessageContent>Hi Anna!</MessageContent>
+    </Message>
+  </MessageGroup>
+</div>
+
+### With footer
+
+<div className="rounded-lg border p-4">
+  <MessageGroup>
+    <Message>
+      <MessageAvatar>
+        <Avatar>
+          <AvatarFallback>AB</AvatarFallback>
+        </Avatar>
+      </MessageAvatar>
+      <MessageHeader>Anna</MessageHeader>
+      <MessageContent>Just landed, see you soon.</MessageContent>
+      <MessageFooter>10:42 AM</MessageFooter>
+    </Message>
+  </MessageGroup>
+</div>
+
+## API
+
+| Component        | Description                                               |
+| ---------------- | --------------------------------------------------------- |
+| `MessageGroup`   | Groups a conversation thread of messages.                 |
+| `Message`        | A single message row. Accepts `align?: "start" \| "end"`. |
+| `MessageAvatar`  | The avatar slot.                                          |
+| `MessageContent` | The message body.                                         |
+| `MessageHeader`  | The sender name or header line.                           |
+| `MessageFooter`  | Supporting content, such as a timestamp.                  |

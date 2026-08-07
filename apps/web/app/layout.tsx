@@ -1,8 +1,10 @@
 import { Geist, Geist_Mono, Inter } from "next/font/google";
+import type { Metadata } from "next";
 
 import "@workspace/ui/globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { RootProvider } from "fumadocs-ui/provider/next";
 import { cn } from "@workspace/ui/lib/utils";
+import { Toaster } from "@workspace/ui/components/sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -10,6 +12,14 @@ const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 });
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://faber-ui.vercel.app"),
+  title: {
+    default: "Faber UI",
+    template: "%s | Faber UI",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -27,8 +37,9 @@ export default function RootLayout({
         inter.variable,
       )}
     >
-      <body>
-        <ThemeProvider>{children}</ThemeProvider>
+      <body className="flex min-h-svh flex-col">
+        <RootProvider>{children}</RootProvider>
+        <Toaster />
       </body>
     </html>
   );

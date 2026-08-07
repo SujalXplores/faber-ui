@@ -1,0 +1,39 @@
+---
+title: Progress
+description: A horizontal bar showing completion of a task.
+---
+
+import { Progress } from "@workspace/ui/components/progress";
+
+`Progress` is built on the Base UI `Progress` primitive. Pass a `value` between 0 and 100 to set the indicator width.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add progress
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Progress } from "@workspace/ui/components/progress";
+
+export default function Example() {
+  return <Progress value={60} />;
+}
+```
+
+## Examples
+
+<div className="flex flex-col gap-4 rounded-lg border p-4">
+  <Progress value={30} />
+  <Progress value={60} />
+  <Progress value={90} />
+</div>
+
+## API
+
+The `Progress` accepts all `Progress.Root` props from `@base-ui/react/progress`, including `value`, `min`, and `max`.

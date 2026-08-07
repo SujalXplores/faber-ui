@@ -1,0 +1,159 @@
+---
+title: Button
+description: Displays a button or a button-styled link with multiple variants and sizes.
+---
+
+import { Button } from "@workspace/ui/components/button";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { RiRocketLine, RiSearchLine, RiAddLine, RiSettings3Line } from "@remixicon/react";
+
+`Button` is built on the Base UI `Button` primitive and exposes a shadcn-compatible variant API through `class-variance-authority`. It supports a `render` prop for composition (the Base UI equivalent of `asChild`).
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add button
+```
+
+## Usage
+
+```tsx
+import { Button } from "@workspace/ui/components/button";
+
+export default function Example() {
+  return <Button>Button</Button>;
+}
+```
+
+## Examples
+
+### Variants
+
+<div className="flex flex-wrap items-center gap-2 rounded-lg border p-4">
+  <Button variant="default">Default</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button variant="destructive">Destructive</Button>
+  <Button variant="link">Link</Button>
+</div>
+
+<TypeTable
+  type={{
+    default: {
+      type: "string",
+      description: "Primary background with primary foreground.",
+    },
+    secondary: {
+      type: "string",
+      description: "Secondary background, used for supporting actions.",
+    },
+    outline: {
+      type: "string",
+      description: "Bordered, transparent background. Good for dialogs and toolbars.",
+    },
+    ghost: {
+      type: "string",
+      description: "No background or border. Ideal for icon buttons and menus.",
+    },
+    destructive: {
+      type: "string",
+      description: "Tinted destructive background for dangerous actions.",
+    },
+    link: {
+      type: "string",
+      description: "Underlined text, no background. For inline navigation.",
+    },
+  }}
+/>
+
+### Sizes
+
+<div className="flex flex-wrap items-center gap-2 rounded-lg border p-4">
+  <Button size="xs">Extra small</Button>
+  <Button size="sm">Small</Button>
+  <Button size="default">Default</Button>
+  <Button size="lg">Large</Button>
+  <Button size="icon"><RiSettings3Line /></Button>
+  <Button size="icon-sm"><RiSearchLine /></Button>
+  <Button size="icon-xs"><RiAddLine /></Button>
+  <Button size="icon-lg"><RiRocketLine /></Button>
+</div>
+
+### With an icon
+
+Buttons automatically size and space child SVG icons. Drop a Remixicon component inside:
+
+```tsx
+import { RiArrowRightLine } from "@remixicon/react";
+import { Button } from "@workspace/ui/components/button";
+
+export default function Example() {
+  return (
+    <Button>
+      Continue
+      <RiArrowRightLine />
+    </Button>
+  );
+}
+```
+
+<div className="flex flex-wrap items-center gap-2 rounded-lg border p-4">
+  <Button>
+    Continue
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-3.5"><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
+  </Button>
+</div>
+
+### As a link
+
+Use the `render` prop to render the button styles on a different element, such as a Next.js `Link`:
+
+```tsx
+import Link from "next/link";
+import { Button } from "@workspace/ui/components/button";
+
+export default function Example() {
+  return (
+    <Button render={<Link href="/docs" />}>
+      Go to docs
+    </Button>
+  );
+}
+```
+
+### Disabled
+
+<div className="flex flex-wrap items-center gap-2 rounded-lg border p-4">
+  <Button disabled>Disabled</Button>
+  <Button variant="outline" disabled>Disabled outline</Button>
+  <Button variant="secondary" disabled>Disabled secondary</Button>
+</div>
+
+## API
+
+### `Button`
+
+<TypeTable
+  type={{
+    variant: {
+      type: '"default" | "secondary" | "outline" | "ghost" | "destructive" | "link"',
+      default: '"default"',
+    },
+    size: {
+      type: '"xs" | "sm" | "default" | "lg" | "icon" | "icon-sm" | "icon-xs" | "icon-lg"',
+      default: '"default"',
+    },
+    render: {
+      type: "ReactElement",
+      description: "Compose with another element (replaces asChild).",
+    },
+    className: {
+      type: "string",
+      description: "Additional classes merged via tailwind-merge.",
+    },
+  }}
+/>
+
+The component also accepts all native `button` element props.

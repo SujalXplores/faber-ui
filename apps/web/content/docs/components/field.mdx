@@ -1,0 +1,102 @@
+---
+title: Field
+description: A layout primitive for form fields.
+---
+
+import { Input } from "@workspace/ui/components/input";
+import { Label } from "@workspace/ui/components/label";
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@workspace/ui/components/field";
+
+`Field` is a layout primitive for composing form fields with labels, descriptions, and error messages.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add field
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Input } from "@workspace/ui/components/input";
+import { Field, FieldLabel } from "@workspace/ui/components/field";
+
+export default function Example() {
+  return (
+    <Field>
+      <FieldLabel>Email</FieldLabel>
+      <Input placeholder="you@example.com" />
+    </Field>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <Field>
+    <FieldLabel>Email</FieldLabel>
+    <Input placeholder="you@example.com" />
+    <FieldDescription>We will never share your email.</FieldDescription>
+  </Field>
+</div>
+
+### With error
+
+<div className="rounded-lg border p-4">
+  <Field invalid>
+    <FieldLabel>Email</FieldLabel>
+    <Input placeholder="you@example.com" />
+    <FieldError>Enter a valid email address.</FieldError>
+  </Field>
+</div>
+
+### Horizontal
+
+<div className="rounded-lg border p-4">
+  <Field orientation="horizontal">
+    <FieldLabel>Username</FieldLabel>
+    <Input placeholder="username" />
+  </Field>
+</div>
+
+### Field group
+
+<div className="rounded-lg border p-4">
+  <FieldGroup>
+    <Field>
+      <FieldLabel>First name</FieldLabel>
+      <Input placeholder="Jane" />
+    </Field>
+    <Field>
+      <FieldLabel>Last name</FieldLabel>
+      <Input placeholder="Doe" />
+    </Field>
+  </FieldGroup>
+</div>
+
+## API
+
+| Component          | Description                                                               |
+| ------------------ | ------------------------------------------------------------------------- |
+| `Field`            | Root. Accepts `orientation?: "horizontal" \| "vertical" \| "responsive"`. |
+| `FieldLabel`       | Label associated with the field control.                                  |
+| `FieldDescription` | Helper text below the control.                                            |
+| `FieldError`       | Error message, shown when the field is invalid.                           |
+| `FieldGroup`       | Groups multiple fields.                                                   |
+| `FieldLegend`      | Legend for a group of fields.                                             |
+| `FieldSeparator`   | Divider between fields.                                                   |
+| `FieldSet`         | Semantic fieldset wrapper.                                                |
+| `FieldContent`     | Content slot inside a field.                                              |
+| `FieldTitle`       | Title for a fieldset.                                                     |

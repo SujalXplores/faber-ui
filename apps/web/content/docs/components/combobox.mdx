@@ -1,0 +1,88 @@
+---
+title: Combobox
+description: A searchable input with a popup list of options.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as ComboboxModule from "@workspace/ui/components/combobox";
+import { ComboboxDemo, ComboboxGroupDemo } from "@/components/combobox-demo";
+
+`Combobox` is built on the Base UI `Combobox` primitive. Pass an `items` array to the root and render items with a function child so the list can filter and show an empty state.
+
+```tsx
+"use client";
+
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from "@workspace/ui/components/combobox";
+
+const fruits = [
+  { label: "Apple", value: "apple" },
+  { label: "Banana", value: "banana" },
+];
+
+export default function Example() {
+  return (
+    <Combobox items={fruits}>
+      <ComboboxInput placeholder="Search a fruit..." className="w-56" />
+      <ComboboxContent>
+        <ComboboxEmpty>No results.</ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item.value} value={item}>
+              {item.label}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  );
+}
+```
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add combobox
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose rounded-lg border p-4">
+  <ComboboxDemo />
+</div>
+
+### With groups
+
+<div className="not-prose rounded-lg border p-4">
+  <ComboboxGroupDemo />
+</div>
+
+## API
+
+<ApiTable module={ComboboxModule} />
+
+| Component            | Description                                             |
+| -------------------- | ------------------------------------------------------- |
+| `Combobox`           | Root. Accepts `value`, `defaultValue`, `onValueChange`. |
+| `ComboboxInput`      | The search input. Also acts as the popup trigger.       |
+| `ComboboxContent`    | The popup container.                                    |
+| `ComboboxList`       | The scrollable list of items.                           |
+| `ComboboxItem`       | A single option. Accepts `value`.                       |
+| `ComboboxGroup`      | Groups related items.                                   |
+| `ComboboxLabel`      | Non-interactive label for a group.                      |
+| `ComboboxEmpty`      | Shown when there are no results.                        |
+| `ComboboxSeparator`  | Horizontal divider.                                     |
+| `ComboboxChips`      | Container for selected value chips (multi-select).      |
+| `ComboboxChip`       | A single chip.                                          |
+| `ComboboxChipsInput` | The input rendered inside the chips container.          |
+| `ComboboxTrigger`    | The trigger button.                                     |
+| `ComboboxValue`      | Displays the selected value(s).                         |

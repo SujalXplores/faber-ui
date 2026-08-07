@@ -1,0 +1,95 @@
+---
+title: Pagination
+description: Navigation for paginated content.
+---
+
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@workspace/ui/components/pagination";
+
+`Pagination` renders a navigation control for paginated content, with previous and next links and numbered pages.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add pagination
+```
+
+## Usage
+
+```tsx
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@workspace/ui/components/pagination";
+
+export default function Example() {
+  return (
+    <Pagination>
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious href="#" />
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink href="#" isActive>1</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationNext href="#" />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <Pagination>
+    <PaginationContent>
+      <PaginationItem>
+        <PaginationPrevious href="#" />
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationLink href="#" isActive>1</PaginationLink>
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationLink href="#">2</PaginationLink>
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationLink href="#">3</PaginationLink>
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationEllipsis />
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationNext href="#" />
+      </PaginationItem>
+    </PaginationContent>
+  </Pagination>
+</div>
+
+## API
+
+| Component            | Description                                               |
+| -------------------- | --------------------------------------------------------- |
+| `Pagination`         | Root container.                                           |
+| `PaginationContent`  | Flex row of items.                                        |
+| `PaginationItem`     | A single pagination entry.                                |
+| `PaginationLink`     | A numbered link. Accepts `isActive?: boolean` and `href`. |
+| `PaginationPrevious` | Previous page link.                                       |
+| `PaginationNext`     | Next page link.                                           |
+| `PaginationEllipsis` | Collapsed indicator for skipped pages.                    |

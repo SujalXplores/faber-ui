@@ -1,0 +1,56 @@
+---
+title: Calendar
+description: A date picker built on React DayPicker.
+---
+
+import { Calendar } from "@workspace/ui/components/calendar";
+
+`Calendar` is built on React DayPicker. It renders an accessible monthly calendar for selecting single dates, ranges, or multiple dates.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add calendar
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import { Calendar } from "@workspace/ui/components/calendar";
+
+export default function Example() {
+  const [date, setDate] = useState<Date | undefined>(new Date());
+  return <Calendar mode="single" selected={date} onSelect={setDate} />;
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose rounded-lg border p-4">
+  <Calendar mode="single" defaultSelected={new Date()} />
+</div>
+
+### Multiple
+
+<div className="not-prose rounded-lg border p-4">
+  <Calendar mode="multiple" defaultSelected={[new Date()]} />
+</div>
+
+### Range
+
+<div className="not-prose rounded-lg border p-4">
+  <Calendar mode="range" defaultSelected={{ from: new Date() }} />
+</div>
+
+## API
+
+| Component           | Description                                                   |
+| ------------------- | ------------------------------------------------------------- |
+| `Calendar`          | Root. Accepts all React DayPicker props plus `buttonVariant`. |
+| `CalendarDayButton` | Internal day button, exposed for advanced customization.      |

@@ -1,0 +1,97 @@
+---
+title: Command
+description: A command palette built on cmdk.
+---
+
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from "@workspace/ui/components/command";
+
+`Command` is built on `cmdk`. It renders a searchable command palette with grouped items and keyboard navigation.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add command
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@workspace/ui/components/command";
+
+export default function Example() {
+  return (
+    <Command>
+      <CommandInput placeholder="Type a command or search..." />
+      <CommandList>
+        <CommandEmpty>No results found.</CommandEmpty>
+        <CommandGroup heading="Suggestions">
+          <CommandItem>Calendar</CommandItem>
+          <CommandItem>Search</CommandItem>
+        </CommandGroup>
+      </CommandList>
+    </Command>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <Command className="rounded-lg border">
+    <CommandInput placeholder="Type a command or search..." />
+    <CommandList>
+      <CommandEmpty>No results found.</CommandEmpty>
+      <CommandGroup heading="Suggestions">
+        <CommandItem>Calendar</CommandItem>
+        <CommandItem>Search Emoji</CommandItem>
+        <CommandItem>Calculator</CommandItem>
+      </CommandGroup>
+      <CommandSeparator />
+      <CommandGroup heading="Settings">
+        <CommandItem>
+          Profile
+          <CommandShortcut>⌘P</CommandShortcut>
+        </CommandItem>
+        <CommandItem>
+          Settings
+          <CommandShortcut>⌘S</CommandShortcut>
+        </CommandItem>
+      </CommandGroup>
+    </CommandList>
+  </Command>
+</div>
+
+## API
+
+| Component          | Description                              |
+| ------------------ | ---------------------------------------- |
+| `Command`          | Root. Accepts `cmdk` props.              |
+| `CommandDialog`    | A `Command` rendered inside a `Dialog`.  |
+| `CommandInput`     | The search input.                        |
+| `CommandList`      | The scrollable list of items.            |
+| `CommandEmpty`     | Shown when there are no results.         |
+| `CommandGroup`     | Groups related items. Accepts `heading`. |
+| `CommandItem`      | A single command.                        |
+| `CommandShortcut`  | Right-aligned shortcut hint.             |
+| `CommandSeparator` | Horizontal divider.                      |

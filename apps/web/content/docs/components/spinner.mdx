@@ -1,0 +1,45 @@
+---
+title: Spinner
+description: An animated loading indicator.
+---
+
+import { Spinner } from "@workspace/ui/components/spinner";
+
+`Spinner` renders a spinning Remixicon loader. It is a pure SVG element with `role="status"` and an `aria-label` of "Loading".
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add spinner
+```
+
+## Usage
+
+```tsx
+import { Spinner } from "@workspace/ui/components/spinner";
+
+export default function Example() {
+  return <Spinner />;
+}
+```
+
+## Examples
+
+### Default
+
+<div className="flex items-center gap-4 rounded-lg border p-4">
+  <Spinner />
+</div>
+
+### Sizes
+
+<div className="flex items-center gap-4 rounded-lg border p-4">
+  <Spinner className="size-3" />
+  <Spinner />
+  <Spinner className="size-6" />
+</div>
+
+## API
+
+The `Spinner` accepts all props of an `<svg>` element except `children`. Control the size with `className`.

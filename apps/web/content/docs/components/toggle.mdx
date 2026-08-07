@@ -1,0 +1,63 @@
+---
+title: Toggle
+description: A two-state button.
+---
+
+import { Toggle } from "@workspace/ui/components/toggle";
+
+`Toggle` is built on the Base UI `Toggle` primitive. It renders a button that switches between pressed and unpressed states.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add toggle
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Toggle } from "@workspace/ui/components/toggle";
+
+export default function Example() {
+  return <Toggle>Bold</Toggle>;
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <Toggle>Bold</Toggle>
+</div>
+
+### Pressed
+
+<div className="rounded-lg border p-4">
+  <Toggle defaultPressed>Bold</Toggle>
+</div>
+
+### Sizes
+
+<div className="flex flex-wrap items-center gap-2 rounded-lg border p-4">
+  <Toggle size="sm">Small</Toggle>
+  <Toggle size="default">Default</Toggle>
+  <Toggle size="lg">Large</Toggle>
+</div>
+
+### Variants
+
+<div className="flex flex-wrap items-center gap-2 rounded-lg border p-4">
+  <Toggle variant="default">Default</Toggle>
+  <Toggle variant="outline">Outline</Toggle>
+</div>
+
+## API
+
+| Component        | Description                                                                                                    |
+| ---------------- | -------------------------------------------------------------------------------------------------------------- |
+| `Toggle`         | Root. Accepts `pressed`, `defaultPressed`, `onPressedChange`, plus `variant` and `size` from `toggleVariants`. |
+| `toggleVariants` | Exported `cva` variants for custom styling.                                                                    |

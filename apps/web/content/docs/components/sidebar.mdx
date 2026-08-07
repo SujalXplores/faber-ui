@@ -1,0 +1,176 @@
+---
+title: Sidebar
+description: A composable sidebar system with collapsible modes and a trigger.
+---
+
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@workspace/ui/components/sidebar";
+import { RiDashboardLine, RiSettingsLine } from "@remixicon/react";
+
+`Sidebar` is a composable sidebar system. It supports left or right placement, multiple variants, and collapsible modes, with a trigger to toggle the state.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add sidebar
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@workspace/ui/components/sidebar";
+import { RiDashboardLine, RiSettingsLine } from "@remixicon/react";
+
+export default function Example() {
+  return (
+    <SidebarProvider>
+      <Sidebar>
+        <SidebarHeader>Acme</SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel>Application</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <RiDashboardLine />
+                    Dashboard
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
+      </Sidebar>
+      <SidebarInset>
+        <SidebarTrigger />
+      </SidebarInset>
+    </SidebarProvider>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <SidebarProvider>
+    <Sidebar>
+      <SidebarHeader>Acme</SidebarHeader>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton>
+                  <RiDashboardLine />
+                  Dashboard
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton>
+                  <RiSettingsLine />
+                  Settings
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+    <SidebarInset>
+      <div className="flex items-center gap-2 p-4">
+        <SidebarTrigger />
+        <span>Main content</span>
+      </div>
+    </SidebarInset>
+  </SidebarProvider>
+</div>
+
+### Active item
+
+<div className="rounded-lg border p-4">
+  <SidebarProvider>
+    <Sidebar>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton isActive>
+                  <RiDashboardLine />
+                  Dashboard
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton>
+                  <RiSettingsLine />
+                  Settings
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+  </SidebarProvider>
+</div>
+
+## API
+
+| Component              | Description                                                                                                                                    |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SidebarProvider`      | Context provider.                                                                                                                              |
+| `Sidebar`              | Root. Accepts `side?: "left" \| "right"`, `variant?: "sidebar" \| "floating" \| "inset"`, and `collapsible?: "offcanvas" \| "icon" \| "none"`. |
+| `SidebarContent`       | Main scrollable content.                                                                                                                       |
+| `SidebarHeader`        | Top section.                                                                                                                                   |
+| `SidebarFooter`        | Bottom section.                                                                                                                                |
+| `SidebarGroup`         | A labeled group of menu items.                                                                                                                 |
+| `SidebarGroupLabel`    | The group label.                                                                                                                               |
+| `SidebarGroupContent`  | Wraps the group menu.                                                                                                                          |
+| `SidebarGroupAction`   | An action button for the group.                                                                                                                |
+| `SidebarMenu`          | The menu list.                                                                                                                                 |
+| `SidebarMenuItem`      | A single menu row.                                                                                                                             |
+| `SidebarMenuButton`    | The menu button. Accepts `isActive`, `size?: "default" \| "sm" \| "lg"`, `variant?: "default" \| "outline"`, and `tooltip`.                    |
+| `SidebarMenuAction`    | An action button within a menu item.                                                                                                           |
+| `SidebarMenuBadge`     | A badge within a menu item.                                                                                                                    |
+| `SidebarMenuSub`       | A nested menu list.                                                                                                                            |
+| `SidebarMenuSubItem`   | A nested menu row.                                                                                                                             |
+| `SidebarMenuSubButton` | A nested menu button.                                                                                                                          |
+| `SidebarMenuSkeleton`  | Loading placeholder for a menu item.                                                                                                           |
+| `SidebarSeparator`     | Horizontal divider.                                                                                                                            |
+| `SidebarRail`          | A drag handle to resize or collapse.                                                                                                           |
+| `SidebarTrigger`       | Toggles the sidebar.                                                                                                                           |
+| `SidebarInset`         | The main content area next to the sidebar.                                                                                                     |
+| `SidebarInput`         | A search input for the sidebar.                                                                                                                |
+| `useSidebar`           | Hook to read and control sidebar state.                                                                                                        |

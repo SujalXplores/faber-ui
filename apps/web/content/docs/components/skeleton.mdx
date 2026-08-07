@@ -1,0 +1,47 @@
+---
+title: Skeleton
+description: A placeholder shape for loading states.
+---
+
+import { Skeleton } from "@workspace/ui/components/skeleton";
+
+`Skeleton` renders a muted, pulsing block. Use it to reserve space while data is loading.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add skeleton
+```
+
+## Usage
+
+```tsx
+import { Skeleton } from "@workspace/ui/components/skeleton";
+
+export default function Example() {
+  return <Skeleton className="h-4 w-48" />;
+}
+```
+
+## Examples
+
+### Profile card
+
+<div className="flex items-center gap-4 rounded-lg border p-4">
+  <Skeleton className="size-12 rounded-full" />
+  <div className="flex flex-col gap-2">
+    <Skeleton className="h-4 w-48" />
+    <Skeleton className="h-4 w-32" />
+  </div>
+</div>
+
+### Single line
+
+<div className="rounded-lg border p-4">
+  <Skeleton className="h-4 w-full" />
+</div>
+
+## API
+
+The `Skeleton` accepts all props of a native `<div>` element. Control the size and shape with `className`.

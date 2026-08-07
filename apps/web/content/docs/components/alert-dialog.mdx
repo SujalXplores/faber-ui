@@ -1,0 +1,100 @@
+---
+title: AlertDialog
+description: A modal dialog used for destructive confirmations.
+---
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@workspace/ui/components/alert-dialog";
+
+`AlertDialog` is built on the Base UI `AlertDialog` primitive. It forces the user to confirm an action before proceeding, with no dismiss on outside click.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add alert-dialog
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@workspace/ui/components/alert-dialog";
+
+export default function Example() {
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger render={<Button variant="outline">Show dialog</Button>} />
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+          <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Continue</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <AlertDialog>
+    <AlertDialogTrigger render={<Button variant="outline">Show dialog</Button>} />
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+        <AlertDialogDescription>This action cannot be undone. This will permanently delete your account.</AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogAction>Continue</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+</div>
+
+## API
+
+| Component                | Description                                                 |
+| ------------------------ | ----------------------------------------------------------- |
+| `AlertDialog`            | Root. Accepts `open`, `onOpenChange`, `defaultOpen`.        |
+| `AlertDialogTrigger`     | The element that opens the dialog. Use `render` to compose. |
+| `AlertDialogContent`     | The popup. Accepts `size?: "default" \| "sm"`.              |
+| `AlertDialogHeader`      | Top section with title and description.                     |
+| `AlertDialogFooter`      | Bottom section for actions.                                 |
+| `AlertDialogTitle`       | Accessible title.                                           |
+| `AlertDialogDescription` | Muted description.                                          |
+| `AlertDialogAction`      | Confirm button. Accepts `Button` props.                     |
+| `AlertDialogCancel`      | Cancel button. Defaults to `variant="outline"`.             |
+| `AlertDialogPortal`      | Portals content to the body.                                |
+| `AlertDialogOverlay`     | Backdrop overlay.                                           |
+| `AlertDialogMedia`       | Optional media slot above the header.                       |

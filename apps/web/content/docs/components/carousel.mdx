@@ -1,0 +1,101 @@
+---
+title: Carousel
+description: A scrollable carousel powered by Embla.
+---
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@workspace/ui/components/carousel";
+
+`Carousel` is built on Embla Carousel. It supports horizontal and vertical orientations, autoplay, and snap alignment.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add carousel
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@workspace/ui/components/carousel";
+
+export default function Example() {
+  return (
+    <Carousel>
+      <CarouselContent>
+        <CarouselItem>Item one</CarouselItem>
+        <CarouselItem>Item two</CarouselItem>
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose rounded-lg border p-4">
+  <Carousel className="mx-auto w-full max-w-xs px-12">
+    <CarouselContent>
+      <CarouselItem className="basis-full">
+        <div className="flex h-40 items-center justify-center bg-muted text-muted-foreground">1</div>
+      </CarouselItem>
+      <CarouselItem className="basis-full">
+        <div className="flex h-40 items-center justify-center bg-muted text-muted-foreground">2</div>
+      </CarouselItem>
+      <CarouselItem className="basis-full">
+        <div className="flex h-40 items-center justify-center bg-muted text-muted-foreground">3</div>
+      </CarouselItem>
+    </CarouselContent>
+    <CarouselPrevious />
+    <CarouselNext />
+  </Carousel>
+</div>
+
+### Multiple items per view
+
+<div className="not-prose rounded-lg border p-4">
+  <Carousel className="mx-auto w-full max-w-xs px-12">
+    <CarouselContent>
+      <CarouselItem className="basis-1/2">
+        <div className="flex h-40 items-center justify-center bg-muted text-muted-foreground">1</div>
+      </CarouselItem>
+      <CarouselItem className="basis-1/2">
+        <div className="flex h-40 items-center justify-center bg-muted text-muted-foreground">2</div>
+      </CarouselItem>
+      <CarouselItem className="basis-1/2">
+        <div className="flex h-40 items-center justify-center bg-muted text-muted-foreground">3</div>
+      </CarouselItem>
+    </CarouselContent>
+    <CarouselPrevious />
+    <CarouselNext />
+  </Carousel>
+</div>
+
+## API
+
+| Component          | Description                                              |
+| ------------------ | -------------------------------------------------------- |
+| `Carousel`         | Root. Accepts `orientation`, Embla options, and plugins. |
+| `CarouselContent`  | The scrollable track.                                    |
+| `CarouselItem`     | A single slide. Use `basis-*` to size.                   |
+| `CarouselPrevious` | Previous navigation button.                              |
+| `CarouselNext`     | Next navigation button.                                  |

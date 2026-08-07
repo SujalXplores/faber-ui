@@ -1,0 +1,85 @@
+---
+title: InputOTP
+description: An accessible one-time password input.
+---
+
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+  InputOTPSeparator,
+} from "@workspace/ui/components/input-otp";
+
+`InputOTP` is built on `input-otp`. It renders an accessible one-time password input with grouped slots and an optional separator.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add input-otp
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@workspace/ui/components/input-otp";
+
+export default function Example() {
+  return (
+    <InputOTP maxLength={6}>
+      <InputOTPGroup>
+        <InputOTPSlot index={0} />
+        <InputOTPSlot index={1} />
+        <InputOTPSlot index={2} />
+      </InputOTPGroup>
+    </InputOTP>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <InputOTP maxLength={6}>
+    <InputOTPGroup>
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+    </InputOTPGroup>
+  </InputOTP>
+</div>
+
+### With separator
+
+<div className="rounded-lg border p-4">
+  <InputOTP maxLength={6}>
+    <InputOTPGroup>
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+    </InputOTPGroup>
+    <InputOTPSeparator />
+    <InputOTPGroup>
+      <InputOTPSlot index={3} />
+      <InputOTPSlot index={4} />
+      <InputOTPSlot index={5} />
+    </InputOTPGroup>
+  </InputOTP>
+</div>
+
+## API
+
+| Component           | Description                                        |
+| ------------------- | -------------------------------------------------- |
+| `InputOTP`          | Root. Accepts `maxLength`, `value`, `onChange`.    |
+| `InputOTPGroup`     | Groups related slots.                              |
+| `InputOTPSlot`      | A single character slot. Requires `index: number`. |
+| `InputOTPSeparator` | Visual divider between groups.                     |

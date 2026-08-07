@@ -1,0 +1,114 @@
+---
+title: Select
+description: A custom dropdown select.
+---
+
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@workspace/ui/components/select";
+
+`Select` is built on the Base UI `Select` primitive. It renders a custom dropdown for choosing a single value from a list.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add select
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@workspace/ui/components/select";
+
+export default function Example() {
+  return (
+    <Select>
+      <SelectTrigger>
+        <SelectValue placeholder="Select a fruit" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+      </SelectContent>
+    </Select>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <Select>
+    <SelectTrigger className="w-56">
+      <SelectValue placeholder="Select a fruit" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+      <SelectItem value="cherry">Cherry</SelectItem>
+    </SelectContent>
+  </Select>
+</div>
+
+### With groups
+
+<div className="rounded-lg border p-4">
+  <Select>
+    <SelectTrigger className="w-56">
+      <SelectValue placeholder="Select a fruit" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectGroup>
+        <SelectLabel>Fruits</SelectLabel>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+      </SelectGroup>
+    </SelectContent>
+  </Select>
+</div>
+
+### Small
+
+<div className="rounded-lg border p-4">
+  <Select>
+    <SelectTrigger size="sm" className="w-56">
+      <SelectValue placeholder="Select a fruit" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+    </SelectContent>
+  </Select>
+</div>
+
+## API
+
+| Component                | Description                                             |
+| ------------------------ | ------------------------------------------------------- |
+| `Select`                 | Root. Accepts `value`, `defaultValue`, `onValueChange`. |
+| `SelectTrigger`          | The trigger button. Accepts `size?: "sm" \| "default"`. |
+| `SelectValue`            | Displays the selected value or placeholder.             |
+| `SelectContent`          | The dropdown popup.                                     |
+| `SelectItem`             | A single option. Accepts `value`.                       |
+| `SelectGroup`            | Groups related items.                                   |
+| `SelectLabel`            | Non-interactive label for a group.                      |
+| `SelectSeparator`        | Horizontal divider.                                     |
+| `SelectScrollUpButton`   | Scroll indicator for long lists (up).                   |
+| `SelectScrollDownButton` | Scroll indicator for long lists (down).                 |

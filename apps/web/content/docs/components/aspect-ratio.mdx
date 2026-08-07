@@ -1,0 +1,53 @@
+---
+title: AspectRatio
+description: Maintains a consistent aspect ratio for media.
+---
+
+import { AspectRatio } from "@workspace/ui/components/aspect-ratio";
+
+`AspectRatio` wraps content in a container that preserves a fixed aspect ratio, useful for responsive media.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add aspect-ratio
+```
+
+## Usage
+
+```tsx
+import { AspectRatio } from "@workspace/ui/components/aspect-ratio";
+
+export default function Example() {
+  return (
+    <AspectRatio ratio={16 / 9}>
+      <img src="https://placehold.co/600x400" alt="Placeholder" className="size-full object-cover" />
+    </AspectRatio>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <AspectRatio ratio={16 / 9}>
+    <div className="flex h-full items-center justify-center bg-muted text-muted-foreground">16:9</div>
+  </AspectRatio>
+</div>
+
+### Square
+
+<div className="rounded-lg border p-4">
+  <AspectRatio ratio={1}>
+    <div className="flex h-full items-center justify-center bg-muted text-muted-foreground">1:1</div>
+  </AspectRatio>
+</div>
+
+## API
+
+| Component     | Description                                                                    |
+| ------------- | ------------------------------------------------------------------------------ |
+| `AspectRatio` | Container that maintains a ratio. Accepts `ratio: number` and all `div` props. |

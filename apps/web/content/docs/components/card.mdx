@@ -1,0 +1,97 @@
+---
+title: Card
+description: A flexible container with header, content, and footer slots.
+---
+
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@workspace/ui/components/card";
+import { Badge } from "@workspace/ui/components/badge";
+import { Button } from "@workspace/ui/components/button";
+
+`Card` is a set of composable layout components. Each sub-component uses a `data-slot` attribute so you can target them with CSS if needed.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add card
+```
+
+## Usage
+
+```tsx
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@workspace/ui/components/card";
+
+export default function Example() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Title</CardTitle>
+        <CardDescription>Description</CardDescription>
+      </CardHeader>
+      <CardContent>Content</CardContent>
+    </Card>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <Card className="w-full max-w-sm">
+    <CardHeader>
+      <CardTitle>Project ready</CardTitle>
+      <CardDescription>Deploy your first component in minutes.</CardDescription>
+      <CardAction>
+        <Badge>v1.0</Badge>
+      </CardAction>
+    </CardHeader>
+    <CardContent>
+      <p>Card content goes here. Use it for summaries, forms, or media.</p>
+    </CardContent>
+    <CardFooter>
+      <Button>Get started</Button>
+    </CardFooter>
+  </Card>
+</div>
+
+### Compact
+
+Pass `size="sm"` for a denser card with tighter spacing:
+
+<div className="rounded-lg border p-4">
+  <Card size="sm" className="w-full max-w-sm">
+    <CardHeader>
+      <CardTitle>Compact card</CardTitle>
+      <CardDescription>Uses reduced padding.</CardDescription>
+    </CardHeader>
+    <CardContent>Content</CardContent>
+  </Card>
+</div>
+
+## Components
+
+| Component         | Description                                             |
+| ----------------- | ------------------------------------------------------- |
+| `Card`            | Root container. Accepts `size` (`"default"` or `"sm"`). |
+| `CardHeader`      | Top section, lays out title and description.            |
+| `CardTitle`       | Heading text.                                           |
+| `CardDescription` | Muted supporting text.                                  |
+| `CardAction`      | Aligned to the inline end of the header.                |
+| `CardContent`     | Main body.                                              |
+| `CardFooter`      | Bottom section.                                         |

@@ -1,0 +1,102 @@
+---
+title: Sheet
+description: A panel that slides in from a screen edge.
+---
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@workspace/ui/components/sheet";
+
+`Sheet` is built on the Base UI `Dialog` primitive. It renders a panel that slides in from a screen edge, useful for navigation and forms.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add sheet
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@workspace/ui/components/sheet";
+
+export default function Example() {
+  return (
+    <Sheet>
+      <SheetTrigger render={<Button variant="outline">Open sheet</Button>} />
+      <SheetContent>
+        <SheetHeader>
+          <SheetTitle>Title</SheetTitle>
+          <SheetDescription>Description</SheetDescription>
+        </SheetHeader>
+      </SheetContent>
+    </Sheet>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <Sheet>
+    <SheetTrigger render={<Button variant="outline">Open sheet</Button>} />
+    <SheetContent>
+      <SheetHeader>
+        <SheetTitle>Edit profile</SheetTitle>
+        <SheetDescription>Make changes to your profile here.</SheetDescription>
+      </SheetHeader>
+      <SheetFooter>
+        <Button type="submit">Save</Button>
+        <SheetClose render={<Button variant="outline">Cancel</Button>} />
+      </SheetFooter>
+    </SheetContent>
+  </Sheet>
+</div>
+
+### Left side
+
+<div className="rounded-lg border p-4">
+  <Sheet>
+    <SheetTrigger render={<Button variant="outline">Open left</Button>} />
+    <SheetContent side="left">
+      <SheetHeader>
+        <SheetTitle>Navigation</SheetTitle>
+        <SheetDescription>Links appear here.</SheetDescription>
+      </SheetHeader>
+    </SheetContent>
+  </Sheet>
+</div>
+
+## API
+
+| Component          | Description                                                         |
+| ------------------ | ------------------------------------------------------------------- |
+| `Sheet`            | Root. Accepts `open`, `onOpenChange`, `defaultOpen`.                |
+| `SheetTrigger`     | The element that opens the sheet. Use `render`.                     |
+| `SheetClose`       | Closes the sheet. Use `render` to compose.                          |
+| `SheetContent`     | The panel. Accepts `side?: "top" \| "right" \| "bottom" \| "left"`. |
+| `SheetHeader`      | Top section with title and description.                             |
+| `SheetFooter`      | Bottom section for actions.                                         |
+| `SheetTitle`       | Accessible title.                                                   |
+| `SheetDescription` | Muted description.                                                  |

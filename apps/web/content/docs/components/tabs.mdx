@@ -1,0 +1,91 @@
+---
+title: Tabs
+description: Switch between panels of content with a tab list.
+---
+
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@workspace/ui/components/tabs";
+
+`Tabs` is built on the Base UI `Tabs` primitive. It supports horizontal and vertical orientations and a `line` variant for the tab list.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add tabs
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@workspace/ui/components/tabs";
+
+export default function Example() {
+  return (
+    <Tabs defaultValue="tab-1">
+      <TabsList>
+        <TabsTrigger value="tab-1">First</TabsTrigger>
+        <TabsTrigger value="tab-2">Second</TabsTrigger>
+      </TabsList>
+      <TabsContent value="tab-1">Content one</TabsContent>
+      <TabsContent value="tab-2">Content two</TabsContent>
+    </Tabs>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <Tabs defaultValue="account">
+    <TabsList>
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="password">Password</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">Manage your account settings and profile.</TabsContent>
+    <TabsContent value="password">Change your password and security options.</TabsContent>
+  </Tabs>
+</div>
+
+### Line variant
+
+<div className="rounded-lg border p-4">
+  <Tabs defaultValue="overview">
+    <TabsList variant="line">
+      <TabsTrigger value="overview">Overview</TabsTrigger>
+      <TabsTrigger value="analytics">Analytics</TabsTrigger>
+    </TabsList>
+    <TabsContent value="overview">Overview content</TabsContent>
+    <TabsContent value="analytics">Analytics content</TabsContent>
+  </Tabs>
+</div>
+
+### Vertical orientation
+
+<div className="rounded-lg border p-4">
+  <Tabs defaultValue="general" orientation="vertical">
+    <TabsList>
+      <TabsTrigger value="general">General</TabsTrigger>
+      <TabsTrigger value="billing">Billing</TabsTrigger>
+    </TabsList>
+    <TabsContent value="general">General settings</TabsContent>
+    <TabsContent value="billing">Billing settings</TabsContent>
+  </Tabs>
+</div>
+
+## API
+
+| Component     | Description                                                            |
+| ------------- | ---------------------------------------------------------------------- |
+| `Tabs`        | Root. Accepts `value`, `defaultValue`, `onValueChange`, `orientation`. |
+| `TabsList`    | Container for triggers. Accepts `variant` (`"default"` or `"line"`).   |
+| `TabsTrigger` | A tab button. Accepts `value`.                                         |
+| `TabsContent` | A panel. Accepts `value`.                                              |

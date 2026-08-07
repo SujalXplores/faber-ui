@@ -1,0 +1,87 @@
+---
+title: Marker
+description: A horizontal marker or label row with an optional icon.
+---
+
+import {
+  Marker,
+  MarkerContent,
+  MarkerIcon,
+} from "@workspace/ui/components/marker";
+import { RiStarLine } from "@remixicon/react";
+
+`Marker` is a horizontal label row. It supports border, default, and separator variants, with an optional leading icon.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add marker
+```
+
+## Usage
+
+```tsx
+import {
+  Marker,
+  MarkerContent,
+  MarkerIcon,
+} from "@workspace/ui/components/marker";
+import { RiStarLine } from "@remixicon/react";
+
+export default function Example() {
+  return (
+    <Marker>
+      <MarkerIcon>
+        <RiStarLine />
+      </MarkerIcon>
+      <MarkerContent>Featured</MarkerContent>
+    </Marker>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <Marker>
+    <MarkerContent>Section label</MarkerContent>
+  </Marker>
+</div>
+
+### With icon
+
+<div className="rounded-lg border p-4">
+  <Marker>
+    <MarkerIcon>
+      <RiStarLine />
+    </MarkerIcon>
+    <MarkerContent>Featured</MarkerContent>
+  </Marker>
+</div>
+
+### Variants
+
+<div className="rounded-lg border p-4">
+  <div className="flex flex-col gap-2">
+    <Marker variant="default">
+      <MarkerContent>Default</MarkerContent>
+    </Marker>
+    <Marker variant="border">
+      <MarkerContent>Border</MarkerContent>
+    </Marker>
+    <Marker variant="separator">
+      <MarkerContent>Separator</MarkerContent>
+    </Marker>
+  </div>
+</div>
+
+## API
+
+| Component       | Description                                                         |
+| --------------- | ------------------------------------------------------------------- |
+| `Marker`        | Root row. Accepts `variant?: "border" \| "default" \| "separator"`. |
+| `MarkerIcon`    | Optional leading icon slot.                                         |
+| `MarkerContent` | The label text.                                                     |

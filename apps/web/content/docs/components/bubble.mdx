@@ -1,0 +1,112 @@
+---
+title: Bubble
+description: A chat-style message bubble with variants and alignment.
+---
+
+import {
+  Bubble,
+  BubbleContent,
+  BubbleGroup,
+  BubbleReactions,
+} from "@workspace/ui/components/bubble";
+import { RiHeartLine, RiThumbUpLine } from "@remixicon/react";
+
+`Bubble` is a chat-style message bubble. It supports multiple variants and alignment, with optional reactions for quick emoji responses.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add bubble
+```
+
+## Usage
+
+```tsx
+import {
+  Bubble,
+  BubbleContent,
+  BubbleGroup,
+  BubbleReactions,
+} from "@workspace/ui/components/bubble";
+import { RiThumbUpLine } from "@remixicon/react";
+
+export default function Example() {
+  return (
+    <BubbleGroup>
+      <Bubble>
+        <BubbleContent>Hello, how are you?</BubbleContent>
+        <BubbleReactions>
+          <RiThumbUpLine />
+        </BubbleReactions>
+      </Bubble>
+    </BubbleGroup>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose rounded-lg border p-4">
+  <BubbleGroup>
+    <Bubble>
+      <BubbleContent>Hello, how are you?</BubbleContent>
+    </Bubble>
+    <Bubble align="end">
+      <BubbleContent>I am good, thanks!</BubbleContent>
+    </Bubble>
+  </BubbleGroup>
+</div>
+
+### Variants
+
+<div className="not-prose rounded-lg border p-4">
+  <BubbleGroup>
+    <Bubble variant="default">
+      <BubbleContent>Default</BubbleContent>
+    </Bubble>
+    <Bubble variant="secondary">
+      <BubbleContent>Secondary</BubbleContent>
+    </Bubble>
+    <Bubble variant="outline">
+      <BubbleContent>Outline</BubbleContent>
+    </Bubble>
+    <Bubble variant="ghost">
+      <BubbleContent>Ghost</BubbleContent>
+    </Bubble>
+    <Bubble variant="muted">
+      <BubbleContent>Muted</BubbleContent>
+    </Bubble>
+    <Bubble variant="tinted">
+      <BubbleContent>Tinted</BubbleContent>
+    </Bubble>
+    <Bubble variant="destructive">
+      <BubbleContent>Destructive</BubbleContent>
+    </Bubble>
+  </BubbleGroup>
+</div>
+
+### With reactions
+
+<div className="not-prose rounded-lg border p-4">
+  <BubbleGroup>
+    <Bubble>
+      <BubbleContent>Check out this message.</BubbleContent>
+      <BubbleReactions>
+        <RiThumbUpLine />
+        <RiHeartLine />
+      </BubbleReactions>
+    </Bubble>
+  </BubbleGroup>
+</div>
+
+## API
+
+| Component         | Description                                                    |
+| ----------------- | -------------------------------------------------------------- |
+| `BubbleGroup`     | Groups a conversation thread of bubbles.                       |
+| `Bubble`          | A single message bubble. Accepts `variant` and `align` props.  |
+| `BubbleContent`   | The message text content.                                      |
+| `BubbleReactions` | Emoji or icon reactions row. Accepts `align` and `side` props. |

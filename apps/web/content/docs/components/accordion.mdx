@@ -1,0 +1,68 @@
+---
+title: Accordion
+description: A vertically stacked set of expandable sections.
+---
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@workspace/ui/components/accordion";
+
+`Accordion` is built on the Base UI `Accordion` primitive. It renders a vertically stacked set of expandable sections with animated open/close transitions.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add accordion
+```
+
+## Usage
+
+```tsx
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@workspace/ui/components/accordion";
+
+export default function Example() {
+  return (
+    <Accordion>
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionContent>Yes. It adheres to WAI-ARIA standards.</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <Accordion>
+    <AccordionItem value="item-1">
+      <AccordionTrigger>Is it accessible?</AccordionTrigger>
+      <AccordionContent>Yes. It adheres to WAI-ARIA standards.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2">
+      <AccordionTrigger>Is it styled?</AccordionTrigger>
+      <AccordionContent>Yes. It comes with default styles.</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</div>
+
+## API
+
+| Component          | Description                                           |
+| ------------------ | ----------------------------------------------------- |
+| `Accordion`        | Root container. Accepts Base UI Accordion Root props. |
+| `AccordionItem`    | A single collapsible section. Accepts `value`.        |
+| `AccordionTrigger` | The clickable header that toggles the section.        |
+| `AccordionContent` | The expandable content area.                          |

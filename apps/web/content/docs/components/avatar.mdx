@@ -1,0 +1,102 @@
+---
+title: Avatar
+description: A user image with fallback and optional status badge.
+---
+
+import {
+  Avatar,
+  AvatarBadge,
+  AvatarFallback,
+  AvatarGroup,
+  AvatarImage,
+} from "@workspace/ui/components/avatar";
+
+`Avatar` is built on the Base UI `Avatar` primitive. It shows an image when available and falls back to initials or placeholder content while loading or on error.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add avatar
+```
+
+## Usage
+
+```tsx
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@workspace/ui/components/avatar";
+
+export default function Example() {
+  return (
+    <Avatar>
+      <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+      <AvatarFallback>SC</AvatarFallback>
+    </Avatar>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose flex items-center gap-4 rounded-lg border p-4">
+  <Avatar>
+    <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+    <AvatarFallback>SC</AvatarFallback>
+  </Avatar>
+</div>
+
+### Sizes
+
+<div className="not-prose flex items-center gap-4 rounded-lg border p-4">
+  <Avatar size="sm">
+    <AvatarFallback>S</AvatarFallback>
+  </Avatar>
+  <Avatar>
+    <AvatarFallback>M</AvatarFallback>
+  </Avatar>
+  <Avatar size="lg">
+    <AvatarFallback>L</AvatarFallback>
+  </Avatar>
+</div>
+
+### With a status badge
+
+<div className="not-prose flex items-center gap-4 rounded-lg border p-4">
+  <Avatar>
+    <AvatarFallback>AB</AvatarFallback>
+    <AvatarBadge />
+  </Avatar>
+</div>
+
+### Avatar group
+
+Stack multiple avatars with `AvatarGroup`:
+
+<div className="not-prose flex items-center gap-4 rounded-lg border p-4">
+  <AvatarGroup>
+    <Avatar>
+      <AvatarFallback>A</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarFallback>B</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarFallback>C</AvatarFallback>
+    </Avatar>
+  </AvatarGroup>
+</div>
+
+## API
+
+| Component        | Description                                         |
+| ---------------- | --------------------------------------------------- |
+| `Avatar`         | Root. Accepts `size` (`"sm"`, `"default"`, `"lg"`). |
+| `AvatarImage`    | The image element.                                  |
+| `AvatarFallback` | Shown while the image loads or fails.               |
+| `AvatarBadge`    | A small status dot positioned at the corner.        |
+| `AvatarGroup`    | Overlaps child avatars horizontally.                |

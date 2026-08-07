@@ -1,0 +1,106 @@
+---
+title: DropdownMenu
+description: A menu of actions revealed by a trigger click.
+---
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "@workspace/ui/components/dropdown-menu";
+
+`DropdownMenu` is built on the Base UI `Menu` primitive. It displays a list of actions when the user clicks a trigger element.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add dropdown-menu
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@workspace/ui/components/dropdown-menu";
+
+export default function Example() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger render={<Button variant="outline">Open</Button>} />
+      <DropdownMenuContent>
+        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuItem>Settings</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose rounded-lg border p-4">
+  <DropdownMenu>
+    <DropdownMenuTrigger render={<Button variant="outline">Open menu</Button>} />
+    <DropdownMenuContent>
+      <DropdownMenuGroup>
+        <DropdownMenuLabel>My account</DropdownMenuLabel>
+        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuItem>Settings</DropdownMenuItem>
+        <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+      </DropdownMenuGroup>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem inset>Log out</DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</div>
+
+### With shortcuts
+
+<div className="not-prose rounded-lg border p-4">
+  <DropdownMenu>
+    <DropdownMenuTrigger render={<Button variant="outline">Open menu</Button>} />
+    <DropdownMenuContent>
+      <DropdownMenuItem>
+        Copy <DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        Paste <DropdownMenuShortcut>⌘V</DropdownMenuShortcut>
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</div>
+
+## API
+
+| Component                  | Description                                                                          |
+| -------------------------- | ------------------------------------------------------------------------------------ |
+| `DropdownMenu`             | Root.                                                                                |
+| `DropdownMenuTrigger`      | The element that opens the menu. Use `render`.                                       |
+| `DropdownMenuContent`      | The menu popup.                                                                      |
+| `DropdownMenuItem`         | A menu action. Accepts `variant?: "default" \| "destructive"` and `inset?: boolean`. |
+| `DropdownMenuCheckboxItem` | A toggleable item with a check indicator.                                            |
+| `DropdownMenuRadioGroup`   | Groups radio items.                                                                  |
+| `DropdownMenuRadioItem`    | A radio option.                                                                      |
+| `DropdownMenuLabel`        | Non-interactive label.                                                               |
+| `DropdownMenuSeparator`    | Horizontal divider.                                                                  |
+| `DropdownMenuShortcut`     | Right-aligned shortcut hint.                                                         |
+| `DropdownMenuGroup`        | Logical grouping of items.                                                           |
+| `DropdownMenuSub`          | Submenu container.                                                                   |
+| `DropdownMenuSubTrigger`   | Opens the submenu.                                                                   |
+| `DropdownMenuSubContent`   | The submenu popup.                                                                   |

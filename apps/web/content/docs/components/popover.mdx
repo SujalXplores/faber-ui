@@ -1,0 +1,71 @@
+---
+title: Popover
+description: A floating panel anchored to a trigger.
+---
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "@workspace/ui/components/popover";
+
+`Popover` is built on the Base UI `Popover` primitive. It displays floating content anchored to a trigger element.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add popover
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@workspace/ui/components/popover";
+
+export default function Example() {
+  return (
+    <Popover>
+      <PopoverTrigger render={<Button variant="outline">Open popover</Button>} />
+      <PopoverContent>Popover content.</PopoverContent>
+    </Popover>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <Popover>
+    <PopoverTrigger render={<Button variant="outline">Open popover</Button>} />
+    <PopoverContent>
+      <PopoverHeader>
+        <PopoverTitle>Popover title</PopoverTitle>
+      </PopoverHeader>
+      <p className="text-sm text-muted-foreground">This is the popover content.</p>
+    </PopoverContent>
+  </Popover>
+</div>
+
+## API
+
+| Component            | Description                                          |
+| -------------------- | ---------------------------------------------------- |
+| `Popover`            | Root. Accepts `open`, `onOpenChange`, `defaultOpen`. |
+| `PopoverTrigger`     | The element that opens the popover. Use `render`.    |
+| `PopoverContent`     | The floating panel.                                  |
+| `PopoverHeader`      | Optional header with title and description.          |
+| `PopoverTitle`       | The popover title.                                   |
+| `PopoverDescription` | Muted description.                                   |

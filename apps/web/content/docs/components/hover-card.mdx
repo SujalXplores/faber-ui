@@ -1,0 +1,69 @@
+---
+title: HoverCard
+description: A preview revealed on hover.
+---
+
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@workspace/ui/components/hover-card";
+
+`HoverCard` is built on the Base UI `PreviewCard` primitive. It displays additional content when the user hovers over a trigger.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add hover-card
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@workspace/ui/components/hover-card";
+
+export default function Example() {
+  return (
+    <HoverCard>
+      <HoverCardTrigger>Hover me</HoverCardTrigger>
+      <HoverCardContent>Additional content.</HoverCardContent>
+    </HoverCard>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose rounded-lg border p-4">
+  <HoverCard>
+    <HoverCardTrigger className="cursor-pointer text-sm font-medium underline">
+      Hover me
+    </HoverCardTrigger>
+    <HoverCardContent>
+      <div className="flex gap-3">
+        <div className="size-10 rounded-full bg-muted" />
+        <div>
+          <p className="text-sm font-medium">Faber UI</p>
+          <p className="text-sm text-muted-foreground">A component library.</p>
+        </div>
+      </div>
+    </HoverCardContent>
+  </HoverCard>
+</div>
+
+## API
+
+| Component          | Description                                             |
+| ------------------ | ------------------------------------------------------- |
+| `HoverCard`        | Root. Accepts `open`, `onOpenChange`, `defaultOpen`.    |
+| `HoverCardTrigger` | The element that opens the card on hover. Use `render`. |
+| `HoverCardContent` | The popup content.                                      |

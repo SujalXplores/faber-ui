@@ -1,0 +1,50 @@
+---
+title: Kbd
+description: Displays a keyboard keycap.
+---
+
+import { Kbd, KbdGroup } from "@workspace/ui/components/kbd";
+
+`Kbd` renders a styled keyboard keycap, useful for documenting shortcuts. `KbdGroup` combines multiple keys with plus separators.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add kbd
+```
+
+## Usage
+
+```tsx
+import { Kbd } from "@workspace/ui/components/kbd";
+
+export default function Example() {
+  return <Kbd>⌘K</Kbd>;
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <Kbd>⌘K</Kbd>
+</div>
+
+### Group
+
+<div className="rounded-lg border p-4">
+  <KbdGroup>
+    <Kbd>⌘</Kbd>
+    <Kbd>Shift</Kbd>
+    <Kbd>P</Kbd>
+  </KbdGroup>
+</div>
+
+## API
+
+| Component  | Description                           |
+| ---------- | ------------------------------------- |
+| `Kbd`      | A single keycap. Accepts `div` props. |
+| `KbdGroup` | Groups keys with plus separators.     |

@@ -1,0 +1,78 @@
+---
+title: Sonner
+description: Toast notifications powered by sonner.
+---
+
+import { SonnerActionDemo, SonnerDemo, SonnerTypesDemo } from "@/components/sonner-demo";
+
+`Sonner` is built on the [`sonner`](https://sonner.emilkowal.ski) library. The `Toaster` component sets up the viewport, and the `toast` function (imported from `sonner`) triggers notifications programmatically.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add sonner
+```
+
+## Usage
+
+Add the `Toaster` to your root layout, then call `toast()` anywhere in a client component:
+
+```tsx
+"use client";
+
+import { Toaster } from "@workspace/ui/components/sonner";
+import { toast } from "sonner";
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      {children}
+      <Toaster />
+    </>
+  );
+}
+
+// anywhere in a client component
+function MyButton() {
+  return <button onClick={() => toast("Event has been created")}>Show toast</button>;
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose flex flex-wrap items-center gap-2 rounded-lg border p-4">
+  <SonnerDemo />
+</div>
+
+### With description and action
+
+<div className="not-prose flex flex-wrap items-center gap-2 rounded-lg border p-4">
+  <SonnerActionDemo />
+</div>
+
+### Types
+
+The `toast` function accepts a `type` option that renders an icon:
+
+```tsx
+toast.success("Saved");
+toast.info("Heads up");
+toast.warning("Warning");
+toast.error("Failed");
+toast.loading("Loading");
+toast.promise(myAsyncFn, { success: "Done", error: "Failed" });
+```
+
+<div className="not-prose flex flex-wrap items-center gap-2 rounded-lg border p-4">
+  <SonnerTypesDemo />
+</div>
+
+## API
+
+| Component | Description                                                           |
+| --------- | --------------------------------------------------------------------- |
+| `Toaster` | The viewport. Drop it in your layout once.                            |
+| `toast`   | The trigger function (imported from `sonner`). Call `toast(message)`. |

@@ -1,0 +1,94 @@
+---
+title: InputGroup
+description: Composes an input with leading and trailing addons.
+---
+
+import { Input } from "@workspace/ui/components/input";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+} from "@workspace/ui/components/input-group";
+
+`InputGroup` composes an input with leading and trailing addons, such as icons, text, or buttons.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add input-group
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Input } from "@workspace/ui/components/input";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@workspace/ui/components/input-group";
+
+export default function Example() {
+  return (
+    <InputGroup>
+      <InputGroupAddon>$</InputGroupAddon>
+      <InputGroupInput placeholder="0.00" />
+    </InputGroup>
+  );
+}
+```
+
+## Examples
+
+### With text addon
+
+<div className="rounded-lg border p-4">
+  <InputGroup>
+    <InputGroupAddon>$</InputGroupAddon>
+    <InputGroupInput placeholder="0.00" />
+  </InputGroup>
+</div>
+
+### With button addon
+
+<div className="rounded-lg border p-4">
+  <InputGroup>
+    <InputGroupInput placeholder="Search" />
+    <InputGroupButton variant="outline">Go</InputGroupButton>
+  </InputGroup>
+</div>
+
+### With both sides
+
+<div className="rounded-lg border p-4">
+  <InputGroup>
+    <InputGroupAddon>https://</InputGroupAddon>
+    <InputGroupInput placeholder="example.com" />
+    <InputGroupAddon>.com</InputGroupAddon>
+  </InputGroup>
+</div>
+
+### Aligned addon
+
+<div className="rounded-lg border p-4">
+  <InputGroup>
+    <InputGroupInput placeholder="0.00" />
+    <InputGroupAddon align="w-end">USD</InputGroupAddon>
+  </InputGroup>
+</div>
+
+## API
+
+| Component            | Description                                                                       |
+| -------------------- | --------------------------------------------------------------------------------- |
+| `InputGroup`         | Root container.                                                                   |
+| `InputGroupAddon`    | Decorative addon. Accepts `align?: "h-end" \| "h-start" \| "w-end" \| "w-start"`. |
+| `InputGroupButton`   | A button addon.                                                                   |
+| `InputGroupText`     | Non-interactive text addon.                                                       |
+| `InputGroupInput`    | The input control.                                                                |
+| `InputGroupTextarea` | A textarea variant of the input control.                                          |

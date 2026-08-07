@@ -1,0 +1,80 @@
+---
+title: Alert
+description: A callout for contextual feedback messages.
+---
+
+import {
+  Alert,
+  AlertAction,
+  AlertDescription,
+  AlertTitle,
+} from "@workspace/ui/components/alert";
+
+`Alert` is a styled `div` with `role="alert"`. It supports a default and a destructive variant, and an optional action slot.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add alert
+```
+
+## Usage
+
+```tsx
+import { Alert, AlertDescription, AlertTitle } from "@workspace/ui/components/alert";
+
+export default function Example() {
+  return (
+    <Alert>
+      <AlertTitle>Heads up</AlertTitle>
+      <AlertDescription>You can add components via the CLI.</AlertDescription>
+    </Alert>
+  );
+}
+```
+
+## Examples
+
+### Variants
+
+<div className="flex flex-col gap-3 rounded-lg border p-4">
+  <Alert>
+    <AlertTitle>Heads up</AlertTitle>
+    <AlertDescription>You can add components to your app using the shadcn CLI.</AlertDescription>
+  </Alert>
+  <Alert variant="destructive">
+    <AlertTitle>Something went wrong</AlertTitle>
+    <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
+  </Alert>
+</div>
+
+### With an action
+
+Use `AlertAction` to place a button in the corner of the alert:
+
+```tsx
+import { Alert, AlertAction, AlertDescription, AlertTitle } from "@workspace/ui/components/alert";
+import { Button } from "@workspace/ui/components/button";
+
+export default function Example() {
+  return (
+    <Alert>
+      <AlertTitle>New version available</AlertTitle>
+      <AlertDescription>v2.0 is ready to install.</AlertDescription>
+      <AlertAction>
+        <Button size="sm">Update</Button>
+      </AlertAction>
+    </Alert>
+  );
+}
+```
+
+## Components
+
+| Component          | Description                                                         |
+| ------------------ | ------------------------------------------------------------------- |
+| `Alert`            | Root container. Accepts `variant` (`"default"` or `"destructive"`). |
+| `AlertTitle`       | Bold heading.                                                       |
+| `AlertDescription` | Muted body text.                                                    |
+| `AlertAction`      | Positioned in the inline-end corner.                                |

@@ -1,0 +1,107 @@
+---
+title: Drawer
+description: A swipeable sheet that slides in from a screen edge.
+---
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@workspace/ui/components/drawer";
+
+`Drawer` is built on Vaul. It renders a sheet that can be dragged open or closed, ideal for mobile interactions.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add drawer
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@workspace/ui/components/drawer";
+
+export default function Example() {
+  return (
+    <Drawer>
+      <DrawerTrigger render={<Button variant="outline">Open drawer</Button>} />
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Title</DrawerTitle>
+          <DrawerDescription>Description</DrawerDescription>
+        </DrawerHeader>
+      </DrawerContent>
+    </Drawer>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <Drawer>
+    <DrawerTrigger render={<Button variant="outline">Open drawer</Button>} />
+    <DrawerContent>
+      <DrawerHeader>
+        <DrawerTitle>Are you sure?</DrawerTitle>
+        <DrawerDescription>This action cannot be undone.</DrawerDescription>
+      </DrawerHeader>
+      <DrawerFooter>
+        <Button>Submit</Button>
+        <DrawerClose render={<Button variant="outline">Cancel</Button>} />
+      </DrawerFooter>
+    </DrawerContent>
+  </Drawer>
+</div>
+
+### With swipe handle
+
+Pass `showSwipeHandle` to the `Drawer` root to render a drag indicator at the top of the content.
+
+<div className="rounded-lg border p-4">
+  <Drawer showSwipeHandle>
+    <DrawerTrigger render={<Button variant="outline">Open drawer</Button>} />
+    <DrawerContent>
+      <DrawerHeader>
+        <DrawerTitle>Swipe me</DrawerTitle>
+        <DrawerDescription>Drag the handle to close.</DrawerDescription>
+      </DrawerHeader>
+    </DrawerContent>
+  </Drawer>
+</div>
+
+## API
+
+| Component           | Description                                        |
+| ------------------- | -------------------------------------------------- |
+| `Drawer`            | Root. Accepts `open`, `onOpenChange`, `direction`. |
+| `DrawerTrigger`     | The element that opens the drawer. Use `render`.   |
+| `DrawerClose`       | Closes the drawer. Use `render` to compose.        |
+| `DrawerContent`     | The popup. Accepts `showSwipeHandle`.              |
+| `DrawerHeader`      | Top section with title and description.            |
+| `DrawerFooter`      | Bottom section for actions.                        |
+| `DrawerTitle`       | Accessible title.                                  |
+| `DrawerDescription` | Muted description.                                 |
+| `DrawerPortal`      | Portals content to the body.                       |
+| `DrawerOverlay`     | Backdrop overlay.                                  |
+| `DrawerSwipeHandle` | The drag indicator rendered by `showSwipeHandle`.  |

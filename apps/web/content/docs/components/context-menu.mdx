@@ -1,0 +1,108 @@
+---
+title: ContextMenu
+description: A right-click menu for contextual actions.
+---
+
+import {
+  ContextMenu,
+  ContextMenuCheckboxItem,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuLabel,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuTrigger,
+} from "@workspace/ui/components/context-menu";
+
+`ContextMenu` is built on the Base UI `Menu` primitive. It displays a menu of actions when the user right-clicks a trigger element.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add context-menu
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "@workspace/ui/components/context-menu";
+
+export default function Example() {
+  return (
+    <ContextMenu>
+      <ContextMenuTrigger>Right click here</ContextMenuTrigger>
+      <ContextMenuContent>
+        <ContextMenuItem>Back</ContextMenuItem>
+        <ContextMenuItem>Forward</ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenu>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <ContextMenu>
+    <ContextMenuTrigger className="block w-full rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">
+      Right click here
+    </ContextMenuTrigger>
+    <ContextMenuContent>
+      <ContextMenuItem>Back</ContextMenuItem>
+      <ContextMenuItem>Forward</ContextMenuItem>
+      <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuItem inset>More</ContextMenuItem>
+    </ContextMenuContent>
+  </ContextMenu>
+</div>
+
+### With checkbox items
+
+<div className="rounded-lg border p-4">
+  <ContextMenu>
+    <ContextMenuTrigger className="block w-full rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">
+      Right click here
+    </ContextMenuTrigger>
+    <ContextMenuContent>
+      <ContextMenuItem>Cut</ContextMenuItem>
+      <ContextMenuItem>Copy</ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuCheckboxItem checked>Show toolbar</ContextMenuCheckboxItem>
+    </ContextMenuContent>
+  </ContextMenu>
+</div>
+
+## API
+
+| Component                 | Description                                                                          |
+| ------------------------- | ------------------------------------------------------------------------------------ |
+| `ContextMenu`             | Root.                                                                                |
+| `ContextMenuTrigger`      | The element that opens the menu on right click.                                      |
+| `ContextMenuContent`      | The menu popup.                                                                      |
+| `ContextMenuItem`         | A menu action. Accepts `variant?: "default" \| "destructive"` and `inset?: boolean`. |
+| `ContextMenuCheckboxItem` | A toggleable item with a check indicator.                                            |
+| `ContextMenuRadioItem`    | A radio option. Use inside `ContextMenuRadioGroup`.                                  |
+| `ContextMenuRadioGroup`   | Groups radio items.                                                                  |
+| `ContextMenuLabel`        | Non-interactive label.                                                               |
+| `ContextMenuSeparator`    | Horizontal divider.                                                                  |
+| `ContextMenuShortcut`     | Right-aligned shortcut hint.                                                         |
+| `ContextMenuGroup`        | Logical grouping of items.                                                           |
+| `ContextMenuSub`          | Submenu container.                                                                   |
+| `ContextMenuSubTrigger`   | Opens the submenu.                                                                   |
+| `ContextMenuSubContent`   | The submenu popup.                                                                   |

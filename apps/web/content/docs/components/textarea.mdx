@@ -1,0 +1,44 @@
+---
+title: Textarea
+description: A multi-line text input that grows with its content.
+---
+
+import { Textarea } from "@workspace/ui/components/textarea";
+
+`Textarea` uses `field-sizing-content` so it expands automatically as the user types, without a resize handle.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add textarea
+```
+
+## Usage
+
+```tsx
+import { Textarea } from "@workspace/ui/components/textarea";
+
+export default function Example() {
+  return <Textarea placeholder="Write a message..." />;
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <Textarea placeholder="Write a message..." />
+</div>
+
+### States
+
+<div className="flex flex-col gap-3 rounded-lg border p-4">
+  <Textarea placeholder="Default" />
+  <Textarea placeholder="Disabled" disabled />
+</div>
+
+## API
+
+The `Textarea` accepts all props of a native `<textarea>` element.

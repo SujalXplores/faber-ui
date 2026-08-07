@@ -1,0 +1,120 @@
+---
+title: Navigation Menu
+description: A navigation menu with a shared viewport for content panels.
+---
+
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuPositioner,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@workspace/ui/components/navigation-menu";
+
+`NavigationMenu` is built on the Base UI `NavigationMenu` primitive. It renders a horizontal list of triggers, each opening a shared content panel below.
+
+## Installation
+
+```bash
+cd packages/ui
+pnpm dlx shadcn@latest add navigation-menu
+```
+
+## Usage
+
+```tsx
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@workspace/ui/components/navigation-menu";
+
+export default function Example() {
+  return (
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <NavigationMenuLink href="/docs">Documentation</NavigationMenuLink>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="rounded-lg border p-4">
+  <NavigationMenu>
+    <NavigationMenuList>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <div className="flex w-[400px] flex-col gap-2 p-2">
+            <NavigationMenuLink href="/docs" className="font-medium">
+              Documentation
+            </NavigationMenuLink>
+            <NavigationMenuLink href="/docs/installation" className="text-muted-foreground">
+              Installation
+            </NavigationMenuLink>
+          </div>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <div className="flex w-[400px] flex-col gap-2 p-2">
+            <NavigationMenuLink href="/docs/components/accordion" className="font-medium">
+              Accordion
+            </NavigationMenuLink>
+            <NavigationMenuLink href="/docs/components/button" className="text-muted-foreground">
+              Button
+            </NavigationMenuLink>
+          </div>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+    </NavigationMenuList>
+  </NavigationMenu>
+</div>
+
+### Link trigger
+
+Use `navigationMenuTriggerStyle` to style a plain link as a trigger:
+
+<div className="rounded-lg border p-4">
+  <NavigationMenu>
+    <NavigationMenuList>
+      <NavigationMenuItem>
+        <NavigationMenuLink href="/docs" className={navigationMenuTriggerStyle()}>
+          Docs
+        </NavigationMenuLink>
+      </NavigationMenuItem>
+    </NavigationMenuList>
+  </NavigationMenu>
+</div>
+
+## API
+
+| Component                    | Description                                           |
+| ---------------------------- | ----------------------------------------------------- |
+| `NavigationMenu`             | Root. Accepts `align?: "start" \| "center" \| "end"`. |
+| `NavigationMenuList`         | The horizontal list of items.                         |
+| `NavigationMenuItem`         | A single top-level menu item.                         |
+| `NavigationMenuTrigger`      | The button that opens a content panel.                |
+| `NavigationMenuContent`      | The content panel.                                    |
+| `NavigationMenuLink`         | A styled link.                                        |
+| `NavigationMenuIndicator`    | The active item indicator.                            |
+| `NavigationMenuPositioner`   | Positions the shared viewport.                        |
+| `navigationMenuTriggerStyle` | A function returning trigger styles for links.        |
