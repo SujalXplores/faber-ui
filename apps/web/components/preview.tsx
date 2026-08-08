@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { RiArrowDownSLine, RiArrowUpSLine } from "@remixicon/react";
-import { CodeBlock, Pre } from "fumadocs-ui/components/codeblock";
+import { CodeBlock } from "fumadocs-ui/components/codeblock";
 import { useShiki } from "fumadocs-core/highlight/shiki/react";
 import { getHighlighter } from "fumadocs-core/highlight";
 import { cn } from "@workspace/ui/lib/utils";
@@ -58,12 +58,12 @@ export function Preview({
       <div data-slot="code" className="relative border-t">
         {expanded ? (
           <CodeBlock allowCopy className="m-0 rounded-none border-none">
-            <Pre>{highlightedFull}</Pre>
+            {highlightedFull}
           </CodeBlock>
         ) : (
           <div className="relative">
             <CodeBlock allowCopy={false} className="m-0 rounded-none border-none">
-              <Pre>{highlightedPreview}</Pre>
+              {highlightedPreview}
             </CodeBlock>
             <div
               className="pointer-events-none absolute inset-0 flex items-end justify-center pb-3"
