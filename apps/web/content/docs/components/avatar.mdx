@@ -5,6 +5,7 @@ description: A user image with fallback and optional status badge.
 
 import { ApiTable } from "@/components/api-table";
 import * as AvatarModule from "@workspace/ui/components/avatar";
+import { Preview } from "@/components/preview";
 
 import {
   Avatar,
@@ -25,8 +26,8 @@ pnpm dlx shadcn@latest add avatar
 
 ## Usage
 
-```tsx
-import {
+<Preview
+  code={`import {
   Avatar,
   AvatarFallback,
   AvatarImage,
@@ -39,23 +40,29 @@ export default function Example() {
       <AvatarFallback>SC</AvatarFallback>
     </Avatar>
   );
-}
-```
-
-## Examples
-
-### Default
-
-<div className="not-prose flex items-center gap-4 rounded-lg border p-4">
+}`}
+>
   <Avatar>
     <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
     <AvatarFallback>SC</AvatarFallback>
   </Avatar>
-</div>
+</Preview>
+
+## Examples
 
 ### Sizes
 
-<div className="not-prose flex items-center gap-4 rounded-lg border p-4">
+<Preview
+  code={`<Avatar size="sm">
+  <AvatarFallback>S</AvatarFallback>
+</Avatar>
+<Avatar>
+  <AvatarFallback>M</AvatarFallback>
+</Avatar>
+<Avatar size="lg">
+  <AvatarFallback>L</AvatarFallback>
+</Avatar>`}
+>
   <Avatar size="sm">
     <AvatarFallback>S</AvatarFallback>
   </Avatar>
@@ -65,22 +72,39 @@ export default function Example() {
   <Avatar size="lg">
     <AvatarFallback>L</AvatarFallback>
   </Avatar>
-</div>
+</Preview>
 
 ### With a status badge
 
-<div className="not-prose flex items-center gap-4 rounded-lg border p-4">
+<Preview
+  code={`<Avatar>
+  <AvatarFallback>AB</AvatarFallback>
+  <AvatarBadge />
+</Avatar>`}
+>
   <Avatar>
     <AvatarFallback>AB</AvatarFallback>
     <AvatarBadge />
   </Avatar>
-</div>
+</Preview>
 
 ### Avatar group
 
 Stack multiple avatars with `AvatarGroup`:
 
-<div className="not-prose flex items-center gap-4 rounded-lg border p-4">
+<Preview
+  code={`<AvatarGroup>
+  <Avatar>
+    <AvatarFallback>A</AvatarFallback>
+  </Avatar>
+  <Avatar>
+    <AvatarFallback>B</AvatarFallback>
+  </Avatar>
+  <Avatar>
+    <AvatarFallback>C</AvatarFallback>
+  </Avatar>
+</AvatarGroup>`}
+>
   <AvatarGroup>
     <Avatar>
       <AvatarFallback>A</AvatarFallback>
@@ -92,7 +116,7 @@ Stack multiple avatars with `AvatarGroup`:
       <AvatarFallback>C</AvatarFallback>
     </Avatar>
   </AvatarGroup>
-</div>
+</Preview>
 
 ## API
 

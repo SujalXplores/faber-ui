@@ -5,6 +5,7 @@ description: Displays a button or a button-styled link with multiple variants an
 
 import { ApiTable } from "@/components/api-table";
 import * as ButtonModule from "@workspace/ui/components/button";
+import { Preview } from "@/components/preview";
 
 import { Button } from "@workspace/ui/components/button";
 import { TypeTable } from "fumadocs-ui/components/type-table";
@@ -88,8 +89,8 @@ export default function Example() {
 
 Buttons automatically size and space child SVG icons. Drop a Remixicon component inside:
 
-```tsx
-import { RiArrowRightLine } from "@remixicon/react";
+<Preview
+  code={`import { RiArrowRightLine } from "@remixicon/react";
 import { Button } from "@workspace/ui/components/button";
 
 export default function Example() {
@@ -99,22 +100,20 @@ export default function Example() {
       <RiArrowRightLine />
     </Button>
   );
-}
-```
-
-<div className="not-prose flex flex-wrap items-center gap-2 rounded-lg border p-4">
+}`}
+>
   <Button>
     Continue
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-3.5"><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
   </Button>
-</div>
+</Preview>
 
 ### As a link
 
 Use the `render` prop to render the button styles on a different element, such as a Next.js `Link`:
 
-```tsx
-import Link from "next/link";
+<Preview
+  code={`import Link from "next/link";
 import { Button } from "@workspace/ui/components/button";
 
 export default function Example() {
@@ -123,8 +122,10 @@ export default function Example() {
       Go to docs
     </Button>
   );
-}
-```
+}`}
+>
+  <Button nativeButton={false} render={<a href="/docs" />}>Go to docs</Button>
+</Preview>
 
 ### Disabled
 
