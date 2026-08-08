@@ -2,7 +2,15 @@
 
 import * as React from "react";
 import { RiArrowDownSLine, RiArrowUpSLine } from "@remixicon/react";
+import { CodeBlock, Pre } from "fumadocs-ui/components/codeblock";
+import { useShiki } from "fumadocs-core/highlight/shiki/react";
+import { getHighlighter } from "fumadocs-core/highlight";
 import { cn } from "@workspace/ui/lib/utils";
+
+const highlighter = getHighlighter("js", {
+  langs: ["tsx", "ts", "jsx", "js", "bash"],
+  themes: ["github-light", "github-dark"],
+});
 
 export function Preview({
   code,
@@ -17,6 +25,26 @@ export function Preview({
   const codeLines = code.split("\n");
   const previewLines = codeLines.slice(0, 3).join("\n");
 
+  const highlightedFull = useShiki(
+    () => highlighter,
+    code,
+    {
+      lang: "tsx",
+      themes: { light: "github-light", dark: "github-dark" },
+    },
+    [code],
+  );
+
+  const highlightedPreview = useShiki(
+    () => highlighter,
+    previewLines,
+    {
+      lang: "tsx",
+      themes: { light: "github-light", dark: "github-dark" },
+    },
+    [previewLines],
+  );
+
   return (
     <div className="not-prose group relative mt-4 mb-8 flex flex-col overflow-hidden rounded-lg border">
       <div
@@ -29,19 +57,19 @@ export function Preview({
       </div>
       <div data-slot="code" className="relative border-t">
         {expanded ? (
-          <pre className="m-0 overflow-x-auto bg-fd-muted/30 p-4 text-xs leading-relaxed">
-            <code>{code}</code>
-          </pre>
+          <CodeBlock allowCopy className="m-0 rounded-none border-none">
+            <Pre>{highlightedFull}</Pre>
+          </CodeBlock>
         ) : (
           <div className="relative">
-            <pre className="m-0 overflow-hidden bg-fd-muted/30 p-4 text-xs leading-relaxed">
-              <code>{previewLines}</code>
-            </pre>
+            <CodeBlock allowCopy={false} className="m-0 rounded-none border-none">
+              <Pre>{highlightedPreview}</Pre>
+            </CodeBlock>
             <div
               className="pointer-events-none absolute inset-0 flex items-end justify-center pb-3"
               style={{
                 background:
-                  "linear-gradient(to top, var(--color-fd-muted), color-mix(in oklab, var(--color-fd-muted) 60%, transparent), transparent)",
+                  "linear-gradient(to top, var(--color-fd-background), color-mix(in oklab, var(--color-fd-background) 60%, transparent), transparent)",
               }}
             />
           </div>
