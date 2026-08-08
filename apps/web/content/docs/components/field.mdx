@@ -3,6 +3,9 @@ title: Field
 description: A layout primitive for form fields.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as FieldModule from "@workspace/ui/components/field";
+
 import { Input } from "@workspace/ui/components/input";
 import { Label } from "@workspace/ui/components/label";
 import {
@@ -44,7 +47,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Field>
     <FieldLabel>Email</FieldLabel>
     <Input placeholder="you@example.com" />
@@ -54,7 +57,7 @@ export default function Example() {
 
 ### With error
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Field invalid>
     <FieldLabel>Email</FieldLabel>
     <Input placeholder="you@example.com" />
@@ -64,7 +67,7 @@ export default function Example() {
 
 ### Horizontal
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Field orientation="horizontal">
     <FieldLabel>Username</FieldLabel>
     <Input placeholder="username" />
@@ -73,7 +76,7 @@ export default function Example() {
 
 ### Field group
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <FieldGroup>
     <Field>
       <FieldLabel>First name</FieldLabel>
@@ -88,15 +91,4 @@ export default function Example() {
 
 ## API
 
-| Component          | Description                                                               |
-| ------------------ | ------------------------------------------------------------------------- |
-| `Field`            | Root. Accepts `orientation?: "horizontal" \| "vertical" \| "responsive"`. |
-| `FieldLabel`       | Label associated with the field control.                                  |
-| `FieldDescription` | Helper text below the control.                                            |
-| `FieldError`       | Error message, shown when the field is invalid.                           |
-| `FieldGroup`       | Groups multiple fields.                                                   |
-| `FieldLegend`      | Legend for a group of fields.                                             |
-| `FieldSeparator`   | Divider between fields.                                                   |
-| `FieldSet`         | Semantic fieldset wrapper.                                                |
-| `FieldContent`     | Content slot inside a field.                                              |
-| `FieldTitle`       | Title for a fieldset.                                                     |
+<ApiTable module={FieldModule} />

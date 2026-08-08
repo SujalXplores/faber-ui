@@ -3,6 +3,9 @@ title: AlertDialog
 description: A modal dialog used for destructive confirmations.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as AlertDialogModule from "@workspace/ui/components/alert-dialog";
+
 import { Button } from "@workspace/ui/components/button";
 import {
   AlertDialog,
@@ -66,7 +69,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <AlertDialog>
     <AlertDialogTrigger render={<Button variant="outline">Show dialog</Button>} />
     <AlertDialogContent>
@@ -84,17 +87,4 @@ export default function Example() {
 
 ## API
 
-| Component                | Description                                                 |
-| ------------------------ | ----------------------------------------------------------- |
-| `AlertDialog`            | Root. Accepts `open`, `onOpenChange`, `defaultOpen`.        |
-| `AlertDialogTrigger`     | The element that opens the dialog. Use `render` to compose. |
-| `AlertDialogContent`     | The popup. Accepts `size?: "default" \| "sm"`.              |
-| `AlertDialogHeader`      | Top section with title and description.                     |
-| `AlertDialogFooter`      | Bottom section for actions.                                 |
-| `AlertDialogTitle`       | Accessible title.                                           |
-| `AlertDialogDescription` | Muted description.                                          |
-| `AlertDialogAction`      | Confirm button. Accepts `Button` props.                     |
-| `AlertDialogCancel`      | Cancel button. Defaults to `variant="outline"`.             |
-| `AlertDialogPortal`      | Portals content to the body.                                |
-| `AlertDialogOverlay`     | Backdrop overlay.                                           |
-| `AlertDialogMedia`       | Optional media slot above the header.                       |
+<ApiTable module={AlertDialogModule} />

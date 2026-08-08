@@ -3,6 +3,9 @@ title: Calendar
 description: A date picker built on React DayPicker.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as CalendarModule from "@workspace/ui/components/calendar";
+
 import { Calendar } from "@workspace/ui/components/calendar";
 
 `Calendar` is built on React DayPicker. It renders an accessible monthly calendar for selecting single dates, ranges, or multiple dates.
@@ -50,7 +53,4 @@ export default function Example() {
 
 ## API
 
-| Component           | Description                                                   |
-| ------------------- | ------------------------------------------------------------- |
-| `Calendar`          | Root. Accepts all React DayPicker props plus `buttonVariant`. |
-| `CalendarDayButton` | Internal day button, exposed for advanced customization.      |
+<ApiTable module={CalendarModule} />

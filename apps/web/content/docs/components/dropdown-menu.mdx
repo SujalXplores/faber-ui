@@ -3,6 +3,9 @@ title: DropdownMenu
 description: A menu of actions revealed by a trigger click.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as DropdownMenuModule from "@workspace/ui/components/dropdown-menu";
+
 import { Button } from "@workspace/ui/components/button";
 import {
   DropdownMenu,
@@ -88,19 +91,4 @@ export default function Example() {
 
 ## API
 
-| Component                  | Description                                                                          |
-| -------------------------- | ------------------------------------------------------------------------------------ |
-| `DropdownMenu`             | Root.                                                                                |
-| `DropdownMenuTrigger`      | The element that opens the menu. Use `render`.                                       |
-| `DropdownMenuContent`      | The menu popup.                                                                      |
-| `DropdownMenuItem`         | A menu action. Accepts `variant?: "default" \| "destructive"` and `inset?: boolean`. |
-| `DropdownMenuCheckboxItem` | A toggleable item with a check indicator.                                            |
-| `DropdownMenuRadioGroup`   | Groups radio items.                                                                  |
-| `DropdownMenuRadioItem`    | A radio option.                                                                      |
-| `DropdownMenuLabel`        | Non-interactive label.                                                               |
-| `DropdownMenuSeparator`    | Horizontal divider.                                                                  |
-| `DropdownMenuShortcut`     | Right-aligned shortcut hint.                                                         |
-| `DropdownMenuGroup`        | Logical grouping of items.                                                           |
-| `DropdownMenuSub`          | Submenu container.                                                                   |
-| `DropdownMenuSubTrigger`   | Opens the submenu.                                                                   |
-| `DropdownMenuSubContent`   | The submenu popup.                                                                   |
+<ApiTable module={DropdownMenuModule} />

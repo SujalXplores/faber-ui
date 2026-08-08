@@ -3,6 +3,9 @@ title: Sidebar
 description: A composable sidebar system with collapsible modes and a trigger.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as SidebarModule from "@workspace/ui/components/sidebar";
+
 import {
   Sidebar,
   SidebarContent,
@@ -82,7 +85,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <SidebarProvider>
     <Sidebar>
       <SidebarHeader>Acme</SidebarHeader>
@@ -119,7 +122,7 @@ export default function Example() {
 
 ### Active item
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <SidebarProvider>
     <Sidebar>
       <SidebarContent>
@@ -148,29 +151,4 @@ export default function Example() {
 
 ## API
 
-| Component              | Description                                                                                                                                    |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `SidebarProvider`      | Context provider.                                                                                                                              |
-| `Sidebar`              | Root. Accepts `side?: "left" \| "right"`, `variant?: "sidebar" \| "floating" \| "inset"`, and `collapsible?: "offcanvas" \| "icon" \| "none"`. |
-| `SidebarContent`       | Main scrollable content.                                                                                                                       |
-| `SidebarHeader`        | Top section.                                                                                                                                   |
-| `SidebarFooter`        | Bottom section.                                                                                                                                |
-| `SidebarGroup`         | A labeled group of menu items.                                                                                                                 |
-| `SidebarGroupLabel`    | The group label.                                                                                                                               |
-| `SidebarGroupContent`  | Wraps the group menu.                                                                                                                          |
-| `SidebarGroupAction`   | An action button for the group.                                                                                                                |
-| `SidebarMenu`          | The menu list.                                                                                                                                 |
-| `SidebarMenuItem`      | A single menu row.                                                                                                                             |
-| `SidebarMenuButton`    | The menu button. Accepts `isActive`, `size?: "default" \| "sm" \| "lg"`, `variant?: "default" \| "outline"`, and `tooltip`.                    |
-| `SidebarMenuAction`    | An action button within a menu item.                                                                                                           |
-| `SidebarMenuBadge`     | A badge within a menu item.                                                                                                                    |
-| `SidebarMenuSub`       | A nested menu list.                                                                                                                            |
-| `SidebarMenuSubItem`   | A nested menu row.                                                                                                                             |
-| `SidebarMenuSubButton` | A nested menu button.                                                                                                                          |
-| `SidebarMenuSkeleton`  | Loading placeholder for a menu item.                                                                                                           |
-| `SidebarSeparator`     | Horizontal divider.                                                                                                                            |
-| `SidebarRail`          | A drag handle to resize or collapse.                                                                                                           |
-| `SidebarTrigger`       | Toggles the sidebar.                                                                                                                           |
-| `SidebarInset`         | The main content area next to the sidebar.                                                                                                     |
-| `SidebarInput`         | A search input for the sidebar.                                                                                                                |
-| `useSidebar`           | Hook to read and control sidebar state.                                                                                                        |
+<ApiTable module={SidebarModule} />

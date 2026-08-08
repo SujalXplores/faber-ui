@@ -3,6 +3,9 @@ title: Navigation Menu
 description: A navigation menu with a shared viewport for content panels.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as NavigationMenuModule from "@workspace/ui/components/navigation-menu";
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -56,7 +59,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <NavigationMenu>
     <NavigationMenuList>
       <NavigationMenuItem>
@@ -93,7 +96,7 @@ export default function Example() {
 
 Use `navigationMenuTriggerStyle` to style a plain link as a trigger:
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <NavigationMenu>
     <NavigationMenuList>
       <NavigationMenuItem>
@@ -107,14 +110,4 @@ Use `navigationMenuTriggerStyle` to style a plain link as a trigger:
 
 ## API
 
-| Component                    | Description                                           |
-| ---------------------------- | ----------------------------------------------------- |
-| `NavigationMenu`             | Root. Accepts `align?: "start" \| "center" \| "end"`. |
-| `NavigationMenuList`         | The horizontal list of items.                         |
-| `NavigationMenuItem`         | A single top-level menu item.                         |
-| `NavigationMenuTrigger`      | The button that opens a content panel.                |
-| `NavigationMenuContent`      | The content panel.                                    |
-| `NavigationMenuLink`         | A styled link.                                        |
-| `NavigationMenuIndicator`    | The active item indicator.                            |
-| `NavigationMenuPositioner`   | Positions the shared viewport.                        |
-| `navigationMenuTriggerStyle` | A function returning trigger styles for links.        |
+<ApiTable module={NavigationMenuModule} />

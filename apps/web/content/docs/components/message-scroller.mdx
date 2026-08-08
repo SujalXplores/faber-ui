@@ -3,6 +3,9 @@ title: Message Scroller
 description: A scrollable message container with auto-scroll and a jump button.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as MessageScrollerModule from "@workspace/ui/components/message-scroller";
+
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -57,7 +60,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <MessageScrollerProvider>
     <MessageScroller className="h-[300px]">
       <MessageScrollerViewport>
@@ -76,11 +79,4 @@ export default function Example() {
 
 ## API
 
-| Component                 | Description                                                   |
-| ------------------------- | ------------------------------------------------------------- |
-| `MessageScrollerProvider` | Context provider for the scroller.                            |
-| `MessageScroller`         | Root scroll container.                                        |
-| `MessageScrollerViewport` | The scrollable viewport.                                      |
-| `MessageScrollerContent`  | Inner content wrapper.                                        |
-| `MessageScrollerItem`     | A single message item.                                        |
-| `MessageScrollerButton`   | Floating jump button. Accepts `direction?: "start" \| "end"`. |
+<ApiTable module={MessageScrollerModule} />

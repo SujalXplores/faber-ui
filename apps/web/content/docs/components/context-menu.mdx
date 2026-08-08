@@ -3,6 +3,9 @@ title: ContextMenu
 description: A right-click menu for contextual actions.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as ContextMenuModule from "@workspace/ui/components/context-menu";
+
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -57,7 +60,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <ContextMenu>
     <ContextMenuTrigger className="block w-full rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">
       Right click here
@@ -74,7 +77,7 @@ export default function Example() {
 
 ### With checkbox items
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <ContextMenu>
     <ContextMenuTrigger className="block w-full rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">
       Right click here
@@ -90,19 +93,4 @@ export default function Example() {
 
 ## API
 
-| Component                 | Description                                                                          |
-| ------------------------- | ------------------------------------------------------------------------------------ |
-| `ContextMenu`             | Root.                                                                                |
-| `ContextMenuTrigger`      | The element that opens the menu on right click.                                      |
-| `ContextMenuContent`      | The menu popup.                                                                      |
-| `ContextMenuItem`         | A menu action. Accepts `variant?: "default" \| "destructive"` and `inset?: boolean`. |
-| `ContextMenuCheckboxItem` | A toggleable item with a check indicator.                                            |
-| `ContextMenuRadioItem`    | A radio option. Use inside `ContextMenuRadioGroup`.                                  |
-| `ContextMenuRadioGroup`   | Groups radio items.                                                                  |
-| `ContextMenuLabel`        | Non-interactive label.                                                               |
-| `ContextMenuSeparator`    | Horizontal divider.                                                                  |
-| `ContextMenuShortcut`     | Right-aligned shortcut hint.                                                         |
-| `ContextMenuGroup`        | Logical grouping of items.                                                           |
-| `ContextMenuSub`          | Submenu container.                                                                   |
-| `ContextMenuSubTrigger`   | Opens the submenu.                                                                   |
-| `ContextMenuSubContent`   | The submenu popup.                                                                   |
+<ApiTable module={ContextMenuModule} />

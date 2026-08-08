@@ -3,6 +3,9 @@ title: HoverCard
 description: A preview revealed on hover.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as HoverCardModule from "@workspace/ui/components/hover-card";
+
 import {
   HoverCard,
   HoverCardContent,
@@ -62,8 +65,4 @@ export default function Example() {
 
 ## API
 
-| Component          | Description                                             |
-| ------------------ | ------------------------------------------------------- |
-| `HoverCard`        | Root. Accepts `open`, `onOpenChange`, `defaultOpen`.    |
-| `HoverCardTrigger` | The element that opens the card on hover. Use `render`. |
-| `HoverCardContent` | The popup content.                                      |
+<ApiTable module={HoverCardModule} />

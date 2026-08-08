@@ -3,6 +3,9 @@ title: Collapsible
 description: An expandable container for hiding content.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as CollapsibleModule from "@workspace/ui/components/collapsible";
+
 import { Button } from "@workspace/ui/components/button";
 import {
   Collapsible,
@@ -45,7 +48,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Collapsible>
     <CollapsibleTrigger render={<Button variant="outline">Toggle</Button>} />
     <CollapsibleContent className="pt-2 text-sm text-muted-foreground">
@@ -56,8 +59,4 @@ export default function Example() {
 
 ## API
 
-| Component            | Description                                          |
-| -------------------- | ---------------------------------------------------- |
-| `Collapsible`        | Root. Accepts `open`, `defaultOpen`, `onOpenChange`. |
-| `CollapsibleTrigger` | The element that toggles the content. Use `render`.  |
-| `CollapsibleContent` | The expandable content area.                         |
+<ApiTable module={CollapsibleModule} />

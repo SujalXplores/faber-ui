@@ -3,6 +3,9 @@ title: Progress
 description: A horizontal bar showing completion of a task.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as ProgressModule from "@workspace/ui/components/progress";
+
 import { Progress } from "@workspace/ui/components/progress";
 
 `Progress` is built on the Base UI `Progress` primitive. Pass a `value` between 0 and 100 to set the indicator width.
@@ -28,7 +31,7 @@ export default function Example() {
 
 ## Examples
 
-<div className="flex flex-col gap-4 rounded-lg border p-4">
+<div className="not-prose flex flex-col gap-4 rounded-lg border p-4">
   <Progress value={30} />
   <Progress value={60} />
   <Progress value={90} />

@@ -3,6 +3,9 @@ title: Input
 description: A text input field with focus, invalid, and disabled states.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as InputModule from "@workspace/ui/components/input";
+
 import { Input } from "@workspace/ui/components/input";
 
 `Input` wraps the Base UI `Input` primitive with the Faber UI styling tokens. It supports all native input attributes including `type`, `placeholder`, `disabled`, and `aria-invalid`.
@@ -28,13 +31,13 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Input placeholder="you@example.com" />
 </div>
 
 ### States
 
-<div className="flex flex-col gap-3 rounded-lg border p-4">
+<div className="not-prose flex flex-col gap-3 rounded-lg border p-4">
   <Input placeholder="Default" />
   <Input placeholder="Disabled" disabled />
   <Input placeholder="Invalid" aria-invalid />

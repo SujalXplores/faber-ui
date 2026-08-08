@@ -3,6 +3,9 @@ title: Direction
 description: A re-export of the Base UI direction provider for RTL and LTR layouts.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as DirectionModule from "@workspace/ui/components/direction";
+
 import {
   DirectionProvider,
   useDirection,
@@ -43,7 +46,4 @@ function Content() {
 
 ## API
 
-| Component           | Description                                                |
-| ------------------- | ---------------------------------------------------------- |
-| `DirectionProvider` | Sets the direction for its children. Accepts `dir`.        |
-| `useDirection`      | Hook returning the current direction (`"ltr"` or `"rtl"`). |
+<ApiTable module={DirectionModule} />

@@ -3,6 +3,9 @@ title: Label
 description: A styled label element for form fields.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as LabelModule from "@workspace/ui/components/label";
+
 import { Input } from "@workspace/ui/components/input";
 import { Label } from "@workspace/ui/components/label";
 
@@ -35,7 +38,7 @@ export default function Example() {
 
 ### With an input
 
-<div className="flex flex-col gap-1 rounded-lg border p-4">
+<div className="not-prose flex flex-col gap-1 rounded-lg border p-4">
   <Label htmlFor="demo">Email address</Label>
   <Input id="demo" type="email" placeholder="you@example.com" />
 </div>

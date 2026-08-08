@@ -3,6 +3,9 @@ title: Tabs
 description: Switch between panels of content with a tab list.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as TabsModule from "@workspace/ui/components/tabs";
+
 import {
   Tabs,
   TabsContent,
@@ -44,7 +47,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Tabs defaultValue="account">
     <TabsList>
       <TabsTrigger value="account">Account</TabsTrigger>
@@ -57,7 +60,7 @@ export default function Example() {
 
 ### Line variant
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Tabs defaultValue="overview">
     <TabsList variant="line">
       <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -70,7 +73,7 @@ export default function Example() {
 
 ### Vertical orientation
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Tabs defaultValue="general" orientation="vertical">
     <TabsList>
       <TabsTrigger value="general">General</TabsTrigger>
@@ -83,9 +86,4 @@ export default function Example() {
 
 ## API
 
-| Component     | Description                                                            |
-| ------------- | ---------------------------------------------------------------------- |
-| `Tabs`        | Root. Accepts `value`, `defaultValue`, `onValueChange`, `orientation`. |
-| `TabsList`    | Container for triggers. Accepts `variant` (`"default"` or `"line"`).   |
-| `TabsTrigger` | A tab button. Accepts `value`.                                         |
-| `TabsContent` | A panel. Accepts `value`.                                              |
+<ApiTable module={TabsModule} />

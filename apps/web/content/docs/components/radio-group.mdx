@@ -3,6 +3,9 @@ title: RadioGroup
 description: A group of mutually exclusive radio buttons.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as RadioGroupModule from "@workspace/ui/components/radio-group";
+
 import { Label } from "@workspace/ui/components/label";
 import {
   RadioGroup,
@@ -48,7 +51,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <RadioGroup defaultValue="option-1">
     <div className="flex items-center gap-2">
       <RadioGroupItem value="option-1" id="rg-1" />
@@ -63,7 +66,4 @@ export default function Example() {
 
 ## API
 
-| Component        | Description                                             |
-| ---------------- | ------------------------------------------------------- |
-| `RadioGroup`     | Root. Accepts `value`, `defaultValue`, `onValueChange`. |
-| `RadioGroupItem` | A single radio option. Accepts `value`.                 |
+<ApiTable module={RadioGroupModule} />

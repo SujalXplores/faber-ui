@@ -3,6 +3,9 @@ title: Textarea
 description: A multi-line text input that grows with its content.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as TextareaModule from "@workspace/ui/components/textarea";
+
 import { Textarea } from "@workspace/ui/components/textarea";
 
 `Textarea` uses `field-sizing-content` so it expands automatically as the user types, without a resize handle.
@@ -28,13 +31,13 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Textarea placeholder="Write a message..." />
 </div>
 
 ### States
 
-<div className="flex flex-col gap-3 rounded-lg border p-4">
+<div className="not-prose flex flex-col gap-3 rounded-lg border p-4">
   <Textarea placeholder="Default" />
   <Textarea placeholder="Disabled" disabled />
 </div>

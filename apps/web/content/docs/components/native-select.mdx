@@ -3,6 +3,9 @@ title: NativeSelect
 description: A styled native HTML select.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as NativeSelectModule from "@workspace/ui/components/native-select";
+
 import {
   NativeSelect,
   NativeSelectOption,
@@ -39,7 +42,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <NativeSelect defaultValue="apple">
     <NativeSelectOption value="apple">Apple</NativeSelectOption>
     <NativeSelectOption value="banana">Banana</NativeSelectOption>
@@ -49,7 +52,7 @@ export default function Example() {
 
 ### Small
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <NativeSelect size="sm" defaultValue="apple">
     <NativeSelectOption value="apple">Apple</NativeSelectOption>
     <NativeSelectOption value="banana">Banana</NativeSelectOption>
@@ -58,8 +61,4 @@ export default function Example() {
 
 ## API
 
-| Component              | Description                                                         |
-| ---------------------- | ------------------------------------------------------------------- |
-| `NativeSelect`         | Root. Accepts `size?: "sm" \| "default"` and native `select` props. |
-| `NativeSelectOptGroup` | Groups related options.                                             |
-| `NativeSelectOption`   | A single option.                                                    |
+<ApiTable module={NativeSelectModule} />

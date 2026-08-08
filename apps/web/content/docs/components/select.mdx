@@ -3,6 +3,9 @@ title: Select
 description: A custom dropdown select.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as SelectModule from "@workspace/ui/components/select";
+
 import {
   Select,
   SelectContent,
@@ -54,7 +57,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Select>
     <SelectTrigger className="w-56">
       <SelectValue placeholder="Select a fruit" />
@@ -69,7 +72,7 @@ export default function Example() {
 
 ### With groups
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Select>
     <SelectTrigger className="w-56">
       <SelectValue placeholder="Select a fruit" />
@@ -86,7 +89,7 @@ export default function Example() {
 
 ### Small
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Select>
     <SelectTrigger size="sm" className="w-56">
       <SelectValue placeholder="Select a fruit" />
@@ -100,15 +103,4 @@ export default function Example() {
 
 ## API
 
-| Component                | Description                                             |
-| ------------------------ | ------------------------------------------------------- |
-| `Select`                 | Root. Accepts `value`, `defaultValue`, `onValueChange`. |
-| `SelectTrigger`          | The trigger button. Accepts `size?: "sm" \| "default"`. |
-| `SelectValue`            | Displays the selected value or placeholder.             |
-| `SelectContent`          | The dropdown popup.                                     |
-| `SelectItem`             | A single option. Accepts `value`.                       |
-| `SelectGroup`            | Groups related items.                                   |
-| `SelectLabel`            | Non-interactive label for a group.                      |
-| `SelectSeparator`        | Horizontal divider.                                     |
-| `SelectScrollUpButton`   | Scroll indicator for long lists (up).                   |
-| `SelectScrollDownButton` | Scroll indicator for long lists (down).                 |
+<ApiTable module={SelectModule} />

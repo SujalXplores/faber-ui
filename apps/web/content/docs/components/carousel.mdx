@@ -3,6 +3,9 @@ title: Carousel
 description: A scrollable carousel powered by Embla.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as CarouselModule from "@workspace/ui/components/carousel";
+
 import { Button } from "@workspace/ui/components/button";
 import {
   Carousel,
@@ -92,10 +95,4 @@ export default function Example() {
 
 ## API
 
-| Component          | Description                                              |
-| ------------------ | -------------------------------------------------------- |
-| `Carousel`         | Root. Accepts `orientation`, Embla options, and plugins. |
-| `CarouselContent`  | The scrollable track.                                    |
-| `CarouselItem`     | A single slide. Use `basis-*` to size.                   |
-| `CarouselPrevious` | Previous navigation button.                              |
-| `CarouselNext`     | Next navigation button.                                  |
+<ApiTable module={CarouselModule} />

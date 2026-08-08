@@ -3,6 +3,9 @@ title: Popover
 description: A floating panel anchored to a trigger.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as PopoverModule from "@workspace/ui/components/popover";
+
 import { Button } from "@workspace/ui/components/button";
 import {
   Popover,
@@ -47,7 +50,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Popover>
     <PopoverTrigger render={<Button variant="outline">Open popover</Button>} />
     <PopoverContent>
@@ -61,11 +64,4 @@ export default function Example() {
 
 ## API
 
-| Component            | Description                                          |
-| -------------------- | ---------------------------------------------------- |
-| `Popover`            | Root. Accepts `open`, `onOpenChange`, `defaultOpen`. |
-| `PopoverTrigger`     | The element that opens the popover. Use `render`.    |
-| `PopoverContent`     | The floating panel.                                  |
-| `PopoverHeader`      | Optional header with title and description.          |
-| `PopoverTitle`       | The popover title.                                   |
-| `PopoverDescription` | Muted description.                                   |
+<ApiTable module={PopoverModule} />

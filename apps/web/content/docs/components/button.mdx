@@ -3,6 +3,9 @@ title: Button
 description: Displays a button or a button-styled link with multiple variants and sizes.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as ButtonModule from "@workspace/ui/components/button";
+
 import { Button } from "@workspace/ui/components/button";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { RiRocketLine, RiSearchLine, RiAddLine, RiSettings3Line } from "@remixicon/react";
@@ -30,7 +33,7 @@ export default function Example() {
 
 ### Variants
 
-<div className="flex flex-wrap items-center gap-2 rounded-lg border p-4">
+<div className="not-prose flex flex-wrap items-center gap-2 rounded-lg border p-4">
   <Button variant="default">Default</Button>
   <Button variant="secondary">Secondary</Button>
   <Button variant="outline">Outline</Button>
@@ -70,7 +73,7 @@ export default function Example() {
 
 ### Sizes
 
-<div className="flex flex-wrap items-center gap-2 rounded-lg border p-4">
+<div className="not-prose flex flex-wrap items-center gap-2 rounded-lg border p-4">
   <Button size="xs">Extra small</Button>
   <Button size="sm">Small</Button>
   <Button size="default">Default</Button>
@@ -99,7 +102,7 @@ export default function Example() {
 }
 ```
 
-<div className="flex flex-wrap items-center gap-2 rounded-lg border p-4">
+<div className="not-prose flex flex-wrap items-center gap-2 rounded-lg border p-4">
   <Button>
     Continue
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-3.5"><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
@@ -125,7 +128,7 @@ export default function Example() {
 
 ### Disabled
 
-<div className="flex flex-wrap items-center gap-2 rounded-lg border p-4">
+<div className="not-prose flex flex-wrap items-center gap-2 rounded-lg border p-4">
   <Button disabled>Disabled</Button>
   <Button variant="outline" disabled>Disabled outline</Button>
   <Button variant="secondary" disabled>Disabled secondary</Button>

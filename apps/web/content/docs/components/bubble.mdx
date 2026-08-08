@@ -3,6 +3,9 @@ title: Bubble
 description: A chat-style message bubble with variants and alignment.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as BubbleModule from "@workspace/ui/components/bubble";
+
 import {
   Bubble,
   BubbleContent,
@@ -104,9 +107,4 @@ export default function Example() {
 
 ## API
 
-| Component         | Description                                                    |
-| ----------------- | -------------------------------------------------------------- |
-| `BubbleGroup`     | Groups a conversation thread of bubbles.                       |
-| `Bubble`          | A single message bubble. Accepts `variant` and `align` props.  |
-| `BubbleContent`   | The message text content.                                      |
-| `BubbleReactions` | Emoji or icon reactions row. Accepts `align` and `side` props. |
+<ApiTable module={BubbleModule} />

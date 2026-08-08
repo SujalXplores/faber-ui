@@ -3,6 +3,9 @@ title: ButtonGroup
 description: A group of buttons with merged borders.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as ButtonGroupModule from "@workspace/ui/components/button-group";
+
 import { Button } from "@workspace/ui/components/button";
 import {
   ButtonGroup,
@@ -40,7 +43,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <ButtonGroup>
     <Button variant="outline">Bold</Button>
     <Button variant="outline">Italic</Button>
@@ -50,7 +53,7 @@ export default function Example() {
 
 ### With separator
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <ButtonGroup>
     <Button variant="outline">Save</Button>
     <ButtonGroupSeparator />
@@ -60,7 +63,7 @@ export default function Example() {
 
 ### With text
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <ButtonGroup>
     <ButtonGroupText>Filter:</ButtonGroupText>
     <Button variant="outline">All</Button>
@@ -70,7 +73,7 @@ export default function Example() {
 
 ### Vertical
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <ButtonGroup orientation="vertical">
     <Button variant="outline">Top</Button>
     <Button variant="outline">Middle</Button>
@@ -80,8 +83,4 @@ export default function Example() {
 
 ## API
 
-| Component              | Description                                               |
-| ---------------------- | --------------------------------------------------------- |
-| `ButtonGroup`          | Root. Accepts `orientation?: "horizontal" \| "vertical"`. |
-| `ButtonGroupSeparator` | Visual divider between grouped buttons.                   |
-| `ButtonGroupText`      | Non-interactive text label inside the group.              |
+<ApiTable module={ButtonGroupModule} />

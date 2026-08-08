@@ -3,6 +3,9 @@ title: Empty
 description: A placeholder for empty states.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as EmptyModule from "@workspace/ui/components/empty";
+
 import {
   Empty,
   EmptyContent,
@@ -49,7 +52,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Empty>
     <EmptyHeader>
       <EmptyMedia />
@@ -61,7 +64,7 @@ export default function Example() {
 
 ### With content
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Empty>
     <EmptyHeader>
       <EmptyMedia variant="icon" />
@@ -76,11 +79,4 @@ export default function Example() {
 
 ## API
 
-| Component          | Description                                          |
-| ------------------ | ---------------------------------------------------- |
-| `Empty`            | Root container.                                      |
-| `EmptyHeader`      | Groups media, title, and description.                |
-| `EmptyTitle`       | The title text.                                      |
-| `EmptyDescription` | Muted description.                                   |
-| `EmptyMedia`       | Media slot. Accepts `variant?: "default" \| "icon"`. |
-| `EmptyContent`     | Optional content below the header, such as actions.  |
+<ApiTable module={EmptyModule} />

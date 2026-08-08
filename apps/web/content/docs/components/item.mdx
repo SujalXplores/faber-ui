@@ -3,6 +3,9 @@ title: Item
 description: A flexible list item with media, content, and actions.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as ItemModule from "@workspace/ui/components/item";
+
 import {
   Item,
   ItemActions,
@@ -44,7 +47,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Item>
     <ItemContent>
       <ItemTitle>List item</ItemTitle>
@@ -55,7 +58,7 @@ export default function Example() {
 
 ### With media
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Item>
     <ItemMedia variant="image">
       <div className="size-10 rounded-md bg-muted" />
@@ -69,7 +72,7 @@ export default function Example() {
 
 ### With actions
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Item>
     <ItemContent>
       <ItemTitle>With actions</ItemTitle>
@@ -83,7 +86,7 @@ export default function Example() {
 
 ### Grouped
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <ItemGroup>
     <Item>
       <ItemContent>
@@ -101,7 +104,7 @@ export default function Example() {
 
 ### Variants and sizes
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Item size="sm" variant="muted">
     <ItemContent>
       <ItemTitle>Small muted</ItemTitle>
@@ -116,15 +119,4 @@ export default function Example() {
 
 ## API
 
-| Component         | Description                                                                                         |
-| ----------------- | --------------------------------------------------------------------------------------------------- |
-| `Item`            | Root. Accepts `size?: "default" \| "sm" \| "xs"` and `variant?: "default" \| "muted" \| "outline"`. |
-| `ItemMedia`       | Media slot. Accepts `variant?: "default" \| "icon" \| "image"`.                                     |
-| `ItemContent`     | Main content area.                                                                                  |
-| `ItemActions`     | Trailing actions slot.                                                                              |
-| `ItemGroup`       | Groups related items.                                                                               |
-| `ItemSeparator`   | Divider between items.                                                                              |
-| `ItemTitle`       | The item title.                                                                                     |
-| `ItemDescription` | Muted description.                                                                                  |
-| `ItemHeader`      | Optional header for a group.                                                                        |
-| `ItemFooter`      | Optional footer for a group.                                                                        |
+<ApiTable module={ItemModule} />

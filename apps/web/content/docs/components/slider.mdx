@@ -3,6 +3,9 @@ title: Slider
 description: A range slider for selecting a value.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as SliderModule from "@workspace/ui/components/slider";
+
 import { Slider } from "@workspace/ui/components/slider";
 
 `Slider` is built on the Base UI `Slider` primitive. It renders a range input for selecting a numeric value between a minimum and maximum.
@@ -28,18 +31,16 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Slider defaultValue={[50]} max={100} step={1} />
 </div>
 
 ### Range
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Slider defaultValue={[25, 75]} max={100} step={1} />
 </div>
 
 ## API
 
-| Component | Description                                                                                                     |
-| --------- | --------------------------------------------------------------------------------------------------------------- |
-| `Slider`  | Root. Accepts `value`, `defaultValue`, `min` (default `0`), `max` (default `100`), `step`, and `onValueChange`. |
+<ApiTable module={SliderModule} />

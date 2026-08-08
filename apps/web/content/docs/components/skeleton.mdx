@@ -3,6 +3,9 @@ title: Skeleton
 description: A placeholder shape for loading states.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as SkeletonModule from "@workspace/ui/components/skeleton";
+
 import { Skeleton } from "@workspace/ui/components/skeleton";
 
 `Skeleton` renders a muted, pulsing block. Use it to reserve space while data is loading.
@@ -28,7 +31,7 @@ export default function Example() {
 
 ### Profile card
 
-<div className="flex items-center gap-4 rounded-lg border p-4">
+<div className="not-prose flex items-center gap-4 rounded-lg border p-4">
   <Skeleton className="size-12 rounded-full" />
   <div className="flex flex-col gap-2">
     <Skeleton className="h-4 w-48" />
@@ -38,7 +41,7 @@ export default function Example() {
 
 ### Single line
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Skeleton className="h-4 w-full" />
 </div>
 

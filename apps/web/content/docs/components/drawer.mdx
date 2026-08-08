@@ -3,6 +3,9 @@ title: Drawer
 description: A swipeable sheet that slides in from a screen edge.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as DrawerModule from "@workspace/ui/components/drawer";
+
 import { Button } from "@workspace/ui/components/button";
 import {
   Drawer,
@@ -58,7 +61,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Drawer>
     <DrawerTrigger render={<Button variant="outline">Open drawer</Button>} />
     <DrawerContent>
@@ -78,7 +81,7 @@ export default function Example() {
 
 Pass `showSwipeHandle` to the `Drawer` root to render a drag indicator at the top of the content.
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Drawer showSwipeHandle>
     <DrawerTrigger render={<Button variant="outline">Open drawer</Button>} />
     <DrawerContent>
@@ -92,16 +95,4 @@ Pass `showSwipeHandle` to the `Drawer` root to render a drag indicator at the to
 
 ## API
 
-| Component           | Description                                        |
-| ------------------- | -------------------------------------------------- |
-| `Drawer`            | Root. Accepts `open`, `onOpenChange`, `direction`. |
-| `DrawerTrigger`     | The element that opens the drawer. Use `render`.   |
-| `DrawerClose`       | Closes the drawer. Use `render` to compose.        |
-| `DrawerContent`     | The popup. Accepts `showSwipeHandle`.              |
-| `DrawerHeader`      | Top section with title and description.            |
-| `DrawerFooter`      | Bottom section for actions.                        |
-| `DrawerTitle`       | Accessible title.                                  |
-| `DrawerDescription` | Muted description.                                 |
-| `DrawerPortal`      | Portals content to the body.                       |
-| `DrawerOverlay`     | Backdrop overlay.                                  |
-| `DrawerSwipeHandle` | The drag indicator rendered by `showSwipeHandle`.  |
+<ApiTable module={DrawerModule} />

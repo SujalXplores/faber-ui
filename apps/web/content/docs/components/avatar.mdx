@@ -3,6 +3,9 @@ title: Avatar
 description: A user image with fallback and optional status badge.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as AvatarModule from "@workspace/ui/components/avatar";
+
 import {
   Avatar,
   AvatarBadge,
@@ -93,10 +96,4 @@ Stack multiple avatars with `AvatarGroup`:
 
 ## API
 
-| Component        | Description                                         |
-| ---------------- | --------------------------------------------------- |
-| `Avatar`         | Root. Accepts `size` (`"sm"`, `"default"`, `"lg"`). |
-| `AvatarImage`    | The image element.                                  |
-| `AvatarFallback` | Shown while the image loads or fails.               |
-| `AvatarBadge`    | A small status dot positioned at the corner.        |
-| `AvatarGroup`    | Overlaps child avatars horizontally.                |
+<ApiTable module={AvatarModule} />

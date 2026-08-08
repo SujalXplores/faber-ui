@@ -3,6 +3,9 @@ title: Resizable
 description: Resizable panels with drag handles.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as ResizableModule from "@workspace/ui/components/resizable";
+
 import {
   ResizableHandle,
   ResizablePanel,
@@ -44,7 +47,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <ResizablePanelGroup direction="horizontal" className="h-48 max-w-md rounded-lg border">
     <ResizablePanel defaultSize={50}>
       <div className="flex h-full items-center justify-center p-4 text-sm">Left</div>
@@ -58,7 +61,7 @@ export default function Example() {
 
 ### With handle
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <ResizablePanelGroup direction="horizontal" className="h-48 max-w-md rounded-lg border">
     <ResizablePanel defaultSize={50}>
       <div className="flex h-full items-center justify-center p-4 text-sm">Left</div>
@@ -72,8 +75,4 @@ export default function Example() {
 
 ## API
 
-| Component             | Description                                                     |
-| --------------------- | --------------------------------------------------------------- |
-| `ResizablePanelGroup` | Root. Accepts `direction`, `id`, and panel group props.         |
-| `ResizablePanel`      | A resizable panel. Accepts `defaultSize`, `minSize`, `maxSize`. |
-| `ResizableHandle`     | Drag handle between panels. Accepts `withHandle?: boolean`.     |
+<ApiTable module={ResizableModule} />

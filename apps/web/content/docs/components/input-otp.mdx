@@ -3,6 +3,9 @@ title: InputOTP
 description: An accessible one-time password input.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as InputOtpModule from "@workspace/ui/components/input-otp";
+
 import {
   InputOTP,
   InputOTPGroup,
@@ -47,7 +50,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <InputOTP maxLength={6}>
     <InputOTPGroup>
       <InputOTPSlot index={0} />
@@ -59,7 +62,7 @@ export default function Example() {
 
 ### With separator
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <InputOTP maxLength={6}>
     <InputOTPGroup>
       <InputOTPSlot index={0} />
@@ -77,9 +80,4 @@ export default function Example() {
 
 ## API
 
-| Component           | Description                                        |
-| ------------------- | -------------------------------------------------- |
-| `InputOTP`          | Root. Accepts `maxLength`, `value`, `onChange`.    |
-| `InputOTPGroup`     | Groups related slots.                              |
-| `InputOTPSlot`      | A single character slot. Requires `index: number`. |
-| `InputOTPSeparator` | Visual divider between groups.                     |
+<ApiTable module={InputOtpModule} />

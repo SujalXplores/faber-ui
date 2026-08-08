@@ -3,6 +3,9 @@ title: Sheet
 description: A panel that slides in from a screen edge.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as SheetModule from "@workspace/ui/components/sheet";
+
 import { Button } from "@workspace/ui/components/button";
 import {
   Sheet,
@@ -58,7 +61,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Sheet>
     <SheetTrigger render={<Button variant="outline">Open sheet</Button>} />
     <SheetContent>
@@ -76,7 +79,7 @@ export default function Example() {
 
 ### Left side
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Sheet>
     <SheetTrigger render={<Button variant="outline">Open left</Button>} />
     <SheetContent side="left">
@@ -90,13 +93,4 @@ export default function Example() {
 
 ## API
 
-| Component          | Description                                                         |
-| ------------------ | ------------------------------------------------------------------- |
-| `Sheet`            | Root. Accepts `open`, `onOpenChange`, `defaultOpen`.                |
-| `SheetTrigger`     | The element that opens the sheet. Use `render`.                     |
-| `SheetClose`       | Closes the sheet. Use `render` to compose.                          |
-| `SheetContent`     | The panel. Accepts `side?: "top" \| "right" \| "bottom" \| "left"`. |
-| `SheetHeader`      | Top section with title and description.                             |
-| `SheetFooter`      | Bottom section for actions.                                         |
-| `SheetTitle`       | Accessible title.                                                   |
-| `SheetDescription` | Muted description.                                                  |
+<ApiTable module={SheetModule} />

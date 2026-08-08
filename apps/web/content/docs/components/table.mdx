@@ -3,6 +3,9 @@ title: Table
 description: A styled HTML table.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as TableModule from "@workspace/ui/components/table";
+
 import {
   Table,
   TableBody,
@@ -59,7 +62,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Table>
     <TableHeader>
       <TableRow>
@@ -85,13 +88,4 @@ export default function Example() {
 
 ## API
 
-| Component      | Description                          |
-| -------------- | ------------------------------------ |
-| `Table`        | Root. Wraps a native `table`.        |
-| `TableHeader`  | The `thead` section.                 |
-| `TableBody`    | The `tbody` section.                 |
-| `TableFooter`  | The `tfoot` section.                 |
-| `TableHead`    | A header cell.                       |
-| `TableRow`     | A row.                               |
-| `TableCell`    | A body cell.                         |
-| `TableCaption` | An optional caption above the table. |
+<ApiTable module={TableModule} />

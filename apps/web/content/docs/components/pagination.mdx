@@ -3,6 +3,9 @@ title: Pagination
 description: Navigation for paginated content.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as PaginationModule from "@workspace/ui/components/pagination";
+
 import {
   Pagination,
   PaginationContent,
@@ -57,7 +60,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Pagination>
     <PaginationContent>
       <PaginationItem>
@@ -84,12 +87,4 @@ export default function Example() {
 
 ## API
 
-| Component            | Description                                               |
-| -------------------- | --------------------------------------------------------- |
-| `Pagination`         | Root container.                                           |
-| `PaginationContent`  | Flex row of items.                                        |
-| `PaginationItem`     | A single pagination entry.                                |
-| `PaginationLink`     | A numbered link. Accepts `isActive?: boolean` and `href`. |
-| `PaginationPrevious` | Previous page link.                                       |
-| `PaginationNext`     | Next page link.                                           |
-| `PaginationEllipsis` | Collapsed indicator for skipped pages.                    |
+<ApiTable module={PaginationModule} />

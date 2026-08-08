@@ -3,6 +3,9 @@ title: Spinner
 description: An animated loading indicator.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as SpinnerModule from "@workspace/ui/components/spinner";
+
 import { Spinner } from "@workspace/ui/components/spinner";
 
 `Spinner` renders a spinning Remixicon loader. It is a pure SVG element with `role="status"` and an `aria-label` of "Loading".
@@ -28,13 +31,13 @@ export default function Example() {
 
 ### Default
 
-<div className="flex items-center gap-4 rounded-lg border p-4">
+<div className="not-prose flex items-center gap-4 rounded-lg border p-4">
   <Spinner />
 </div>
 
 ### Sizes
 
-<div className="flex items-center gap-4 rounded-lg border p-4">
+<div className="not-prose flex items-center gap-4 rounded-lg border p-4">
   <Spinner className="size-3" />
   <Spinner />
   <Spinner className="size-6" />

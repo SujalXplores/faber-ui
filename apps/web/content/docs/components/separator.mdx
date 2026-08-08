@@ -3,6 +3,9 @@ title: Separator
 description: A visual divider between content sections.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as SeparatorModule from "@workspace/ui/components/separator";
+
 import { Separator } from "@workspace/ui/components/separator";
 
 `Separator` is built on the Base UI `Separator` primitive. It renders as a horizontal or vertical line and carries the appropriate ARIA `separator` role.
@@ -28,7 +31,7 @@ export default function Example() {
 
 ### Horizontal
 
-<div className="flex flex-col gap-2 rounded-lg border p-4">
+<div className="not-prose flex flex-col gap-2 rounded-lg border p-4">
   <span>Above</span>
   <Separator />
   <span>Below</span>
@@ -36,7 +39,7 @@ export default function Example() {
 
 ### Vertical
 
-<div className="flex items-center gap-4 rounded-lg border p-4">
+<div className="not-prose flex items-center gap-4 rounded-lg border p-4">
   <span>Left</span>
   <Separator orientation="vertical" className="h-8" />
   <span>Right</span>

@@ -3,6 +3,9 @@ title: Command
 description: A command palette built on cmdk.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as CommandModule from "@workspace/ui/components/command";
+
 import {
   Command,
   CommandEmpty,
@@ -57,7 +60,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Command className="rounded-lg border">
     <CommandInput placeholder="Type a command or search..." />
     <CommandList>
@@ -84,14 +87,4 @@ export default function Example() {
 
 ## API
 
-| Component          | Description                              |
-| ------------------ | ---------------------------------------- |
-| `Command`          | Root. Accepts `cmdk` props.              |
-| `CommandDialog`    | A `Command` rendered inside a `Dialog`.  |
-| `CommandInput`     | The search input.                        |
-| `CommandList`      | The scrollable list of items.            |
-| `CommandEmpty`     | Shown when there are no results.         |
-| `CommandGroup`     | Groups related items. Accepts `heading`. |
-| `CommandItem`      | A single command.                        |
-| `CommandShortcut`  | Right-aligned shortcut hint.             |
-| `CommandSeparator` | Horizontal divider.                      |
+<ApiTable module={CommandModule} />

@@ -3,6 +3,9 @@ title: Message
 description: A chat-style message row with avatar and content slots.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as MessageModule from "@workspace/ui/components/message";
+
 import {
   Message,
   MessageAvatar,
@@ -62,7 +65,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <MessageGroup>
     <Message>
       <MessageAvatar>
@@ -87,7 +90,7 @@ export default function Example() {
 
 ### With footer
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <MessageGroup>
     <Message>
       <MessageAvatar>
@@ -104,11 +107,4 @@ export default function Example() {
 
 ## API
 
-| Component        | Description                                               |
-| ---------------- | --------------------------------------------------------- |
-| `MessageGroup`   | Groups a conversation thread of messages.                 |
-| `Message`        | A single message row. Accepts `align?: "start" \| "end"`. |
-| `MessageAvatar`  | The avatar slot.                                          |
-| `MessageContent` | The message body.                                         |
-| `MessageHeader`  | The sender name or header line.                           |
-| `MessageFooter`  | Supporting content, such as a timestamp.                  |
+<ApiTable module={MessageModule} />

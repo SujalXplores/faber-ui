@@ -3,6 +3,9 @@ title: Menubar
 description: A horizontal menu bar, like the menus in a macOS application.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as MenubarModule from "@workspace/ui/components/menubar";
+
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -132,21 +135,4 @@ export default function Example() {
 
 ## API
 
-| Component             | Description                                                                          |
-| --------------------- | ------------------------------------------------------------------------------------ |
-| `Menubar`             | Root bar.                                                                            |
-| `MenubarMenu`         | A single menu within the bar.                                                        |
-| `MenubarTrigger`      | The button that opens the menu. Use `render`.                                        |
-| `MenubarContent`      | The menu popup.                                                                      |
-| `MenubarGroup`        | Logical grouping of items.                                                           |
-| `MenubarItem`         | A menu action. Accepts `variant?: "default" \| "destructive"` and `inset?: boolean`. |
-| `MenubarLabel`        | Non-interactive label. Accepts `inset`.                                              |
-| `MenubarSeparator`    | Horizontal divider.                                                                  |
-| `MenubarShortcut`     | Right-aligned shortcut hint.                                                         |
-| `MenubarCheckboxItem` | A toggleable item with a check indicator.                                            |
-| `MenubarRadioGroup`   | Groups radio items. Accepts `value`.                                                 |
-| `MenubarRadioItem`    | A radio option.                                                                      |
-| `MenubarSub`          | Submenu container.                                                                   |
-| `MenubarSubTrigger`   | Opens the submenu.                                                                   |
-| `MenubarSubContent`   | The submenu popup.                                                                   |
-| `MenubarPortal`       | Portals the content out of the DOM tree.                                             |
+<ApiTable module={MenubarModule} />

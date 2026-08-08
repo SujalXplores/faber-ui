@@ -3,6 +3,9 @@ title: Switch
 description: A toggle switch for binary on/off states.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as SwitchModule from "@workspace/ui/components/switch";
+
 import { Switch } from "@workspace/ui/components/switch";
 
 `Switch` is built on the Base UI `Switch` primitive. It animates its thumb between checked and unchecked states and supports RTL automatically.
@@ -30,14 +33,14 @@ export default function Example() {
 
 ### Default
 
-<div className="flex items-center gap-4 rounded-lg border p-4">
+<div className="not-prose flex items-center gap-4 rounded-lg border p-4">
   <Switch />
   <Switch defaultChecked />
 </div>
 
 ### Sizes
 
-<div className="flex items-center gap-4 rounded-lg border p-4">
+<div className="not-prose flex items-center gap-4 rounded-lg border p-4">
   <Switch size="sm" />
   <Switch size="default" defaultChecked />
 </div>

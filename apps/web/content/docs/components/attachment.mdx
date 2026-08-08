@@ -3,6 +3,9 @@ title: Attachment
 description: A file or attachment card with upload state and actions.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as AttachmentModule from "@workspace/ui/components/attachment";
+
 import {
   Attachment,
   AttachmentAction,
@@ -63,7 +66,7 @@ export default function Example() {
 
 ### Default
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <Attachment>
     <AttachmentMedia variant="icon">
       <RiFileTextLine />
@@ -82,7 +85,7 @@ export default function Example() {
 
 ### Upload states
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <div className="flex flex-col gap-2">
     <Attachment state="idle">
       <AttachmentMedia variant="icon">
@@ -116,7 +119,7 @@ export default function Example() {
 
 ### Sizes
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <div className="flex flex-col gap-2">
     <Attachment size="default">
       <AttachmentMedia variant="icon">
@@ -150,7 +153,7 @@ export default function Example() {
 
 ### Group
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <AttachmentGroup>
     <Attachment>
       <AttachmentMedia variant="icon">
@@ -175,14 +178,4 @@ export default function Example() {
 
 ## API
 
-| Component               | Description                                                          |
-| ----------------------- | -------------------------------------------------------------------- |
-| `Attachment`            | Root card. Accepts `state`, `size`, and `orientation` props.         |
-| `AttachmentGroup`       | Groups multiple attachments with shared spacing.                     |
-| `AttachmentMedia`       | Icon or image slot. Accepts `variant?: "icon" \| "image"`.           |
-| `AttachmentContent`     | Wraps the title and description.                                     |
-| `AttachmentTitle`       | The file name or title.                                              |
-| `AttachmentDescription` | Supporting text, such as file size or status.                        |
-| `AttachmentActions`     | Container for action buttons.                                        |
-| `AttachmentAction`      | A single action. Accepts Button props. Use `render` for composition. |
-| `AttachmentTrigger`     | Trigger element for opening or uploading. Use `render`.              |
+<ApiTable module={AttachmentModule} />

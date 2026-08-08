@@ -3,6 +3,9 @@ title: ToggleGroup
 description: A group of mutually exclusive or independent toggles.
 ---
 
+import { ApiTable } from "@/components/api-table";
+import * as ToggleGroupModule from "@workspace/ui/components/toggle-group";
+
 import {
   ToggleGroup,
   ToggleGroupItem,
@@ -41,7 +44,7 @@ export default function Example() {
 
 ### Single
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <ToggleGroup type="single" defaultValue="bold">
     <ToggleGroupItem value="bold">Bold</ToggleGroupItem>
     <ToggleGroupItem value="italic">Italic</ToggleGroupItem>
@@ -51,7 +54,7 @@ export default function Example() {
 
 ### Multiple
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <ToggleGroup type="multiple" defaultValue={["bold", "italic"]}>
     <ToggleGroupItem value="bold">Bold</ToggleGroupItem>
     <ToggleGroupItem value="italic">Italic</ToggleGroupItem>
@@ -61,7 +64,7 @@ export default function Example() {
 
 ### Vertical
 
-<div className="rounded-lg border p-4">
+<div className="not-prose rounded-lg border p-4">
   <ToggleGroup type="single" orientation="vertical" defaultValue="bold">
     <ToggleGroupItem value="bold">Bold</ToggleGroupItem>
     <ToggleGroupItem value="italic">Italic</ToggleGroupItem>
@@ -71,7 +74,4 @@ export default function Example() {
 
 ## API
 
-| Component         | Description                                                                                   |
-| ----------------- | --------------------------------------------------------------------------------------------- |
-| `ToggleGroup`     | Root. Accepts `type`, `value`, `defaultValue`, `onValueChange`, `orientation`, and `spacing`. |
-| `ToggleGroupItem` | A single toggle. Accepts `value`.                                                             |
+<ApiTable module={ToggleGroupModule} />
