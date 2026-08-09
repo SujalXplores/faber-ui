@@ -19,6 +19,16 @@ export const metadata: Metadata = {
     default: "Faber UI",
     template: "%s | Faber UI",
   },
+  description:
+    "A component library built on shadcn/ui, Base UI, and Tailwind CSS v4. Copy-paste friendly, RTL-ready, and instantly familiar to AI agents.",
+  openGraph: {
+    title: "Faber UI",
+    description:
+      "A component library built on shadcn/ui, Base UI, and Tailwind CSS v4.",
+    url: "https://faber-ui.vercel.app",
+    siteName: "Faber UI",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
