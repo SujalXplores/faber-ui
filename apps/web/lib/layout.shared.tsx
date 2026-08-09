@@ -1,30 +1,34 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 
+function Logo() {
+  return (
+    <span className="flex items-center gap-2">
+      <span
+        className="flex size-5.5 items-center justify-center rounded-lg bg-primary text-primary-foreground"
+        aria-hidden
+      >
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10.5 8.5H21.5V11.2H13.2V14.8H19.8V17.5H13.2V23.5H10.5V8.5Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      <span>Faber UI</span>
+    </span>
+  );
+}
+
 export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
-      title: (
-        <span className="flex items-center gap-2">
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 32 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden
-          >
-            <defs>
-              <linearGradient id="nav-logo" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#6366F1" />
-                <stop offset="1" stopColor="#8B5CF6" />
-              </linearGradient>
-            </defs>
-            <rect width="32" height="32" rx="8" fill="url(#nav-logo)" />
-            <path d="M10.5 8.5H21.5V11.2H13.2V14.8H19.8V17.5H13.2V23.5H10.5V8.5Z" fill="white" />
-          </svg>
-          <span>Faber UI</span>
-        </span>
-      ),
+      title: <Logo />,
       transparentMode: "top",
     },
     githubUrl: "https://github.com/SujalXplores/faber-ui",
