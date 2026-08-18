@@ -6,7 +6,8 @@ import { baseOptions } from "@/lib/layout.shared";
 import { source } from "@/lib/source";
 import { CopyButton } from "@/components/copy-button";
 
-const INSTALL_COMMAND = "pnpm dlx shadcn@latest add button";
+const INSTALL_COMMAND =
+  "pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/button.json";
 
 const USAGE = `import { Button } from "@workspace/ui/components/button";
 
@@ -76,15 +77,12 @@ export default function Page() {
           </div>
 
           <p className="mt-3 text-sm text-muted-foreground">
-            Run from{" "}
+            Resolves its own dependencies, installs the npm packages it needs,
+            and copies the source into{" "}
             <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">
-              packages/ui
+              components/ui/
             </code>
-            . The source lands in{" "}
-            <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">
-              src/components/
-            </code>{" "}
-            and the export map updates itself.
+            . Every component is addressable the same way.
           </p>
         </section>
         <section className="mt-12" aria-labelledby="usage-heading">

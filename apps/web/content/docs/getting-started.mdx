@@ -21,28 +21,25 @@ The documentation app (`apps/web`) runs on Next.js 16 with Turbopack.
 
 ### Run the shadcn CLI
 
-From the repository root, change into the `packages/ui` workspace and add a component with the shadcn CLI:
+From your own project, point the shadcn CLI at the Faber UI registry:
 
 ```bash
-cd packages/ui
-pnpm dlx shadcn@latest add button
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/button.json
 ```
 
-The CLI reads `packages/ui/components.json` for the style, aliases, and icon library, then copies the component source into `src/components/`.
+The CLI reads your `components.json` for aliases, resolves any components the item depends on, installs the npm packages it needs, and copies the source into your project. Nothing is added to your dependency tree beyond those packages.
 
-### Verify the export
+### Import it
 
-Open `packages/ui/package.json` and confirm the component is reachable through the `./components/*` export:
+The component lands under your configured `ui` alias:
 
-```json
-{
-  "exports": {
-    "./components/*": "./src/components/*.tsx"
-  }
-}
+```tsx
+import { Button } from "@/components/ui/button";
 ```
 
-Every component file in `src/components/` is automatically available as `@workspace/ui/components/<name>`.
+Working inside this repository instead of your own? Run the same command from
+`packages/ui`, where every file in `src/components/` is reachable as
+`@workspace/ui/components/<name>` through the `./components/*` export.
 
 ### Use it in your app
 
