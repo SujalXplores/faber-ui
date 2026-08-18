@@ -1,7 +1,6 @@
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { MDXComponents } from "mdx/types";
-import { isValidElement } from "react";
-import type { ComponentProps, ReactNode } from "react";
+import { isValidElement, type ComponentProps, type ReactNode } from "react";
 
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 import { CodeBlock, Pre } from "fumadocs-ui/components/codeblock";

@@ -18,8 +18,6 @@ const fruits = [
   { label: "Grape", value: "grape" },
 ];
 
-type Fruit = (typeof fruits)[number];
-
 const groupedFruits = [
   {
     label: "Citrus",

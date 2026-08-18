@@ -1,5 +1,4 @@
 import {
-  getLLMText,
   getPageImageUrl,
   getPageMarkdownUrl,
   gitConfig,
