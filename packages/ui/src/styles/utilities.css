@@ -105,9 +105,6 @@
   mask-image: linear-gradient(to top, black 0%, black 82%, transparent 100%);
 }
 
-/* The canvas every component example in the docs renders on. One utility
- * because 114 MDX containers previously repeated the same class string.
- * Layout (`flex`, `gap-*`) stays in the markup; only the chrome lives here. */
 @utility demo {
   position: relative;
   isolation: isolate;
@@ -117,31 +114,8 @@
   padding: calc(var(--spacing) * 8);
   color: var(--foreground);
   min-height: calc(var(--spacing) * 28);
-
-  /* On a pseudo-element, not the container's own background: the mask would
-   * otherwise apply to children and fade the demo itself. */
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-radius: inherit;
-    background-image: radial-gradient(var(--border) 1px, transparent 1px);
-    background-size: 16px 16px;
-    background-position: center;
-    mask-image: radial-gradient(
-      ellipse 130% 130% at center,
-      black 55%,
-      transparent 100%
-    );
-    pointer-events: none;
-  }
 }
 
-/* For examples drawing their own background, or translucent enough that the
- * dot field shows through. */
 @utility demo-flat {
-  &::before {
-    display: none;
-  }
+  background-color: transparent;
 }
