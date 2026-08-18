@@ -11,6 +11,8 @@ import { Button } from "@workspace/ui/components/button";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { RiRocketLine, RiSearchLine, RiAddLine, RiSettings3Line } from "@remixicon/react";
 
+import { buttonWithIcon, buttonAsLink } from "@/examples/button";
+
 `Button` is built on the Base UI `Button` primitive and exposes a shadcn-compatible variant API through `class-variance-authority`. It supports a `render` prop for composition (the Base UI equivalent of `asChild`).
 
 ## Installation
@@ -90,17 +92,7 @@ export default function Example() {
 Buttons automatically size and space child SVG icons. Drop a Remixicon component inside:
 
 <Preview
-  code={`import { RiArrowRightLine } from "@remixicon/react";
-import { Button } from "@workspace/ui/components/button";
-
-export default function Example() {
-  return (
-    <Button>
-      Continue
-      <RiArrowRightLine />
-    </Button>
-  );
-}`}
+  code={buttonWithIcon}
 >
   <Button>
     Continue
@@ -113,16 +105,7 @@ export default function Example() {
 Use the `render` prop to render the button styles on a different element, such as a Next.js `Link`:
 
 <Preview
-  code={`import Link from "next/link";
-import { Button } from "@workspace/ui/components/button";
-
-export default function Example() {
-  return (
-    <Button render={<Link href="/docs" />}>
-      Go to docs
-    </Button>
-  );
-}`}
+  code={buttonAsLink}
 >
   <Button nativeButton={false} render={<a href="/docs" />}>Go to docs</Button>
 </Preview>

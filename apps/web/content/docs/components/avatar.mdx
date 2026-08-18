@@ -15,6 +15,8 @@ import {
   AvatarImage,
 } from "@workspace/ui/components/avatar";
 
+import { avatarUsage, avatarSizes, avatarBadge, avatarGroup } from "@/examples/avatar";
+
 `Avatar` is built on the Base UI `Avatar` primitive. It shows an image when available and falls back to initials or placeholder content while loading or on error.
 
 ## Installation
@@ -27,20 +29,7 @@ pnpm dlx shadcn@latest add avatar
 ## Usage
 
 <Preview
-  code={`import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@workspace/ui/components/avatar";
-
-export default function Example() {
-  return (
-    <Avatar>
-      <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
-      <AvatarFallback>SC</AvatarFallback>
-    </Avatar>
-  );
-}`}
+  code={avatarUsage}
 >
   <Avatar>
     <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
@@ -53,15 +42,7 @@ export default function Example() {
 ### Sizes
 
 <Preview
-  code={`<Avatar size="sm">
-  <AvatarFallback>S</AvatarFallback>
-</Avatar>
-<Avatar>
-  <AvatarFallback>M</AvatarFallback>
-</Avatar>
-<Avatar size="lg">
-  <AvatarFallback>L</AvatarFallback>
-</Avatar>`}
+  code={avatarSizes}
 >
   <Avatar size="sm">
     <AvatarFallback>S</AvatarFallback>
@@ -77,10 +58,7 @@ export default function Example() {
 ### With a status badge
 
 <Preview
-  code={`<Avatar>
-  <AvatarFallback>AB</AvatarFallback>
-  <AvatarBadge />
-</Avatar>`}
+  code={avatarBadge}
 >
   <Avatar>
     <AvatarFallback>AB</AvatarFallback>
@@ -93,17 +71,7 @@ export default function Example() {
 Stack multiple avatars with `AvatarGroup`:
 
 <Preview
-  code={`<AvatarGroup>
-  <Avatar>
-    <AvatarFallback>A</AvatarFallback>
-  </Avatar>
-  <Avatar>
-    <AvatarFallback>B</AvatarFallback>
-  </Avatar>
-  <Avatar>
-    <AvatarFallback>C</AvatarFallback>
-  </Avatar>
-</AvatarGroup>`}
+  code={avatarGroup}
 >
   <AvatarGroup>
     <Avatar>
