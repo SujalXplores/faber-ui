@@ -1,9 +1,16 @@
 import { loader } from "fumadocs-core/source";
+import { applyMdxPreset } from "fumadocs-mdx/config";
 import { defineDocs } from "fumadocs-mdx/macro";
+
+import { codeThemes } from "@/lib/code-theme";
 
 const docs = defineDocs({
   dir: "content/docs",
   docs: {
+    mdxOptions: applyMdxPreset({
+      preset: "fumadocs",
+      rehypeCodeOptions: { themes: codeThemes, addLanguageClass: true },
+    }),
     postprocess: {
       includeProcessedMarkdown: true,
     },

@@ -2,14 +2,16 @@
 
 import * as React from "react";
 import { RiCodeSSlashLine } from "@remixicon/react";
-import { CodeBlock } from "fumadocs-ui/components/codeblock";
+import { CodeBlock, Pre } from "fumadocs-ui/components/codeblock";
 import { useShiki } from "fumadocs-core/highlight/shiki/react";
 import { getHighlighter } from "fumadocs-core/highlight";
 import { cn } from "@workspace/ui/lib/utils";
 
+import { codeBlockLabel, codeLangs, codeThemes } from "@/lib/code-theme";
+
 const highlighter = getHighlighter("js", {
-  langs: ["tsx", "ts", "jsx", "js", "bash", "css", "json"],
-  themes: ["github-light", "github-dark"],
+  langs: [...codeLangs],
+  themes: [codeThemes.light, codeThemes.dark],
 });
 
 const COLLAPSED_HEIGHT = "10.5rem";
@@ -45,7 +47,8 @@ export function Preview({
     code,
     {
       lang,
-      themes: { light: "github-light", dark: "github-dark" },
+      themes: codeThemes,
+      components: { pre: Pre },
     },
     [code, lang],
   );
@@ -81,7 +84,13 @@ export function Preview({
         >
           <CodeBlock
             allowCopy
-            title={title}
+            title={
+              title ?? (
+                <span className="font-mono text-2xs tracking-caps text-muted-foreground">
+                  {codeBlockLabel(`language-${lang}`)}
+                </span>
+              )
+            }
             className="m-0 rounded-none border-none"
           >
             {highlighted}

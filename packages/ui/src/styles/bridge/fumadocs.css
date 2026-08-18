@@ -47,3 +47,27 @@
   --color-fd-secondary: var(--surface-3);
   --color-fd-muted-foreground: var(--muted-foreground);
 }
+
+/* Shiki writes a literal `background-color` inline on both the figure and the
+ * pre, so `!important` is what beats it. */
+figure.shiki,
+figure.shiki pre {
+  background-color: var(--code-background) !important;
+}
+
+figure.shiki {
+  border-color: var(--code-border);
+  box-shadow: none;
+}
+
+figure.shiki figcaption {
+  display: flex;
+  align-items: center;
+}
+
+/* One step of contrast off the code surface in both themes: `--surface-3` is
+ * darker than `--code-background` in light and lighter in dark. */
+figure.shiki > div:first-child:has(figcaption) {
+  background-color: var(--surface-3);
+  border-color: var(--code-border);
+}
