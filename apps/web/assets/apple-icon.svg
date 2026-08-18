@@ -1,11 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180" fill="none">
-  <!-- Vector source for app/apple-icon.png, which is what Next actually serves;
-       the `apple-icon` file convention matches only jpg/jpeg/png, so this cannot
-       live in app/ under that name. Geometry mirrors components/logo.tsx.
-
-       Full bleed and fully opaque on purpose: iOS applies its own corner mask to
-       an apple-touch-icon, so a pre-rounded plate double-rounds, and transparent
-       corners composite onto black when the icon is saved to the home screen. -->
+  <!-- Next's apple-icon convention matches only jpg/jpeg/png, so this vector
+       cannot live in app/. It is the source for app/apple-icon.png. -->
   <defs>
     <linearGradient id="plate" x1="90" y1="0" x2="90" y2="180" gradientUnits="userSpaceOnUse">
       <stop stop-color="#151a22"/>

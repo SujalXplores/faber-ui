@@ -8,8 +8,6 @@
  * Each brand chroma is the measured sRGB ceiling for that hue. Raising one does
  * not give a more saturated ramp, it flattens the top steps. Lowering is safe. */
 
-/* The default. Kept a hair under the 0.159 ceiling so no step sits exactly on
- * the gamut boundary, where browsers disagree about which side to round to. */
 [data-brand="blue"] {
   --brand-hue: 252;
   --brand-chroma: 0.155;
@@ -30,8 +28,6 @@
   --brand-chroma: 0.155;
 }
 
-/* A cooler, more cyan-leaning blue than the default. Was named `blue` before
- * 252 took that slot; renamed rather than dropped so the hue stays reachable. */
 [data-brand="azure"] {
   --brand-hue: 248;
   --brand-chroma: 0.143;

@@ -8,10 +8,6 @@
 :root,
 [data-brand],
 [data-neutral] {
-  /* Default brand. Identical to `[data-brand="blue"]` in presets.css, so
-   * a consumer who sets nothing and one who sets `blue` get the same ramp.
-   * 252 is far enough off 262 to carry no violet cast and off 240 to carry no
-   * cyan one, which is the band the ecosystem has settled on for a primary. */
   --brand-hue: 252;
   --brand-chroma: 0.155;
 

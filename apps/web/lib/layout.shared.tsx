@@ -5,8 +5,6 @@ import { LogoMark } from "@/components/logo";
 function Logo() {
   return (
     <span className="flex items-center gap-2">
-      {/* Bare mark rather than the plated favicon variant: `text-primary` lets it
-          track `data-brand`, which a baked-in plate colour could not. */}
       <LogoMark className="h-[18px] w-auto text-primary" />
       <span className="font-medium tracking-subheading">Faber UI</span>
     </span>
