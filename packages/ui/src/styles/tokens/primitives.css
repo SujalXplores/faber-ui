@@ -1,0 +1,99 @@
+/* Raw scales. The only file with color maths in it.
+ *
+ * The selector must include `[data-brand]` / `[data-neutral]`: custom
+ * properties resolve at computed-value time, so a ramp declared only on `:root`
+ * inherits already-resolved colors into nested scopes, and a scoped override
+ * like `<section data-brand="amber">` would silently do nothing. */
+
+:root,
+[data-brand],
+[data-neutral] {
+  /* Default brand. Identical to `[data-brand="blue"]` in presets.css, so
+   * a consumer who sets nothing and one who sets `blue` get the same ramp.
+   * 252 is far enough off 262 to carry no violet cast and off 240 to carry no
+   * cyan one, which is the band the ecosystem has settled on for a primary. */
+  --brand-hue: 252;
+  --brand-chroma: 0.155;
+
+  --neutral-hue: var(--brand-hue);
+  --neutral-chroma: 0.004;
+
+  --danger-hue: 27.3;
+  --danger-chroma: 0.245;
+  --success-hue: 149.6;
+  --success-chroma: 0.219;
+  --warning-hue: 70.1;
+  --warning-chroma: 0.188;
+  --info-hue: 259.8;
+  --info-chroma: 0.214;
+
+  /* Chroma has a per-hue sRGB ceiling and exceeding it fails silently: the
+   * browser gamut-maps the overflow, adjacent steps converge, and the ramp
+   * flattens. Measured ceilings per hue are in presets.css. */
+
+  --brand-50: oklch(0.977 calc(var(--brand-chroma) * 0.07) var(--brand-hue));
+  --brand-100: oklch(0.946 calc(var(--brand-chroma) * 0.14) var(--brand-hue));
+  --brand-200: oklch(0.902 calc(var(--brand-chroma) * 0.26) var(--brand-hue));
+  --brand-300: oklch(0.831 calc(var(--brand-chroma) * 0.44) var(--brand-hue));
+  --brand-400: oklch(0.744 calc(var(--brand-chroma) * 0.68) var(--brand-hue));
+  --brand-500: oklch(0.652 calc(var(--brand-chroma) * 0.9) var(--brand-hue));
+  --brand-600: oklch(0.577 calc(var(--brand-chroma) * 1) var(--brand-hue));
+  --brand-700: oklch(0.505 calc(var(--brand-chroma) * 0.95) var(--brand-hue));
+  --brand-800: oklch(0.437 calc(var(--brand-chroma) * 0.82) var(--brand-hue));
+  --brand-900: oklch(0.383 calc(var(--brand-chroma) * 0.68) var(--brand-hue));
+  --brand-950: oklch(0.283 calc(var(--brand-chroma) * 0.52) var(--brand-hue));
+
+  --neutral-0: oklch(1 0 var(--neutral-hue));
+  --neutral-50: oklch(0.985 calc(var(--neutral-chroma) * 0.3) var(--neutral-hue));
+  --neutral-100: oklch(0.97 calc(var(--neutral-chroma) * 0.5) var(--neutral-hue));
+  --neutral-200: oklch(0.922 calc(var(--neutral-chroma) * 0.7) var(--neutral-hue));
+  --neutral-300: oklch(0.87 calc(var(--neutral-chroma) * 0.9) var(--neutral-hue));
+  --neutral-400: oklch(0.708 calc(var(--neutral-chroma) * 1) var(--neutral-hue));
+  --neutral-500: oklch(0.556 calc(var(--neutral-chroma) * 1) var(--neutral-hue));
+  --neutral-600: oklch(0.439 calc(var(--neutral-chroma) * 0.9) var(--neutral-hue));
+  --neutral-700: oklch(0.371 calc(var(--neutral-chroma) * 0.8) var(--neutral-hue));
+  --neutral-800: oklch(0.269 calc(var(--neutral-chroma) * 0.7) var(--neutral-hue));
+  --neutral-850: oklch(0.224 calc(var(--neutral-chroma) * 0.6) var(--neutral-hue));
+  --neutral-900: oklch(0.205 calc(var(--neutral-chroma) * 0.55) var(--neutral-hue));
+  --neutral-950: oklch(0.145 calc(var(--neutral-chroma) * 0.45) var(--neutral-hue));
+  --neutral-1000: oklch(0.108 calc(var(--neutral-chroma) * 0.35) var(--neutral-hue));
+
+  --alpha-light-4: oklch(1 0 0 / 4%);
+  --alpha-light-8: oklch(1 0 0 / 8%);
+  --alpha-light-10: oklch(1 0 0 / 10%);
+  --alpha-light-15: oklch(1 0 0 / 15%);
+  --alpha-light-25: oklch(1 0 0 / 25%);
+  --alpha-dark-4: oklch(0 0 0 / 4%);
+  --alpha-dark-8: oklch(0 0 0 / 8%);
+  --alpha-dark-10: oklch(0 0 0 / 10%);
+  --alpha-dark-15: oklch(0 0 0 / 15%);
+  --alpha-dark-50: oklch(0 0 0 / 50%);
+
+  --danger-100: oklch(0.936 calc(var(--danger-chroma) * 0.16) var(--danger-hue));
+  --danger-400: oklch(0.704 calc(var(--danger-chroma) * 0.78) var(--danger-hue));
+  --danger-500: oklch(0.637 calc(var(--danger-chroma) * 0.97) var(--danger-hue));
+  --danger-600: oklch(0.577 calc(var(--danger-chroma) * 1) var(--danger-hue));
+  --danger-900: oklch(0.371 calc(var(--danger-chroma) * 0.66) var(--danger-hue));
+
+  --success-100: oklch(0.95 calc(var(--success-chroma) * 0.16) var(--success-hue));
+  --success-500: oklch(0.723 calc(var(--success-chroma) * 1) var(--success-hue));
+  --success-600: oklch(0.627 calc(var(--success-chroma) * 0.98) var(--success-hue));
+  --success-900: oklch(0.393 calc(var(--success-chroma) * 0.62) var(--success-hue));
+
+  --warning-100: oklch(0.955 calc(var(--warning-chroma) * 0.2) var(--warning-hue));
+  --warning-500: oklch(0.769 calc(var(--warning-chroma) * 1) var(--warning-hue));
+  --warning-600: oklch(0.681 calc(var(--warning-chroma) * 0.98) var(--warning-hue));
+  --warning-900: oklch(0.421 calc(var(--warning-chroma) * 0.62) var(--warning-hue));
+
+  --info-100: oklch(0.932 calc(var(--info-chroma) * 0.2) var(--info-hue));
+  --info-500: oklch(0.623 calc(var(--info-chroma) * 1) var(--info-hue));
+  --info-600: oklch(0.546 calc(var(--info-chroma) * 0.98) var(--info-hue));
+  --info-900: oklch(0.379 calc(var(--info-chroma) * 0.66) var(--info-hue));
+}
+
+:root {
+  --spacing: 0.25rem;
+  --radius: 0.3rem;
+  --container-gutter: calc(var(--spacing) * 6);
+  --section-gap: calc(var(--spacing) * 24);
+}

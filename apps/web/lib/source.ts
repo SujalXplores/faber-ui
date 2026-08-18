@@ -20,9 +20,12 @@ export const docsImageRoute = "/og/docs";
 export const docsContentRoute = "/llms.mdx/docs";
 
 export const gitConfig = {
-  user: "faber-ui",
+  user: "SujalXplores",
   repo: "faber-ui",
   branch: "main",
+  /* Docs live inside the web app, not at the repository root. Without this the
+   * "Edit on GitHub" link resolved to /blob/main/content/docs/… and 404'd. */
+  contentPath: "apps/web/content/docs",
 };
 
 export function getPageImageUrl(page: (typeof source)["$inferPage"]) {

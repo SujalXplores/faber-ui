@@ -1,0 +1,147 @@
+/* Named knob overrides, addressed by data attribute:
+ *
+ *   <html data-brand="emerald" data-neutral="stone" data-radius="lg">
+ *
+ * Every selector here is 0-1-0, identical to `:root`, so this file must be
+ * imported after primitives.css. Source order is what decides the winner.
+ *
+ * Each brand chroma is the measured sRGB ceiling for that hue. Raising one does
+ * not give a more saturated ramp, it flattens the top steps. Lowering is safe. */
+
+/* The default. Kept a hair under the 0.159 ceiling so no step sits exactly on
+ * the gamut boundary, where browsers disagree about which side to round to. */
+[data-brand="blue"] {
+  --brand-hue: 252;
+  --brand-chroma: 0.155;
+}
+
+[data-brand="teal"] {
+  --brand-hue: 194;
+  --brand-chroma: 0.092;
+}
+
+[data-brand="violet"] {
+  --brand-hue: 277;
+  --brand-chroma: 0.155;
+}
+
+[data-brand="indigo"] {
+  --brand-hue: 264;
+  --brand-chroma: 0.155;
+}
+
+/* A cooler, more cyan-leaning blue than the default. Was named `blue` before
+ * 252 took that slot; renamed rather than dropped so the hue stays reachable. */
+[data-brand="azure"] {
+  --brand-hue: 248;
+  --brand-chroma: 0.143;
+}
+
+[data-brand="cyan"] {
+  --brand-hue: 218;
+  --brand-chroma: 0.095;
+}
+
+[data-brand="emerald"] {
+  --brand-hue: 158;
+  --brand-chroma: 0.12;
+}
+
+[data-brand="lime"] {
+  --brand-hue: 132;
+  --brand-chroma: 0.145;
+}
+
+[data-brand="amber"] {
+  --brand-hue: 70;
+  --brand-chroma: 0.115;
+}
+
+[data-brand="orange"] {
+  --brand-hue: 47;
+  --brand-chroma: 0.145;
+}
+
+[data-brand="rose"] {
+  --brand-hue: 15;
+  --brand-chroma: 0.16;
+}
+
+[data-brand="magenta"] {
+  --brand-hue: 344;
+  --brand-chroma: 0.2;
+}
+
+/* Not exactly 0, so the ramp keeps a trace of hue instead of going dead flat. */
+[data-brand="mono"] {
+  --brand-hue: 277;
+  --brand-chroma: 0.012;
+}
+
+/* Above ~0.008 a neutral starts reading as a color rather than a gray. */
+
+[data-neutral="gray"] {
+  --neutral-hue: 0;
+  --neutral-chroma: 0;
+}
+
+[data-neutral="slate"] {
+  --neutral-hue: 258;
+  --neutral-chroma: 0.006;
+}
+
+[data-neutral="stone"] {
+  --neutral-hue: 75;
+  --neutral-chroma: 0.005;
+}
+
+[data-neutral="sage"] {
+  --neutral-hue: 155;
+  --neutral-chroma: 0.005;
+}
+
+[data-neutral="brand-tinted"] {
+  --neutral-hue: var(--brand-hue);
+  --neutral-chroma: 0.004;
+}
+
+/* The radius scale in theme.css is a multiple of this one value. */
+
+[data-radius="none"] {
+  --radius: 0rem;
+}
+
+[data-radius="xs"] {
+  --radius: 0.2rem;
+}
+
+[data-radius="sm"] {
+  --radius: 0.3rem;
+}
+
+[data-radius="md"] {
+  --radius: 0.5rem;
+}
+
+[data-radius="lg"] {
+  --radius: 0.75rem;
+}
+
+[data-radius="xl"] {
+  --radius: 1rem;
+}
+
+/* Tailwind sizes every spacing utility off `--spacing`, so this rescales all
+ * padding, gaps and `size-*` at once. Type deliberately does not scale. */
+
+[data-density="compact"] {
+  --spacing: 0.225rem;
+}
+
+[data-density="default"] {
+  --spacing: 0.25rem;
+}
+
+[data-density="comfortable"] {
+  --spacing: 0.28rem;
+}

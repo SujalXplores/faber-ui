@@ -1,0 +1,45 @@
+/* Layered casts: a tight contact shadow plus a wider ambient one. theme.css
+ * maps these onto Tailwind's `--shadow-*`, so existing `shadow-md` call sites
+ * pick them up with no migration. */
+
+:root {
+  --shadow-hue: var(--neutral-hue);
+  --shadow-chroma: calc(var(--neutral-chroma) * 1.5);
+
+  --shadow-tint-contact: oklch(0.15 var(--shadow-chroma) var(--shadow-hue) / 6%);
+  --shadow-tint-ambient: oklch(0.15 var(--shadow-chroma) var(--shadow-hue) / 8%);
+  --shadow-tint-deep: oklch(0.15 var(--shadow-chroma) var(--shadow-hue) / 12%);
+
+  --elevation-0: none;
+  --elevation-1:
+    0 1px 2px -1px var(--shadow-tint-contact),
+    0 1px 1px -0.5px var(--shadow-tint-ambient);
+  --elevation-2:
+    0 1px 2px -1px var(--shadow-tint-contact),
+    0 2px 4px -1px var(--shadow-tint-ambient);
+  --elevation-3:
+    0 1px 2px -1px var(--shadow-tint-contact),
+    0 4px 8px -2px var(--shadow-tint-ambient),
+    0 8px 16px -4px var(--shadow-tint-ambient);
+  --elevation-4:
+    0 1px 2px -1px var(--shadow-tint-contact),
+    0 8px 16px -4px var(--shadow-tint-ambient),
+    0 16px 32px -8px var(--shadow-tint-deep);
+  --elevation-5:
+    0 2px 4px -2px var(--shadow-tint-contact),
+    0 16px 32px -8px var(--shadow-tint-ambient),
+    0 32px 64px -16px var(--shadow-tint-deep);
+
+  --elevation-hairline: 0 0 0 1px var(--border);
+
+  --ring-width: 2px;
+  --ring-offset: 2px;
+}
+
+/* A dark surface has less contrast to work with, so more spread and less
+ * opacity, otherwise the cast reads as a halo. */
+.dark {
+  --shadow-tint-contact: oklch(0 0 0 / 32%);
+  --shadow-tint-ambient: oklch(0 0 0 / 28%);
+  --shadow-tint-deep: oklch(0 0 0 / 40%);
+}

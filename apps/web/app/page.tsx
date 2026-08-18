@@ -1,174 +1,152 @@
 import Link from "next/link";
-import { buttonVariants } from "fumadocs-ui/components/ui/button";
-import { Card, Cards } from "fumadocs-ui/components/card";
 import { HomeLayout } from "fumadocs-ui/layouts/home";
+import { RiArrowRightLine, RiGithubFill } from "@remixicon/react";
+
 import { baseOptions } from "@/lib/layout.shared";
-import {
-  RiGithubFill,
-  RiArrowRightLine,
-  RiSparklingLine,
-  RiCheckboxCircleLine,
-  RiLayoutGridLine,
-  RiPaletteLine,
-  RiGlobalLine,
-  RiPuzzleLine,
-  RiCodeBoxLine,
-} from "@remixicon/react";
+import { source } from "@/lib/source";
+import { CopyButton } from "@/components/copy-button";
 
-const features = [
-  {
-    icon: RiPuzzleLine,
-    title: "shadcn-compatible",
-    description:
-      "Variants, sizes, and asChild composition that match the conventions you already know.",
-  },
-  {
-    icon: RiLayoutGridLine,
-    title: "Base UI primitives",
-    description:
-      "Accessible, unstyled components from @base-ui/react power every interaction.",
-  },
-  {
-    icon: RiPaletteLine,
-    title: "Tailwind CSS v4",
-    description:
-      "Zero-runtime styling with CSS variables and oklch color tokens.",
-  },
-  {
-    icon: RiGlobalLine,
-    title: "RTL ready",
-    description: "Right-to-left layouts work out of the box across the kit.",
-  },
-  {
-    icon: RiSparklingLine,
-    title: "Remixicon",
-    description: "A consistent icon set wired into every component that needs one.",
-  },
-  {
-    icon: RiCodeBoxLine,
-    title: "62 components",
-    description: "From buttons and dialogs to charts and carousels, all vendored.",
-  },
-];
+const INSTALL_COMMAND = "pnpm dlx shadcn@latest add button";
 
-const stats = [
-  { value: "62", label: "Components" },
-  { value: "100%", label: "Accessible" },
-  { value: "0", label: "Runtime deps" },
-  { value: "v4", label: "Tailwind CSS" },
-];
+const USAGE = `import { Button } from "@workspace/ui/components/button";
+
+export function Example() {
+  return <Button>Continue</Button>;
+}`;
+
+/** Read from the page tree so it cannot go stale. */
+function getComponents() {
+  return source
+    .getPages()
+    .filter((page) => page.slugs[0] === "components" && page.slugs.length > 1)
+    .map((page) => ({ title: page.data.title, url: page.url }))
+    .sort((a, b) => a.title.localeCompare(b.title));
+}
 
 export default function Page() {
+  const components = getComponents();
+
   return (
     <HomeLayout {...baseOptions()}>
-      <div className="relative flex flex-1 flex-col items-center overflow-hidden">
-        {/* Grid background */}
-        <div
-          className="pointer-events-none absolute inset-0 -z-10 bg-[size:32px_32px] bg-[image:linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] opacity-40 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black_30%,transparent_80%)]"
-          aria-hidden
-        />
-        {/* Glow */}
-        <div
-          className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]"
-          aria-hidden
-        />
-
-        {/* Hero */}
-        <section className="flex w-full flex-col items-center gap-6 px-6 pt-28 pb-16 text-center sm:pt-36">
-          <Link
-            href="/docs"
-            className="group inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur-sm transition-colors hover:text-foreground"
-          >
-            <span className="flex size-1.5 rounded-full bg-primary" />
-            v1.0 is here, explore the docs
-            <RiArrowRightLine className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-          </Link>
-
-          <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-balance sm:text-6xl">
-            Build interfaces with{" "}
-            <span className="bg-gradient-to-r from-primary to-[oklch(0.55_0.25_300)] bg-clip-text text-transparent">
-              components that just work
-            </span>
+      <main className="mx-auto w-full max-w-4xl px-6 pb-32 pt-20 sm:pt-28">
+        <header className="max-w-2xl">
+          <h1 className="text-4xl font-semibold tracking-display leading-display text-balance">
+            Components you own outright.
           </h1>
-
-          <p className="max-w-xl text-pretty text-base text-muted-foreground sm:text-lg">
-            A component library built on shadcn/ui, Base UI, and Tailwind CSS v4.
-            Copy-paste friendly, RTL-ready, and instantly familiar to AI agents.
+          <p className="mt-5 text-lg leading-body text-pretty text-muted-foreground">
+            {components.length} React components built on Base UI primitives and
+            Tailwind CSS v4, with a shadcn-compatible variant API. The source is
+            copied into your repository, so there is no runtime dependency to
+            upgrade and nothing to override when a design changes.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-            <Link href="/docs" className={buttonVariants({ variant: "primary" }) + " h-9 gap-1.5 px-3 text-sm"}>
-              Get Started
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+            <Link
+              href="/docs"
+              className="press inline-flex h-9 items-center gap-1.5 rounded-md bg-primary px-4 font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
+            >
+              Documentation
               <RiArrowRightLine className="size-4" />
             </Link>
             <a
               href="https://github.com/SujalXplores/faber-ui"
               target="_blank"
               rel="noopener noreferrer"
-              className={buttonVariants({ variant: "outline" }) + " h-9 gap-1.5 px-3 text-sm"}
+              className="inline-flex items-center gap-1.5 font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               <RiGithubFill className="size-4" />
-              GitHub
+              Source
             </a>
           </div>
-        </section>
-
-        {/* Stats */}
-        <section className="flex w-full max-w-3xl flex-wrap items-center justify-center gap-x-12 gap-y-6 px-6 pb-16">
-          {stats.map((stat) => (
-            <div key={stat.label} className="flex flex-col items-center gap-1">
-              <span className="text-3xl font-semibold tracking-tight text-foreground">
-                {stat.value}
-              </span>
-              <span className="text-xs text-muted-foreground">{stat.label}</span>
-            </div>
-          ))}
-        </section>
-
-        {/* Features */}
-        <section className="w-full max-w-5xl px-6 pb-24">
-          <Cards className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => {
-              const Icon = feature.icon;
-              return (
-                <Card
-                  key={feature.title}
-                  title={
-                    <span className="flex items-center gap-2">
-                      <span className="flex size-7 items-center justify-center rounded-md bg-primary/10 text-primary">
-                        <Icon className="size-4" />
-                      </span>
-                      {feature.title}
-                    </span>
-                  }
-                  description={feature.description}
-                />
-              );
-            })}
-          </Cards>
-        </section>
-
-        {/* CTA */}
-        <section className="flex w-full flex-col items-center gap-6 px-6 pb-32 text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-            Start building today
+        </header>
+        <section className="mt-16" aria-labelledby="install-heading">
+          <h2
+            id="install-heading"
+            className="text-xs font-medium uppercase tracking-caps text-muted-foreground"
+          >
+            Add a component
           </h2>
-          <p className="max-w-md text-pretty text-muted-foreground">
-            Copy any component into your project and make it yours. No lock-in,
-            no runtime dependency, just source code you own.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/docs/components/button" className={buttonVariants({ variant: "primary" }) + " h-9 gap-1.5 px-3 text-sm"}>
-              Browse Components
-              <RiArrowRightLine className="size-4" />
-            </Link>
-            <Link href="/docs/getting-started" className={buttonVariants({ variant: "outline" }) + " h-9 gap-1.5 px-3 text-sm"}>
-              <RiCheckboxCircleLine className="size-4" />
-              Quick Start
-            </Link>
+
+          <div className="mt-3 flex items-center gap-2 rounded-lg border bg-surface-2 py-1.5 pe-1.5 ps-4">
+            <code className="flex-1 overflow-x-auto whitespace-nowrap font-mono text-sm text-foreground scrollbar-subtle">
+              <span className="select-none text-muted-foreground">$ </span>
+              {INSTALL_COMMAND}
+            </code>
+            <CopyButton value={INSTALL_COMMAND} label="Copy install command" />
           </div>
+
+          <p className="mt-3 text-sm text-muted-foreground">
+            Run from{" "}
+            <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">
+              packages/ui
+            </code>
+            . The source lands in{" "}
+            <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">
+              src/components/
+            </code>{" "}
+            and the export map updates itself.
+          </p>
         </section>
-      </div>
+        <section className="mt-12" aria-labelledby="usage-heading">
+          <h2
+            id="usage-heading"
+            className="text-xs font-medium uppercase tracking-caps text-muted-foreground"
+          >
+            Then import it
+          </h2>
+
+          <pre className="mt-3 overflow-x-auto rounded-lg border bg-surface-2 p-4 font-mono text-sm leading-relaxed scrollbar-subtle">
+            <code>{USAGE}</code>
+          </pre>
+        </section>
+        <section className="mt-16" aria-labelledby="index-heading">
+          <div className="flex items-baseline justify-between gap-4">
+            <h2
+              id="index-heading"
+              className="text-xs font-medium uppercase tracking-caps text-muted-foreground"
+            >
+              All components
+            </h2>
+            <span className="font-mono text-xs text-muted-foreground">
+              {components.length}
+            </span>
+          </div>
+
+          <ul className="mt-4 grid grid-cols-2 gap-x-8 border-t sm:grid-cols-3 lg:grid-cols-4">
+            {components.map((component) => (
+              <li key={component.url} className="border-b">
+                <Link
+                  href={component.url}
+                  className="group flex items-center justify-between gap-2 py-2.5 text-sm transition-colors hover:text-primary"
+                >
+                  <span className="truncate">{component.title}</span>
+                  <RiArrowRightLine
+                    className="size-3.5 shrink-0 text-muted-foreground opacity-0 transition-[opacity,transform] pointer-fine:group-hover:translate-x-0.5 pointer-fine:group-hover:opacity-100"
+                    aria-hidden
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <section className="mt-16 border-t pt-6">
+          <dl className="grid grid-cols-2 gap-6 text-sm sm:grid-cols-4">
+            {[
+              ["Primitives", "Base UI"],
+              ["Styling", "Tailwind CSS v4"],
+              ["Icons", "Remixicon"],
+              ["Direction", "LTR and RTL"],
+            ].map(([label, value]) => (
+              <div key={label}>
+                <dt className="text-xs uppercase tracking-caps text-muted-foreground">
+                  {label}
+                </dt>
+                <dd className="mt-1 font-medium">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      </main>
     </HomeLayout>
   );
 }

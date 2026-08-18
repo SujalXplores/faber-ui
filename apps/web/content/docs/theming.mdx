@@ -1,0 +1,195 @@
+---
+title: Theming
+description: The token system behind the kit, and how to re-theme it without touching a component.
+---
+
+Every visual decision in Faber UI resolves through a token. No component holds a
+color, a duration, or an easing curve of its own, which is what makes the kit
+re-themeable: changing the brand is an edit to one file, not an audit of sixty.
+
+## The layers
+
+Tokens are layered, and each layer is only allowed to reference the one above
+it. The stylesheet entry point, `packages/ui/src/styles/globals.css`, is import
+order and nothing else.
+
+| Layer | File | Holds |
+| --- | --- | --- |
+| Primitives | `tokens/primitives.css` | The knobs (hue, chroma, radius, spacing) and the raw ramps generated from them. The only file with color maths in it. |
+| Presets | `tokens/presets.css` | Named overrides of those knobs, addressed by data attribute. |
+| Typography | `tokens/typography.css` | Families, size scale, tracking, leading. |
+| Motion | `tokens/motion.css` | Durations, easings, and the reduced-motion collapse. |
+| Elevation | `tokens/elevation.css` | The layered, hue-tinted shadow scale. |
+| Semantic | `tokens/semantic.css` | What components consume: `--primary`, `--muted`, `--border`. Contains no raw color. |
+| Bridge | `bridge/fumadocs.css` | Points the documentation chrome at the same tokens. |
+| Theme | `theme.css` | Publishes all of it as Tailwind utilities. |
+
+The rule that matters: **components use the semantic layer, never the
+primitives.** A `bg-brand-600` in a component is a color that will not follow a
+future theme change; `bg-primary` is.
+
+## Re-theming
+
+### With a preset
+
+```html
+<html data-brand="emerald" data-neutral="stone" data-radius="lg" data-density="compact">
+```
+
+Presets work scoped as well as globally, because the ramps are re-derived on any
+element carrying a knob:
+
+```html
+<section data-brand="amber">
+  <!-- everything in here is amber -->
+</section>
+```
+
+<Tabs items={["Brand", "Neutral", "Radius", "Density"]}>
+<Tab value="Brand">
+
+`blue` (default), `azure`, `cyan`, `teal`, `emerald`, `lime`, `amber`, `orange`,
+`rose`, `magenta`, `violet`, `indigo`, `mono`.
+
+`mono` is a near-neutral brand for a deliberately quiet product: color appears
+only where it carries meaning, namely focus, links, and status.
+
+</Tab>
+<Tab value="Neutral">
+
+`gray`, `slate`, `stone`, `sage`, `brand-tinted` (default).
+
+`brand-tinted` gives the grays a trace of the brand hue. It is subtle, and the
+single strongest way to make a palette feel authored rather than assembled.
+
+</Tab>
+<Tab value="Radius">
+
+`none`, `xs`, `sm` (default), `md`, `lg`, `xl`.
+
+The whole radius scale is a multiple of one value, so nested corners stay
+concentric at any setting instead of drifting apart.
+
+</Tab>
+<Tab value="Density">
+
+`compact`, `default`, `comfortable`.
+
+This rescales Tailwind's `--spacing` multiplier, so every padding, gap and
+`size-*` in the kit moves together. Type deliberately does not scale with it,
+because shrinking text alongside spacing is how dense interfaces become
+unreadable.
+
+</Tab>
+</Tabs>
+
+### With your own hue
+
+Set the two knobs directly:
+
+```css
+:root {
+  --brand-hue: 312;
+  --brand-chroma: 0.14;
+}
+```
+
+<Callout type="warn">
+Chroma has a per-hue ceiling. sRGB is not a cylinder. It is far deeper in
+violet than in cyan, so violet holds about `0.155` before clipping while cyan
+manages only `0.095`. Exceeding the ceiling does not raise an error and does not
+give a more saturated ramp: the browser gamut-maps the overflow, the top steps
+stop being distinguishable from one another, and the ramp flattens exactly where
+it should be strongest. The measured ceiling for each named hue is in
+`tokens/presets.css`.
+</Callout>
+
+## Motion
+
+Durations and easings are tokens, so timing is adjustable kit-wide.
+
+```css
+--easing-out: cubic-bezier(0.23, 1, 0.32, 1);   /* entering and exiting */
+--easing-in-out: cubic-bezier(0.77, 0, 0.175, 1); /* moving on screen */
+--easing-drawer: cubic-bezier(0.32, 0.72, 0, 1);  /* sheets and drawers */
+
+--duration-fast: 120ms;      /* press feedback */
+--duration-base: 200ms;      /* tooltips, popovers */
+--duration-moderate: 250ms;  /* dropdowns, menus */
+--duration-slow: 320ms;      /* modals, drawers */
+```
+
+They are available as utilities (`ease-out`, `ease-drawer`, `duration-fast`,
+`duration-slow`), and Tailwind's transition defaults route through them, so a
+bare `transition-colors` already picks up the kit's baseline timing.
+
+There is deliberately no general `ease-in` token. It delays the first frame,
+which is the exact moment a user is watching, so an interface using it reads as
+sluggish. The one legitimate case, an element accelerating away as it leaves,
+has its own token: `ease-exit`.
+
+The same values are available to JavaScript from
+`@workspace/ui/lib/motion`, including spring presets and the momentum
+projection used for flick gestures:
+
+```ts
+import { easing, durationSec, spring } from "@workspace/ui/lib/motion";
+```
+
+Prefer CSS where the animation is expressible in CSS. CSS animations run off the
+main thread and hold their frames while the browser is busy routing or
+hydrating, where `requestAnimationFrame`-driven libraries drop them.
+
+## Accessibility
+
+Three user preferences are handled by the token layer, so components inherit
+them without opting in.
+
+- **`prefers-reduced-motion`** collapses the duration tokens and flattens the
+  easing curves, and the scale deltas drop to identity so elements cross-fade in
+  place rather than travelling. Reduced motion means gentler, not absent, so
+  opacity transitions that aid comprehension are kept.
+- **`prefers-contrast: more`** swaps the low-alpha borders and tinted subtle
+  surfaces for solid colors and defined edges.
+- **`prefers-reduced-transparency`** drops `backdrop-filter` on translucent
+  chrome, which falls back to an opaque surface.
+
+Color pairings are checked rather than assumed. In both themes, body text,
+muted text, the primary button, links and the focus ring all meet WCAG AA
+against the surfaces they actually sit on.
+
+<Callout>
+Dark mode inverts the primary pairing: a *light* brand step carrying dark text.
+The intuitive alternative, a mid brand step under light text, measures around
+4.4:1 and fails AA, and it fails for every hue, not just this one. A dark
+background leaves no room to darken the button for contrast, so the button has
+to get lighter instead.
+</Callout>
+
+## Adding a token
+
+Semantic tokens go in `tokens/semantic.css` in both the `:root` and `.dark`
+blocks, then get published as a utility in `theme.css`:
+
+```css
+/* tokens/semantic.css */
+:root  { --highlight: var(--brand-100); }
+.dark  { --highlight: color-mix(in oklab, var(--brand-500) 18%, transparent); }
+```
+
+```css
+/* theme.css */
+@theme inline {
+  --color-highlight: var(--highlight);
+}
+```
+
+<Callout type="warn">
+Never write `--x: var(--x)` in `@theme`. The theme block emits onto `:root`, and
+so do the token files, so a same-name mapping is a self-reference on one
+element. That is invalid at computed-value time and silently resolves to
+nothing. This
+is why the source tokens use distinct names from the Tailwind namespaces that
+republish them: `--track-heading` becomes `--tracking-heading`, `--easing-out`
+becomes `--ease-out`, `--font-sans-src` becomes `--font-sans`.
+</Callout>

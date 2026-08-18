@@ -1,0 +1,192 @@
+/* Publishes the token layer as Tailwind utilities.
+ *
+ * `inline` is required: it emits references, so `.dark` and `[data-brand]` can
+ * re-point a utility at runtime. A plain `@theme` bakes in the light value and
+ * dark mode stops working.
+ *
+ * Left-hand names are Tailwind's namespaces, not free choices. Never write
+ * `--x: var(--x)`: this block lands on `:root` alongside the token files, so a
+ * same-name mapping is a self-reference that resolves to nothing. */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-overlay: var(--overlay);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-subtle: var(--primary-subtle);
+  --color-primary-subtle-foreground: var(--primary-subtle-foreground);
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-subtle: var(--destructive-subtle);
+  --color-destructive-subtle-foreground: var(--destructive-subtle-foreground);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-subtle: var(--success-subtle);
+  --color-success-subtle-foreground: var(--success-subtle-foreground);
+
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-subtle: var(--warning-subtle);
+  --color-warning-subtle-foreground: var(--warning-subtle-foreground);
+
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-subtle: var(--info-subtle);
+  --color-info-subtle-foreground: var(--info-subtle-foreground);
+
+  /* Prefer the semantic names above in components. A `bg-brand-600` will not
+   * follow a future theme change. */
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+  --color-brand-950: var(--brand-950);
+
+  --color-neutral-0: var(--neutral-0);
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-850: var(--neutral-850);
+  --color-neutral-900: var(--neutral-900);
+  --color-neutral-950: var(--neutral-950);
+  --color-neutral-1000: var(--neutral-1000);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-code: var(--code-background);
+  --color-code-foreground: var(--code-foreground);
+  --color-code-border: var(--code-border);
+
+  /* Every step is a multiple of one knob, so nested corners stay concentric at
+   * any radius setting. */
+  --radius-xs: calc(var(--radius) * 0.4);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --font-sans: var(--font-family-sans);
+  --font-mono: var(--font-family-mono);
+  --font-display: var(--font-family-display);
+  --font-heading: var(--font-family-display);
+
+  --text-2xs: var(--text-size-2xs);
+  --text-xs: var(--text-size-xs);
+  --text-sm: var(--text-size-sm);
+  --text-base: var(--text-size-base);
+  --text-lg: var(--text-size-lg);
+  --text-xl: var(--text-size-xl);
+  --text-2xl: var(--text-size-2xl);
+  --text-3xl: var(--text-size-3xl);
+  --text-4xl: var(--text-size-4xl);
+  --text-5xl: var(--text-size-5xl);
+  --text-6xl: var(--text-size-6xl);
+  --text-7xl: var(--text-size-7xl);
+
+  --font-weight-normal: var(--weight-normal);
+  --font-weight-medium: var(--weight-medium);
+  --font-weight-semibold: var(--weight-semibold);
+  --font-weight-bold: var(--weight-bold);
+
+  --tracking-display: var(--track-display);
+  --tracking-heading: var(--track-heading);
+  --tracking-subheading: var(--track-subheading);
+  --tracking-body: var(--track-body);
+  --tracking-label: var(--track-label);
+  --tracking-caption: var(--track-caption);
+  --tracking-caps: var(--track-caps);
+
+  --leading-display: var(--lead-display);
+  --leading-heading: var(--lead-heading);
+  --leading-subheading: var(--lead-subheading);
+  --leading-body: var(--lead-body);
+  --leading-prose: var(--lead-prose);
+  --leading-ui: var(--lead-ui);
+
+  /* Overrides Tailwind's built-in scale, so existing `shadow-md` call sites
+   * pick these up with no migration. */
+  --shadow-2xs: var(--elevation-1);
+  --shadow-xs: var(--elevation-1);
+  --shadow-sm: var(--elevation-2);
+  --shadow-md: var(--elevation-3);
+  --shadow-lg: var(--elevation-4);
+  --shadow-xl: var(--elevation-5);
+  --shadow-2xl: var(--elevation-5);
+  --shadow-hairline: var(--elevation-hairline);
+
+  --ease-out: var(--easing-out);
+  --ease-in-out: var(--easing-in-out);
+  --ease-hover: var(--easing-hover);
+  --ease-drawer: var(--easing-drawer);
+  --ease-spring: var(--easing-spring);
+  --ease-exit: var(--easing-exit);
+
+  /* What a bare `transition-*` uses when no duration or easing is given. */
+  --default-transition-duration: var(--duration-base);
+  --default-transition-timing-function: var(--easing-hover);
+
+  /* Tailwind reads `--transition-duration-*` for `duration-*`, not
+   * `--duration-*`. Mapping the latter defines variables nothing consults. */
+  --transition-duration-instant: var(--duration-instant);
+  --transition-duration-fast: var(--duration-fast);
+  --transition-duration-quick: var(--duration-quick);
+  --transition-duration-base: var(--duration-base);
+  --transition-duration-moderate: var(--duration-moderate);
+  --transition-duration-slow: var(--duration-slow);
+  --transition-duration-deliberate: var(--duration-deliberate);
+}

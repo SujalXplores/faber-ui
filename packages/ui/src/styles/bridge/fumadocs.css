@@ -1,0 +1,49 @@
+/* Fumadocs ships its own `--color-fd-*` palette. Left alone the docs site runs
+ * two unrelated color systems: chrome on Fumadocs' HSL grays, component
+ * previews on the kit's OKLCH tokens.
+ *
+ * The `.dark` block below is unlayered and so is Fumadocs', so it wins only on
+ * source order. This file must be imported after the Fumadocs imports. */
+
+:root,
+.dark {
+  --color-fd-background: var(--background);
+  --color-fd-foreground: var(--foreground);
+
+  --color-fd-muted: var(--muted);
+  --color-fd-muted-foreground: var(--muted-foreground);
+
+  --color-fd-popover: var(--popover);
+  --color-fd-popover-foreground: var(--popover-foreground);
+
+  --color-fd-card: var(--card);
+  --color-fd-card-foreground: var(--card-foreground);
+
+  --color-fd-border: var(--border);
+
+  --color-fd-primary: var(--primary);
+  --color-fd-primary-foreground: var(--primary-foreground);
+
+  --color-fd-secondary: var(--secondary);
+  --color-fd-secondary-foreground: var(--secondary-foreground);
+
+  --color-fd-accent: var(--accent);
+  --color-fd-accent-foreground: var(--accent-foreground);
+
+  --color-fd-ring: var(--ring);
+  --color-fd-overlay: var(--overlay);
+
+  --color-fd-info: var(--info);
+  --color-fd-warning: var(--warning);
+  --color-fd-error: var(--destructive);
+  --color-fd-success: var(--success);
+  --color-fd-idea: var(--warning);
+}
+
+/* Higher specificity than the `.dark` above, so it has to be answered in kind
+ * or the sidebar alone keeps Fumadocs' gray. */
+.dark #nd-sidebar {
+  --color-fd-muted: var(--surface-3);
+  --color-fd-secondary: var(--surface-3);
+  --color-fd-muted-foreground: var(--muted-foreground);
+}

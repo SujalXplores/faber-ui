@@ -64,14 +64,19 @@ Because the source lives in your repository, you can edit any component directly
 
 ## Theming
 
-Colors, radii, and fonts are driven by CSS variables defined in `packages/ui/src/styles/globals.css`. Override the `:root` and `.dark` tokens to retheme the entire kit without touching component source.
+The kit's colors, radii, spacing, type and motion are generated from a small
+set of knobs, so re-theming it does not mean editing components. The fastest
+version is a single attribute:
 
-```css
-:root {
-  --primary: oklch(0.457 0.24 277.023);
-  --radius: 0.625rem;
-}
+```html
+<html data-brand="emerald" data-neutral="stone" data-radius="lg">
 ```
+
+That re-derives every color in the kit from one hue: buttons, focus rings, the
+sidebar, charts, callouts and the documentation chrome.
+
+See [Theming](/docs/theming) for the token layers, the full list of presets,
+and how to add your own.
 
 ## Next steps
 
