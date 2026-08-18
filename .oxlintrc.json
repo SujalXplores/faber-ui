@@ -82,5 +82,20 @@
     "import/no-unassigned-import": "off",
     "unicorn/no-array-sort": "off",
     "react/no-unstable-nested-components": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/scripts/**"
+      ],
+      "rules": {
+        "import/no-nodejs-modules": "off",
+        "node/no-sync": "off",
+        "eslint/no-continue": "off",
+        "eslint/no-await-in-loop": "off",
+        "eslint/init-declarations": "off",
+        "unicorn/no-await-expression-member": "off"
+      }
+    }
+  ]
 }

@@ -31,3 +31,8 @@ jobs:
       - run: pnpm typecheck
 
       - run: pnpm build
+
+      - name: registry.json is up to date
+        run: |
+          pnpm --filter @workspace/ui registry:generate
+          git diff --exit-code -- packages/ui/registry.json

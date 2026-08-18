@@ -4,7 +4,8 @@
   "tasks": {
     "build": {
       "dependsOn": [
-        "^build"
+        "^build",
+        "@workspace/ui#registry"
       ],
       "inputs": [
         "$TURBO_DEFAULT$",
@@ -33,6 +34,14 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "registry": {
+      "cache": false,
+      "inputs": [
+        "src/**",
+        "scripts/**",
+        "registry.json"
+      ]
     }
   },
   "globalDependencies": [

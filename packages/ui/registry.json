@@ -1,0 +1,1216 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "faber-ui",
+  "homepage": "https://faber-ui.vercel.app",
+  "items": [
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "A vertically stacked set of expandable sections.",
+      "files": [
+        {
+          "path": "src/components/accordion.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/accordion.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "AlertDialog",
+      "description": "A modal dialog used for destructive confirmations.",
+      "files": [
+        {
+          "path": "src/components/alert-dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/alert-dialog.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "A callout for contextual feedback messages.",
+      "files": [
+        {
+          "path": "src/components/alert.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/alert.tsx"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "AspectRatio",
+      "description": "Maintains a consistent aspect ratio for media.",
+      "files": [
+        {
+          "path": "src/components/aspect-ratio.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/aspect-ratio.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "attachment",
+      "type": "registry:ui",
+      "title": "Attachment",
+      "description": "A file or attachment card with upload state and actions.",
+      "files": [
+        {
+          "path": "src/components/attachment.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/attachment.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "A user image with fallback and optional status badge.",
+      "files": [
+        {
+          "path": "src/components/avatar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/avatar.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "A small status descriptor for labels, counts, and categories.",
+      "files": [
+        {
+          "path": "src/components/badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/badge.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "A navigation trail showing the user's location in the app.",
+      "files": [
+        {
+          "path": "src/components/breadcrumb.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/breadcrumb.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "bubble",
+      "type": "registry:ui",
+      "title": "Bubble",
+      "description": "A chat-style message bubble with variants and alignment.",
+      "files": [
+        {
+          "path": "src/components/bubble.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/bubble.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "ButtonGroup",
+      "description": "A group of buttons with merged borders.",
+      "files": [
+        {
+          "path": "src/components/button-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button-group.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/separator.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Displays a button or a button-styled link with multiple variants and sizes.",
+      "files": [
+        {
+          "path": "src/components/button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "A date picker built on React DayPicker.",
+      "files": [
+        {
+          "path": "src/components/calendar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/calendar.tsx"
+        }
+      ],
+      "dependencies": [
+        "@remixicon/react",
+        "react-day-picker"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "A flexible container with header, content, and footer slots.",
+      "files": [
+        {
+          "path": "src/components/card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/card.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "A scrollable carousel powered by Embla.",
+      "files": [
+        {
+          "path": "src/components/carousel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/carousel.tsx"
+        }
+      ],
+      "dependencies": [
+        "@remixicon/react",
+        "embla-carousel-react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "A Recharts wrapper with tooltip, legend, and style helpers.",
+      "files": [
+        {
+          "path": "src/components/chart.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chart.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A controlled checkbox with a check indicator.",
+      "files": [
+        {
+          "path": "src/components/checkbox.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/checkbox.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "An expandable container for hiding content.",
+      "files": [
+        {
+          "path": "src/components/collapsible.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/collapsible.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "A searchable input with a popup list of options.",
+      "files": [
+        {
+          "path": "src/components/combobox.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/combobox.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/input-group.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "A command palette built on cmdk.",
+      "files": [
+        {
+          "path": "src/components/command.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/command.tsx"
+        }
+      ],
+      "dependencies": [
+        "@remixicon/react",
+        "cmdk"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/dialog.json",
+        "https://faber-ui.vercel.app/r/input-group.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "ContextMenu",
+      "description": "A right-click menu for contextual actions.",
+      "files": [
+        {
+          "path": "src/components/context-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/context-menu.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A modal window layered above the page content.",
+      "files": [
+        {
+          "path": "src/components/dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dialog.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "direction",
+      "type": "registry:ui",
+      "title": "Direction",
+      "description": "A re-export of the Base UI direction provider for RTL and LTR layouts.",
+      "files": [
+        {
+          "path": "src/components/direction.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/direction.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "A swipeable sheet that slides in from a screen edge.",
+      "files": [
+        {
+          "path": "src/components/drawer.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/drawer.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "DropdownMenu",
+      "description": "A menu of actions revealed by a trigger click.",
+      "files": [
+        {
+          "path": "src/components/dropdown-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dropdown-menu.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "A placeholder for empty states.",
+      "files": [
+        {
+          "path": "src/components/empty.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/empty.tsx"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "A layout primitive for form fields.",
+      "files": [
+        {
+          "path": "src/components/field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/field.tsx"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/label.json",
+        "https://faber-ui.vercel.app/r/separator.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "HoverCard",
+      "description": "A preview revealed on hover.",
+      "files": [
+        {
+          "path": "src/components/hover-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hover-card.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "InputGroup",
+      "description": "Composes an input with leading and trailing addons.",
+      "files": [
+        {
+          "path": "src/components/input-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input-group.tsx"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/input.json",
+        "https://faber-ui.vercel.app/r/textarea.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "InputOTP",
+      "description": "An accessible one-time password input.",
+      "files": [
+        {
+          "path": "src/components/input-otp.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input-otp.tsx"
+        }
+      ],
+      "dependencies": [
+        "@remixicon/react",
+        "input-otp"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "A text input field with focus, invalid, and disabled states.",
+      "files": [
+        {
+          "path": "src/components/input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "A flexible list item with media, content, and actions.",
+      "files": [
+        {
+          "path": "src/components/item.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/item.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/separator.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Displays a keyboard keycap.",
+      "files": [
+        {
+          "path": "src/components/kbd.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/kbd.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "A styled label element for form fields.",
+      "files": [
+        {
+          "path": "src/components/label.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/label.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "marker",
+      "type": "registry:ui",
+      "title": "Marker",
+      "description": "A horizontal marker or label row with an optional icon.",
+      "files": [
+        {
+          "path": "src/components/marker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/marker.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "A horizontal menu bar, like the menus in a macOS application.",
+      "files": [
+        {
+          "path": "src/components/menubar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/menubar.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/dropdown-menu.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "message-scroller",
+      "type": "registry:ui",
+      "title": "Message Scroller",
+      "description": "A scrollable message container with auto-scroll and a jump button.",
+      "files": [
+        {
+          "path": "src/components/message-scroller.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/message-scroller.tsx"
+        }
+      ],
+      "dependencies": [
+        "@remixicon/react",
+        "@shadcn/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "message",
+      "type": "registry:ui",
+      "title": "Message",
+      "description": "A chat-style message row with avatar and content slots.",
+      "files": [
+        {
+          "path": "src/components/message.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/message.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "title": "NativeSelect",
+      "description": "A styled native HTML select.",
+      "files": [
+        {
+          "path": "src/components/native-select.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/native-select.tsx"
+        }
+      ],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "A navigation menu with a shared viewport for content panels.",
+      "files": [
+        {
+          "path": "src/components/navigation-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/navigation-menu.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "@remixicon/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Navigation for paginated content.",
+      "files": [
+        {
+          "path": "src/components/pagination.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pagination.tsx"
+        }
+      ],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "A floating panel anchored to a trigger.",
+      "files": [
+        {
+          "path": "src/components/popover.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/popover.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "A horizontal bar showing completion of a task.",
+      "files": [
+        {
+          "path": "src/components/progress.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/progress.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "RadioGroup",
+      "description": "A group of mutually exclusive radio buttons.",
+      "files": [
+        {
+          "path": "src/components/radio-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/radio-group.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Resizable panels with drag handles.",
+      "files": [
+        {
+          "path": "src/components/resizable.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/resizable.tsx"
+        }
+      ],
+      "dependencies": [
+        "react-resizable-panels"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "ScrollArea",
+      "description": "A custom-styled scrollable area.",
+      "files": [
+        {
+          "path": "src/components/scroll-area.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-area.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "A custom dropdown select.",
+      "files": [
+        {
+          "path": "src/components/select.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/select.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "A visual divider between content sections.",
+      "files": [
+        {
+          "path": "src/components/separator.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/separator.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "A panel that slides in from a screen edge.",
+      "files": [
+        {
+          "path": "src/components/sheet.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sheet.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "A composable sidebar system with collapsible modes and a trigger.",
+      "files": [
+        {
+          "path": "src/components/sidebar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sidebar.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "@remixicon/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/input.json",
+        "https://faber-ui.vercel.app/r/separator.json",
+        "https://faber-ui.vercel.app/r/sheet.json",
+        "https://faber-ui.vercel.app/r/skeleton.json",
+        "https://faber-ui.vercel.app/r/tooltip.json",
+        "https://faber-ui.vercel.app/r/use-mobile.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "A placeholder shape for loading states.",
+      "files": [
+        {
+          "path": "src/components/skeleton.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/skeleton.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "A range slider for selecting a value.",
+      "files": [
+        {
+          "path": "src/components/slider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/slider.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Sonner",
+      "description": "Toast notifications powered by sonner.",
+      "files": [
+        {
+          "path": "src/components/sonner.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sonner.tsx"
+        }
+      ],
+      "dependencies": [
+        "@remixicon/react",
+        "next-themes",
+        "sonner"
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "An animated loading indicator.",
+      "files": [
+        {
+          "path": "src/components/spinner.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/spinner.tsx"
+        }
+      ],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A toggle switch for binary on/off states.",
+      "files": [
+        {
+          "path": "src/components/switch.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/switch.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "A styled HTML table.",
+      "files": [
+        {
+          "path": "src/components/table.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/table.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Switch between panels of content with a tab list.",
+      "files": [
+        {
+          "path": "src/components/tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tabs.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "A multi-line text input that grows with its content.",
+      "files": [
+        {
+          "path": "src/components/textarea.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/textarea.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "ToggleGroup",
+      "description": "A group of mutually exclusive or independent toggles.",
+      "files": [
+        {
+          "path": "src/components/toggle-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/toggle-group.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/toggle.json",
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "A two-state button.",
+      "files": [
+        {
+          "path": "src/components/toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/toggle.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A small label that appears on hover or focus.",
+      "files": [
+        {
+          "path": "src/components/tooltip.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tooltip.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/utils.json"
+      ]
+    },
+    {
+      "name": "use-mobile",
+      "type": "registry:hook",
+      "title": "Use Mobile",
+      "description": "Tracks whether the viewport is below the 768px mobile breakpoint.",
+      "files": [
+        {
+          "path": "src/hooks/use-mobile.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-mobile.ts"
+        }
+      ]
+    },
+    {
+      "name": "motion",
+      "type": "registry:lib",
+      "title": "Motion",
+      "description": "Easing and duration tokens for JavaScript-driven animation, mirroring the motion CSS tokens.",
+      "files": [
+        {
+          "path": "src/lib/motion.ts",
+          "type": "registry:lib",
+          "target": "lib/motion.ts"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "description": "The cn helper that merges class names through clsx and tailwind-merge.",
+      "files": [
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
+        }
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ]
+    }
+  ]
+}

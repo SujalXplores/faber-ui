@@ -7,9 +7,14 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "turbo format",
-    "typecheck": "turbo typecheck"
+    "typecheck": "turbo typecheck",
+    "registry": "turbo registry",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "tag-release": "changeset tag"
   },
   "devDependencies": {
+    "@changesets/cli": "3.0.0",
     "@workspace/typescript-config": "workspace:*",
     "next": "16.3.0",
     "oxlint": "1.77.0",
