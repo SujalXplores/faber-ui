@@ -1,16 +1,14 @@
 /* Stylesheet entry point. Import order is significant:
  *
  *   presets after primitives   both are 0-1-0, so source order picks the winner
- *   bridge after fumadocs      its `.dark` competes with an equally specific one
- *   semantic after primitives  semantic tokens dereference the ramps */
+ *   semantic after primitives  semantic tokens dereference the ramps
+ *
+ * The Fumadocs preset and its bridge live in apps/web, which is what depends on
+ * Fumadocs. */
 
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-
-@import "fumadocs-ui/css/neutral.css";
-@import "fumadocs-ui/css/preset.css";
-@import "@fumadocs/story/css/preset.css";
 
 @import "./tokens/primitives.css";
 @import "./tokens/presets.css";
@@ -18,8 +16,6 @@
 @import "./tokens/motion.css";
 @import "./tokens/elevation.css";
 @import "./tokens/semantic.css";
-
-@import "./bridge/fumadocs.css";
 
 @import "./theme.css";
 @import "./utilities.css";

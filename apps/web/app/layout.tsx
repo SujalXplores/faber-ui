@@ -1,7 +1,7 @@
 import { Geist_Mono, Inter } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 
-import "@workspace/ui/globals.css";
+import "./globals.css";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import { cn } from "@workspace/ui/lib/utils";
 import { Toaster } from "@workspace/ui/components/sonner";
@@ -67,8 +67,10 @@ export default function RootLayout({
       className={cn("antialiased", fontSans.variable, fontMono.variable)}
     >
       <body className="flex min-h-svh flex-col">
-        <RootProvider>{children}</RootProvider>
-        <Toaster />
+        <RootProvider>
+          {children}
+          <Toaster />
+        </RootProvider>
       </body>
     </html>
   );

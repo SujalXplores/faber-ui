@@ -1,12 +1,15 @@
 "use client";
 
 import {
+  Bar,
+  BarChart,
+  CartesianGrid,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  XAxis,
   type ChartConfig,
 } from "@workspace/ui/components/chart";
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 
 const chartData = [
   { month: "January", desktop: 186 },

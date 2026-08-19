@@ -372,3 +372,25 @@ export {
   ChartLegendContent,
   ChartStyle,
 }
+
+export {
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  Line,
+  LineChart,
+  Pie,
+  PieChart,
+  PolarAngleAxis,
+  PolarGrid,
+  RadialBar,
+  RadialBarChart,
+  Radar,
+  RadarChart,
+  ReferenceLine,
+  XAxis,
+  YAxis,
+} from "recharts"
