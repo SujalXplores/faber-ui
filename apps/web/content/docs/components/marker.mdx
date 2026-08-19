@@ -1,0 +1,85 @@
+---
+title: Marker
+description: A horizontal marker or label row with an optional icon.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as MarkerModule from "@workspace/ui/components/marker";
+
+import {
+  Marker,
+  MarkerContent,
+  MarkerIcon,
+} from "@workspace/ui/components/marker";
+import { RiStarLine } from "@remixicon/react";
+
+`Marker` is a horizontal label row. It supports border, default, and separator variants, with an optional leading icon.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/marker.json
+```
+
+## Usage
+
+```tsx
+import {
+  Marker,
+  MarkerContent,
+  MarkerIcon,
+} from "@workspace/ui/components/marker";
+import { RiStarLine } from "@remixicon/react";
+
+export default function Example() {
+  return (
+    <Marker>
+      <MarkerIcon>
+        <RiStarLine />
+      </MarkerIcon>
+      <MarkerContent>Featured</MarkerContent>
+    </Marker>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <Marker>
+    <MarkerContent>Section label</MarkerContent>
+  </Marker>
+</div>
+
+### With icon
+
+<div className="not-prose demo">
+  <Marker>
+    <MarkerIcon>
+      <RiStarLine />
+    </MarkerIcon>
+    <MarkerContent>Featured</MarkerContent>
+  </Marker>
+</div>
+
+### Variants
+
+<div className="not-prose demo">
+  <div className="flex flex-col gap-2">
+    <Marker variant="default">
+      <MarkerContent>Default</MarkerContent>
+    </Marker>
+    <Marker variant="border">
+      <MarkerContent>Border</MarkerContent>
+    </Marker>
+    <Marker variant="separator">
+      <MarkerContent>Separator</MarkerContent>
+    </Marker>
+  </div>
+</div>
+
+## API
+
+<ApiTable module={MarkerModule} />

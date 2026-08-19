@@ -1,0 +1,65 @@
+---
+title: Accordion
+description: A vertically stacked set of expandable sections.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as AccordionModule from "@workspace/ui/components/accordion";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@workspace/ui/components/accordion";
+
+`Accordion` is built on the Base UI `Accordion` primitive. It renders a vertically stacked set of expandable sections with animated open/close transitions.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/accordion.json
+```
+
+## Usage
+
+```tsx
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@workspace/ui/components/accordion";
+
+export default function Example() {
+  return (
+    <Accordion>
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionContent>Yes. It adheres to WAI-ARIA standards.</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <Accordion>
+    <AccordionItem value="item-1">
+      <AccordionTrigger>Is it accessible?</AccordionTrigger>
+      <AccordionContent>Yes. It adheres to WAI-ARIA standards.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2">
+      <AccordionTrigger>Is it styled?</AccordionTrigger>
+      <AccordionContent>Yes. It comes with default styles.</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</div>
+
+## API
+
+<ApiTable module={AccordionModule} />

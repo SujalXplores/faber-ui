@@ -1,0 +1,121 @@
+/* Opt-in rather than a blanket `button:active` rule, which would fight any
+ * component that animates its own transform. */
+@utility press {
+  transition: var(--transition-press);
+
+  &:active:not(:disabled, [aria-disabled="true"]) {
+    transform: scale(var(--scale-press));
+  }
+}
+
+@utility press-subtle {
+  transition: var(--transition-press);
+
+  &:active:not(:disabled, [aria-disabled="true"]) {
+    transform: scale(0.99);
+  }
+}
+
+/* Replaces `transition-all`. Sets only `transition-property`, so a `duration-*`
+ * class composes instead of fighting it for the same declaration. */
+@utility transition-control {
+  transition-property:
+    color, background-color, border-color, text-decoration-color, box-shadow,
+    opacity;
+}
+
+@utility transition-control-transform {
+  transition-property:
+    color, background-color, border-color, text-decoration-color, box-shadow,
+    opacity, transform;
+}
+
+@utility surface-popup {
+  position: relative;
+  background-color: color-mix(in oklab, var(--popover) 70%, transparent);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    backdrop-filter: blur(40px) saturate(1.5);
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    background-color: var(--popover);
+  }
+}
+
+@utility hairline {
+  box-shadow: var(--elevation-hairline);
+}
+
+/* Set `--index` per item to cascade siblings in. */
+@utility stagger-in {
+  opacity: 0;
+  animation: faber-stagger-in var(--duration-moderate) var(--easing-out)
+    forwards;
+  animation-delay: calc(var(--index, 0) * var(--stagger-step));
+}
+
+@keyframes faber-stagger-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(var(--scale-enter));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@utility scrollbar-subtle {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--border-strong);
+    border: 2px solid transparent;
+    border-radius: 9999px;
+    background-clip: content-box;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: var(--muted-foreground);
+  }
+}
+
+@utility mask-fade-b {
+  mask-image: linear-gradient(to bottom, black 0%, black 82%, transparent 100%);
+}
+
+@utility mask-fade-t {
+  mask-image: linear-gradient(to top, black 0%, black 82%, transparent 100%);
+}
+
+@utility demo {
+  position: relative;
+  isolation: isolate;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  background-color: var(--surface-2);
+  padding: calc(var(--spacing) * 8);
+  color: var(--foreground);
+  min-height: calc(var(--spacing) * 28);
+}
+
+@utility demo-flat {
+  background-color: transparent;
+}

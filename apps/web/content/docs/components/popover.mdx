@@ -1,0 +1,66 @@
+---
+title: Popover
+description: A floating panel anchored to a trigger.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as PopoverModule from "@workspace/ui/components/popover";
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "@workspace/ui/components/popover";
+
+`Popover` is built on the Base UI `Popover` primitive. It displays floating content anchored to a trigger element.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/popover.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@workspace/ui/components/popover";
+
+export default function Example() {
+  return (
+    <Popover>
+      <PopoverTrigger render={<Button variant="outline">Open popover</Button>} />
+      <PopoverContent>Popover content.</PopoverContent>
+    </Popover>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <Popover>
+    <PopoverTrigger render={<Button variant="outline">Open popover</Button>} />
+    <PopoverContent>
+      <PopoverHeader>
+        <PopoverTitle>Popover title</PopoverTitle>
+      </PopoverHeader>
+      <p className="text-sm text-muted-foreground">This is the popover content.</p>
+    </PopoverContent>
+  </Popover>
+</div>
+
+## API
+
+<ApiTable module={PopoverModule} />

@@ -1,0 +1,61 @@
+---
+title: Collapsible
+description: An expandable container for hiding content.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as CollapsibleModule from "@workspace/ui/components/collapsible";
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@workspace/ui/components/collapsible";
+
+`Collapsible` is built on the Base UI `Collapsible` primitive. It toggles the visibility of content with animated transitions.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/collapsible.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@workspace/ui/components/collapsible";
+
+export default function Example() {
+  return (
+    <Collapsible>
+      <CollapsibleTrigger render={<Button variant="outline">Toggle</Button>} />
+      <CollapsibleContent>Hidden content.</CollapsibleContent>
+    </Collapsible>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <Collapsible>
+    <CollapsibleTrigger render={<Button variant="outline">Toggle</Button>} />
+    <CollapsibleContent className="pt-2 text-sm text-muted-foreground">
+      This content is revealed when the trigger is activated.
+    </CollapsibleContent>
+  </Collapsible>
+</div>
+
+## API
+
+<ApiTable module={CollapsibleModule} />

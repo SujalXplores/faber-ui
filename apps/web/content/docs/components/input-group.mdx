@@ -1,0 +1,89 @@
+---
+title: InputGroup
+description: Composes an input with leading and trailing addons.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as InputGroupModule from "@workspace/ui/components/input-group";
+
+import { Input } from "@workspace/ui/components/input";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+} from "@workspace/ui/components/input-group";
+
+`InputGroup` composes an input with leading and trailing addons, such as icons, text, or buttons.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/input-group.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Input } from "@workspace/ui/components/input";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@workspace/ui/components/input-group";
+
+export default function Example() {
+  return (
+    <InputGroup>
+      <InputGroupAddon>$</InputGroupAddon>
+      <InputGroupInput placeholder="0.00" />
+    </InputGroup>
+  );
+}
+```
+
+## Examples
+
+### With text addon
+
+<div className="not-prose demo">
+  <InputGroup>
+    <InputGroupAddon>$</InputGroupAddon>
+    <InputGroupInput placeholder="0.00" />
+  </InputGroup>
+</div>
+
+### With button addon
+
+<div className="not-prose demo">
+  <InputGroup>
+    <InputGroupInput placeholder="Search" />
+    <InputGroupButton variant="outline">Go</InputGroupButton>
+  </InputGroup>
+</div>
+
+### With both sides
+
+<div className="not-prose demo">
+  <InputGroup>
+    <InputGroupAddon>https://</InputGroupAddon>
+    <InputGroupInput placeholder="example.com" />
+    <InputGroupAddon>.com</InputGroupAddon>
+  </InputGroup>
+</div>
+
+### Aligned addon
+
+<div className="not-prose demo">
+  <InputGroup>
+    <InputGroupInput placeholder="0.00" />
+    <InputGroupAddon align="w-end">USD</InputGroupAddon>
+  </InputGroup>
+</div>
+
+## API
+
+<ApiTable module={InputGroupModule} />

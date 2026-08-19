@@ -1,0 +1,81 @@
+---
+title: Empty
+description: A placeholder for empty states.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as EmptyModule from "@workspace/ui/components/empty";
+
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@workspace/ui/components/empty";
+
+`Empty` renders a placeholder for empty states, with slots for media, a title, a description, and custom content.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/empty.json
+```
+
+## Usage
+
+```tsx
+import {
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@workspace/ui/components/empty";
+
+export default function Example() {
+  return (
+    <Empty>
+      <EmptyHeader>
+        <EmptyMedia />
+        <EmptyTitle>No results</EmptyTitle>
+        <EmptyDescription>Try adjusting your search.</EmptyDescription>
+      </EmptyHeader>
+    </Empty>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <Empty>
+    <EmptyHeader>
+      <EmptyMedia />
+      <EmptyTitle>No results</EmptyTitle>
+      <EmptyDescription>Try adjusting your search or filters.</EmptyDescription>
+    </EmptyHeader>
+  </Empty>
+</div>
+
+### With content
+
+<div className="not-prose demo">
+  <Empty>
+    <EmptyHeader>
+      <EmptyMedia variant="icon" />
+      <EmptyTitle>Your inbox is empty</EmptyTitle>
+      <EmptyDescription>New messages will appear here.</EmptyDescription>
+    </EmptyHeader>
+    <EmptyContent>
+      <button className="rounded-md bg-primary px-4 py-2 text-primary-foreground">Refresh</button>
+    </EmptyContent>
+  </Empty>
+</div>
+
+## API
+
+<ApiTable module={EmptyModule} />

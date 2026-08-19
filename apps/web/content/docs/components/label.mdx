@@ -1,0 +1,47 @@
+---
+title: Label
+description: A styled label element for form fields.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as LabelModule from "@workspace/ui/components/label";
+
+import { Input } from "@workspace/ui/components/input";
+import { Label } from "@workspace/ui/components/label";
+
+`Label` is a thin wrapper around the native `<label>` element. It dims automatically when its peer input is disabled.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/label.json
+```
+
+## Usage
+
+```tsx
+import { Input } from "@workspace/ui/components/input";
+import { Label } from "@workspace/ui/components/label";
+
+export default function Example() {
+  return (
+    <div className="flex flex-col gap-1">
+      <Label htmlFor="email">Email</Label>
+      <Input id="email" type="email" />
+    </div>
+  );
+}
+```
+
+## Examples
+
+### With an input
+
+<div className="not-prose demo flex flex-col gap-1">
+  <Label htmlFor="demo">Email address</Label>
+  <Input id="demo" type="email" placeholder="you@example.com" />
+</div>
+
+## API
+
+The `Label` accepts all props of a native `<label>` element.

@@ -1,0 +1,93 @@
+---
+title: Field
+description: A layout primitive for form fields.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as FieldModule from "@workspace/ui/components/field";
+
+import { Input } from "@workspace/ui/components/input";
+import { Label } from "@workspace/ui/components/label";
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@workspace/ui/components/field";
+
+`Field` is a layout primitive for composing form fields with labels, descriptions, and error messages.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/field.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Input } from "@workspace/ui/components/input";
+import { Field, FieldLabel } from "@workspace/ui/components/field";
+
+export default function Example() {
+  return (
+    <Field>
+      <FieldLabel>Email</FieldLabel>
+      <Input placeholder="you@example.com" />
+    </Field>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <Field>
+    <FieldLabel>Email</FieldLabel>
+    <Input placeholder="you@example.com" />
+    <FieldDescription>We will never share your email.</FieldDescription>
+  </Field>
+</div>
+
+### With error
+
+<div className="not-prose demo">
+  <Field invalid>
+    <FieldLabel>Email</FieldLabel>
+    <Input placeholder="you@example.com" />
+    <FieldError>Enter a valid email address.</FieldError>
+  </Field>
+</div>
+
+### Horizontal
+
+<div className="not-prose demo">
+  <Field orientation="horizontal">
+    <FieldLabel>Username</FieldLabel>
+    <Input placeholder="username" />
+  </Field>
+</div>
+
+### Field group
+
+<div className="not-prose demo">
+  <FieldGroup>
+    <Field>
+      <FieldLabel>First name</FieldLabel>
+      <Input placeholder="Jane" />
+    </Field>
+    <Field>
+      <FieldLabel>Last name</FieldLabel>
+      <Input placeholder="Doe" />
+    </Field>
+  </FieldGroup>
+</div>
+
+## API
+
+<ApiTable module={FieldModule} />

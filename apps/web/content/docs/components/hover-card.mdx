@@ -1,0 +1,67 @@
+---
+title: HoverCard
+description: A preview revealed on hover.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as HoverCardModule from "@workspace/ui/components/hover-card";
+
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@workspace/ui/components/hover-card";
+
+`HoverCard` is built on the Base UI `PreviewCard` primitive. It displays additional content when the user hovers over a trigger.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/hover-card.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@workspace/ui/components/hover-card";
+
+export default function Example() {
+  return (
+    <HoverCard>
+      <HoverCardTrigger>Hover me</HoverCardTrigger>
+      <HoverCardContent>Additional content.</HoverCardContent>
+    </HoverCard>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <HoverCard>
+    <HoverCardTrigger className="cursor-pointer text-sm font-medium underline">
+      Hover me
+    </HoverCardTrigger>
+    <HoverCardContent>
+      <div className="flex gap-3">
+        <div className="size-10 rounded-full bg-muted" />
+        <div>
+          <p className="text-sm font-medium">Faber UI</p>
+          <p className="text-sm text-muted-foreground">A component library.</p>
+        </div>
+      </div>
+    </HoverCardContent>
+  </HoverCard>
+</div>
+
+## API
+
+<ApiTable module={HoverCardModule} />

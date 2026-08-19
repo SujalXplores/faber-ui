@@ -1,5 +1,14 @@
 {
-  "cSpell.words": ["noninteractive", "nums", "remixicon"],
+  "cSpell.words": [
+    "Faber",
+    "fumadocs",
+    "llms",
+    "noninteractive",
+    "nums",
+    "remixicon",
+    "shadcn"
+  ],
+  "css.lint.unknownAtRules": "ignore",
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {

@@ -1,0 +1,55 @@
+---
+title: Calendar
+description: A date picker built on React DayPicker.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as CalendarModule from "@workspace/ui/components/calendar";
+
+import { Calendar } from "@workspace/ui/components/calendar";
+
+`Calendar` is built on React DayPicker. It renders an accessible monthly calendar for selecting single dates, ranges, or multiple dates.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/calendar.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import { Calendar } from "@workspace/ui/components/calendar";
+
+export default function Example() {
+  const [date, setDate] = useState<Date | undefined>(new Date());
+  return <Calendar mode="single" selected={date} onSelect={setDate} />;
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <Calendar mode="single" defaultSelected={new Date()} />
+</div>
+
+### Multiple
+
+<div className="not-prose demo">
+  <Calendar mode="multiple" defaultSelected={[new Date()]} />
+</div>
+
+### Range
+
+<div className="not-prose demo">
+  <Calendar mode="range" defaultSelected={{ from: new Date() }} />
+</div>
+
+## API
+
+<ApiTable module={CalendarModule} />

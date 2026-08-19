@@ -1,0 +1,90 @@
+---
+title: Table
+description: A styled HTML table.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as TableModule from "@workspace/ui/components/table";
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@workspace/ui/components/table";
+
+`Table` is a styled wrapper around the native HTML table elements, with consistent spacing and borders.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/table.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@workspace/ui/components/table";
+
+export default function Example() {
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Name</TableHead>
+          <TableHead>Email</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>Jane Doe</TableCell>
+          <TableCell>jane@example.com</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Name</TableHead>
+        <TableHead>Email</TableHead>
+        <TableHead>Role</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>Jane Doe</TableCell>
+        <TableCell>jane@example.com</TableCell>
+        <TableCell>Admin</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>John Smith</TableCell>
+        <TableCell>john@example.com</TableCell>
+        <TableCell>Member</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</div>
+
+## API
+
+<ApiTable module={TableModule} />

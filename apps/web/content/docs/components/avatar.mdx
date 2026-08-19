@@ -1,0 +1,90 @@
+---
+title: Avatar
+description: A user image with fallback and optional status badge.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as AvatarModule from "@workspace/ui/components/avatar";
+import { Preview } from "@/components/preview";
+
+import {
+  Avatar,
+  AvatarBadge,
+  AvatarFallback,
+  AvatarGroup,
+  AvatarImage,
+} from "@workspace/ui/components/avatar";
+
+import { avatarUsage, avatarSizes, avatarBadge, avatarGroup } from "@/examples/avatar";
+
+`Avatar` is built on the Base UI `Avatar` primitive. It shows an image when available and falls back to initials or placeholder content while loading or on error.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/avatar.json
+```
+
+## Usage
+
+<Preview
+  code={avatarUsage}
+>
+  <Avatar>
+    <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+    <AvatarFallback>SC</AvatarFallback>
+  </Avatar>
+</Preview>
+
+## Examples
+
+### Sizes
+
+<Preview
+  code={avatarSizes}
+>
+  <Avatar size="sm">
+    <AvatarFallback>S</AvatarFallback>
+  </Avatar>
+  <Avatar>
+    <AvatarFallback>M</AvatarFallback>
+  </Avatar>
+  <Avatar size="lg">
+    <AvatarFallback>L</AvatarFallback>
+  </Avatar>
+</Preview>
+
+### With a status badge
+
+<Preview
+  code={avatarBadge}
+>
+  <Avatar>
+    <AvatarFallback>AB</AvatarFallback>
+    <AvatarBadge />
+  </Avatar>
+</Preview>
+
+### Avatar group
+
+Stack multiple avatars with `AvatarGroup`:
+
+<Preview
+  code={avatarGroup}
+>
+  <AvatarGroup>
+    <Avatar>
+      <AvatarFallback>A</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarFallback>B</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarFallback>C</AvatarFallback>
+    </Avatar>
+  </AvatarGroup>
+</Preview>
+
+## API
+
+<ApiTable module={AvatarModule} />

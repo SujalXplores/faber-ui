@@ -1,0 +1,80 @@
+---
+title: Getting Started
+description: Install Faber UI and add your first component.
+---
+
+import { Steps } from "fumadocs-ui/components/steps";
+
+## Prerequisites
+
+Faber UI requires the following tools installed on your machine:
+
+- Node.js 20 or newer
+- pnpm 10 or newer
+- Tailwind CSS v4
+
+The documentation app (`apps/web`) runs on Next.js 16 with Turbopack.
+
+## Add a component
+
+<Steps>
+
+### Run the shadcn CLI
+
+From your own project, point the shadcn CLI at the Faber UI registry:
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/button.json
+```
+
+The CLI reads your `components.json` for aliases, resolves any components the item depends on, installs the npm packages it needs, and copies the source into your project. Nothing is added to your dependency tree beyond those packages.
+
+### Import it
+
+The component lands under your configured `ui` alias:
+
+```tsx
+import { Button } from "@/components/ui/button";
+```
+
+Working inside this repository instead of your own? Run the same command from
+`packages/ui`, where every file in `src/components/` is reachable as
+`@workspace/ui/components/<name>` through the `./components/*` export.
+
+### Use it in your app
+
+Import the component from the workspace package and render it:
+
+```tsx
+import { Button } from "@workspace/ui/components/button";
+
+export default function Page() {
+  return <Button variant="default">Hello</Button>;
+}
+```
+
+</Steps>
+
+## Customizing a component
+
+Because the source lives in your repository, you can edit any component directly. Open `packages/ui/src/components/button.tsx` and adjust the `buttonVariants` cva config, the className, or the props. Changes apply everywhere the component is imported.
+
+## Theming
+
+The kit's colors, radii, spacing, type and motion are generated from a small
+set of knobs, so re-theming it does not mean editing components. The fastest
+version is a single attribute:
+
+```html
+<html data-brand="emerald" data-neutral="stone" data-radius="lg">
+```
+
+That re-derives every color in the kit from one hue: buttons, focus rings, the
+sidebar, charts, callouts and the documentation chrome.
+
+See [Theming](/docs/theming) for the token layers, the full list of presets,
+and how to add your own.
+
+## Next steps
+
+Now that you have a component running, explore the full catalog in the [Components](/docs/components/button) section.

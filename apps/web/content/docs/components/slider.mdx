@@ -1,0 +1,45 @@
+---
+title: Slider
+description: A range slider for selecting a value.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as SliderModule from "@workspace/ui/components/slider";
+
+import { Slider } from "@workspace/ui/components/slider";
+
+`Slider` is built on the Base UI `Slider` primitive. It renders a range input for selecting a numeric value between a minimum and maximum.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/slider.json
+```
+
+## Usage
+
+```tsx
+import { Slider } from "@workspace/ui/components/slider";
+
+export default function Example() {
+  return <Slider defaultValue={[50]} max={100} step={1} />;
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <Slider defaultValue={[50]} max={100} step={1} />
+</div>
+
+### Range
+
+<div className="not-prose demo">
+  <Slider defaultValue={[25, 75]} max={100} step={1} />
+</div>
+
+## API
+
+<ApiTable module={SliderModule} />

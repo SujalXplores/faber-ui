@@ -1,0 +1,106 @@
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Or a sticky header covers the heading an anchor link jumped to. */
+    scroll-padding-top: 5rem;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+
+    font-family: var(--font-family-sans);
+    line-height: var(--lead-body);
+    letter-spacing: var(--track-body);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-family-display);
+    letter-spacing: var(--track-heading);
+    line-height: var(--lead-heading);
+    text-wrap: balance;
+  }
+
+  h5,
+  h6 {
+    letter-spacing: var(--track-subheading);
+    line-height: var(--lead-subheading);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: var(--font-family-mono);
+    font-feature-settings: "calt" 0;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  /* Bare interactive elements only. Kit components draw focus with
+   * `focus-visible:ring-*`, and a global outline on top renders two rings. */
+  a:focus-visible,
+  summary:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
+    outline: var(--ring-width) solid var(--ring);
+    outline-offset: var(--ring-offset);
+    border-radius: var(--radius);
+  }
+
+  ::selection {
+    background-color: var(--primary-subtle);
+    color: var(--primary-subtle-foreground);
+  }
+
+  img,
+  svg,
+  video,
+  canvas,
+  picture {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+/* The duration tokens already collapse under reduced motion. This catches what
+ * tokens cannot reach: third-party CSS, and loops that stay distracting however
+ * short each cycle is. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Shiki emits both themes as variables on every token and expects the consumer
+ * to pick one. Without this the dark colors are in the DOM but never applied. */
+.dark .shiki,
+.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}

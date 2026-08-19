@@ -1,0 +1,66 @@
+---
+title: Input
+description: A text input field with focus, invalid, and disabled states.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as InputModule from "@workspace/ui/components/input";
+
+import { Input } from "@workspace/ui/components/input";
+
+`Input` wraps the Base UI `Input` primitive with the Faber UI styling tokens. It supports all native input attributes including `type`, `placeholder`, `disabled`, and `aria-invalid`.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/input.json
+```
+
+## Usage
+
+```tsx
+import { Input } from "@workspace/ui/components/input";
+
+export default function Example() {
+  return <Input type="email" placeholder="you@example.com" />;
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <Input placeholder="you@example.com" />
+</div>
+
+### States
+
+<div className="not-prose demo flex flex-col gap-3">
+  <Input placeholder="Default" />
+  <Input placeholder="Disabled" disabled />
+  <Input placeholder="Invalid" aria-invalid />
+</div>
+
+### With a label
+
+Combine `Input` with `Label` and `Field` for accessible form rows:
+
+```tsx
+import { Field } from "@workspace/ui/components/field";
+import { Input } from "@workspace/ui/components/input";
+import { Label } from "@workspace/ui/components/label";
+
+export default function Example() {
+  return (
+    <Field>
+      <Label htmlFor="name">Name</Label>
+      <Input id="name" placeholder="Ada Lovelace" />
+    </Field>
+  );
+}
+```
+
+## API
+
+The `Input` accepts all props of a native `<input>` element, plus a `className` prop merged with `tailwind-merge`.

@@ -1,0 +1,49 @@
+---
+title: Switch
+description: A toggle switch for binary on/off states.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as SwitchModule from "@workspace/ui/components/switch";
+
+import { Switch } from "@workspace/ui/components/switch";
+
+`Switch` is built on the Base UI `Switch` primitive. It animates its thumb between checked and unchecked states and supports RTL automatically.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/switch.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Switch } from "@workspace/ui/components/switch";
+
+export default function Example() {
+  return <Switch />;
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo flex items-center gap-4">
+  <Switch />
+  <Switch defaultChecked />
+</div>
+
+### Sizes
+
+<div className="not-prose demo flex items-center gap-4">
+  <Switch size="sm" />
+  <Switch size="default" defaultChecked />
+</div>
+
+## API
+
+The `Switch` accepts all `Switch.Root` props from `@base-ui/react/switch`, plus an optional `size` prop (`"sm"` or `"default"`).

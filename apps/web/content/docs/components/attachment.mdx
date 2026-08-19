@@ -1,0 +1,180 @@
+---
+title: Attachment
+description: A file or attachment card with upload state and actions.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as AttachmentModule from "@workspace/ui/components/attachment";
+
+import {
+  Attachment,
+  AttachmentAction,
+  AttachmentActions,
+  AttachmentContent,
+  AttachmentDescription,
+  AttachmentGroup,
+  AttachmentMedia,
+  AttachmentTitle,
+  AttachmentTrigger,
+} from "@workspace/ui/components/attachment";
+import { RiDownloadLine, RiFileTextLine } from "@remixicon/react";
+
+`Attachment` is a composable card for displaying files and uploads. It supports upload states, sizes, and orientations, with optional media and action slots.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/attachment.json
+```
+
+## Usage
+
+```tsx
+import {
+  Attachment,
+  AttachmentAction,
+  AttachmentActions,
+  AttachmentContent,
+  AttachmentDescription,
+  AttachmentMedia,
+  AttachmentTitle,
+} from "@workspace/ui/components/attachment";
+import { RiDownloadLine, RiFileTextLine } from "@remixicon/react";
+
+export default function Example() {
+  return (
+    <Attachment>
+      <AttachmentMedia variant="icon">
+        <RiFileTextLine />
+      </AttachmentMedia>
+      <AttachmentContent>
+        <AttachmentTitle>report.pdf</AttachmentTitle>
+        <AttachmentDescription>1.2 MB</AttachmentDescription>
+      </AttachmentContent>
+      <AttachmentActions>
+        <AttachmentAction render={<button />}>
+          <RiDownloadLine />
+        </AttachmentAction>
+      </AttachmentActions>
+    </Attachment>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <Attachment>
+    <AttachmentMedia variant="icon">
+      <RiFileTextLine />
+    </AttachmentMedia>
+    <AttachmentContent>
+      <AttachmentTitle>report.pdf</AttachmentTitle>
+      <AttachmentDescription>1.2 MB</AttachmentDescription>
+    </AttachmentContent>
+    <AttachmentActions>
+      <AttachmentAction render={<button />}>
+        <RiDownloadLine />
+      </AttachmentAction>
+    </AttachmentActions>
+  </Attachment>
+</div>
+
+### Upload states
+
+<div className="not-prose demo">
+  <div className="flex flex-col gap-2">
+    <Attachment state="idle">
+      <AttachmentMedia variant="icon">
+        <RiFileTextLine />
+      </AttachmentMedia>
+      <AttachmentContent>
+        <AttachmentTitle>idle-file.pdf</AttachmentTitle>
+        <AttachmentDescription>Waiting to upload</AttachmentDescription>
+      </AttachmentContent>
+    </Attachment>
+    <Attachment state="uploading">
+      <AttachmentMedia variant="icon">
+        <RiFileTextLine />
+      </AttachmentMedia>
+      <AttachmentContent>
+        <AttachmentTitle>uploading.pdf</AttachmentTitle>
+        <AttachmentDescription>Uploading, 45%</AttachmentDescription>
+      </AttachmentContent>
+    </Attachment>
+    <Attachment state="error">
+      <AttachmentMedia variant="icon">
+        <RiFileTextLine />
+      </AttachmentMedia>
+      <AttachmentContent>
+        <AttachmentTitle>failed.pdf</AttachmentTitle>
+        <AttachmentDescription>Upload failed</AttachmentDescription>
+      </AttachmentContent>
+    </Attachment>
+  </div>
+</div>
+
+### Sizes
+
+<div className="not-prose demo">
+  <div className="flex flex-col gap-2">
+    <Attachment size="default">
+      <AttachmentMedia variant="icon">
+        <RiFileTextLine />
+      </AttachmentMedia>
+      <AttachmentContent>
+        <AttachmentTitle>default.pdf</AttachmentTitle>
+        <AttachmentDescription>1.2 MB</AttachmentDescription>
+      </AttachmentContent>
+    </Attachment>
+    <Attachment size="sm">
+      <AttachmentMedia variant="icon">
+        <RiFileTextLine />
+      </AttachmentMedia>
+      <AttachmentContent>
+        <AttachmentTitle>small.pdf</AttachmentTitle>
+        <AttachmentDescription>1.2 MB</AttachmentDescription>
+      </AttachmentContent>
+    </Attachment>
+    <Attachment size="xs">
+      <AttachmentMedia variant="icon">
+        <RiFileTextLine />
+      </AttachmentMedia>
+      <AttachmentContent>
+        <AttachmentTitle>extra-small.pdf</AttachmentTitle>
+        <AttachmentDescription>1.2 MB</AttachmentDescription>
+      </AttachmentContent>
+    </Attachment>
+  </div>
+</div>
+
+### Group
+
+<div className="not-prose demo">
+  <AttachmentGroup>
+    <Attachment>
+      <AttachmentMedia variant="icon">
+        <RiFileTextLine />
+      </AttachmentMedia>
+      <AttachmentContent>
+        <AttachmentTitle>file-1.pdf</AttachmentTitle>
+        <AttachmentDescription>1.2 MB</AttachmentDescription>
+      </AttachmentContent>
+    </Attachment>
+    <Attachment>
+      <AttachmentMedia variant="icon">
+        <RiFileTextLine />
+      </AttachmentMedia>
+      <AttachmentContent>
+        <AttachmentTitle>file-2.pdf</AttachmentTitle>
+        <AttachmentDescription>3.4 MB</AttachmentDescription>
+      </AttachmentContent>
+    </Attachment>
+  </AttachmentGroup>
+</div>
+
+## API
+
+<ApiTable module={AttachmentModule} />

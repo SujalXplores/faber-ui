@@ -1,0 +1,97 @@
+---
+title: Drawer
+description: A swipeable sheet that slides in from a screen edge.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as DrawerModule from "@workspace/ui/components/drawer";
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@workspace/ui/components/drawer";
+
+`Drawer` is built on Vaul. It renders a sheet that can be dragged open or closed, ideal for mobile interactions.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/drawer.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@workspace/ui/components/drawer";
+
+export default function Example() {
+  return (
+    <Drawer>
+      <DrawerTrigger render={<Button variant="outline">Open drawer</Button>} />
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Title</DrawerTitle>
+          <DrawerDescription>Description</DrawerDescription>
+        </DrawerHeader>
+      </DrawerContent>
+    </Drawer>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <Drawer>
+    <DrawerTrigger render={<Button variant="outline">Open drawer</Button>} />
+    <DrawerContent>
+      <DrawerHeader>
+        <DrawerTitle>Are you sure?</DrawerTitle>
+        <DrawerDescription>This action cannot be undone.</DrawerDescription>
+      </DrawerHeader>
+      <DrawerFooter>
+        <Button>Submit</Button>
+        <DrawerClose render={<Button variant="outline">Cancel</Button>} />
+      </DrawerFooter>
+    </DrawerContent>
+  </Drawer>
+</div>
+
+### With swipe handle
+
+Pass `showSwipeHandle` to the `Drawer` root to render a drag indicator at the top of the content.
+
+<div className="not-prose demo">
+  <Drawer showSwipeHandle>
+    <DrawerTrigger render={<Button variant="outline">Open drawer</Button>} />
+    <DrawerContent>
+      <DrawerHeader>
+        <DrawerTitle>Swipe me</DrawerTitle>
+        <DrawerDescription>Drag the handle to close.</DrawerDescription>
+      </DrawerHeader>
+    </DrawerContent>
+  </Drawer>
+</div>
+
+## API
+
+<ApiTable module={DrawerModule} />

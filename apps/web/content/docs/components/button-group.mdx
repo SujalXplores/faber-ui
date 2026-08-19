@@ -1,0 +1,85 @@
+---
+title: ButtonGroup
+description: A group of buttons with merged borders.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as ButtonGroupModule from "@workspace/ui/components/button-group";
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  ButtonGroup,
+  ButtonGroupSeparator,
+  ButtonGroupText,
+} from "@workspace/ui/components/button-group";
+
+`ButtonGroup` arranges related buttons together with shared borders, useful for toolbars and segmented actions.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/button-group.json
+```
+
+## Usage
+
+```tsx
+import { Button } from "@workspace/ui/components/button";
+import { ButtonGroup } from "@workspace/ui/components/button-group";
+
+export default function Example() {
+  return (
+    <ButtonGroup>
+      <Button variant="outline">Bold</Button>
+      <Button variant="outline">Italic</Button>
+      <Button variant="outline">Underline</Button>
+    </ButtonGroup>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <ButtonGroup>
+    <Button variant="outline">Bold</Button>
+    <Button variant="outline">Italic</Button>
+    <Button variant="outline">Underline</Button>
+  </ButtonGroup>
+</div>
+
+### With separator
+
+<div className="not-prose demo">
+  <ButtonGroup>
+    <Button variant="outline">Save</Button>
+    <ButtonGroupSeparator />
+    <Button variant="outline">Export</Button>
+  </ButtonGroup>
+</div>
+
+### With text
+
+<div className="not-prose demo">
+  <ButtonGroup>
+    <ButtonGroupText>Filter:</ButtonGroupText>
+    <Button variant="outline">All</Button>
+    <Button variant="outline">Active</Button>
+  </ButtonGroup>
+</div>
+
+### Vertical
+
+<div className="not-prose demo">
+  <ButtonGroup orientation="vertical">
+    <Button variant="outline">Top</Button>
+    <Button variant="outline">Middle</Button>
+    <Button variant="outline">Bottom</Button>
+  </ButtonGroup>
+</div>
+
+## API
+
+<ApiTable module={ButtonGroupModule} />

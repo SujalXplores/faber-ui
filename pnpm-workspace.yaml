@@ -3,7 +3,9 @@ packages:
   - "packages/*"
 
 allowBuilds:
+  esbuild: true
+  msw: false
   sharp: true
   unrs-resolver: true
-  msw: false
-  esbuild: true
+patchedDependencies:
+  next-themes@0.4.6: patches/next-themes@0.4.6.patch

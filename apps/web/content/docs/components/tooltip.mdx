@@ -1,0 +1,71 @@
+---
+title: Tooltip
+description: A small label that appears on hover or focus.
+---
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@workspace/ui/components/tooltip";
+
+`Tooltip` is built on the Base UI `Tooltip` primitive. It requires a `TooltipProvider` ancestor, which is included in the Fuma Docs `RootProvider`.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/tooltip.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@workspace/ui/components/tooltip";
+
+export default function Example() {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger render={<Button variant="outline">Hover</Button>} />
+        <TooltipContent>Tooltip text</TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="flex items-center gap-2 rounded-lg border p-4">
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger render={<Button variant="outline">Hover me</Button>} />
+      <TooltipContent>This is a tooltip</TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+</div>
+
+### Placement
+
+`TooltipContent` accepts `side` (`"top"`, `"right"`, `"bottom"`, `"left"`), `align` (`"start"`, `"center"`, `"end"`), `sideOffset`, and `alignOffset` props.
+
+## Components
+
+| Component         | Description                                                     |
+| ----------------- | --------------------------------------------------------------- |
+| `TooltipProvider` | Required ancestor. Controls `delay` and hover behavior.         |
+| `Tooltip`         | Root container.                                                 |
+| `TooltipTrigger`  | The element that triggers the tooltip. Use `render` to compose. |
+| `TooltipContent`  | The popup. Accepts placement props.                             |

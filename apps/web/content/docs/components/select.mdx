@@ -1,0 +1,105 @@
+---
+title: Select
+description: A custom dropdown select.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as SelectModule from "@workspace/ui/components/select";
+
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@workspace/ui/components/select";
+
+`Select` is built on the Base UI `Select` primitive. It renders a custom dropdown for choosing a single value from a list.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/select.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@workspace/ui/components/select";
+
+export default function Example() {
+  return (
+    <Select>
+      <SelectTrigger>
+        <SelectValue placeholder="Select a fruit" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+      </SelectContent>
+    </Select>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <Select>
+    <SelectTrigger className="w-56">
+      <SelectValue placeholder="Select a fruit" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+      <SelectItem value="cherry">Cherry</SelectItem>
+    </SelectContent>
+  </Select>
+</div>
+
+### With groups
+
+<div className="not-prose demo">
+  <Select>
+    <SelectTrigger className="w-56">
+      <SelectValue placeholder="Select a fruit" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectGroup>
+        <SelectLabel>Fruits</SelectLabel>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+      </SelectGroup>
+    </SelectContent>
+  </Select>
+</div>
+
+### Small
+
+<div className="not-prose demo">
+  <Select>
+    <SelectTrigger size="sm" className="w-56">
+      <SelectValue placeholder="Select a fruit" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+    </SelectContent>
+  </Select>
+</div>
+
+## API
+
+<ApiTable module={SelectModule} />

@@ -1,0 +1,137 @@
+---
+title: Menubar
+description: A horizontal menu bar, like the menus in a macOS application.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as MenubarModule from "@workspace/ui/components/menubar";
+
+import {
+  Menubar,
+  MenubarCheckboxItem,
+  MenubarContent,
+  MenubarGroup,
+  MenubarItem,
+  MenubarLabel,
+  MenubarMenu,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from "@workspace/ui/components/menubar";
+
+`Menubar` is built on the Base UI `Menu` primitive. It renders a horizontal bar of menus, each opening a dropdown of actions.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/menubar.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarTrigger,
+} from "@workspace/ui/components/menubar";
+
+export default function Example() {
+  return (
+    <Menubar>
+      <MenubarMenu>
+        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>New Tab</MenubarItem>
+          <MenubarItem>Open</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>File</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Open <MenubarShortcut>⌘O</MenubarShortcut>
+        </MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem variant="destructive">Close</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>Edit</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem inset>Undo</MenubarItem>
+        <MenubarItem inset>Redo</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+</div>
+
+### With checkbox and radio items
+
+<div className="not-prose demo">
+  <Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>View</MenubarTrigger>
+      <MenubarContent>
+        <MenubarGroup>
+          <MenubarLabel>Options</MenubarLabel>
+        </MenubarGroup>
+        <MenubarSeparator />
+        <MenubarCheckboxItem checked>Show toolbar</MenubarCheckboxItem>
+        <MenubarCheckboxItem>Show sidebar</MenubarCheckboxItem>
+        <MenubarSeparator />
+        <MenubarRadioGroup value="compact">
+          <MenubarRadioItem value="compact">Compact</MenubarRadioItem>
+          <MenubarRadioItem value="comfortable">Comfortable</MenubarRadioItem>
+        </MenubarRadioGroup>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+</div>
+
+### With submenu
+
+<div className="not-prose demo">
+  <Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>Insert</MenubarTrigger>
+      <MenubarContent>
+        <MenubarSub>
+          <MenubarSubTrigger>Image</MenubarSubTrigger>
+          <MenubarSubContent>
+            <MenubarItem>From file</MenubarItem>
+            <MenubarItem>From URL</MenubarItem>
+          </MenubarSubContent>
+        </MenubarSub>
+        <MenubarItem>Table</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+</div>
+
+## API
+
+<ApiTable module={MenubarModule} />

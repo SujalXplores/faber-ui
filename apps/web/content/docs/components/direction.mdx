@@ -1,0 +1,48 @@
+---
+title: Direction
+description: A re-export of the Base UI direction provider for RTL and LTR layouts.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as DirectionModule from "@workspace/ui/components/direction";
+
+import {
+  DirectionProvider,
+  useDirection,
+} from "@workspace/ui/components/direction";
+
+`Direction` is a thin re-export of the Base UI direction provider. It sets the text direction (LTR or RTL) for a subtree and exposes a `useDirection` hook to read the current value.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/direction.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  DirectionProvider,
+  useDirection,
+} from "@workspace/ui/components/direction";
+
+export default function Example() {
+  return (
+    <DirectionProvider dir="rtl">
+      <Content />
+    </DirectionProvider>
+  );
+}
+
+function Content() {
+  const direction = useDirection();
+  return <p>Current direction: {direction}</p>;
+}
+```
+
+## API
+
+<ApiTable module={DirectionModule} />

@@ -1,0 +1,121 @@
+---
+title: Item
+description: A flexible list item with media, content, and actions.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as ItemModule from "@workspace/ui/components/item";
+
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemMedia,
+  ItemSeparator,
+  ItemTitle,
+} from "@workspace/ui/components/item";
+
+`Item` is a flexible list item with slots for media, content, and actions, useful for lists, menus, and settings panels.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/item.json
+```
+
+## Usage
+
+```tsx
+import { Item, ItemContent, ItemDescription, ItemTitle } from "@workspace/ui/components/item";
+
+export default function Example() {
+  return (
+    <Item>
+      <ItemContent>
+        <ItemTitle>Title</ItemTitle>
+        <ItemDescription>Description</ItemDescription>
+      </ItemContent>
+    </Item>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <Item>
+    <ItemContent>
+      <ItemTitle>List item</ItemTitle>
+      <ItemDescription>A short description of the item.</ItemDescription>
+    </ItemContent>
+  </Item>
+</div>
+
+### With media
+
+<div className="not-prose demo">
+  <Item>
+    <ItemMedia variant="image">
+      <div className="size-10 rounded-md bg-muted" />
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>With media</ItemTitle>
+      <ItemDescription>Media appears on the leading edge.</ItemDescription>
+    </ItemContent>
+  </Item>
+</div>
+
+### With actions
+
+<div className="not-prose demo">
+  <Item>
+    <ItemContent>
+      <ItemTitle>With actions</ItemTitle>
+      <ItemDescription>Actions appear on the trailing edge.</ItemDescription>
+    </ItemContent>
+    <ItemActions>
+      <button className="rounded-md border px-3 py-1 text-sm">Edit</button>
+    </ItemActions>
+  </Item>
+</div>
+
+### Grouped
+
+<div className="not-prose demo">
+  <ItemGroup>
+    <Item>
+      <ItemContent>
+        <ItemTitle>First item</ItemTitle>
+      </ItemContent>
+    </Item>
+    <ItemSeparator />
+    <Item>
+      <ItemContent>
+        <ItemTitle>Second item</ItemTitle>
+      </ItemContent>
+    </Item>
+  </ItemGroup>
+</div>
+
+### Variants and sizes
+
+<div className="not-prose demo">
+  <Item size="sm" variant="muted">
+    <ItemContent>
+      <ItemTitle>Small muted</ItemTitle>
+    </ItemContent>
+  </Item>
+  <Item variant="outline">
+    <ItemContent>
+      <ItemTitle>Outline</ItemTitle>
+    </ItemContent>
+  </Item>
+</div>
+
+## API
+
+<ApiTable module={ItemModule} />

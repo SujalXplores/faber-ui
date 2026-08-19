@@ -1,0 +1,95 @@
+---
+title: ContextMenu
+description: A right-click menu for contextual actions.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as ContextMenuModule from "@workspace/ui/components/context-menu";
+
+import {
+  ContextMenu,
+  ContextMenuCheckboxItem,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuLabel,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuTrigger,
+} from "@workspace/ui/components/context-menu";
+
+`ContextMenu` is built on the Base UI `Menu` primitive. It displays a menu of actions when the user right-clicks a trigger element.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/context-menu.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "@workspace/ui/components/context-menu";
+
+export default function Example() {
+  return (
+    <ContextMenu>
+      <ContextMenuTrigger>Right click here</ContextMenuTrigger>
+      <ContextMenuContent>
+        <ContextMenuItem>Back</ContextMenuItem>
+        <ContextMenuItem>Forward</ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenu>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <ContextMenu>
+    <ContextMenuTrigger className="block w-full rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">
+      Right click here
+    </ContextMenuTrigger>
+    <ContextMenuContent>
+      <ContextMenuItem>Back</ContextMenuItem>
+      <ContextMenuItem>Forward</ContextMenuItem>
+      <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuItem inset>More</ContextMenuItem>
+    </ContextMenuContent>
+  </ContextMenu>
+</div>
+
+### With checkbox items
+
+<div className="not-prose demo">
+  <ContextMenu>
+    <ContextMenuTrigger className="block w-full rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">
+      Right click here
+    </ContextMenuTrigger>
+    <ContextMenuContent>
+      <ContextMenuItem>Cut</ContextMenuItem>
+      <ContextMenuItem>Copy</ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuCheckboxItem checked>Show toolbar</ContextMenuCheckboxItem>
+    </ContextMenuContent>
+  </ContextMenu>
+</div>
+
+## API
+
+<ApiTable module={ContextMenuModule} />

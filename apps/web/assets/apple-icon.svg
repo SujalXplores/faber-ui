@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180" fill="none">
+  <!-- Next's apple-icon convention matches only jpg/jpeg/png, so this vector
+       cannot live in app/. It is the source for app/apple-icon.png. -->
+  <defs>
+    <linearGradient id="plate" x1="90" y1="0" x2="90" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#151a22"/>
+      <stop offset="1" stop-color="#090b0f"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="17" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7ab0ed"/>
+      <stop offset="1" stop-color="#4993e2"/>
+    </linearGradient>
+  </defs>
+  <rect width="180" height="180" fill="url(#plate)"/>
+  <g transform="translate(42.19 33.75) scale(5.625)">
+    <path d="M1.75 0H15.25A1.75 1.75 0 0 1 17 1.75V3.25A1.75 1.75 0 0 1 15.25 5H5V9.5H11.25A1.75 1.75 0 0 1 13 11.25V12.75A1.75 1.75 0 0 1 11.25 14.5H5V18.25A1.75 1.75 0 0 1 3.25 20H1.75A1.75 1.75 0 0 1 0 18.25V1.75A1.75 1.75 0 0 1 1.75 0Z" fill="url(#mark)"/>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+{
+  "servers": {
+    "shadcn": {
+      "command": "node",
+      "args": [
+        "${workspaceFolder}/packages/ui/node_modules/shadcn/dist/index.js",
+        "mcp"
+      ]
+    }
+  }
+}

@@ -1,0 +1,63 @@
+---
+title: NativeSelect
+description: A styled native HTML select.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as NativeSelectModule from "@workspace/ui/components/native-select";
+
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@workspace/ui/components/native-select";
+
+`NativeSelect` is a styled wrapper around the native HTML `select` element, preserving platform-specific behavior and accessibility.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/native-select.json
+```
+
+## Usage
+
+```tsx
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@workspace/ui/components/native-select";
+
+export default function Example() {
+  return (
+    <NativeSelect>
+      <NativeSelectOption value="apple">Apple</NativeSelectOption>
+      <NativeSelectOption value="banana">Banana</NativeSelectOption>
+    </NativeSelect>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <NativeSelect defaultValue="apple">
+    <NativeSelectOption value="apple">Apple</NativeSelectOption>
+    <NativeSelectOption value="banana">Banana</NativeSelectOption>
+    <NativeSelectOption value="cherry">Cherry</NativeSelectOption>
+  </NativeSelect>
+</div>
+
+### Small
+
+<div className="not-prose demo">
+  <NativeSelect size="sm" defaultValue="apple">
+    <NativeSelectOption value="apple">Apple</NativeSelectOption>
+    <NativeSelectOption value="banana">Banana</NativeSelectOption>
+  </NativeSelect>
+</div>
+
+## API
+
+<ApiTable module={NativeSelectModule} />

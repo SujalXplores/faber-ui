@@ -1,0 +1,81 @@
+---
+title: Message Scroller
+description: A scrollable message container with auto-scroll and a jump button.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as MessageScrollerModule from "@workspace/ui/components/message-scroller";
+
+import {
+  MessageScroller,
+  MessageScrollerButton,
+  MessageScrollerContent,
+  MessageScrollerItem,
+  MessageScrollerProvider,
+  MessageScrollerViewport,
+} from "@workspace/ui/components/message-scroller";
+
+`MessageScroller` is a scrollable container for chat-style message lists. It auto-scrolls to the latest message and shows a floating button to jump back to the start or end.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/message-scroller.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  MessageScroller,
+  MessageScrollerButton,
+  MessageScrollerContent,
+  MessageScrollerItem,
+  MessageScrollerProvider,
+  MessageScrollerViewport,
+} from "@workspace/ui/components/message-scroller";
+
+export default function Example() {
+  return (
+    <MessageScrollerProvider>
+      <MessageScroller className="h-[300px]">
+        <MessageScrollerViewport>
+          <MessageScrollerContent>
+            <MessageScrollerItem>First message</MessageScrollerItem>
+            <MessageScrollerItem>Second message</MessageScrollerItem>
+            <MessageScrollerItem>Third message</MessageScrollerItem>
+          </MessageScrollerContent>
+        </MessageScrollerViewport>
+        <MessageScrollerButton />
+      </MessageScroller>
+    </MessageScrollerProvider>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <MessageScrollerProvider>
+    <MessageScroller className="h-[300px]">
+      <MessageScrollerViewport>
+        <MessageScrollerContent>
+          <MessageScrollerItem>First message</MessageScrollerItem>
+          <MessageScrollerItem>Second message</MessageScrollerItem>
+          <MessageScrollerItem>Third message</MessageScrollerItem>
+          <MessageScrollerItem>Fourth message</MessageScrollerItem>
+          <MessageScrollerItem>Fifth message</MessageScrollerItem>
+        </MessageScrollerContent>
+      </MessageScrollerViewport>
+      <MessageScrollerButton />
+    </MessageScroller>
+  </MessageScrollerProvider>
+</div>
+
+## API
+
+<ApiTable module={MessageScrollerModule} />

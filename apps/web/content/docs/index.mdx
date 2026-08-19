@@ -1,0 +1,72 @@
+---
+title: Introduction
+description: A component library built on shadcn/ui, Base UI, and Tailwind CSS v4.
+---
+
+import { Card, Cards } from "fumadocs-ui/components/card";
+
+Faber UI is a component library built on [shadcn/ui](https://ui.shadcn.com), [Base UI](https://base-ui.com), and Tailwind CSS v4. It is copy-paste friendly, RTL-ready, and designed to be instantly familiar to anyone who has used shadcn before.
+
+## Features
+
+<Cards>
+  <Card
+    title="shadcn-compatible API"
+    description="Variants, sizes, and asChild composition that match the conventions you already know."
+  />
+  <Card
+    title="Base UI primitives"
+    description="Accessible, unstyled components from @base-ui/react power every interaction."
+  />
+  <Card
+    title="Tailwind CSS v4"
+    description="Zero-runtime styling with CSS variables and oklch color tokens."
+  />
+  <Card
+    title="RTL ready"
+    description="Right-to-left layouts work out of the box across the entire kit."
+  />
+  <Card
+    title="Remixicon"
+    description="A consistent icon set wired into every component that needs one."
+  />
+  <Card
+    title="60 components"
+    description="From buttons and dialogs to charts and carousels, all vendored and editable."
+  />
+</Cards>
+
+## Architecture
+
+Faber UI lives in a pnpm monorepo with two key workspaces:
+
+| Workspace       | Path          | Purpose                                                                |
+| --------------- | ------------- | ---------------------------------------------------------------------- |
+| `@workspace/ui` | `packages/ui` | The component library. All 60 shadcn components, hooks, and utilities. |
+| `web`           | `apps/web`    | The Next.js app that hosts this documentation site.                    |
+
+Components are vendored into `packages/ui/src/components/` and consumed through the `@workspace/ui/components/*` alias. You own the source, so you can edit any component to fit your needs.
+
+## Adding components
+
+Components are added with the shadcn CLI from inside the `packages/ui` directory:
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/dialog.json
+```
+
+This copies the component source into `src/components/` and updates the `@workspace/ui/components/*` export map automatically.
+
+## Using a component
+
+Import any component directly from the workspace package:
+
+```tsx
+import { Button } from "@workspace/ui/components/button";
+
+export default function Example() {
+  return <Button>Click me</Button>;
+}
+```
+
+Head to the [Components](/docs/components/button) section to explore each component, its variants, and its API.

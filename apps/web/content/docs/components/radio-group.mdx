@@ -1,0 +1,68 @@
+---
+title: RadioGroup
+description: A group of mutually exclusive radio buttons.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as RadioGroupModule from "@workspace/ui/components/radio-group";
+
+import { Label } from "@workspace/ui/components/label";
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@workspace/ui/components/radio-group";
+
+`RadioGroup` is built on the Base UI `RadioGroup` primitive. It renders a set of mutually exclusive options.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/radio-group.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@workspace/ui/components/radio-group";
+
+export default function Example() {
+  return (
+    <RadioGroup defaultValue="option-1">
+      <div className="flex items-center gap-2">
+        <RadioGroupItem value="option-1" id="option-1" />
+        <label htmlFor="option-1">Option one</label>
+      </div>
+      <div className="flex items-center gap-2">
+        <RadioGroupItem value="option-2" id="option-2" />
+        <label htmlFor="option-2">Option two</label>
+      </div>
+    </RadioGroup>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <RadioGroup defaultValue="option-1">
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="option-1" id="rg-1" />
+      <Label htmlFor="rg-1">Option one</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="option-2" id="rg-2" />
+      <Label htmlFor="rg-2">Option two</Label>
+    </div>
+  </RadioGroup>
+</div>
+
+## API
+
+<ApiTable module={RadioGroupModule} />

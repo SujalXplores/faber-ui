@@ -1,0 +1,109 @@
+---
+title: Message
+description: A chat-style message row with avatar and content slots.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as MessageModule from "@workspace/ui/components/message";
+
+import {
+  Message,
+  MessageAvatar,
+  MessageContent,
+  MessageFooter,
+  MessageGroup,
+  MessageHeader,
+} from "@workspace/ui/components/message";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@workspace/ui/components/avatar";
+
+`Message` is a chat-style message row. It pairs an avatar with a header, content, and footer, and supports left or right alignment.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/message.json
+```
+
+## Usage
+
+```tsx
+import {
+  Message,
+  MessageAvatar,
+  MessageContent,
+  MessageGroup,
+  MessageHeader,
+} from "@workspace/ui/components/message";
+import {
+  Avatar,
+  AvatarFallback,
+} from "@workspace/ui/components/avatar";
+
+export default function Example() {
+  return (
+    <MessageGroup>
+      <Message>
+        <MessageAvatar>
+          <Avatar>
+            <AvatarFallback>AB</AvatarFallback>
+          </Avatar>
+        </MessageAvatar>
+        <MessageHeader>Anna</MessageHeader>
+        <MessageContent>Hello there!</MessageContent>
+      </Message>
+    </MessageGroup>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <MessageGroup>
+    <Message>
+      <MessageAvatar>
+        <Avatar>
+          <AvatarFallback>AB</AvatarFallback>
+        </Avatar>
+      </MessageAvatar>
+      <MessageHeader>Anna</MessageHeader>
+      <MessageContent>Hello there!</MessageContent>
+    </Message>
+    <Message align="end">
+      <MessageAvatar>
+        <Avatar>
+          <AvatarFallback>ME</AvatarFallback>
+        </Avatar>
+      </MessageAvatar>
+      <MessageHeader>You</MessageHeader>
+      <MessageContent>Hi Anna!</MessageContent>
+    </Message>
+  </MessageGroup>
+</div>
+
+### With footer
+
+<div className="not-prose demo">
+  <MessageGroup>
+    <Message>
+      <MessageAvatar>
+        <Avatar>
+          <AvatarFallback>AB</AvatarFallback>
+        </Avatar>
+      </MessageAvatar>
+      <MessageHeader>Anna</MessageHeader>
+      <MessageContent>Just landed, see you soon.</MessageContent>
+      <MessageFooter>10:42 AM</MessageFooter>
+    </Message>
+  </MessageGroup>
+</div>
+
+## API
+
+<ApiTable module={MessageModule} />

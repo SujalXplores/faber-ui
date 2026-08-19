@@ -1,0 +1,109 @@
+---
+title: Bubble
+description: A chat-style message bubble with variants and alignment.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as BubbleModule from "@workspace/ui/components/bubble";
+
+import {
+  Bubble,
+  BubbleContent,
+  BubbleGroup,
+  BubbleReactions,
+} from "@workspace/ui/components/bubble";
+import { RiHeartLine, RiThumbUpLine } from "@remixicon/react";
+
+`Bubble` is a chat-style message bubble. It supports multiple variants and alignment, with optional reactions for quick emoji responses.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/bubble.json
+```
+
+## Usage
+
+```tsx
+import {
+  Bubble,
+  BubbleContent,
+  BubbleGroup,
+  BubbleReactions,
+} from "@workspace/ui/components/bubble";
+import { RiThumbUpLine } from "@remixicon/react";
+
+export default function Example() {
+  return (
+    <BubbleGroup>
+      <Bubble>
+        <BubbleContent>Hello, how are you?</BubbleContent>
+        <BubbleReactions>
+          <RiThumbUpLine />
+        </BubbleReactions>
+      </Bubble>
+    </BubbleGroup>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <BubbleGroup>
+    <Bubble>
+      <BubbleContent>Hello, how are you?</BubbleContent>
+    </Bubble>
+    <Bubble align="end">
+      <BubbleContent>I am good, thanks!</BubbleContent>
+    </Bubble>
+  </BubbleGroup>
+</div>
+
+### Variants
+
+<div className="not-prose demo">
+  <BubbleGroup>
+    <Bubble variant="default">
+      <BubbleContent>Default</BubbleContent>
+    </Bubble>
+    <Bubble variant="secondary">
+      <BubbleContent>Secondary</BubbleContent>
+    </Bubble>
+    <Bubble variant="outline">
+      <BubbleContent>Outline</BubbleContent>
+    </Bubble>
+    <Bubble variant="ghost">
+      <BubbleContent>Ghost</BubbleContent>
+    </Bubble>
+    <Bubble variant="muted">
+      <BubbleContent>Muted</BubbleContent>
+    </Bubble>
+    <Bubble variant="tinted">
+      <BubbleContent>Tinted</BubbleContent>
+    </Bubble>
+    <Bubble variant="destructive">
+      <BubbleContent>Destructive</BubbleContent>
+    </Bubble>
+  </BubbleGroup>
+</div>
+
+### With reactions
+
+<div className="not-prose demo">
+  <BubbleGroup>
+    <Bubble>
+      <BubbleContent>Check out this message.</BubbleContent>
+      <BubbleReactions>
+        <RiThumbUpLine />
+        <RiHeartLine />
+      </BubbleReactions>
+    </Bubble>
+  </BubbleGroup>
+</div>
+
+## API
+
+<ApiTable module={BubbleModule} />

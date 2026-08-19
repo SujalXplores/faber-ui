@@ -1,0 +1,97 @@
+---
+title: Carousel
+description: A scrollable carousel powered by Embla.
+---
+
+import { ApiTable } from "@/components/api-table";
+import * as CarouselModule from "@workspace/ui/components/carousel";
+
+import { Button } from "@workspace/ui/components/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@workspace/ui/components/carousel";
+
+`Carousel` is built on Embla Carousel. It supports horizontal and vertical orientations, autoplay, and snap alignment.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/carousel.json
+```
+
+## Usage
+
+```tsx
+"use client";
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@workspace/ui/components/carousel";
+
+export default function Example() {
+  return (
+    <Carousel>
+      <CarouselContent>
+        <CarouselItem>Item one</CarouselItem>
+        <CarouselItem>Item two</CarouselItem>
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<div className="not-prose demo">
+  <Carousel className="mx-auto w-full max-w-xs px-12">
+    <CarouselContent>
+      <CarouselItem className="basis-full">
+        <div className="flex h-40 items-center justify-center bg-muted text-muted-foreground">1</div>
+      </CarouselItem>
+      <CarouselItem className="basis-full">
+        <div className="flex h-40 items-center justify-center bg-muted text-muted-foreground">2</div>
+      </CarouselItem>
+      <CarouselItem className="basis-full">
+        <div className="flex h-40 items-center justify-center bg-muted text-muted-foreground">3</div>
+      </CarouselItem>
+    </CarouselContent>
+    <CarouselPrevious />
+    <CarouselNext />
+  </Carousel>
+</div>
+
+### Multiple items per view
+
+<div className="not-prose demo">
+  <Carousel className="mx-auto w-full max-w-xs px-12">
+    <CarouselContent>
+      <CarouselItem className="basis-1/2">
+        <div className="flex h-40 items-center justify-center bg-muted text-muted-foreground">1</div>
+      </CarouselItem>
+      <CarouselItem className="basis-1/2">
+        <div className="flex h-40 items-center justify-center bg-muted text-muted-foreground">2</div>
+      </CarouselItem>
+      <CarouselItem className="basis-1/2">
+        <div className="flex h-40 items-center justify-center bg-muted text-muted-foreground">3</div>
+      </CarouselItem>
+    </CarouselContent>
+    <CarouselPrevious />
+    <CarouselNext />
+  </Carousel>
+</div>
+
+## API
+
+<ApiTable module={CarouselModule} />
