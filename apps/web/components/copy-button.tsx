@@ -28,7 +28,7 @@ export function CopyButton({
         void navigator.clipboard.writeText(value).then(() => setCopied(true));
       }}
       className={cn(
-        "press inline-flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground",
+        "inline-flex size-7 press items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground",
         className,
       )}
       aria-label={copied ? "Copied to clipboard" : label}

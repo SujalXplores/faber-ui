@@ -32,7 +32,12 @@ export function ChartBarDemo() {
     <ChartContainer config={chartConfig} className="h-[200px] w-full">
       <BarChart data={chartData} width={600} height={200}>
         <CartesianGrid vertical={false} />
-        <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />
+        <XAxis
+          dataKey="month"
+          tickLine={false}
+          axisLine={false}
+          tickMargin={8}
+        />
         <ChartTooltip content={<ChartTooltipContent />} />
         <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
       </BarChart>

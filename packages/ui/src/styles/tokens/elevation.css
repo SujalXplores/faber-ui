@@ -6,8 +6,12 @@
   --shadow-hue: var(--neutral-hue);
   --shadow-chroma: calc(var(--neutral-chroma) * 1.5);
 
-  --shadow-tint-contact: oklch(0.15 var(--shadow-chroma) var(--shadow-hue) / 6%);
-  --shadow-tint-ambient: oklch(0.15 var(--shadow-chroma) var(--shadow-hue) / 8%);
+  --shadow-tint-contact: oklch(
+    0.15 var(--shadow-chroma) var(--shadow-hue) / 6%
+  );
+  --shadow-tint-ambient: oklch(
+    0.15 var(--shadow-chroma) var(--shadow-hue) / 8%
+  );
   --shadow-tint-deep: oklch(0.15 var(--shadow-chroma) var(--shadow-hue) / 12%);
 
   --elevation-0: none;

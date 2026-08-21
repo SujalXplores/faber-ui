@@ -27,9 +27,7 @@ function describeExport(name: string, value: unknown): string {
 export function ApiTable({ module }: { module: ModuleLike }) {
   const names = getExportNames(module);
   if (names.length === 0) {
-    return (
-      <p className="text-sm text-muted-foreground">No exports.</p>
-    );
+    return <p className="text-sm text-muted-foreground">No exports.</p>;
   }
   return (
     <table>
