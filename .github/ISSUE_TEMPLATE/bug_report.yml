@@ -1,0 +1,44 @@
+name: Bug report
+description: Something in a Faber UI component or the docs site is broken.
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Mention `@claude` anywhere in this issue and the maintainer bot will
+        investigate and open a PR with a fix.
+  - type: input
+    id: component
+    attributes:
+      label: Component
+      description: Which component, or "docs site" / "registry".
+      placeholder: dialog
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should happen
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happens instead
+    validations:
+      required: true
+  - type: input
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: A minimal repo, StackBlitz, or CodeSandbox link.
+    validations:
+      required: false
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Output of `npx envinfo --system --npmPackages next,react,tailwindcss --binaries`.
+      render: shell
+    validations:
+      required: true

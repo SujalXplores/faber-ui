@@ -29,9 +29,9 @@ export default function Page() {
 
   return (
     <HomeLayout {...baseOptions()}>
-      <main className="mx-auto w-full max-w-4xl px-6 pb-32 pt-20 sm:pt-28">
+      <main className="mx-auto w-full max-w-4xl px-6 pt-20 pb-32 sm:pt-28">
         <header className="max-w-2xl">
-          <h1 className="text-4xl font-semibold tracking-display leading-display text-balance">
+          <h1 className="text-4xl leading-display font-semibold tracking-display text-balance">
             Components you own outright.
           </h1>
           <p className="mt-5 text-lg leading-body text-pretty text-muted-foreground">
@@ -44,7 +44,7 @@ export default function Page() {
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
             <Link
               href="/docs"
-              className="press inline-flex h-9 items-center gap-1.5 rounded-md bg-primary px-4 font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
+              className="inline-flex h-9 press items-center gap-1.5 rounded-md bg-primary px-4 font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
             >
               Documentation
               <RiArrowRightLine className="size-4" />
@@ -63,14 +63,14 @@ export default function Page() {
         <section className="mt-16" aria-labelledby="install-heading">
           <h2
             id="install-heading"
-            className="text-xs font-medium uppercase tracking-caps text-muted-foreground"
+            className="text-xs font-medium tracking-caps text-muted-foreground uppercase"
           >
             Add a component
           </h2>
 
-          <div className="mt-3 flex items-center gap-2 rounded-lg border bg-surface-2 py-1.5 pe-1.5 ps-4">
-            <code className="flex-1 overflow-x-auto whitespace-nowrap font-mono text-sm text-foreground scrollbar-subtle">
-              <span className="select-none text-muted-foreground">$ </span>
+          <div className="mt-3 flex items-center gap-2 rounded-lg border bg-surface-2 py-1.5 ps-4 pe-1.5">
+            <code className="scrollbar-subtle flex-1 overflow-x-auto font-mono text-sm whitespace-nowrap text-foreground">
+              <span className="text-muted-foreground select-none">$ </span>
               {INSTALL_COMMAND}
             </code>
             <CopyButton value={INSTALL_COMMAND} label="Copy install command" />
@@ -88,12 +88,12 @@ export default function Page() {
         <section className="mt-12" aria-labelledby="usage-heading">
           <h2
             id="usage-heading"
-            className="text-xs font-medium uppercase tracking-caps text-muted-foreground"
+            className="text-xs font-medium tracking-caps text-muted-foreground uppercase"
           >
             Then import it
           </h2>
 
-          <pre className="mt-3 overflow-x-auto rounded-lg border bg-surface-2 p-4 font-mono text-sm leading-relaxed scrollbar-subtle">
+          <pre className="mt-3 scrollbar-subtle overflow-x-auto rounded-lg border bg-surface-2 p-4 font-mono text-sm leading-relaxed">
             <code>{USAGE}</code>
           </pre>
         </section>
@@ -101,7 +101,7 @@ export default function Page() {
           <div className="flex items-baseline justify-between gap-4">
             <h2
               id="index-heading"
-              className="text-xs font-medium uppercase tracking-caps text-muted-foreground"
+              className="text-xs font-medium tracking-caps text-muted-foreground uppercase"
             >
               All components
             </h2>
@@ -136,7 +136,7 @@ export default function Page() {
               ["Direction", "LTR and RTL"],
             ].map(([label, value]) => (
               <div key={label}>
-                <dt className="text-xs uppercase tracking-caps text-muted-foreground">
+                <dt className="text-xs tracking-caps text-muted-foreground uppercase">
                   {label}
                 </dt>
                 <dd className="mt-1 font-medium">{value}</dd>

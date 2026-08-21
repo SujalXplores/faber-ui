@@ -40,19 +40,45 @@
   --brand-950: oklch(0.283 calc(var(--brand-chroma) * 0.52) var(--brand-hue));
 
   --neutral-0: oklch(1 0 var(--neutral-hue));
-  --neutral-50: oklch(0.985 calc(var(--neutral-chroma) * 0.3) var(--neutral-hue));
-  --neutral-100: oklch(0.97 calc(var(--neutral-chroma) * 0.5) var(--neutral-hue));
-  --neutral-200: oklch(0.922 calc(var(--neutral-chroma) * 0.7) var(--neutral-hue));
-  --neutral-300: oklch(0.87 calc(var(--neutral-chroma) * 0.9) var(--neutral-hue));
-  --neutral-400: oklch(0.708 calc(var(--neutral-chroma) * 1) var(--neutral-hue));
-  --neutral-500: oklch(0.556 calc(var(--neutral-chroma) * 1) var(--neutral-hue));
-  --neutral-600: oklch(0.439 calc(var(--neutral-chroma) * 0.9) var(--neutral-hue));
-  --neutral-700: oklch(0.371 calc(var(--neutral-chroma) * 0.8) var(--neutral-hue));
-  --neutral-800: oklch(0.269 calc(var(--neutral-chroma) * 0.7) var(--neutral-hue));
-  --neutral-850: oklch(0.224 calc(var(--neutral-chroma) * 0.6) var(--neutral-hue));
-  --neutral-900: oklch(0.205 calc(var(--neutral-chroma) * 0.55) var(--neutral-hue));
-  --neutral-950: oklch(0.145 calc(var(--neutral-chroma) * 0.45) var(--neutral-hue));
-  --neutral-1000: oklch(0.108 calc(var(--neutral-chroma) * 0.35) var(--neutral-hue));
+  --neutral-50: oklch(
+    0.985 calc(var(--neutral-chroma) * 0.3) var(--neutral-hue)
+  );
+  --neutral-100: oklch(
+    0.97 calc(var(--neutral-chroma) * 0.5) var(--neutral-hue)
+  );
+  --neutral-200: oklch(
+    0.922 calc(var(--neutral-chroma) * 0.7) var(--neutral-hue)
+  );
+  --neutral-300: oklch(
+    0.87 calc(var(--neutral-chroma) * 0.9) var(--neutral-hue)
+  );
+  --neutral-400: oklch(
+    0.708 calc(var(--neutral-chroma) * 1) var(--neutral-hue)
+  );
+  --neutral-500: oklch(
+    0.556 calc(var(--neutral-chroma) * 1) var(--neutral-hue)
+  );
+  --neutral-600: oklch(
+    0.439 calc(var(--neutral-chroma) * 0.9) var(--neutral-hue)
+  );
+  --neutral-700: oklch(
+    0.371 calc(var(--neutral-chroma) * 0.8) var(--neutral-hue)
+  );
+  --neutral-800: oklch(
+    0.269 calc(var(--neutral-chroma) * 0.7) var(--neutral-hue)
+  );
+  --neutral-850: oklch(
+    0.224 calc(var(--neutral-chroma) * 0.6) var(--neutral-hue)
+  );
+  --neutral-900: oklch(
+    0.205 calc(var(--neutral-chroma) * 0.55) var(--neutral-hue)
+  );
+  --neutral-950: oklch(
+    0.145 calc(var(--neutral-chroma) * 0.45) var(--neutral-hue)
+  );
+  --neutral-1000: oklch(
+    0.108 calc(var(--neutral-chroma) * 0.35) var(--neutral-hue)
+  );
 
   --alpha-light-4: oklch(1 0 0 / 4%);
   --alpha-light-8: oklch(1 0 0 / 8%);
@@ -65,21 +91,45 @@
   --alpha-dark-15: oklch(0 0 0 / 15%);
   --alpha-dark-50: oklch(0 0 0 / 50%);
 
-  --danger-100: oklch(0.936 calc(var(--danger-chroma) * 0.16) var(--danger-hue));
-  --danger-400: oklch(0.704 calc(var(--danger-chroma) * 0.78) var(--danger-hue));
-  --danger-500: oklch(0.637 calc(var(--danger-chroma) * 0.97) var(--danger-hue));
+  --danger-100: oklch(
+    0.936 calc(var(--danger-chroma) * 0.16) var(--danger-hue)
+  );
+  --danger-400: oklch(
+    0.704 calc(var(--danger-chroma) * 0.78) var(--danger-hue)
+  );
+  --danger-500: oklch(
+    0.637 calc(var(--danger-chroma) * 0.97) var(--danger-hue)
+  );
   --danger-600: oklch(0.577 calc(var(--danger-chroma) * 1) var(--danger-hue));
-  --danger-900: oklch(0.371 calc(var(--danger-chroma) * 0.66) var(--danger-hue));
+  --danger-900: oklch(
+    0.371 calc(var(--danger-chroma) * 0.66) var(--danger-hue)
+  );
 
-  --success-100: oklch(0.95 calc(var(--success-chroma) * 0.16) var(--success-hue));
-  --success-500: oklch(0.723 calc(var(--success-chroma) * 1) var(--success-hue));
-  --success-600: oklch(0.627 calc(var(--success-chroma) * 0.98) var(--success-hue));
-  --success-900: oklch(0.393 calc(var(--success-chroma) * 0.62) var(--success-hue));
+  --success-100: oklch(
+    0.95 calc(var(--success-chroma) * 0.16) var(--success-hue)
+  );
+  --success-500: oklch(
+    0.723 calc(var(--success-chroma) * 1) var(--success-hue)
+  );
+  --success-600: oklch(
+    0.627 calc(var(--success-chroma) * 0.98) var(--success-hue)
+  );
+  --success-900: oklch(
+    0.393 calc(var(--success-chroma) * 0.62) var(--success-hue)
+  );
 
-  --warning-100: oklch(0.955 calc(var(--warning-chroma) * 0.2) var(--warning-hue));
-  --warning-500: oklch(0.769 calc(var(--warning-chroma) * 1) var(--warning-hue));
-  --warning-600: oklch(0.681 calc(var(--warning-chroma) * 0.98) var(--warning-hue));
-  --warning-900: oklch(0.421 calc(var(--warning-chroma) * 0.62) var(--warning-hue));
+  --warning-100: oklch(
+    0.955 calc(var(--warning-chroma) * 0.2) var(--warning-hue)
+  );
+  --warning-500: oklch(
+    0.769 calc(var(--warning-chroma) * 1) var(--warning-hue)
+  );
+  --warning-600: oklch(
+    0.681 calc(var(--warning-chroma) * 0.98) var(--warning-hue)
+  );
+  --warning-900: oklch(
+    0.421 calc(var(--warning-chroma) * 0.62) var(--warning-hue)
+  );
 
   --info-100: oklch(0.932 calc(var(--info-chroma) * 0.2) var(--info-hue));
   --info-500: oklch(0.623 calc(var(--info-chroma) * 1) var(--info-hue));

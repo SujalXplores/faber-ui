@@ -1,0 +1,151 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  extends: [
+    "config:recommended",
+    ":semanticCommits",
+    ":semanticCommitTypeAll(chore)",
+    ":dependencyDashboard",
+    "group:monorepos",
+    "group:recommended",
+  ],
+
+  timezone: "Etc/UTC",
+  schedule: ["before 6am on monday"],
+
+  // .npmrc sets save-exact=true — keep every version pinned, never a range.
+  rangeStrategy: "pin",
+  postUpdateOptions: ["pnpmDedupe"],
+
+  // Keep the queue small enough that a red PR is obvious.
+  prConcurrentLimit: 6,
+  prHourlyLimit: 2,
+  branchConcurrentLimit: 10,
+
+  dependencyDashboardTitle: "Dependency dashboard",
+  labels: ["dependencies"],
+  rebaseWhen: "behind-base-branch",
+
+  // Merge via GitHub's own auto-merge so required checks are always honoured.
+  platformAutomerge: true,
+
+  lockFileMaintenance: {
+    enabled: true,
+    schedule: ["before 6am on monday"],
+    automerge: true,
+  },
+
+  vulnerabilityAlerts: {
+    labels: ["dependencies", "security"],
+    schedule: ["at any time"],
+    prPriority: 10,
+    automerge: false,
+  },
+
+  packageRules: [
+    // ---- Groups: things that must move in lockstep ----
+    {
+      groupName: "react",
+      matchPackageNames: [
+        "react",
+        "react-dom",
+        "react-is",
+        "@types/react",
+        "@types/react-dom",
+      ],
+    },
+    {
+      groupName: "next",
+      matchPackageNames: ["next", "@next/{/,}**", "eslint-config-next"],
+    },
+    {
+      groupName: "tailwind",
+      matchPackageNames: [
+        "tailwindcss",
+        "@tailwindcss/{/,}**",
+        "prettier-plugin-tailwindcss",
+        "eslint-plugin-better-tailwindcss",
+        "tailwind-merge",
+        "tw-animate-css",
+      ],
+    },
+    {
+      groupName: "fumadocs",
+      matchPackageNames: ["fumadocs{/,}**", "@fumadocs/{/,}**"],
+    },
+    {
+      groupName: "linting and formatting",
+      matchPackageNames: [
+        "oxlint",
+        "eslint",
+        "eslint-plugin-oxlint",
+        "typescript-eslint",
+        "prettier",
+      ],
+    },
+    { groupName: "turbo", matchPackageNames: ["turbo", "@turbo/{/,}**"] },
+    { groupName: "shadcn", matchPackageNames: ["shadcn", "@shadcn/{/,}**"] },
+    { groupName: "base-ui", matchPackageNames: ["@base-ui/{/,}**"] },
+
+    // ---- Auto-merge: low-risk, fully covered by CI ----
+    {
+      description: "Dev tooling patches and minors merge themselves once CI is green.",
+      matchDepTypes: ["devDependencies"],
+      matchUpdateTypes: ["patch", "minor"],
+      automerge: true,
+    },
+    {
+      description: "Type definitions are compile-time only — typecheck is the gate.",
+      matchPackageNames: ["@types/{/,}**"],
+      matchUpdateTypes: ["patch", "minor"],
+      automerge: true,
+    },
+    {
+      groupName: "github actions",
+      matchManagers: ["github-actions"],
+      matchUpdateTypes: ["patch", "minor", "digest"],
+      automerge: true,
+      labels: ["dependencies", "area: ci"],
+    },
+
+    // ---- Hold back: needs a human ----
+    {
+      description: "packages/ui runtime deps ship to consumers through the registry, so they need a changeset.",
+      matchFileNames: ["packages/ui/package.json"],
+      matchDepTypes: ["dependencies"],
+      automerge: false,
+      labels: ["dependencies", "area: ui", "needs-changeset"],
+    },
+    {
+      description: "Majors are never automatic.",
+      matchUpdateTypes: ["major"],
+      automerge: false,
+      labels: ["dependencies", "major"],
+      minimumReleaseAge: "3 days",
+    },
+    {
+      description: "AGENTS.md warns that this Next.js line breaks conventions between versions.",
+      matchPackageNames: ["next"],
+      matchUpdateTypes: ["major", "minor"],
+      automerge: false,
+      dependencyDashboardApproval: true,
+    },
+    {
+      description: "next-themes is patched in patches/ — a bump silently invalidates the patch file.",
+      matchPackageNames: ["next-themes"],
+      automerge: false,
+      dependencyDashboardApproval: true,
+      labels: ["dependencies", "patched-dependency"],
+    },
+    {
+      description: "pnpm and Node are pinned by packageManager and engines — bump deliberately.",
+      matchPackageNames: ["pnpm", "node", "@types/node"],
+      matchUpdateTypes: ["major"],
+      dependencyDashboardApproval: true,
+    },
+    {
+      description: "Let a release settle before adopting it.",
+      matchUpdateTypes: ["patch", "minor"],
+      minimumReleaseAge: "3 days",
+    },
+  ],
+}

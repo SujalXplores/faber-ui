@@ -16,8 +16,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "@remixicon/react"
+        "@base-ui/react@1.7.0",
+        "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -36,7 +36,7 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react@1.7.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
@@ -56,7 +56,7 @@
         }
       ],
       "dependencies": [
-        "class-variance-authority"
+        "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -91,8 +91,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority"
+        "@base-ui/react@1.7.0",
+        "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
@@ -112,7 +112,7 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react@1.7.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -131,8 +131,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority"
+        "@base-ui/react@1.7.0",
+        "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -151,8 +151,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "@remixicon/react"
+        "@base-ui/react@1.7.0",
+        "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -171,8 +171,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority"
+        "@base-ui/react@1.7.0",
+        "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -191,8 +191,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority"
+        "@base-ui/react@1.7.0",
+        "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/separator.json",
@@ -212,8 +212,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority"
+        "@base-ui/react@1.7.0",
+        "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -232,8 +232,8 @@
         }
       ],
       "dependencies": [
-        "@remixicon/react",
-        "react-day-picker"
+        "@remixicon/react@4.9.0",
+        "react-day-picker@10.0.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
@@ -269,8 +269,8 @@
         }
       ],
       "dependencies": [
-        "@remixicon/react",
-        "embla-carousel-react"
+        "@remixicon/react@4.9.0",
+        "embla-carousel-react@8.6.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
@@ -290,7 +290,7 @@
         }
       ],
       "dependencies": [
-        "recharts"
+        "recharts@3.8.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -309,8 +309,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "@remixicon/react"
+        "@base-ui/react@1.7.0",
+        "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -329,7 +329,7 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react@1.7.0"
       ]
     },
     {
@@ -345,8 +345,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "@remixicon/react"
+        "@base-ui/react@1.7.0",
+        "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
@@ -367,8 +367,8 @@
         }
       ],
       "dependencies": [
-        "@remixicon/react",
-        "cmdk"
+        "@remixicon/react@4.9.0",
+        "cmdk@1.1.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/dialog.json",
@@ -389,8 +389,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "@remixicon/react"
+        "@base-ui/react@1.7.0",
+        "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -409,8 +409,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "@remixicon/react"
+        "@base-ui/react@1.7.0",
+        "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
@@ -430,7 +430,7 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react@1.7.0"
       ]
     },
     {
@@ -446,7 +446,7 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react@1.7.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -465,8 +465,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "@remixicon/react"
+        "@base-ui/react@1.7.0",
+        "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -485,7 +485,7 @@
         }
       ],
       "dependencies": [
-        "class-variance-authority"
+        "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -504,7 +504,7 @@
         }
       ],
       "dependencies": [
-        "class-variance-authority"
+        "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/label.json",
@@ -525,7 +525,7 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react@1.7.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -544,7 +544,7 @@
         }
       ],
       "dependencies": [
-        "class-variance-authority"
+        "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
@@ -566,8 +566,8 @@
         }
       ],
       "dependencies": [
-        "@remixicon/react",
-        "input-otp"
+        "@remixicon/react@4.9.0",
+        "input-otp@1.4.2"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -586,7 +586,7 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react@1.7.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -605,8 +605,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority"
+        "@base-ui/react@1.7.0",
+        "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/separator.json",
@@ -658,8 +658,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority"
+        "@base-ui/react@1.7.0",
+        "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -678,8 +678,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "@remixicon/react"
+        "@base-ui/react@1.7.0",
+        "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/dropdown-menu.json",
@@ -699,8 +699,8 @@
         }
       ],
       "dependencies": [
-        "@remixicon/react",
-        "@shadcn/react"
+        "@remixicon/react@4.9.0",
+        "@shadcn/react@0.3.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
@@ -736,7 +736,7 @@
         }
       ],
       "dependencies": [
-        "@remixicon/react"
+        "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -755,9 +755,9 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "@remixicon/react",
-        "class-variance-authority"
+        "@base-ui/react@1.7.0",
+        "@remixicon/react@4.9.0",
+        "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -776,7 +776,7 @@
         }
       ],
       "dependencies": [
-        "@remixicon/react"
+        "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
@@ -796,7 +796,7 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react@1.7.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -815,7 +815,7 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react@1.7.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -834,7 +834,7 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react@1.7.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -853,7 +853,7 @@
         }
       ],
       "dependencies": [
-        "react-resizable-panels"
+        "react-resizable-panels@4.12.2"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -872,7 +872,7 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react@1.7.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -891,8 +891,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "@remixicon/react"
+        "@base-ui/react@1.7.0",
+        "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -911,7 +911,7 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react@1.7.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -930,8 +930,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "@remixicon/react"
+        "@base-ui/react@1.7.0",
+        "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
@@ -951,9 +951,9 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "@remixicon/react",
-        "class-variance-authority"
+        "@base-ui/react@1.7.0",
+        "@remixicon/react@4.9.0",
+        "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
@@ -995,7 +995,7 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react@1.7.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -1014,9 +1014,9 @@
         }
       ],
       "dependencies": [
-        "@remixicon/react",
-        "next-themes",
-        "sonner"
+        "@remixicon/react@4.9.0",
+        "next-themes@0.4.6",
+        "sonner@2.0.7"
       ]
     },
     {
@@ -1032,7 +1032,7 @@
         }
       ],
       "dependencies": [
-        "@remixicon/react"
+        "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -1051,7 +1051,7 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react@1.7.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -1086,8 +1086,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority"
+        "@base-ui/react@1.7.0",
+        "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -1122,8 +1122,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority"
+        "@base-ui/react@1.7.0",
+        "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/toggle.json",
@@ -1143,8 +1143,8 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority"
+        "@base-ui/react@1.7.0",
+        "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -1163,7 +1163,7 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react@1.7.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"
@@ -1208,8 +1208,8 @@
         }
       ],
       "dependencies": [
-        "clsx",
-        "tailwind-merge"
+        "clsx@2.1.1",
+        "tailwind-merge@3.6.0"
       ]
     }
   ]

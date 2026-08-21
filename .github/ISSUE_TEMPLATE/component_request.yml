@@ -1,0 +1,30 @@
+name: Component or feature request
+description: Propose a new component, variant, or docs improvement.
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Component or feature
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does it solve
+    validations:
+      required: true
+  - type: textarea
+    id: prior-art
+    attributes:
+      label: Prior art
+      description: Equivalents in Base UI, shadcn/ui, Radix, or elsewhere.
+    validations:
+      required: false
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - label: This belongs in the registry (installable by consumers)
+        - label: This is docs-site only

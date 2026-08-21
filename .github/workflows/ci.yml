@@ -9,30 +9,83 @@ concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
+permissions:
+  contents: read
+
 jobs:
   verify:
     name: Lint, typecheck, build
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
-
-      - run: pnpm install --frozen-lockfile
+      - uses: ./.github/actions/setup
 
       - run: pnpm lint
 
-      - run: pnpm typecheck
+      - run: pnpm format:check
 
+      # Build first: Next generates .next/types/validator.ts, which is what
+      # actually type-checks typed routes. Typechecking before the build skips it.
       - run: pnpm build
+
+      - run: pnpm typecheck
 
       - name: registry.json is up to date
         run: |
           pnpm --filter @workspace/ui registry:generate
           git diff --exit-code -- packages/ui/registry.json
+
+      # The registry files are what consumers actually fetch. A docs build that
+      # succeeds without emitting them ships a site whose install commands 404.
+      - name: Built registry is publishable
+        run: |
+          node -e '
+            const fs = require("fs");
+            const items = require("./packages/ui/registry.json").items;
+            const missing = items.filter((i) => !fs.existsSync("apps/web/public/r/" + i.name + ".json"));
+            if (missing.length) {
+              console.error("missing built registry files: " + missing.map((i) => i.name).join(", "));
+              process.exit(1);
+            }
+            console.log(items.length + " registry items built");
+          '
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: ./.github/actions/setup
+
+      - run: pnpm test
+
+  workflows:
+    name: Lint workflows
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: actionlint
+        run: |
+          bash <(curl -fsSL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+          ./actionlint -color
+
+  changeset:
+    name: Changeset present
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: github.event_name == 'pull_request' && github.actor != 'renovate[bot]'
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: ./.github/actions/setup
+
+      - name: A versioned package changed without a changeset
+        run: pnpm changeset status --since=origin/${{ github.base_ref }}

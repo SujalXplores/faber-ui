@@ -26,9 +26,19 @@
         "^format"
       ]
     },
+    "format:check": {
+      "dependsOn": [
+        "^format:check"
+      ]
+    },
     "typecheck": {
       "dependsOn": [
         "^typecheck"
+      ]
+    },
+    "test": {
+      "dependsOn": [
+        "^test"
       ]
     },
     "dev": {

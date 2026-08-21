@@ -64,7 +64,11 @@ export function Preview({
   return (
     <figure className="not-prose my-6 overflow-hidden rounded-xl border">
       <div
-        className={cn("demo rounded-none border-0", flat && "demo-flat", className)}
+        className={cn(
+          "demo rounded-none border-0",
+          flat && "demo-flat",
+          className,
+        )}
       >
         {children}
       </div>
@@ -103,7 +107,7 @@ export function Preview({
             onClick={() => setExpanded((value) => !value)}
             aria-expanded={open}
             aria-controls={codeId}
-            className="press flex w-full items-center justify-center gap-1.5 border-t py-2 text-xs font-medium text-muted-foreground transition-colors hover:bg-surface-2 hover:text-foreground"
+            className="flex w-full press items-center justify-center gap-1.5 border-t py-2 text-xs font-medium text-muted-foreground transition-colors hover:bg-surface-2 hover:text-foreground"
           >
             <RiCodeSSlashLine className="size-3.5" />
             {open ? "Hide code" : `Show all ${lineCount} lines`}

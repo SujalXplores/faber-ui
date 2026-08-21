@@ -6,7 +6,9 @@ import { Button } from "@workspace/ui/components/button";
 export { toast };
 
 export function SonnerDemo() {
-  return <Button onClick={() => toast("Event has been created")}>Show toast</Button>;
+  return (
+    <Button onClick={() => toast("Event has been created")}>Show toast</Button>
+  );
 }
 
 export function SonnerActionDemo() {
@@ -31,13 +33,25 @@ export function SonnerTypesDemo() {
       <Button size="sm" onClick={() => toast.success("Saved")}>
         Success
       </Button>
-      <Button size="sm" variant="outline" onClick={() => toast.info("Heads up")}>
+      <Button
+        size="sm"
+        variant="outline"
+        onClick={() => toast.info("Heads up")}
+      >
         Info
       </Button>
-      <Button size="sm" variant="outline" onClick={() => toast.warning("Warning")}>
+      <Button
+        size="sm"
+        variant="outline"
+        onClick={() => toast.warning("Warning")}
+      >
         Warning
       </Button>
-      <Button size="sm" variant="destructive" onClick={() => toast.error("Failed")}>
+      <Button
+        size="sm"
+        variant="destructive"
+        onClick={() => toast.error("Failed")}
+      >
         Error
       </Button>
     </div>

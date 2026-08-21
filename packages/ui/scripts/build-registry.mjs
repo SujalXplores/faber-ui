@@ -11,6 +11,19 @@ const BASE = (process.env.REGISTRY_BASE_URL ?? "https://faber-ui.vercel.app").re
 
 const EXTERNAL_IGNORE = new Set(["react", "react-dom"]);
 
+const MANIFEST = JSON.parse(await readFile(path.join(UI, "package.json"), "utf8"));
+const VERSIONS = MANIFEST.dependencies ?? {};
+const undeclared = new Set();
+
+function versioned(pkg) {
+  const version = VERSIONS[pkg];
+  if (!version) {
+    undeclared.add(pkg);
+    return pkg;
+  }
+  return `${pkg}@${version}`;
+}
+
 const GROUPS = [
   { dir: "components", ext: ".tsx", type: "registry:ui", target: "components/ui" },
   { dir: "hooks", ext: ".ts", type: "registry:hook", target: "hooks" },
@@ -74,8 +87,9 @@ async function buildItem(group, file) {
       if (dep && dep !== name) registryDependencies.add(dep);
       continue;
     }
+    if (specifier.startsWith("node:")) continue;
     const pkg = packageName(specifier);
-    if (!EXTERNAL_IGNORE.has(pkg)) dependencies.add(pkg);
+    if (!EXTERNAL_IGNORE.has(pkg)) dependencies.add(versioned(pkg));
   }
 
   const { title, description } = await frontmatter(name);
@@ -100,7 +114,9 @@ const items = [];
 for (const group of GROUPS) {
   const dir = path.join(SRC, group.dir);
   if (!existsSync(dir)) continue;
-  const files = (await readdir(dir)).filter((f) => f.endsWith(group.ext)).sort();
+  const files = (await readdir(dir))
+    .filter((f) => f.endsWith(group.ext) && !f.includes(".test."))
+    .sort();
   for (const file of files) items.push(await buildItem(group, file));
 }
 
@@ -113,3 +129,9 @@ const registry = {
 
 await writeFile(path.join(UI, "registry.json"), `${JSON.stringify(registry, null, 2)}\n`);
 console.log(`registry.json: ${items.length} items, base ${BASE}`);
+
+if (undeclared.size) {
+  console.warn(
+    `warning: imported but not declared in packages/ui/package.json dependencies, so consumers get an unpinned version: ${[...undeclared].sort().join(", ")}`,
+  );
+}
