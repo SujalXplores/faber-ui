@@ -1,0 +1,12 @@
+# Every change needs a review from the maintainer.
+*                       @SujalXplores
+
+# The component library is what consumers install from the registry —
+# changes here ship straight into other people's projects.
+/packages/ui/           @SujalXplores
+/packages/ui/registry.json @SujalXplores
+
+# Automation, release plumbing, and agent instructions.
+/.github/               @SujalXplores
+/.changeset/            @SujalXplores
+/AGENTS.md              @SujalXplores

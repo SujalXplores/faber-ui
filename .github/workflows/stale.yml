@@ -1,0 +1,43 @@
+name: Stale
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    name: Sweep inactive issues and pull requests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/stale@v9
+        with:
+          days-before-issue-stale: 45
+          days-before-issue-close: 14
+          days-before-pr-stale: 21
+          days-before-pr-close: 10
+          stale-issue-label: "stale"
+          stale-pr-label: "stale"
+          exempt-issue-labels: "pinned,security,roadmap,needs-triage"
+          exempt-pr-labels: "pinned,security,dependencies,release"
+          exempt-all-milestones: true
+          stale-issue-message: >-
+            No activity here for 45 days. It will close in 14 days unless
+            something new comes up — comment to keep it open, or add the
+            `pinned` label if it should stay regardless.
+          stale-pr-message: >-
+            No activity on this pull request for 21 days. It will close in 10
+            days unless it is updated. Reopening later is fine.
+          close-issue-message: >-
+            Closing as inactive. Comment if this is still relevant and it will
+            be reopened.
+          close-pr-message: >-
+            Closing as inactive. Push to the branch and reopen when you pick it
+            back up.
+          operations-per-run: 100
