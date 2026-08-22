@@ -2,11 +2,6 @@ name: Bug report
 description: Something in a Faber UI component or the docs site is broken.
 labels: ["bug", "needs-triage"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Mention `@claude` anywhere in this issue and the maintainer bot will
-        investigate and open a PR with a fix.
   - type: input
     id: component
     attributes:
