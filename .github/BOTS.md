@@ -8,8 +8,7 @@ What runs without being asked, and the one-time setup each piece needs.
 | --- | --- | --- |
 | **CI** (`ci.yml`) | every PR and push to `main` | lint → format check → build → typecheck, unit tests, `registry.json` drift, built-registry publish guard, workflow lint, changeset presence |
 | **Renovate** (`renovate.json5`) | Mondays before 06:00 UTC | grouped dependency PRs, auto-merges the safe ones, weekly lockfile refresh, off-schedule PRs for vulnerabilities |
-| **Claude review** (`claude-review.yml`) | PR opened or pushed | reviews the diff, runs the checks itself, comments inline |
-| **Claude** (`claude.yml`) | `@claude` in an issue, PR, or review | implements the change and pushes to a branch |
+| **React Doctor** (`react-doctor.yml`) | PR opened or pushed | scans the changed React code for correctness, performance, a11y, and security issues; comments inline and posts a sticky summary |
 | **Labeler** (`labeler.yml`) | PR opened or pushed | applies `area:` and `dependencies` labels from changed paths |
 | **Audit** (`audit.yml`) | Mondays 04:00 UTC | opens or updates one issue for high-severity advisories, closes it when clean |
 | **Stale** (`stale.yml`) | daily 03:00 UTC | warns then closes inactive issues (45d) and PRs (21d) |
@@ -21,20 +20,18 @@ What runs without being asked, and the one-time setup each piece needs.
 <https://github.com/apps/renovate>. It opens an onboarding PR; merge it. The
 config here already applies, so the onboarding PR should be near-empty.
 
-**2. Claude** — the workflows read `secrets.CLAUDE_CODE_OAUTH_TOKEN`. Generate it
-with `claude` in this repo:
+**2. React Doctor** — nothing to install. It runs `millionco/react-doctor@v2`
+on the stock `GITHUB_TOKEN`, needs no app and no secret, and reports only the
+issues a PR introduces rather than the existing backlog. To reproduce a finding
+locally:
 
 ```
-/install-github-app
+npx react-doctor@latest
 ```
 
-To bill an API key instead of a Claude subscription, set
-`ANTHROPIC_API_KEY` as a repository secret and swap the input in both
-`claude-review.yml` and `claude.yml`:
-
-```yaml
-anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-```
+Rules are configurable through a `doctor.config.ts` at the repo root; there is
+none yet, so the default ruleset applies. The action pins a major tag, so
+Renovate's `github actions` group carries the upgrades.
 
 **3. Repository settings** — auto-merge must be on or Renovate cannot merge
 anything itself:
@@ -58,8 +55,10 @@ registry item has a built file under `apps/web/public/r`. Keep it required — a
 docs build that succeeds without emitting the registry serves install commands
 that 404, which is exactly how that broke before.
 
-Leave `Claude review` and `Audit` unrequired. A review is advice, and advisories
-are usually transitive and not fixable from this repo.
+Leave `Scan React changes` and `Audit` unrequired. React Doctor runs with
+`blocking: none`, so it reports and exits clean by design — a finding is a prompt
+to look, not a verdict. Advisories are usually transitive and not fixable from
+this repo.
 
 **5. Dependabot alerts** — free on private repositories and complements
 Renovate's `vulnerabilityAlerts`. Settings → Advanced Security → Dependabot alerts.
@@ -80,8 +79,9 @@ Renovate's `vulnerabilityAlerts`. Settings → Advanced Security → Dependabot 
 - Renovate ignoring something: add it to the dependency dashboard checklist, or
   a `packageRules` entry with `enabled: false`.
 - Keeping an issue open forever: the `pinned` label.
-- Re-enable Claude review on Renovate PRs: drop the `github.actor` clause in
-  `claude-review.yml`.
+- Making a React Doctor finding actually fail a PR: set `blocking: warning` or
+  `blocking: error` in `react-doctor.yml`, and add `Scan React changes` to the
+  required checks.
 
 ## Known state
 

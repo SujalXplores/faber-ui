@@ -64,6 +64,8 @@ this, because registry consumers receive the source directly.
 
 ## Automation
 
-A bot reviews every pull request, and `@claude` in a comment will make changes
-directly. See [`.github/BOTS.md`](.github/BOTS.md) for what runs and what it
-deliberately leaves alone.
+React Doctor scans every pull request and comments on the React issues the
+change introduces. It is advisory — it never fails the build. Reproduce a finding
+locally with `npx react-doctor@latest`. See
+[`.github/BOTS.md`](.github/BOTS.md) for what runs and what it deliberately
+leaves alone.
