@@ -96,7 +96,7 @@ export function FeatureGrid() {
         </p>
       </div>
 
-      <dl className="divide-y border-y">
+      <dl className="divide-y">
         {SPECS.map((spec) => (
           <div key={spec.term} className="py-4 first:pt-0 last:pb-0">
             <dt className="flex flex-wrap items-center gap-x-3 gap-y-2 font-heading text-sm font-medium tracking-subheading">
