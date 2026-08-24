@@ -122,6 +122,7 @@
 
   --font-sans: var(--font-family-sans);
   --font-mono: var(--font-family-mono);
+  --font-serif: var(--font-family-serif);
   --font-display: var(--font-family-display);
   --font-heading: var(--font-family-display);
 

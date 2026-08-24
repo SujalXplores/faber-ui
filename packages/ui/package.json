@@ -5,7 +5,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "lint": "oxlint --max-warnings=0 && eslint --quiet \"src/**/*.{ts,tsx}\"",
+    "lint": "oxlint --max-warnings=0 && eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "oxlint --fix && eslint --fix \"src/**/*.{ts,tsx}\"",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"test/**/*.{ts,tsx}\" \"*.ts\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"test/**/*.{ts,tsx}\" \"*.ts\"",
@@ -48,6 +48,7 @@
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.4",
     "@vitejs/plugin-react": "6.1.0",
+    "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
     "eslint": "10.8.0",
     "eslint-plugin-better-tailwindcss": "4.7.0",

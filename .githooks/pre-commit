@@ -1,0 +1,25 @@
+#!/bin/sh
+# Auto-fixes Tailwind classes on staged sources, then restages only the files
+# that actually changed, so partially-staged files are left alone.
+set -e
+
+staged=$(git diff --cached --name-only --diff-filter=ACMR -- '*.ts' '*.tsx')
+[ -z "$staged" ] && exit 0
+
+before=$(printf '%s\n' "$staged" | xargs -r git hash-object)
+
+for pkg in packages/ui apps/web; do
+  files=$(printf '%s\n' "$staged" | sed -n "s|^$pkg/||p")
+  [ -z "$files" ] && continue
+  printf '%s\n' "$files" | (cd "$pkg" && xargs -r npx eslint --fix --no-warn-ignored)
+done
+
+after=$(printf '%s\n' "$staged" | xargs -r git hash-object)
+
+i=1
+for file in $staged; do
+  b=$(printf '%s\n' "$before" | sed -n "${i}p")
+  a=$(printf '%s\n' "$after" | sed -n "${i}p")
+  [ "$b" != "$a" ] && git add -- "$file"
+  i=$((i + 1))
+done

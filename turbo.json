@@ -52,6 +52,12 @@
         "scripts/**",
         "registry.json"
       ]
+    },
+    "lint:fix": {
+      "cache": false,
+      "dependsOn": [
+        "^lint:fix"
+      ]
     }
   },
   "globalDependencies": [

@@ -1,4 +1,4 @@
-import { Geist_Mono, Inter } from "next/font/google";
+import { Geist_Mono, Instrument_Serif, Inter } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 
 import "./globals.css";
@@ -14,7 +14,17 @@ import { Toaster } from "@workspace/ui/components/sonner";
  */
 const fontSans = Inter({
   subsets: ["latin"],
+  style: ["normal", "italic"],
   variable: "--font-sans-src",
+  display: "swap",
+});
+
+/* Display serif, used only for the italic accent in the hero headline. */
+const fontSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-serif-src",
   display: "swap",
 });
 
@@ -58,13 +68,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       /* Values in packages/ui/src/styles/tokens/presets.css. */
       data-brand="blue"
       data-neutral="brand-tinted"
       data-radius="sm"
       data-density="default"
-      className={cn("antialiased", fontSans.variable, fontMono.variable)}
+      className={cn(
+        "antialiased",
+        fontSans.variable,
+        fontSerif.variable,
+        fontMono.variable,
+      )}
     >
       <body className="flex min-h-svh flex-col">
         <RootProvider>

@@ -29,6 +29,7 @@
     "**/dist/**",
     "**/build/**",
     "**/.turbo/**",
+    "**/.source/**",
     "**/postcss.config.*",
     "**/*.config.js",
     "**/*.config.mjs",

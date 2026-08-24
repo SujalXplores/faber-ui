@@ -19,7 +19,7 @@ function HoverCardContent({
   side = "bottom",
   sideOffset = 4,
   align = "center",
-  alignOffset = 4,
+  alignOffset = 0,
   ...props
 }: PreviewCardPrimitive.Popup.Props &
   Pick<

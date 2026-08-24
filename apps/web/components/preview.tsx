@@ -81,7 +81,7 @@ export function Preview({
           inert={!open}
           className={cn(
             "relative overflow-hidden",
-            "transition-[max-height] duration-[var(--duration-moderate)] ease-out",
+            "transition-[max-height] duration-(--duration-moderate) ease-out",
             !open && "mask-fade-b",
           )}
           style={{ maxHeight: open ? "none" : COLLAPSED_HEIGHT }}

@@ -11,6 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         collapsible: true,
         defaultOpenLevel: 1,
       }}
+      data-scroll-behavior="smooth"
     >
       {children}
     </DocsLayout>

@@ -97,6 +97,65 @@
   }
 }
 
+/* Ambient wash behind a hero. Two offset radial stops in the brand hue read as
+ * depth without a single hard edge to fight the layout. */
+@utility hero-glow {
+  background-image:
+    radial-gradient(
+      75% 65% at 50% 108%,
+      color-mix(in oklab, var(--primary) 60%, transparent) 0%,
+      color-mix(in oklab, var(--primary) 18%, transparent) 45%,
+      transparent 100%
+    ),
+    radial-gradient(
+      50% 70% at 88% 0%,
+      color-mix(in oklab, var(--primary) 22%, transparent) 0%,
+      transparent 100%
+    );
+}
+
+/* Decorative dot field for hero sections. Fixed spacing so the texture does not
+ * shift with `--density`. */
+/* Gradient hairline that fades in on hover. `mask-composite: exclude` keeps the
+ * gradient to the border box only, so one element draws a ring no `border`
+ * shorthand can express. */
+@utility ring-glow {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(140deg, var(--primary) 0%, transparent 55%);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--duration-base) var(--easing-out);
+    pointer-events: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+}
+
+@utility dot-field {
+  background-image: radial-gradient(var(--border-strong) 1px, transparent 1px);
+  background-size: 1.25rem 1.25rem;
+  mask-image: radial-gradient(
+    ellipse 90% 85% at 50% 0%,
+    black 0%,
+    transparent 100%
+  );
+}
+
 @utility mask-fade-b {
   mask-image: linear-gradient(to bottom, black 0%, black 82%, transparent 100%);
 }
