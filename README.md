@@ -284,11 +284,9 @@ Last sweep: **2026-09-23** - 30+ packages bumped to latest safe versions. `pnpm 
 
 ## Code health
 
-See [`CODE_SMELL_REPORT.md`](./CODE_SMELL_REPORT.md) for the full audit (2 high, 19 medium, 20+ low findings with file:line, severity, and suggested fixes).
+A full audit (2 high, 19 medium, 20+ low findings) was run against this tree and implemented before the 0.1.x releases. All high-severity items and most medium items are fixed: `showcase.tsx` no longer nests interactives, `ChartStyle` sanitizes keys/colors, the `reInit` leak is fixed, the skeleton is deterministic, overlays/thumbs resolve through semantic tokens, error boundaries exist, the registry parser uses the TypeScript compiler API, and the suite grew from 19 to 25 tests.
 
-All high-severity items and most medium items from the report are implemented (see `CODE_SMELL_REPORT.md` §0.1): `showcase.tsx` no longer nests interactives, `ChartStyle` sanitizes keys/colors, the `reInit` leak is fixed, the skeleton is deterministic, overlays/thumbs resolve through semantic tokens, error boundaries exist, and the suite grew from 19 to 25 tests.
-
-Still open: full per-component + `jest-axe` coverage, a real parser for the registry builder, and the three held-back majors above.
+Still open: full per-component + `jest-axe` coverage, table scroll-region labelling, and the three held-back majors above.
 
 ---
 
