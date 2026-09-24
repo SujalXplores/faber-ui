@@ -3,17 +3,14 @@ title: ScrollArea
 description: A custom-styled scrollable area.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as ScrollAreaModule from "@workspace/ui/components/scroll-area";
-
 import { ScrollArea, ScrollBar } from "@workspace/ui/components/scroll-area";
 
 `ScrollArea` is built on the Base UI `ScrollArea` primitive. It renders a custom-styled scrollbar while preserving native scrolling behavior.
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/scroll-area.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/scroll-area.json
 ```
 
 ## Usage
@@ -64,4 +61,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={ScrollAreaModule} />
+<ApiTable component="scroll-area" />

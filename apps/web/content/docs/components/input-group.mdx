@@ -3,9 +3,6 @@ title: InputGroup
 description: Composes an input with leading and trailing addons.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as InputGroupModule from "@workspace/ui/components/input-group";
-
 import { Input } from "@workspace/ui/components/input";
 import {
   InputGroup,
@@ -19,8 +16,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/input-group.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/input-group.json
 ```
 
 ## Usage
@@ -86,4 +83,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={InputGroupModule} />
+<ApiTable component="input-group" />

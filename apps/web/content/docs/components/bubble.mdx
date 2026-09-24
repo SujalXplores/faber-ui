@@ -3,9 +3,6 @@ title: Bubble
 description: A chat-style message bubble with variants and alignment.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as BubbleModule from "@workspace/ui/components/bubble";
-
 import {
   Bubble,
   BubbleContent,
@@ -18,8 +15,8 @@ import { RiHeartLine, RiThumbUpLine } from "@remixicon/react";
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/bubble.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/bubble.json
 ```
 
 ## Usage
@@ -106,4 +103,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={BubbleModule} />
+<ApiTable component="bubble" />

@@ -3,9 +3,6 @@ title: Navigation Menu
 description: A navigation menu with a shared viewport for content panels.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as NavigationMenuModule from "@workspace/ui/components/navigation-menu";
-
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -22,8 +19,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/navigation-menu.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/navigation-menu.json
 ```
 
 ## Usage
@@ -109,4 +106,4 @@ Use `navigationMenuTriggerStyle` to style a plain link as a trigger:
 
 ## API
 
-<ApiTable module={NavigationMenuModule} />
+<ApiTable component="navigation-menu" />

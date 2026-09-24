@@ -12,15 +12,13 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@workspace/ui/components/breadcrumb";
-import { ApiTable } from "@/components/api-table";
-import * as BreadcrumbModule from "@workspace/ui/components/breadcrumb";
 
 `Breadcrumb` renders a navigation trail that shows the path to the current page, with separators between items.
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/breadcrumb.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/breadcrumb.json
 ```
 
 ## Usage
@@ -96,4 +94,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={BreadcrumbModule} />
+<ApiTable component="breadcrumb" />

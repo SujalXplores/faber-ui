@@ -3,9 +3,6 @@ title: Empty
 description: A placeholder for empty states.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as EmptyModule from "@workspace/ui/components/empty";
-
 import {
   Empty,
   EmptyContent,
@@ -19,8 +16,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/empty.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/empty.json
 ```
 
 ## Usage
@@ -78,4 +75,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={EmptyModule} />
+<ApiTable component="empty" />

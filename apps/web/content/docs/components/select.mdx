@@ -3,9 +3,6 @@ title: Select
 description: A custom dropdown select.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as SelectModule from "@workspace/ui/components/select";
-
 import {
   Select,
   SelectContent,
@@ -16,12 +13,18 @@ import {
   SelectValue,
 } from "@workspace/ui/components/select";
 
+export const fruits = [
+  { value: "apple", label: "Apple" },
+  { value: "banana", label: "Banana" },
+  { value: "cherry", label: "Cherry" },
+];
+
 `Select` is built on the Base UI `Select` primitive. It renders a custom dropdown for choosing a single value from a list.
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/select.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/select.json
 ```
 
 ## Usage
@@ -37,9 +40,14 @@ import {
   SelectValue,
 } from "@workspace/ui/components/select";
 
+const fruits = [
+  { value: "apple", label: "Apple" },
+  { value: "banana", label: "Banana" },
+];
+
 export default function Example() {
   return (
-    <Select>
+    <Select items={fruits}>
       <SelectTrigger>
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
@@ -52,12 +60,14 @@ export default function Example() {
 }
 ```
 
+Pass `items` to the root so the trigger shows the selected item's label rather than its raw `value`.
+
 ## Examples
 
 ### Default
 
 <div className="not-prose demo">
-  <Select>
+  <Select items={fruits}>
     <SelectTrigger className="w-56">
       <SelectValue placeholder="Select a fruit" />
     </SelectTrigger>
@@ -72,7 +82,7 @@ export default function Example() {
 ### With groups
 
 <div className="not-prose demo">
-  <Select>
+  <Select items={fruits}>
     <SelectTrigger className="w-56">
       <SelectValue placeholder="Select a fruit" />
     </SelectTrigger>
@@ -89,7 +99,7 @@ export default function Example() {
 ### Small
 
 <div className="not-prose demo">
-  <Select>
+  <Select items={fruits}>
     <SelectTrigger size="sm" className="w-56">
       <SelectValue placeholder="Select a fruit" />
     </SelectTrigger>
@@ -102,4 +112,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={SelectModule} />
+<ApiTable component="select" />

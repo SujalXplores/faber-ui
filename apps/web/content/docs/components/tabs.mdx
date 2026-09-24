@@ -3,9 +3,6 @@ title: Tabs
 description: Switch between panels of content with a tab list.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as TabsModule from "@workspace/ui/components/tabs";
-
 import {
   Tabs,
   TabsContent,
@@ -17,8 +14,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/tabs.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/tabs.json
 ```
 
 ## Usage
@@ -85,4 +82,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={TabsModule} />
+<ApiTable component="tabs" />

@@ -3,8 +3,6 @@ title: Avatar
 description: A user image with fallback and optional status badge.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as AvatarModule from "@workspace/ui/components/avatar";
 import { Preview } from "@/components/preview";
 
 import {
@@ -21,8 +19,8 @@ import { avatarUsage, avatarSizes, avatarBadge, avatarGroup } from "@/examples/a
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/avatar.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/avatar.json
 ```
 
 ## Usage
@@ -87,4 +85,4 @@ Stack multiple avatars with `AvatarGroup`:
 
 ## API
 
-<ApiTable module={AvatarModule} />
+<ApiTable component="avatar" />

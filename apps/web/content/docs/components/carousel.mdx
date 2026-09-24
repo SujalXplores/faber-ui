@@ -3,9 +3,6 @@ title: Carousel
 description: A scrollable carousel powered by Embla.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as CarouselModule from "@workspace/ui/components/carousel";
-
 import { Button } from "@workspace/ui/components/button";
 import {
   Carousel,
@@ -19,8 +16,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/carousel.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/carousel.json
 ```
 
 ## Usage
@@ -94,4 +91,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={CarouselModule} />
+<ApiTable component="carousel" />

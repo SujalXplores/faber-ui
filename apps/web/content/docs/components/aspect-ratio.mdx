@@ -3,17 +3,14 @@ title: AspectRatio
 description: Maintains a consistent aspect ratio for media.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as AspectRatioModule from "@workspace/ui/components/aspect-ratio";
-
 import { AspectRatio } from "@workspace/ui/components/aspect-ratio";
 
 `AspectRatio` wraps content in a container that preserves a fixed aspect ratio, useful for responsive media.
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/aspect-ratio.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/aspect-ratio.json
 ```
 
 ## Usage
@@ -50,4 +47,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={AspectRatioModule} />
+<ApiTable component="aspect-ratio" />

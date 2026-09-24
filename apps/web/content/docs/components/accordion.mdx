@@ -3,9 +3,6 @@ title: Accordion
 description: A vertically stacked set of expandable sections.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as AccordionModule from "@workspace/ui/components/accordion";
-
 import {
   Accordion,
   AccordionContent,
@@ -17,8 +14,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/accordion.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/accordion.json
 ```
 
 ## Usage
@@ -62,4 +59,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={AccordionModule} />
+<ApiTable component="accordion" />

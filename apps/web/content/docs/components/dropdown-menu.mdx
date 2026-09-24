@@ -3,9 +3,6 @@ title: DropdownMenu
 description: A menu of actions revealed by a trigger click.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as DropdownMenuModule from "@workspace/ui/components/dropdown-menu";
-
 import { Button } from "@workspace/ui/components/button";
 import {
   DropdownMenu,
@@ -22,8 +19,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/dropdown-menu.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/dropdown-menu.json
 ```
 
 ## Usage
@@ -90,4 +87,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={DropdownMenuModule} />
+<ApiTable component="dropdown-menu" />

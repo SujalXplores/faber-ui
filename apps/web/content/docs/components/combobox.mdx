@@ -3,8 +3,6 @@ title: Combobox
 description: A searchable input with a popup list of options.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as ComboboxModule from "@workspace/ui/components/combobox";
 import { ComboboxDemo, ComboboxGroupDemo } from "@/components/combobox-demo";
 
 `Combobox` is built on the Base UI `Combobox` primitive. Pass an `items` array to the root and render items with a function child so the list can filter and show an empty state.
@@ -47,8 +45,8 @@ export default function Example() {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/combobox.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/combobox.json
 ```
 
 ## Examples
@@ -67,7 +65,7 @@ pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/combobox.json
 
 ## API
 
-<ApiTable module={ComboboxModule} />
+<ApiTable component="combobox" />
 
 | Component            | Description                                             |
 | -------------------- | ------------------------------------------------------- |

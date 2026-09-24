@@ -3,9 +3,6 @@ title: Item
 description: A flexible list item with media, content, and actions.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as ItemModule from "@workspace/ui/components/item";
-
 import {
   Item,
   ItemActions,
@@ -21,8 +18,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/item.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/item.json
 ```
 
 ## Usage
@@ -118,4 +115,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={ItemModule} />
+<ApiTable component="item" />

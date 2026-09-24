@@ -3,9 +3,6 @@ title: NativeSelect
 description: A styled native HTML select.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as NativeSelectModule from "@workspace/ui/components/native-select";
-
 import {
   NativeSelect,
   NativeSelectOption,
@@ -15,8 +12,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/native-select.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/native-select.json
 ```
 
 ## Usage
@@ -60,4 +57,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={NativeSelectModule} />
+<ApiTable component="native-select" />

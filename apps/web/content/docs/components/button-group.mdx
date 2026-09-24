@@ -3,9 +3,6 @@ title: ButtonGroup
 description: A group of buttons with merged borders.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as ButtonGroupModule from "@workspace/ui/components/button-group";
-
 import { Button } from "@workspace/ui/components/button";
 import {
   ButtonGroup,
@@ -17,8 +14,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/button-group.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/button-group.json
 ```
 
 ## Usage
@@ -82,4 +79,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={ButtonGroupModule} />
+<ApiTable component="button-group" />

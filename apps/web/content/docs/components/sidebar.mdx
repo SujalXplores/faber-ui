@@ -3,9 +3,6 @@ title: Sidebar
 description: A composable sidebar system with collapsible modes and a trigger.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as SidebarModule from "@workspace/ui/components/sidebar";
-
 import {
   Sidebar,
   SidebarContent,
@@ -26,8 +23,8 @@ import { RiDashboardLine, RiSettingsLine } from "@remixicon/react";
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/sidebar.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/sidebar.json
 ```
 
 ## Usage
@@ -150,4 +147,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={SidebarModule} />
+<ApiTable component="sidebar" />

@@ -3,9 +3,6 @@ title: Menubar
 description: A horizontal menu bar, like the menus in a macOS application.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as MenubarModule from "@workspace/ui/components/menubar";
-
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -28,8 +25,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/menubar.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/menubar.json
 ```
 
 ## Usage
@@ -134,4 +131,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={MenubarModule} />
+<ApiTable component="menubar" />

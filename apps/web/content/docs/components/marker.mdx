@@ -3,9 +3,6 @@ title: Marker
 description: A horizontal marker or label row with an optional icon.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as MarkerModule from "@workspace/ui/components/marker";
-
 import {
   Marker,
   MarkerContent,
@@ -17,8 +14,8 @@ import { RiStarLine } from "@remixicon/react";
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/marker.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/marker.json
 ```
 
 ## Usage
@@ -82,4 +79,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={MarkerModule} />
+<ApiTable component="marker" />
