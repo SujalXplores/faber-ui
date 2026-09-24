@@ -4,15 +4,13 @@ description: A Recharts wrapper with tooltip, legend, and style helpers.
 ---
 
 import { ChartBarDemo } from "@/components/chart-demo";
-import { ApiTable } from "@/components/api-table";
-import * as ChartModule from "@workspace/ui/components/chart";
 
 `Chart` is a thin wrapper around Recharts. It provides a `ChartContainer` that reads a config object, plus tooltip and legend components styled to match the rest of the UI.
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/chart.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/chart.json
 ```
 
 ## Usage
@@ -70,4 +68,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={ChartModule} />
+<ApiTable component="chart" />

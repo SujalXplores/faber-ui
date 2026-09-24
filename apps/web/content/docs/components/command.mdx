@@ -3,9 +3,6 @@ title: Command
 description: A command palette built on cmdk.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as CommandModule from "@workspace/ui/components/command";
-
 import {
   Command,
   CommandEmpty,
@@ -21,8 +18,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/command.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/command.json
 ```
 
 ## Usage
@@ -86,4 +83,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={CommandModule} />
+<ApiTable component="command" />

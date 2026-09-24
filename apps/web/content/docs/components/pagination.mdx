@@ -3,9 +3,6 @@ title: Pagination
 description: Navigation for paginated content.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as PaginationModule from "@workspace/ui/components/pagination";
-
 import {
   Pagination,
   PaginationContent,
@@ -20,8 +17,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/pagination.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/pagination.json
 ```
 
 ## Usage
@@ -86,4 +83,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={PaginationModule} />
+<ApiTable component="pagination" />

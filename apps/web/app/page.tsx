@@ -8,13 +8,10 @@ import {
 
 import { baseOptions } from "@/lib/layout.shared";
 import { source } from "@/lib/source";
-import { CopyButton } from "@/components/copy-button";
+import { InstallCommand } from "@/components/install-command";
 import { TechStack } from "@/components/tech-stack";
 import { FeatureGrid } from "@/components/feature-grid";
 import { ShowcaseLazy as Showcase } from "@/components/showcase-lazy";
-
-const INSTALL_COMMAND =
-  "pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/button.json";
 
 /* Every figure is counted from the source, not estimated: theme axes from
  * presets.css, tokens from semantic.css, entries from registry.json. */
@@ -52,28 +49,6 @@ function getComponents() {
     .sort((a, b) => a.title.localeCompare(b.title));
 }
 
-function CodeWindow({
-  title,
-  children,
-  action,
-}: {
-  title: string;
-  children: React.ReactNode;
-  action?: React.ReactNode;
-}) {
-  return (
-    <div className="overflow-hidden rounded-xl border bg-surface-2">
-      <div className="flex items-center gap-2 border-b bg-surface-3/40 py-2 ps-3.5 pe-1.5">
-        <span className="flex-1 truncate font-mono text-2xs tracking-caps text-muted-foreground">
-          {title}
-        </span>
-        {action}
-      </div>
-      {children}
-    </div>
-  );
-}
-
 export default function Page() {
   const components = getComponents();
   const stats = getStats(components.length);
@@ -90,25 +65,37 @@ export default function Page() {
             className="pointer-events-none absolute inset-0 -z-10 dot-field opacity-60"
             aria-hidden
           />
-          <div className="mx-auto w-full max-w-4xl px-6 pt-20 pb-16 sm:pt-28">
-            <span className="inline-flex items-center gap-1.5 rounded-full border bg-surface-2/60 py-1 ps-2 pe-3 text-xs font-medium text-muted-foreground">
+          <div className="mx-auto w-full max-w-4xl px-6 pt-20 pb-16 sm:pt-28 sm:pb-20">
+            <span
+              className="inline-flex stagger-in items-center gap-1.5 rounded-full border bg-surface-2/60 py-1 ps-2 pe-3 text-xs font-medium text-muted-foreground"
+              style={{ "--index": 0 } as React.CSSProperties}
+            >
               <RiSparkling2Line className="size-3.5 text-primary" />
               {components.length} components, MIT licensed
             </span>
 
-            <h1 className="mt-6 max-w-2xl text-4xl/display font-semibold tracking-display text-balance sm:text-5xl/display">
+            <h1
+              className="mt-6 max-w-2xl stagger-in text-4xl/display font-semibold tracking-display text-balance sm:text-5xl/display"
+              style={{ "--index": 1 } as React.CSSProperties}
+            >
               Components you{" "}
               <em className="font-serif text-primary italic">own</em> outright.
             </h1>
 
-            <p className="mt-5 max-w-2xl text-lg/body text-pretty text-muted-foreground">
+            <p
+              className="mt-5 max-w-2xl stagger-in text-lg/body text-pretty text-muted-foreground"
+              style={{ "--index": 2 } as React.CSSProperties}
+            >
               React components built on Base UI primitives and Tailwind CSS v4,
               with a shadcn-compatible variant API. The source is copied into
               your repository, so there is no runtime dependency to upgrade and
               nothing to override when a design changes.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+            <div
+              className="mt-8 flex stagger-in flex-wrap items-center gap-x-6 gap-y-3 text-sm"
+              style={{ "--index": 3 } as React.CSSProperties}
+            >
               <Link
                 href="/docs"
                 className="group inline-flex h-9 press items-center gap-1.5 rounded-md bg-primary px-4 font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
@@ -127,7 +114,10 @@ export default function Page() {
               </a>
             </div>
 
-            <div className="mt-12">
+            <div
+              className="mt-12 stagger-in"
+              style={{ "--index": 4 } as React.CSSProperties}
+            >
               <p className="text-xs font-medium tracking-caps text-muted-foreground uppercase">
                 Built on
               </p>
@@ -147,22 +137,7 @@ export default function Page() {
               Quickstart
             </h2>
 
-            <CodeWindow
-              title="terminal"
-              action={
-                <CopyButton
-                  value={INSTALL_COMMAND}
-                  label="Copy install command"
-                />
-              }
-            >
-              <div className="p-4">
-                <code className="block scrollbar-subtle overflow-x-auto font-mono text-sm whitespace-nowrap text-foreground">
-                  <span className="text-muted-foreground select-none">$ </span>
-                  {INSTALL_COMMAND}
-                </code>
-              </div>
-            </CodeWindow>
+            <InstallCommand />
           </section>
 
           <p className="mt-4 text-sm text-muted-foreground">
@@ -195,7 +170,10 @@ export default function Page() {
             </dl>
           </section>
 
-          <section className="mt-20" aria-labelledby="showcase-heading">
+          <section
+            className="mt-20 sm:mt-24"
+            aria-labelledby="showcase-heading"
+          >
             <h2
               id="showcase-heading"
               className="max-w-2xl font-heading text-2xl font-semibold tracking-display text-balance sm:text-3xl"
@@ -215,7 +193,7 @@ export default function Page() {
             </div>
           </section>
 
-          <section className="mt-20" aria-labelledby="craft-heading">
+          <section className="mt-20 sm:mt-24" aria-labelledby="craft-heading">
             <h2
               id="craft-heading"
               className="max-w-2xl font-heading text-2xl font-semibold tracking-display text-balance sm:text-3xl"

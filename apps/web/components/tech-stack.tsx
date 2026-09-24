@@ -4,6 +4,8 @@ import {
   RiTailwindCssFill,
 } from "@remixicon/react";
 
+import { cn } from "@workspace/ui/lib/utils";
+
 /** Brand paths are from Simple Icons (CC0), 24x24 viewBox. */
 const BRAND_PATHS = {
   typescript:
@@ -27,22 +29,58 @@ function BrandGlyph({ d, className }: { d: string; className?: string }) {
   );
 }
 
+/* Official brand colors. Monochrome marks (Next.js, shadcn/ui) follow the
+ * theme: near-black in light mode, white in dark mode. Chromatic marks use
+ * a darker step in light mode for contrast and the canonical bright step in
+ * dark mode. */
 const STACK = [
-  { name: "React", icon: <RiReactjsFill /> },
-  { name: "Next.js", icon: <RiNextjsFill /> },
-  { name: "TypeScript", icon: <BrandGlyph d={BRAND_PATHS.typescript} /> },
-  { name: "Tailwind CSS", icon: <RiTailwindCssFill /> },
-  { name: "Base UI", icon: <BrandGlyph d={BRAND_PATHS.baseUi} /> },
-  { name: "shadcn/ui", icon: <BrandGlyph d={BRAND_PATHS.shadcn} /> },
+  {
+    name: "React",
+    icon: <RiReactjsFill />,
+    brand: "text-[#149ECA] dark:text-[#61DAFB]",
+  },
+  {
+    name: "Next.js",
+    icon: <RiNextjsFill />,
+    brand: "text-black dark:text-white",
+  },
+  {
+    name: "TypeScript",
+    icon: <BrandGlyph d={BRAND_PATHS.typescript} />,
+    brand: "text-[#3178C6] dark:text-[#5FA8E5]",
+  },
+  {
+    name: "Tailwind CSS",
+    icon: <RiTailwindCssFill />,
+    brand: "text-[#0891B2] dark:text-[#38BDF8]",
+  },
+  {
+    name: "Base UI",
+    icon: <BrandGlyph d={BRAND_PATHS.baseUi} />,
+    brand: "text-[#007FFF] dark:text-[#3399FF]",
+  },
+  {
+    name: "shadcn/ui",
+    icon: <BrandGlyph d={BRAND_PATHS.shadcn} />,
+    brand: "text-black dark:text-white",
+  },
 ];
 
 export function TechStack() {
   return (
-    <ul className="flex flex-wrap items-center gap-2">
+    <ul className="flex flex-wrap items-center gap-2" aria-label="Built with">
       {STACK.map((tech) => (
         <li key={tech.name}>
-          <span className="group inline-flex items-center gap-2 rounded-full border bg-surface-2/60 py-1.5 ps-2.5 pe-3.5 text-xs font-medium text-muted-foreground transition-control pointer-fine:hover:border-border-strong pointer-fine:hover:bg-surface-3 pointer-fine:hover:text-foreground [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:opacity-70 [&_svg]:transition-opacity pointer-fine:group-hover:[&_svg]:opacity-100">
-            {tech.icon}
+          <span className="group inline-flex items-center gap-2 rounded-full border bg-surface-2/60 py-1.5 ps-2.5 pe-3.5 text-xs font-medium text-muted-foreground transition-control pointer-fine:hover:border-border-strong pointer-fine:hover:bg-surface-3 pointer-fine:hover:text-foreground">
+            <span
+              className={cn(
+                "inline-flex shrink-0 transition-opacity [&_svg]:size-4",
+                tech.brand,
+              )}
+              aria-hidden
+            >
+              {tech.icon}
+            </span>
             {tech.name}
           </span>
         </li>

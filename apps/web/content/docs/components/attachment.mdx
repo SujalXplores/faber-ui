@@ -3,9 +3,6 @@ title: Attachment
 description: A file or attachment card with upload state and actions.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as AttachmentModule from "@workspace/ui/components/attachment";
-
 import {
   Attachment,
   AttachmentAction,
@@ -23,8 +20,8 @@ import { RiDownloadLine, RiFileTextLine } from "@remixicon/react";
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/attachment.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/attachment.json
 ```
 
 ## Usage
@@ -177,4 +174,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={AttachmentModule} />
+<ApiTable component="attachment" />

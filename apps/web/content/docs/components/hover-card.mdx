@@ -3,9 +3,6 @@ title: HoverCard
 description: A preview revealed on hover.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as HoverCardModule from "@workspace/ui/components/hover-card";
-
 import {
   HoverCard,
   HoverCardContent,
@@ -16,8 +13,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/hover-card.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/hover-card.json
 ```
 
 ## Usage
@@ -64,4 +61,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={HoverCardModule} />
+<ApiTable component="hover-card" />

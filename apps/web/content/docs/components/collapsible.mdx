@@ -3,9 +3,6 @@ title: Collapsible
 description: An expandable container for hiding content.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as CollapsibleModule from "@workspace/ui/components/collapsible";
-
 import { Button } from "@workspace/ui/components/button";
 import {
   Collapsible,
@@ -17,8 +14,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/collapsible.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/collapsible.json
 ```
 
 ## Usage
@@ -58,4 +55,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={CollapsibleModule} />
+<ApiTable component="collapsible" />

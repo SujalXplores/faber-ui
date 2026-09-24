@@ -1,17 +1,29 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 import Image from "next/image";
 
-function Logo() {
+function BrandTintedMark() {
   return (
-    <span className="flex items-center gap-2">
+    <span className="relative isolate size-[18px] shrink-0">
       <Image
         src="/logo.png"
         alt=""
         width={18}
         height={18}
         priority
-        className="h-[18px] w-auto"
+        className="size-full grayscale"
       />
+      <span
+        aria-hidden
+        className="absolute inset-0 bg-primary mask-[url(/logo.png)] mask-contain mask-center mask-no-repeat mix-blend-color"
+      />
+    </span>
+  );
+}
+
+function Logo() {
+  return (
+    <span className="flex items-center gap-2">
+      <BrandTintedMark />
       <span className="font-medium tracking-subheading">Faber UI</span>
     </span>
   );

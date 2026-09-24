@@ -49,8 +49,11 @@
 }
 
 /* Shiki writes a literal `background-color` inline on both the figure and the
- * pre, so `!important` is what beats it. */
+ * pre, so `!important` is what beats it. The `.dark` selector outranks the
+ * dual-theme rule in base.css, which would otherwise repaint the figure with
+ * the Shiki theme's own background. */
 figure.shiki,
+.dark figure.shiki,
 figure.shiki pre {
   background-color: var(--code-background) !important;
 }

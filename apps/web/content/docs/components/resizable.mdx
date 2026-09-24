@@ -3,9 +3,6 @@ title: Resizable
 description: Resizable panels with drag handles.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as ResizableModule from "@workspace/ui/components/resizable";
-
 import {
   ResizableHandle,
   ResizablePanel,
@@ -16,8 +13,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/resizable.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/resizable.json
 ```
 
 ## Usage
@@ -74,4 +71,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={ResizableModule} />
+<ApiTable component="resizable" />

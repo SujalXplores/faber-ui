@@ -3,9 +3,6 @@ title: ToggleGroup
 description: A group of mutually exclusive or independent toggles.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as ToggleGroupModule from "@workspace/ui/components/toggle-group";
-
 import {
   ToggleGroup,
   ToggleGroupItem,
@@ -15,8 +12,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/toggle-group.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/toggle-group.json
 ```
 
 ## Usage
@@ -73,4 +70,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={ToggleGroupModule} />
+<ApiTable component="toggle-group" />

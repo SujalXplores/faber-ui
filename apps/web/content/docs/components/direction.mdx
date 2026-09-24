@@ -3,9 +3,6 @@ title: Direction
 description: A re-export of the Base UI direction provider for RTL and LTR layouts.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as DirectionModule from "@workspace/ui/components/direction";
-
 import {
   DirectionProvider,
   useDirection,
@@ -15,8 +12,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/direction.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/direction.json
 ```
 
 ## Usage
@@ -45,4 +42,4 @@ function Content() {
 
 ## API
 
-<ApiTable module={DirectionModule} />
+<ApiTable component="direction" />

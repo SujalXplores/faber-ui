@@ -3,9 +3,6 @@ title: Sheet
 description: A panel that slides in from a screen edge.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as SheetModule from "@workspace/ui/components/sheet";
-
 import { Button } from "@workspace/ui/components/button";
 import {
   Sheet,
@@ -22,8 +19,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/sheet.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/sheet.json
 ```
 
 ## Usage
@@ -92,4 +89,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={SheetModule} />
+<ApiTable component="sheet" />

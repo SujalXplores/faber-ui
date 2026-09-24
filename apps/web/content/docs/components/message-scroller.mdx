@@ -3,9 +3,6 @@ title: Message Scroller
 description: A scrollable message container with auto-scroll and a jump button.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as MessageScrollerModule from "@workspace/ui/components/message-scroller";
-
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -19,8 +16,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/message-scroller.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/message-scroller.json
 ```
 
 ## Usage
@@ -78,4 +75,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={MessageScrollerModule} />
+<ApiTable component="message-scroller" />

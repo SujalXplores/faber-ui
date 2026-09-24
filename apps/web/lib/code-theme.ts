@@ -16,9 +16,9 @@ export const codeLangs = [
 ] as const;
 
 const LANGUAGE_LABELS: Record<string, string> = {
-  bash: "terminal",
-  sh: "terminal",
-  shell: "terminal",
+  bash: "Terminal",
+  sh: "Terminal",
+  shell: "Terminal",
   js: "javascript",
   jsx: "javascript",
   ts: "typescript",

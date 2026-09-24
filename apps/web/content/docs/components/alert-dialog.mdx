@@ -3,9 +3,6 @@ title: AlertDialog
 description: A modal dialog used for destructive confirmations.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as AlertDialogModule from "@workspace/ui/components/alert-dialog";
-
 import { Button } from "@workspace/ui/components/button";
 import {
   AlertDialog,
@@ -23,8 +20,8 @@ import {
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/alert-dialog.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/alert-dialog.json
 ```
 
 ## Usage
@@ -86,4 +83,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={AlertDialogModule} />
+<ApiTable component="alert-dialog" />

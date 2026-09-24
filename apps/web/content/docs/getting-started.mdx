@@ -23,8 +23,8 @@ The documentation app (`apps/web`) runs on Next.js 16 with Turbopack.
 
 From your own project, point the shadcn CLI at the Faber UI registry:
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/button.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/button.json
 ```
 
 The CLI reads your `components.json` for aliases, resolves any components the item depends on, installs the npm packages it needs, and copies the source into your project. Nothing is added to your dependency tree beyond those packages.

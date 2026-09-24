@@ -3,17 +3,14 @@ title: Kbd
 description: Displays a keyboard keycap.
 ---
 
-import { ApiTable } from "@/components/api-table";
-import * as KbdModule from "@workspace/ui/components/kbd";
-
 import { Kbd, KbdGroup } from "@workspace/ui/components/kbd";
 
 `Kbd` renders a styled keyboard keycap, useful for documenting shortcuts. `KbdGroup` combines multiple keys with plus separators.
 
 ## Installation
 
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/kbd.json
+```npm
+npx shadcn@latest add https://faber-ui.vercel.app/r/kbd.json
 ```
 
 ## Usage
@@ -46,4 +43,4 @@ export default function Example() {
 
 ## API
 
-<ApiTable module={KbdModule} />
+<ApiTable component="kbd" />

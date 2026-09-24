@@ -89,6 +89,14 @@
   "overrides": [
     {
       "files": [
+        "**/lib/component-api.ts"
+      ],
+      "rules": {
+        "import/no-nodejs-modules": "off"
+      }
+    },
+    {
+      "files": [
         "**/scripts/**"
       ],
       "rules": {

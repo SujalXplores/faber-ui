@@ -7,3 +7,43 @@
 /* After the Fumadocs preset: its `.dark` is equally specific, so source order
  * decides which `--color-fd-*` values win. */
 @import "@workspace/ui/styles/bridge/fumadocs.css";
+
+/* Header search opens a Radix dialog, which locks scroll by adding a
+ * `margin-right` compensation to `body[data-scroll-locked]`. The kit already
+ * reserves that space with `scrollbar-gutter: stable` on `html`, so the
+ * compensation double-counts and shoves the page sideways on open. Neutralise
+ * it; the gutter holds the layout. The extra `html` ancestor beats the
+ * runtime-injected singleton regardless of source order. */
+html body[data-scroll-locked] {
+  margin-right: 0 !important;
+}
+
+/* The search results list scrolls on a native `overflow-y-auto` scrollbar,
+ * which renders chunkier than the kit's thin `scrollbar-subtle` ones used
+ * everywhere else. Restyle it to match, and reserve its gutter so rows stop
+ * jumping when results grow past the max height. */
+[role="dialog"] .overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+  scrollbar-gutter: stable;
+}
+
+[role="dialog"] .overflow-y-auto::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[role="dialog"] .overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+[role="dialog"] .overflow-y-auto::-webkit-scrollbar-thumb {
+  background-color: var(--border-strong);
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  background-clip: content-box;
+}
+
+[role="dialog"] .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background-color: var(--muted-foreground);
+}
