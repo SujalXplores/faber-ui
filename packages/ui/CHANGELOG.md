@@ -1,5 +1,11 @@
 # @workspace/ui
 
+## 0.1.2
+
+### Patch Changes
+
+- 7507a5a: Pad the Select list so options no longer sit flush against the popup edge, reserve room for the selected-item check, and scope the Shiki dark-theme rule to code tokens so code block chrome keeps its own colors.
+
 ## 0.1.1
 
 ### Patch Changes
