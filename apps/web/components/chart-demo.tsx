@@ -30,7 +30,7 @@ const chartConfig = {
 export function ChartBarDemo() {
   return (
     <ChartContainer config={chartConfig} className="h-[200px] w-full">
-      <BarChart data={chartData} width={600} height={200}>
+      <BarChart data={chartData}>
         <CartesianGrid vertical={false} />
         <XAxis
           dataKey="month"

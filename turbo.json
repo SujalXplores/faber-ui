@@ -51,6 +51,10 @@
         "src/**",
         "scripts/**",
         "registry.json"
+      ],
+      "outputs": [
+        "registry.json",
+        "../../apps/web/public/r/**"
       ]
     },
     "lint:fix": {

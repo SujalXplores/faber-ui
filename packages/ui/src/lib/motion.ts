@@ -28,15 +28,10 @@ export const duration = {
 } as const;
 
 /** Seconds. Motion's `transition.duration` is in seconds, not milliseconds. */
-export const durationSec = {
-  instant: 0,
-  fast: 0.12,
-  quick: 0.16,
-  base: 0.2,
-  moderate: 0.25,
-  slow: 0.32,
-  deliberate: 0.48,
-} as const;
+export const durationSec: { [K in keyof typeof duration]: number } =
+  Object.fromEntries(
+    Object.entries(duration).map(([key, value]) => [key, value / 1000]),
+  ) as { [K in keyof typeof duration]: number };
 
 export const staggerStep = 45;
 

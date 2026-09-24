@@ -38,18 +38,21 @@ function Tile({
   children: React.ReactNode;
 }) {
   return (
-    <a
-      href={href}
-      className="group ring-glow relative flex w-64 shrink-0 snap-start flex-col overflow-hidden rounded-xl border bg-surface-2 transition-colors pointer-fine:hover:bg-surface-3/50"
-    >
-      <div className="flex min-h-32 flex-1 items-center justify-center p-6">
+    <div className="group ring-glow relative flex w-64 shrink-0 snap-start flex-col overflow-hidden rounded-xl border bg-surface-2 transition-colors pointer-fine:hover:bg-surface-3/50">
+      <div
+        inert
+        className="flex min-h-32 flex-1 items-center justify-center p-6"
+      >
         {children}
       </div>
-      <div className="flex items-center justify-between gap-2 border-t px-3.5 py-2">
+      <a
+        href={href}
+        className="flex items-center justify-between gap-2 border-t px-3.5 py-2"
+      >
         <span className="truncate text-xs font-medium">{name}</span>
         <RiArrowRightUpLine className="size-3.5 shrink-0 text-muted-foreground transition-[opacity,transform] pointer-fine:group-hover:-translate-y-0.5 pointer-fine:group-hover:text-foreground" />
-      </div>
-    </a>
+      </a>
+    </div>
   );
 }
 

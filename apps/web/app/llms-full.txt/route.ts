@@ -1,6 +1,6 @@
 import { source, getLLMText } from "@/lib/source";
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export async function GET() {
   const scan = source.getPages().map(getLLMText);

@@ -2,6 +2,7 @@ import { readdir, readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import * as ts from "typescript";
 
 const UI = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SRC = path.join(UI, "src");
@@ -37,14 +38,36 @@ const MANUAL_DESCRIPTIONS = {
   "use-mobile": "Tracks whether the viewport is below the 768px mobile breakpoint.",
 };
 
-function specifiers(source) {
+function specifiers(source, filename) {
   const found = new Set();
-  const from = /(?:import|export)[\s\S]*?from\s+["']([^"']+)["']/g;
-  const sideEffect = /^\s*import\s+["']([^"']+)["']/gm;
-  for (const re of [from, sideEffect]) {
-    let m;
-    while ((m = re.exec(source)) !== null) found.add(m[1]);
-  }
+  const ast = ts.createSourceFile(
+    filename,
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+  );
+  const visit = (node) => {
+    if (ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) {
+      const specifier = node.moduleSpecifier;
+      if (specifier && ts.isStringLiteralLike(specifier)) {
+        found.add(specifier.text);
+      }
+    } else if (
+      ts.isCallExpression(node) &&
+      node.arguments.length === 1 &&
+      ts.isStringLiteralLike(node.arguments[0])
+    ) {
+      const callee = node.expression;
+      if (
+        callee.kind === ts.SyntaxKind.ImportKeyword ||
+        (ts.isIdentifier(callee) && callee.text === "require")
+      ) {
+        found.add(node.arguments[0].text);
+      }
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(ast);
   return found;
 }
 
@@ -53,15 +76,21 @@ function packageName(specifier) {
   return specifier.startsWith("@") ? parts.slice(0, 2).join("/") : parts[0];
 }
 
+function unquote(value) {
+  if (value === undefined) return undefined;
+  const quoted = /^["'](.*)["']$/.exec(value);
+  return quoted ? quoted[1] : value;
+}
+
 async function frontmatter(name) {
   const file = path.join(DOCS, `${name}.mdx`);
   if (!existsSync(file)) return {};
-  const text = await readFile(file, "utf8");
-  const block = /^---\r?\n([\s\S]*?)\r?\n---/.exec(text);
+  const text = (await readFile(file, "utf8")).replace(/^\uFEFF/, "");
+  const block = /^\s*---\r?\n([\s\S]*?)\r?\n---/.exec(text);
   if (!block) return {};
   return {
-    title: /^title:\s*(.+?)\s*$/m.exec(block[1])?.[1],
-    description: /^description:\s*(.+?)\s*$/m.exec(block[1])?.[1],
+    title: unquote(/^title:\s*(.+?)\s*$/m.exec(block[1])?.[1]),
+    description: unquote(/^description:\s*(.+?)\s*$/m.exec(block[1])?.[1]),
   };
 }
 
@@ -77,12 +106,17 @@ async function buildItem(group, file) {
   const dependencies = new Set();
   const registryDependencies = new Set();
 
-  for (const specifier of specifiers(source)) {
+  for (const specifier of specifiers(source, file)) {
     if (specifier.startsWith(".")) continue;
     if (specifier.startsWith("@workspace/ui/")) {
       const rest = specifier.slice("@workspace/ui/".length);
       const [area, ...tail] = rest.split("/");
-      if (!["components", "hooks", "lib"].includes(area)) continue;
+      if (!["components", "hooks", "lib"].includes(area)) {
+        console.warn(
+          `warning: ${name} imports from untracked workspace area "${area}" (${specifier}); add it to GROUPS or the dep will be missed`,
+        );
+        continue;
+      }
       const dep = tail.join("/");
       if (dep && dep !== name) registryDependencies.add(dep);
       continue;

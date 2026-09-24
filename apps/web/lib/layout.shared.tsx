@@ -1,11 +1,17 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
-
-import { LogoMark } from "@/components/logo";
+import Image from "next/image";
 
 function Logo() {
   return (
     <span className="flex items-center gap-2">
-      <LogoMark className="h-[18px] w-auto text-primary" />
+      <Image
+        src="/logo.png"
+        alt=""
+        width={18}
+        height={18}
+        priority
+        className="h-[18px] w-auto"
+      />
       <span className="font-medium tracking-subheading">Faber UI</span>
     </span>
   );

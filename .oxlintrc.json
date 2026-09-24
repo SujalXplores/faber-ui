@@ -82,7 +82,9 @@
     "eslint/new-cap": "off",
     "import/no-unassigned-import": "off",
     "unicorn/no-array-sort": "off",
-    "react/no-unstable-nested-components": "off"
+    "react/no-unstable-nested-components": "off",
+    "eslint/one-var": "off",
+    "react/set-state-in-effect": "off"
   },
   "overrides": [
     {

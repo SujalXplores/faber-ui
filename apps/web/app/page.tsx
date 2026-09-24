@@ -11,7 +11,7 @@ import { source } from "@/lib/source";
 import { CopyButton } from "@/components/copy-button";
 import { TechStack } from "@/components/tech-stack";
 import { FeatureGrid } from "@/components/feature-grid";
-import { Showcase } from "@/components/showcase";
+import { ShowcaseLazy as Showcase } from "@/components/showcase-lazy";
 
 const INSTALL_COMMAND =
   "pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/button.json";

@@ -162,7 +162,10 @@ function CommandItem({
       {...props}
     >
       {children}
-      <RiCheckLine className="ms-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100" />
+      <RiCheckLine
+        aria-hidden
+        className="ms-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100"
+      />
     </CommandPrimitive.Item>
   );
 }

@@ -11,16 +11,11 @@ function getExportNames(mod: ModuleLike): string[] {
   );
 }
 
-function describeExport(name: string, value: unknown): string {
+function describeExport(value: unknown): string {
   if (value == null) return "";
-  if (typeof value === "function") {
-    return "Component";
-  }
-  if (typeof value === "object") {
-    if (React.isValidElement(value)) return "Element";
-    if (Array.isArray(value)) return "Value";
-    return "Value";
-  }
+  if (typeof value === "function") return "Component";
+  if (typeof value === "object" && React.isValidElement(value))
+    return "Element";
   return "Value";
 }
 
@@ -43,7 +38,7 @@ export function ApiTable({ module }: { module: ModuleLike }) {
             <td>
               <code>{name}</code>
             </td>
-            <td>{describeExport(name, module[name])}</td>
+            <td>{describeExport(module[name])}</td>
           </tr>
         ))}
       </tbody>

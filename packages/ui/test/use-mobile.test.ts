@@ -1,4 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
+import { createElement } from "react";
+import { renderToString } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 
 import { useIsMobile } from "@workspace/ui/hooks/use-mobile";
@@ -52,6 +54,10 @@ function mockViewport(initialWidth: number) {
   };
 }
 
+function Probe() {
+  return createElement("span", null, String(useIsMobile()));
+}
+
 describe("useIsMobile", () => {
   it("reports false at a desktop width", () => {
     mockViewport(1280);
@@ -100,5 +106,16 @@ describe("useIsMobile", () => {
 
     expect(viewport.removeEventListener).toHaveBeenCalledOnce();
     expect(viewport.listenerCount()).toBe(0);
+  });
+
+  it("renders false without crashing when window is undefined", () => {
+    const win = globalThis.window;
+    // @ts-expect-error simulate server-side rendering
+    delete globalThis.window;
+    try {
+      expect(renderToString(createElement(Probe))).toContain("false");
+    } finally {
+      globalThis.window = win;
+    }
   });
 });

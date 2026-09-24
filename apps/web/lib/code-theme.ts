@@ -9,8 +9,10 @@ export const codeLangs = [
   "jsx",
   "js",
   "bash",
+  "sh",
   "css",
   "json",
+  "mdx",
 ] as const;
 
 const LANGUAGE_LABELS: Record<string, string> = {

@@ -57,7 +57,7 @@ function ChartContainer({
   };
 }) {
   const uniqueId = React.useId();
-  const chartId = `chart-${id ?? uniqueId.replace(/:/g, "")}`;
+  const chartId = `chart-${(id ?? uniqueId).replace(/[^A-Za-z0-9_-]/g, "-")}`;
   const contextValue = React.useMemo(() => ({ config }), [config]);
 
   return (
@@ -66,7 +66,7 @@ function ChartContainer({
         data-slot="chart"
         data-chart={chartId}
         className={cn(
-          "flex aspect-video justify-center text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden",
+          "flex aspect-video justify-center text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid-horizontal]:stroke-border/50 [&_.recharts-cartesian-grid-vertical]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid-angle]:stroke-border [&_.recharts-polar-grid-concentric-circle]:stroke-border [&_.recharts-polar-grid-concentric-polygon]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line-line]:stroke-border [&_.recharts-sector]:stroke-transparent [&_.recharts-sector]:outline-hidden [&_.recharts-surface]:outline-hidden",
           className,
         )}
         {...props}
@@ -80,6 +80,22 @@ function ChartContainer({
       </div>
     </ChartContext.Provider>
   );
+}
+
+const SAFE_CHART_KEY = /^[A-Za-z0-9_-]+$/;
+const UNSAFE_CHART_CSS = /[;"'{}]|`/;
+const UNSAFE_CHART_URL = /url\(/i;
+
+function sanitizeChartColor(color: string) {
+  const value = color.trim();
+  if (
+    value === "" ||
+    UNSAFE_CHART_CSS.test(value) ||
+    UNSAFE_CHART_URL.test(value)
+  ) {
+    return null;
+  }
+  return value;
 }
 
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
@@ -97,14 +113,18 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
         __html: Object.entries(THEMES)
           .map(
             ([theme, prefix]) => `
-${prefix} [data-chart=${id}] {
+${prefix} [data-chart="${id}"] {
 ${colorConfig
   .map(([key, itemConfig]) => {
+    if (!SAFE_CHART_KEY.test(key)) return null;
     const color =
       itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ??
       itemConfig.color;
-    return color ? `  --color-${key}: ${color};` : null;
+    const safeColor =
+      typeof color === "string" ? sanitizeChartColor(color) : null;
+    return safeColor ? `  --color-${key}: ${safeColor};` : null;
   })
+  .filter((row): row is string => row !== null)
   .join("\n")}
 }
 `,

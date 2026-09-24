@@ -25,7 +25,10 @@ export function CopyButton({
     <button
       type="button"
       onClick={() => {
-        void navigator.clipboard.writeText(value).then(() => setCopied(true));
+        void navigator.clipboard
+          .writeText(value)
+          .then(() => setCopied(true))
+          .catch(() => setCopied(false));
       }}
       className={cn(
         "inline-flex size-7 press items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground",

@@ -29,7 +29,10 @@ export function tailwindConfig({ entryPoint, files }) {
         "better-tailwindcss/enforce-consistent-variable-syntax": "off",
         "better-tailwindcss/enforce-consistent-line-wrapping": "off",
         "better-tailwindcss/enforce-consistent-class-order": "off",
-        "better-tailwindcss/no-unknown-classes": "off",
+        "better-tailwindcss/no-unknown-classes": [
+          "error",
+          { ignore: ["^cn-", "^toaster$", "^not-prose$"] },
+        ],
       },
       settings: {
         "better-tailwindcss": {

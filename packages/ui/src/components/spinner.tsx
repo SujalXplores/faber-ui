@@ -4,7 +4,7 @@ import { RiLoaderLine } from "@remixicon/react";
 function Spinner({
   className,
   ...props
-}: Omit<React.ComponentProps<"svg">, "children">) {
+}: Omit<React.ComponentProps<typeof RiLoaderLine>, "children">) {
   return (
     <RiLoaderLine
       data-slot="spinner"

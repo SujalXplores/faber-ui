@@ -31,8 +31,12 @@
 
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-hover: var(--secondary-hover);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-muted-hover: var(--muted-hover);
+  --color-bubble-tinted: var(--bubble-tinted);
+  --color-bubble-tinted-hover: var(--bubble-tinted-hover);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
 
