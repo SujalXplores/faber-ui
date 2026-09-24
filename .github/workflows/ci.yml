@@ -79,7 +79,7 @@ jobs:
     name: Changeset present
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    if: github.event_name == 'pull_request' && github.actor != 'renovate[bot]'
+    if: github.event_name == 'pull_request' && github.actor != 'renovate[bot]' && github.head_ref != 'changeset-release/main'
     steps:
       - uses: actions/checkout@v7
         with:
