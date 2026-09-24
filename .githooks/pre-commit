@@ -1,25 +1,103 @@
 #!/bin/sh
-# Auto-fixes Tailwind classes on staged sources, then restages only the files
-# that actually changed, so partially-staged files are left alone.
+# Auto-fixes Tailwind classes on staged sources without disturbing
+# partially-staged hunks.
+#
+# Fully-staged files are fixed in place and restaged: the worktree matches
+# the index there, so restaging can only pick up the fix itself.
+# Partially-staged files are fixed from a temporary copy of the indexed
+# content and staged via update-index, so the worktree (and its unstaged
+# hunks) is never touched and never staged. A temp copy inside the package
+# is required: stdin input skips project lint rules, and files outside the
+# package do not match the eslint config globs.
 set -e
 
 staged=$(git diff --cached --name-only --diff-filter=ACMR -- '*.ts' '*.tsx')
 [ -z "$staged" ] && exit 0
 
-before=$(printf '%s\n' "$staged" | xargs -r git hash-object)
+unstaged=$(git diff --name-only -- '*.ts' '*.tsx')
 
-for pkg in packages/ui apps/web; do
-  files=$(printf '%s\n' "$staged" | sed -n "s|^$pkg/||p")
-  [ -z "$files" ] && continue
-  printf '%s\n' "$files" | (cd "$pkg" && xargs -r npx eslint --fix --no-warn-ignored)
-done
+partial_root() {
+  case $1 in
+    packages/ui) printf 'packages/ui/src/__precommit_partial' ;;
+    apps/web) printf 'apps/web/app/__precommit_partial' ;;
+  esac
+}
 
-after=$(printf '%s\n' "$staged" | xargs -r git hash-object)
+cleanup() {
+  rm -rf packages/ui/src/__precommit_partial apps/web/app/__precommit_partial
+}
+trap 'st=$?; cleanup; exit $st' EXIT
 
-i=1
+status=0
+
+is_partial() {
+  printf '%s\n' "$unstaged" | grep -qxF "$1"
+}
+
+fix_index() {
+  # $file repo-relative staged path; $pkg package dir; $rel path under $pkg.
+  # Only paths under a linted tree can be fixed; anything else is left alone.
+  case $rel in
+    src/*) sub=${rel#src/} ;;
+    app/*|components/*|examples/*|lib/*) sub=$rel ;;
+    *) return 0 ;;
+  esac
+  root=$(partial_root "$pkg")
+  [ -z "$root" ] && return 0
+  tmp="$root/$sub"
+  mkdir -p "$(dirname "$tmp")"
+  git show ":$file" > "$tmp"
+  # eslint runs with the package as cwd, so it needs the package-relative path.
+  tmprel=${tmp#"$pkg"/}
+  if ! (cd "$pkg" && npx eslint --fix --no-warn-ignored "$tmprel"); then
+    status=$?
+    return 0
+  fi
+  oldblob=$(git rev-parse --verify ":$file")
+  newblob=$(git hash-object -w "$tmp")
+  if [ "$oldblob" != "$newblob" ]; then
+    # A non-empty file fixed down to nothing is a malfunction, not a fix.
+    if [ ! -s "$tmp" ]; then
+      status=1
+      return 0
+    fi
+    mode=$(git ls-files -s -- "$file" | cut -d' ' -f1)
+    git update-index --cacheinfo "$mode,$newblob,$file"
+  fi
+}
+
+full_ui=
+full_web=
 for file in $staged; do
-  b=$(printf '%s\n' "$before" | sed -n "${i}p")
-  a=$(printf '%s\n' "$after" | sed -n "${i}p")
-  [ "$b" != "$a" ] && git add -- "$file"
-  i=$((i + 1))
+  if is_partial "$file"; then
+    case $file in
+      packages/ui/*)
+        pkg=packages/ui
+        rel=${file#packages/ui/}
+        fix_index
+        ;;
+      apps/web/*)
+        pkg=apps/web
+        rel=${file#apps/web/}
+        fix_index
+        ;;
+    esac
+  else
+    case $file in
+      packages/ui/*) full_ui="$full_ui ${file#packages/ui/}" ;;
+      apps/web/*) full_web="$full_web ${file#apps/web/}" ;;
+    esac
+  fi
 done
+
+[ -z "$full_ui" ] || (cd packages/ui && printf '%s\n' $full_ui | xargs -r npx eslint --fix --no-warn-ignored) || status=$?
+[ -z "$full_web" ] || (cd apps/web && printf '%s\n' $full_web | xargs -r npx eslint --fix --no-warn-ignored) || status=$?
+
+if [ "$status" = 0 ]; then
+  # Only fully-staged files reach this restage, and their worktree matched
+  # the index before fixing, so exactly the fix is staged here.
+  { [ -z "$full_ui" ] || (cd packages/ui && printf '%s\n' $full_ui | xargs -r git add --); } || status=$?
+  { [ -z "$full_web" ] || (cd apps/web && printf '%s\n' $full_web | xargs -r git add --); } || status=$?
+fi
+
+exit "$status"
