@@ -1,5 +1,11 @@
 # @workspace/ui
 
+## 0.1.1
+
+### Patch Changes
+
+- 68787e2: Release coverage for the audit batch already shipped in 0.1.0: token, accessibility, and correctness fixes with no additional consumer-facing API changes.
+
 ## 0.1.0
 
 ### Minor Changes
