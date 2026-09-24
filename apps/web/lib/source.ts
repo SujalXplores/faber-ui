@@ -4,12 +4,30 @@ import { defineDocs } from "fumadocs-mdx/macro";
 
 import { codeThemes } from "@/lib/code-theme";
 
+const PACKAGE_MANAGERS = [
+  {
+    name: "pnpm",
+    command: (cmd: string) => cmd.replace(/^npx /gm, "pnpm dlx "),
+  },
+  { name: "npm", command: (cmd: string) => cmd },
+  {
+    name: "yarn",
+    command: (cmd: string) => cmd.replace(/^npx /gm, "yarn dlx "),
+  },
+  { name: "bun", command: (cmd: string) => cmd.replace(/^npx /gm, "bunx ") },
+];
+
 const docs = defineDocs({
   dir: "content/docs",
   docs: {
+    lastModified: true,
     mdxOptions: applyMdxPreset({
       preset: "fumadocs",
       rehypeCodeOptions: { themes: codeThemes, addLanguageClass: true },
+      remarkNpmOptions: {
+        persist: { id: "package-manager" },
+        packageManagers: PACKAGE_MANAGERS,
+      },
     }),
     postprocess: {
       includeProcessedMarkdown: true,

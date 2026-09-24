@@ -5,6 +5,7 @@ import "./globals.css";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import { cn } from "@workspace/ui/lib/utils";
 import { Toaster } from "@workspace/ui/components/sonner";
+import { ConsoleGreeting } from "@/components/console-greeting";
 
 /**
  * The `-src` suffix is required. next/font declares onto `<html>` and
@@ -86,6 +87,7 @@ export default function RootLayout({
         <RootProvider>
           {children}
           <Toaster />
+          <ConsoleGreeting />
         </RootProvider>
       </body>
     </html>
