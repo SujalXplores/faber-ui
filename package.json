@@ -14,16 +14,18 @@
     "registry": "turbo registry",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "tag-release": "changeset tag"
+    "tag-release": "changeset tag",
+    "lint:fix": "turbo lint:fix",
+    "prepare": "git config core.hooksPath .githooks"
   },
   "devDependencies": {
-    "@changesets/cli": "3.0.0",
+    "@changesets/cli": "3.0.3",
     "@workspace/typescript-config": "workspace:*",
-    "next": "16.3.0",
-    "oxlint": "1.77.0",
-    "prettier": "3.9.6",
+    "next": "16.3.6",
+    "oxlint": "1.85.0",
+    "prettier": "3.9.9",
     "prettier-plugin-tailwindcss": "0.8.1",
-    "turbo": "2.10.8",
+    "turbo": "2.11.3",
     "typescript": "5.9.3"
   },
   "packageManager": "pnpm@10.33.4",

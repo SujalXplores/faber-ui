@@ -7,8 +7,8 @@ export const avatarUsage = `import {
 export default function Example() {
   return (
     <Avatar>
-      <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
-      <AvatarFallback>SC</AvatarFallback>
+      <AvatarImage src="https://github.com/SujalXplores.png" alt="SujalXplores" />
+      <AvatarFallback>SX</AvatarFallback>
     </Avatar>
   );
 }`;

@@ -40,7 +40,9 @@ export function Preview({
   flat?: boolean;
 }) {
   const [expanded, setExpanded] = React.useState(false);
+  const [fullHeight, setFullHeight] = React.useState<number | null>(null);
   const codeId = React.useId();
+  const codeRef = React.useRef<HTMLDivElement>(null);
 
   const highlighted = useShiki(
     () => highlighter,
@@ -61,6 +63,13 @@ export function Preview({
   const collapsible = lineCount > COLLAPSE_THRESHOLD;
   const open = expanded || !collapsible;
 
+  React.useEffect(() => {
+    if (!open || !codeRef.current || !highlighted || code.length === 0) {
+      return;
+    }
+    setFullHeight(codeRef.current.scrollHeight);
+  }, [open, code, highlighted]);
+
   return (
     <figure className="not-prose my-6 overflow-hidden rounded-xl border">
       <div
@@ -76,15 +85,22 @@ export function Preview({
       <div className="border-t bg-background">
         <div
           id={codeId}
+          ref={codeRef}
           /* The clipped remainder is invisible, so Tab focus landing inside it
            * would strand the ring somewhere the reader cannot see. */
           inert={!open}
           className={cn(
             "relative overflow-hidden",
-            "transition-[max-height] duration-[var(--duration-moderate)] ease-out",
+            "transition-[max-height] duration-(--duration-moderate) ease-out",
             !open && "mask-fade-b",
           )}
-          style={{ maxHeight: open ? "none" : COLLAPSED_HEIGHT }}
+          style={{
+            maxHeight: !collapsible
+              ? "none"
+              : open && fullHeight !== null
+                ? fullHeight
+                : COLLAPSED_HEIGHT,
+          }}
         >
           <CodeBlock
             allowCopy

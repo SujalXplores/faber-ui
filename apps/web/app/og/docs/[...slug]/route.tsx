@@ -10,6 +10,7 @@ export async function GET(
   { params }: { params: Promise<{ slug: string[] }> },
 ) {
   const { slug } = await params;
+  if (slug.length === 0 || slug[slug.length - 1] !== "image.png") notFound();
   const page = source.getPage(slug.slice(0, -1));
   if (!page) notFound();
 

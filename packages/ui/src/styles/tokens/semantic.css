@@ -26,8 +26,16 @@
 
   --secondary: var(--neutral-100);
   --secondary-foreground: var(--neutral-900);
+  --secondary-hover: color-mix(
+    in oklch,
+    var(--secondary),
+    var(--foreground) 5%
+  );
   --muted: var(--neutral-100);
   --muted-foreground: var(--neutral-500);
+  --muted-hover: color-mix(in oklch, var(--muted), var(--foreground) 5%);
+  --bubble-tinted: oklch(from var(--primary) 0.93 calc(c * 0.4) h);
+  --bubble-tinted-hover: oklch(from var(--primary) 0.88 calc(c * 0.5) h);
   --accent: var(--neutral-100);
   --accent-foreground: var(--neutral-900);
 
@@ -112,6 +120,8 @@
   --secondary-foreground: var(--neutral-50);
   --muted: var(--neutral-800);
   --muted-foreground: var(--neutral-400);
+  --bubble-tinted: oklch(from var(--primary) 0.3 calc(c * 0.4) h);
+  --bubble-tinted-hover: oklch(from var(--primary) 0.35 calc(c * 0.5) h);
   --accent: var(--neutral-800);
   --accent-foreground: var(--neutral-50);
 

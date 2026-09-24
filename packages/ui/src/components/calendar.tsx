@@ -1,11 +1,15 @@
 "use client";
 
 import * as React from "react";
+import { format } from "date-fns";
 import {
   DayPicker,
   getDefaultClassNames,
+  type ChevronProps,
   type DayButton,
   type Locale,
+  type RootProps,
+  type WeekNumberProps,
 } from "react-day-picker";
 
 import { cn } from "@workspace/ui/lib/utils";
@@ -15,6 +19,49 @@ import {
   RiArrowRightSLine,
   RiArrowDownSLine,
 } from "@remixicon/react";
+
+function CalendarRoot({ className, rootRef, ...props }: RootProps) {
+  return (
+    <div
+      data-slot="calendar"
+      ref={rootRef}
+      className={cn(className)}
+      {...props}
+    />
+  );
+}
+
+function CalendarChevron({ className, orientation, ...props }: ChevronProps) {
+  if (orientation === "left") {
+    return (
+      <RiArrowLeftSLine
+        className={cn("size-4 rtl:rotate-180", className)}
+        {...props}
+      />
+    );
+  }
+
+  if (orientation === "right") {
+    return (
+      <RiArrowRightSLine
+        className={cn("size-4 rtl:rotate-180", className)}
+        {...props}
+      />
+    );
+  }
+
+  return <RiArrowDownSLine className={cn("size-4", className)} {...props} />;
+}
+
+function CalendarWeekNumber({ children, ...props }: WeekNumberProps) {
+  return (
+    <td {...props}>
+      <div className="flex size-(--cell-size) items-center justify-center text-center">
+        {children}
+      </div>
+    </td>
+  );
+}
 
 function Calendar({
   className,
@@ -31,6 +78,19 @@ function Calendar({
 }) {
   const defaultClassNames = getDefaultClassNames();
 
+  const calendarComponents = React.useMemo(
+    () => ({
+      Root: CalendarRoot,
+      Chevron: CalendarChevron,
+      DayButton: (dayButtonProps: React.ComponentProps<typeof DayButton>) => (
+        <CalendarDayButton locale={locale} {...dayButtonProps} />
+      ),
+      WeekNumber: CalendarWeekNumber,
+      ...components,
+    }),
+    [locale, components],
+  );
+
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
@@ -44,7 +104,11 @@ function Calendar({
       locale={locale}
       formatters={{
         formatMonthDropdown: (date) =>
-          date.toLocaleString(locale?.code, { month: "short" }),
+          locale?.localize
+            ? format(date, "LLL", { locale: locale as Locale })
+            : date.toLocaleString(locale?.code ?? "en-US", {
+                month: "short",
+              }),
         ...formatters,
       }}
       classNames={{
@@ -107,19 +171,19 @@ function Calendar({
           defaultClassNames.week_number,
         ),
         day: cn(
-          "group/day relative aspect-square h-full w-full rounded-(--cell-radius) p-0 text-center select-none [&:last-child[data-selected=true]_button]:rounded-e-(--cell-radius)",
+          "group/day relative aspect-square size-full rounded-(--cell-radius) p-0 text-center select-none [&:last-child[data-selected=true]_button]:rounded-e-(--cell-radius)",
           props.showWeekNumber
             ? "[&:nth-child(2)[data-selected=true]_button]:rounded-s-(--cell-radius)"
             : "[&:first-child[data-selected=true]_button]:rounded-s-(--cell-radius)",
           defaultClassNames.day,
         ),
         range_start: cn(
-          "relative isolate z-0 rounded-s-(--cell-radius) bg-muted after:absolute after:inset-y-0 after:end-0 after:w-4 after:bg-muted",
+          "relative isolate z-0 rounded-s-(--cell-radius) bg-muted after:absolute after:inset-y-0 after:inset-e-0 after:w-4 after:bg-muted",
           defaultClassNames.range_start,
         ),
         range_middle: cn("rounded-none", defaultClassNames.range_middle),
         range_end: cn(
-          "relative isolate z-0 rounded-e-(--cell-radius) bg-muted after:absolute after:inset-y-0 after:start-0 after:w-4 after:bg-muted",
+          "relative isolate z-0 rounded-e-(--cell-radius) bg-muted after:absolute after:inset-y-0 after:inset-s-0 after:w-4 after:bg-muted",
           defaultClassNames.range_end,
         ),
         today: cn(
@@ -137,61 +201,7 @@ function Calendar({
         hidden: cn("invisible", defaultClassNames.hidden),
         ...classNames,
       }}
-      components={{
-        Root: ({ className: rootClassName, rootRef, ...rootProps }) => {
-          return (
-            <div
-              data-slot="calendar"
-              ref={rootRef}
-              className={cn(rootClassName)}
-              {...rootProps}
-            />
-          );
-        },
-        Chevron: ({
-          className: chevronClassName,
-          orientation,
-          ...chevronProps
-        }) => {
-          if (orientation === "left") {
-            return (
-              <RiArrowLeftSLine
-                className={cn("size-4 rtl:rotate-180", chevronClassName)}
-                {...chevronProps}
-              />
-            );
-          }
-
-          if (orientation === "right") {
-            return (
-              <RiArrowRightSLine
-                className={cn("size-4 rtl:rotate-180", chevronClassName)}
-                {...chevronProps}
-              />
-            );
-          }
-
-          return (
-            <RiArrowDownSLine
-              className={cn("size-4", chevronClassName)}
-              {...chevronProps}
-            />
-          );
-        },
-        DayButton: (dayButtonProps) => (
-          <CalendarDayButton locale={locale} {...dayButtonProps} />
-        ),
-        WeekNumber: ({ children, ...weekNumberProps }) => {
-          return (
-            <td {...weekNumberProps}>
-              <div className="flex size-(--cell-size) items-center justify-center text-center">
-                {children}
-              </div>
-            </td>
-          );
-        },
-        ...components,
-      }}
+      components={calendarComponents}
       {...props}
     />
   );
@@ -203,12 +213,14 @@ function CalendarDayButton({
   modifiers,
   locale,
   ...props
-}: React.ComponentProps<typeof DayButton> & { locale?: Partial<Locale> }) {
+}: React.ComponentProps<typeof DayButton> & {
+  locale?: Partial<Locale> | undefined;
+}) {
   const defaultClassNames = getDefaultClassNames();
 
   const ref = React.useRef<HTMLButtonElement>(null);
   React.useEffect(() => {
-    if (modifiers.focused) ref.current?.focus();
+    if (modifiers.focused) ref.current?.focus({ preventScroll: true });
   }, [modifiers.focused]);
 
   return (

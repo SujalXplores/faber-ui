@@ -28,7 +28,7 @@ function NativeSelect({
         {...props}
       />
       <RiArrowDownSLine
-        className="pointer-events-none absolute end-1.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground select-none group-data-[size=sm]/native-select:size-3 group-data-[size=sm]/native-select:-translate-y-[calc(--spacing(1.25))]"
+        className="pointer-events-none absolute inset-e-1.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground select-none group-data-[size=sm]/native-select:size-3 group-data-[size=sm]/native-select:-translate-y-[calc(--spacing(1.25))]"
         aria-hidden="true"
         data-slot="native-select-icon"
       />

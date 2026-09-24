@@ -101,6 +101,7 @@ function Carousel({
 
     return () => {
       api?.off("select", onSelect);
+      api?.off("reInit", onSelect);
     };
   }, [api, onSelect]);
 
@@ -199,8 +200,8 @@ function CarouselPrevious({
       className={cn(
         "absolute touch-manipulation rounded-full",
         orientation === "horizontal"
-          ? "inset-y-0 -start-12 my-auto"
-          : "start-1/2 -top-12 -translate-x-1/2 rotate-90 rtl:translate-x-1/2",
+          ? "inset-y-0 -inset-s-12 my-auto"
+          : "inset-s-1/2 -top-12 -translate-x-1/2 rotate-90 rtl:translate-x-1/2",
         className,
       )}
       disabled={!canScrollPrev}
@@ -229,8 +230,8 @@ function CarouselNext({
       className={cn(
         "absolute touch-manipulation rounded-full",
         orientation === "horizontal"
-          ? "inset-y-0 -end-12 my-auto"
-          : "start-1/2 -bottom-12 -translate-x-1/2 rotate-90 rtl:translate-x-1/2",
+          ? "inset-y-0 -inset-e-12 my-auto"
+          : "inset-s-1/2 -bottom-12 -translate-x-1/2 rotate-90 rtl:translate-x-1/2",
         className,
       )}
       disabled={!canScrollNext}

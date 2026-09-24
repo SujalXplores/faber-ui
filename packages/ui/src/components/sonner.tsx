@@ -10,12 +10,16 @@ import {
   RiLoaderLine,
 } from "@remixicon/react";
 
-const Toaster = ({ ...props }: ToasterProps) => {
+const Toaster = ({ theme: themeOverride, ...props }: ToasterProps) => {
   const { theme = "system" } = useTheme();
+  const resolvedTheme = (themeOverride ?? theme) as Exclude<
+    ToasterProps["theme"],
+    undefined
+  >;
 
   return (
     <Sonner
-      theme={theme as ToasterProps["theme"]}
+      theme={resolvedTheme}
       className="toaster group"
       icons={{
         success: <RiCheckboxCircleLine className="size-4" />,

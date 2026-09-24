@@ -1,6 +1,6 @@
 export const codeThemes = {
-  light: "vitesse-light",
-  dark: "vitesse-dark",
+  light: "github-light-default",
+  dark: "github-dark-default",
 } as const;
 
 export const codeLangs = [
@@ -9,8 +9,10 @@ export const codeLangs = [
   "jsx",
   "js",
   "bash",
+  "sh",
   "css",
   "json",
+  "mdx",
 ] as const;
 
 const LANGUAGE_LABELS: Record<string, string> = {

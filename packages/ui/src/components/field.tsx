@@ -76,9 +76,11 @@ function Field({
   ...props
 }: React.ComponentProps<"div"> &
   VariantProps<typeof fieldVariants> & { invalid?: boolean }) {
+  const labelled =
+    props["aria-label"] !== undefined || props["aria-labelledby"] !== undefined;
   return (
     <div
-      role="group"
+      role={labelled ? "group" : undefined}
       data-slot="field"
       data-orientation={orientation}
       data-invalid={invalid ? "true" : undefined}
