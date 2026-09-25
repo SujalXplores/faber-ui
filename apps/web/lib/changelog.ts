@@ -240,13 +240,15 @@ export async function getComponentHistory(componentName: string) {
   );
 }
 
+const releaseDateFormat = new Intl.DateTimeFormat("en", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+  timeZone: "UTC",
+});
+
 export function formatReleaseDate(date: string) {
-  return new Intl.DateTimeFormat("en", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    timeZone: "UTC",
-  }).format(new Date(`${date}T00:00:00Z`));
+  return releaseDateFormat.format(new Date(`${date}T00:00:00Z`));
 }
 
 export function releasesToJson(releases: Release[]) {
