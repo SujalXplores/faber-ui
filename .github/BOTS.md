@@ -12,7 +12,7 @@ What runs without being asked, and the one-time setup each piece needs.
 | **Labeler** (`labeler.yml`) | PR opened or pushed | applies `area:` and `dependencies` labels from changed paths |
 | **Audit** (`audit.yml`) | Mondays 04:00 UTC | opens or updates one issue for high-severity advisories, closes it when clean |
 | **Stale** (`stale.yml`) | daily 03:00 UTC | warns then closes inactive issues (45d) and PRs (21d) |
-| **Release** (`release.yml`) | push to `main` | maintains the version PR, tags and creates the GitHub release on merge |
+| **Release** (`release.yml`) | push to `main`, manual | opens or updates the version PR while changesets are pending; once it merges, tags each new version and creates its GitHub release |
 
 ## One-time setup
 
@@ -60,7 +60,29 @@ Leave `Scan React changes` and `Audit` unrequired. React Doctor runs with
 to look, not a verdict. Advisories are usually transitive and not fixable from
 this repo.
 
-**5. Dependabot alerts** — free on private repositories and complements
+**5. Release app** — the version PR has to be opened by a GitHub App, not
+`GITHUB_TOKEN`: GitHub triggers no workflows for a PR that `GITHUB_TOKEN`
+opens, so CI never runs on it and required checks never report.
+
+1. Create a GitHub App (Settings → Developer settings → GitHub Apps) with
+   repository permissions **Contents: read and write** and **Pull requests:
+   read and write**, no webhook, installable only on this account.
+2. Install it on this repository.
+3. Save its client ID as the Actions variable `RELEASE_APP_CLIENT_ID` and a
+   generated private key as the Actions secret `RELEASE_APP_PRIVATE_KEY`.
+
+Without the app, `release.yml` falls back to `GITHUB_TOKEN`. That needs
+Settings → Actions → General → **Allow GitHub Actions to create and approve pull
+requests**, and CI will not run on the version PR.
+
+Tagging needs no setup. Every package is private, so `changeset publish`
+publishes nothing to npm; `privatePackages.tag` in `.changeset/config.json`
+turns each new version into a git tag, and `changesets/action/publish` pushes it
+and creates the GitHub release from the CHANGELOG. Re-run a missed release from
+the Actions tab (**Release → Run workflow** on `main`; runs on any other branch
+do nothing); it only tags versions that have no tag yet.
+
+**6. Dependabot alerts** — free on private repositories and complements
 Renovate's `vulnerabilityAlerts`. Settings → Advanced Security → Dependabot alerts.
 
 ## Things the bots deliberately will not touch

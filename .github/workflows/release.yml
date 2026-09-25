@@ -3,20 +3,82 @@ name: Release
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 concurrency:
   group: release-${{ github.ref }}
   cancel-in-progress: false
 
-permissions:
-  contents: write
-  pull-requests: write
+permissions: {}
 
 jobs:
-  release:
-    name: Version or tag
+  select-mode:
+    name: Select mode
+    # A manual run can target any branch. Only main may version or release, and
+    # the other jobs need this one, so skipping it here skips them too.
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    outputs:
+      mode: ${{ steps.select-mode.outputs.mode }}
+    steps:
+      # Full history brings every tag, so an already-released version is found
+      # locally. The repo is private: without credentials the remote tag lookup
+      # for a new version cannot authenticate.
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: ./.github/actions/setup
+
+      - id: select-mode
+        uses: changesets/action/select-mode@v2
+
+  version:
+    name: Open version PR
+    needs: select-mode
+    if: needs.select-mode.outputs.mode == 'version'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      # A PR opened with GITHUB_TOKEN triggers no workflows, so CI would never
+      # run on the version PR. An app token does trigger them. Without the app
+      # this falls back to GITHUB_TOKEN, which needs "Allow GitHub Actions to
+      # create and approve pull requests" enabled.
+      - id: app-token
+        if: vars.RELEASE_APP_CLIENT_ID != ''
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ vars.RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: ./.github/actions/setup
+
+      - uses: changesets/action/version@v2
+        with:
+          github-token: ${{ steps.app-token.outputs.token || github.token }}
+          commit-message: "chore: version packages"
+          pr-title: "chore: version packages"
+
+  release:
+    name: Tag and release
+    needs: select-mode
+    if: needs.select-mode.outputs.mode == 'publish'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v7
         with:
@@ -24,12 +86,10 @@ jobs:
 
       - uses: ./.github/actions/setup
 
-      - uses: changesets/action@v1
+      # Every workspace package is private, so `changeset publish` publishes
+      # nothing to npm: `privatePackages.tag` makes each new version a git tag,
+      # which the action pushes and turns into a GitHub release from the
+      # package's CHANGELOG entry.
+      - uses: changesets/action/publish@v2
         with:
-          version: pnpm version-packages
-          publish: pnpm tag-release
-          commit: "chore: version packages"
-          title: "chore: version packages"
-          createGithubReleases: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          create-github-releases: true

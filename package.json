@@ -14,7 +14,6 @@
     "registry": "turbo registry",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "tag-release": "changeset tag",
     "lint:fix": "turbo lint:fix",
     "prepare": "git config core.hooksPath .githooks"
   },
