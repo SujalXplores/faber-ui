@@ -14,6 +14,9 @@ permissions: {}
 jobs:
   select-mode:
     name: Select mode
+    # A manual run can target any branch. Only main may version or release, and
+    # the other jobs need this one, so skipping it here skips them too.
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:

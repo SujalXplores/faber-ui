@@ -79,8 +79,8 @@ Tagging needs no setup. Every package is private, so `changeset publish`
 publishes nothing to npm; `privatePackages.tag` in `.changeset/config.json`
 turns each new version into a git tag, and `changesets/action/publish` pushes it
 and creates the GitHub release from the CHANGELOG. Re-run a missed release from
-the Actions tab (**Release → Run workflow**); it only tags versions that have no
-tag yet.
+the Actions tab (**Release → Run workflow** on `main`; runs on any other branch
+do nothing); it only tags versions that have no tag yet.
 
 **6. Dependabot alerts** — free on private repositories and complements
 Renovate's `vulnerabilityAlerts`. Settings → Advanced Security → Dependabot alerts.
