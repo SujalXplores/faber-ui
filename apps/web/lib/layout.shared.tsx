@@ -49,6 +49,12 @@ export function baseOptions(): BaseLayoutProps {
         url: "/docs/components/button",
         active: "nested-url",
       },
+      {
+        type: "main",
+        text: "Changelog",
+        url: "/changelog",
+        active: "url",
+      },
     ],
   };
 }

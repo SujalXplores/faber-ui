@@ -89,7 +89,8 @@
   "overrides": [
     {
       "files": [
-        "**/lib/component-api.ts"
+        "**/lib/component-api.ts",
+        "**/lib/changelog.ts"
       ],
       "rules": {
         "import/no-nodejs-modules": "off"

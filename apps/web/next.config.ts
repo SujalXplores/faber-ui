@@ -4,6 +4,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   transpilePackages: ["@workspace/ui"],
+  outputFileTracingIncludes: {
+    "/llms-full.txt": ["../../packages/ui/CHANGELOG.md"],
+  },
   async rewrites() {
     return [
       {

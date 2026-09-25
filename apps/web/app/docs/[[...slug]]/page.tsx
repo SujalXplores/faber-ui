@@ -18,6 +18,12 @@ import { getMDXComponents } from "@/components/mdx";
 import type { Metadata } from "next";
 import { createRelativeLink } from "fumadocs-ui/mdx";
 
+import {
+  ComponentHistory,
+  componentHistoryAnchor,
+} from "@/components/changelog/component-history";
+import { getComponentHistory } from "@/lib/changelog";
+
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
 }) {
@@ -27,9 +33,20 @@ export default async function Page(props: {
 
   const MDX = page.data.body;
   const markdownUrl = getPageMarkdownUrl(page).url;
+  const componentName =
+    page.slugs[0] === "components" && page.slugs.length > 1
+      ? page.data.title.replace(/\s+/g, "")
+      : undefined;
+  const history = componentName ? await getComponentHistory(componentName) : [];
+  const toc = history.length
+    ? [
+        ...page.data.toc,
+        { title: "Changelog", url: `#${componentHistoryAnchor}`, depth: 2 },
+      ]
+    : page.data.toc;
 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
+    <DocsPage toc={toc} full={page.data.full}>
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription className="mb-0">
         {page.data.description}
@@ -47,6 +64,9 @@ export default async function Page(props: {
             a: createRelativeLink(source, page),
           })}
         />
+        {componentName ? (
+          <ComponentHistory componentName={componentName} />
+        ) : null}
       </DocsBody>
       {page.data.lastModified ? (
         <PageLastUpdate date={page.data.lastModified} />

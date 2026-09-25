@@ -59,14 +59,20 @@ jobs:
           permission-contents: write
           permission-pull-requests: write
 
+      # Full history lets the changelog generator trace each changeset commit
+      # to the pull request that merged it.
       - uses: actions/checkout@v7
         with:
+          fetch-depth: 0
           persist-credentials: false
 
       - uses: ./.github/actions/setup
 
+      # `version-packages` also stamps each new CHANGELOG heading with the
+      # release date that the docs changelog page and feeds read.
       - uses: changesets/action/version@v2
         with:
+          script: pnpm version-packages
           github-token: ${{ steps.app-token.outputs.token || github.token }}
           commit-message: "chore: version packages"
           pr-title: "chore: version packages"
