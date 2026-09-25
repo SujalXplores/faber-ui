@@ -2,27 +2,33 @@
 
 ## 0.1.2
 
+<!-- released: 2026-09-24 -->
+
 ### Patch Changes
 
-- 7507a5a: Pad the Select list so options no longer sit flush against the popup edge, reserve room for the selected-item check, and scope the Shiki dark-theme rule to code tokens so code block chrome keeps its own colors.
+- 7507a5a (#12): Pad the Select list so options no longer sit flush against the popup edge, reserve room for the selected-item check, and scope the Shiki dark-theme rule to code tokens so code block chrome keeps its own colors.
 
 ## 0.1.1
 
+<!-- released: 2026-09-24 -->
+
 ### Patch Changes
 
-- 68787e2: Release coverage for the audit batch already shipped in 0.1.0: token, accessibility, and correctness fixes with no additional consumer-facing API changes.
+- 68787e2 (#9): Release coverage for the audit batch already shipped in 0.1.0: token, accessibility, and correctness fixes with no additional consumer-facing API changes.
 
 ## 0.1.0
 
+<!-- released: 2026-09-24 -->
+
 ### Minor Changes
 
-- 9b2ba9c: Registry items now publish exact dependency versions. Previously every item
+- 9b2ba9c (#4): Registry items now publish exact dependency versions. Previously every item
   listed bare package names, so `shadcn add` installed the latest release of
   `@base-ui/react`, `recharts`, and twelve others — versions the components were
   never tested against. The registry build now reads versions from
   `packages/ui/package.json`, and warns when a component imports a package that is
   not declared there.
-- 52dea02: Accessibility, correctness, and token fixes across the kit, from a full code-smell audit.
+- 52dea02 (#9): Accessibility, correctness, and token fixes across the kit, from a full code-smell audit.
 
   Calendar no longer remounts its subcomponents on every render (`Root`, `Chevron` and `WeekNumber` are hoisted; the `DayButton` wrapper is memoized), formats the month dropdown with `date-fns` instead of the runtime locale, and focuses days without scrolling. Carousel removes its `reInit` listener on unmount. `SidebarMenuSkeleton` widths are deterministic across server and client, `SidebarRail` is keyboard-focusable with its accessible name intact, and the sidebar cookie is now `SameSite=Lax` (+`Secure` on https).
 
@@ -32,7 +38,7 @@
 
 ### Patch Changes
 
-- e8e5f95: Restore open and close animations on every menu-family popup. `animate-none!`
+- e8e5f95 (#9): Restore open and close animations on every menu-family popup. `animate-none!`
   compiled to `animation: none !important`, which beat the non-important
   `animation` shorthand that `data-open:animate-in` sets, so DropdownMenu,
   ContextMenu, Menubar, Select and Combobox opened and closed as hard cuts.
@@ -52,5 +58,5 @@
   Radix attributes that Base UI never emits, and they compiled to twelve CSS rules
   that could never match.
 
-- 54587bb: Reformat component sources to match the repository Prettier configuration, and
+- 54587bb (#4): Reformat component sources to match the repository Prettier configuration, and
   add a `format:check` script so drift is caught in CI rather than accumulating.

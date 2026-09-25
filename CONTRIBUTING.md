@@ -52,6 +52,12 @@ Patch for fixes and additions, minor for changes consumers must adapt to. A
 change that genuinely needs no release: `pnpm changeset add --empty`. CI enforces
 this, because registry consumers receive the source directly.
 
+The first sentence of a changeset is its headline on the
+[changelog](https://faber-ui.vercel.app/changelog), and components named in
+PascalCase (`DropdownMenu`) are tagged and linked automatically. Commit, pull
+request, and date are filled in on release, so leave them out. The full guide
+is [`.claude/skills/write-changeset/SKILL.md`](.claude/skills/write-changeset/SKILL.md).
+
 ## Conventions
 
 - **No code comments.** Name things so the comment is unnecessary. Existing code

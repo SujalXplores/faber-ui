@@ -13,7 +13,7 @@
     "test": "turbo test",
     "registry": "turbo registry",
     "changeset": "changeset",
-    "version-packages": "changeset version",
+    "version-packages": "changeset version && node .changeset/stamp-release-dates.mjs",
     "lint:fix": "turbo lint:fix",
     "prepare": "git config core.hooksPath .githooks"
   },
