@@ -13,7 +13,8 @@ import {
 } from "react-day-picker";
 
 import { cn } from "@workspace/ui/lib/utils";
-import { Button, buttonVariants } from "@workspace/ui/components/button";
+import { Button } from "@workspace/ui/components/button";
+import { buttonVariants } from "@workspace/ui/lib/button-variants";
 import {
   RiArrowLeftSLine,
   RiArrowRightSLine,

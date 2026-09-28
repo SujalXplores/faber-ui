@@ -3,7 +3,8 @@
 import * as React from "react";
 import Link from "next/link";
 
-import { Button, buttonVariants } from "@workspace/ui/components/button";
+import { Button } from "@workspace/ui/components/button";
+import { buttonVariants } from "@workspace/ui/lib/button-variants";
 
 export default function ErrorPage({
   error,

@@ -63,6 +63,13 @@ const MANUAL_DESCRIPTIONS = {
     "Easing and duration tokens for JavaScript-driven animation, mirroring the motion CSS tokens.",
   "use-mobile":
     "Tracks whether the viewport is below the 768px mobile breakpoint.",
+  "button-variants":
+    "The Button variant config, shared by Button, Calendar and button-styled links.",
+  "toggle-variants":
+    "The Toggle variant config, shared by Toggle and ToggleGroup.",
+  "tabs-variants": "The Tabs list variant config.",
+  "navigation-menu-variants":
+    "The NavigationMenu trigger style for links rendered as triggers.",
 };
 
 function specifiers(source, filename) {
@@ -194,21 +201,20 @@ const THEME_ENTRY = "faber.css";
 const THEME_EXCLUDE = new Set(["globals.css", "bridge"]);
 
 async function stylesheetFiles(dir, prefix = "") {
-  const files = [];
-  for (const entry of (await readdir(dir, { withFileTypes: true })).sort(
-    (a, b) => a.name.localeCompare(b.name),
-  )) {
-    if (!prefix && THEME_EXCLUDE.has(entry.name)) continue;
-    const relative = path.posix.join(prefix, entry.name);
-    if (entry.isDirectory()) {
-      files.push(
-        ...(await stylesheetFiles(path.join(dir, entry.name), relative)),
-      );
-    } else if (entry.name.endsWith(".css")) {
-      files.push(relative);
-    }
-  }
-  return files;
+  const entries = (await readdir(dir, { withFileTypes: true })).sort((a, b) =>
+    a.name.localeCompare(b.name),
+  );
+  const grouped = await Promise.all(
+    entries.map((entry) => {
+      if (!prefix && THEME_EXCLUDE.has(entry.name)) return [];
+      const relative = path.posix.join(prefix, entry.name);
+      if (entry.isDirectory()) {
+        return stylesheetFiles(path.join(dir, entry.name), relative);
+      }
+      return entry.name.endsWith(".css") ? [relative] : [];
+    }),
+  );
+  return grouped.flat();
 }
 
 async function buildTheme() {

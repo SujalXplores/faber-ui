@@ -1,6 +1,6 @@
 import { NavigationMenu as NavigationMenuPrimitive } from "@base-ui/react/navigation-menu";
-import { cva } from "class-variance-authority";
 
+import { navigationMenuTriggerStyle } from "@workspace/ui/lib/navigation-menu-variants";
 import { cn } from "@workspace/ui/lib/utils";
 import { RiArrowDownSLine } from "@remixicon/react";
 
@@ -54,10 +54,6 @@ function NavigationMenuItem({
     />
   );
 }
-
-const navigationMenuTriggerStyle = cva(
-  "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-lg px-2.5 py-1.5 text-xs/relaxed font-medium transition-control outline-none hover:bg-muted focus:bg-muted focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-popup-open:bg-muted/50 data-popup-open:hover:bg-muted",
-);
 
 function NavigationMenuTrigger({
   className,
@@ -147,6 +143,5 @@ export {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
   NavigationMenuPositioner,
 };

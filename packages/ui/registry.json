@@ -287,6 +287,7 @@
         "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/button-variants.json",
         "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
@@ -310,6 +311,7 @@
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/button-variants.json",
         "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
@@ -862,10 +864,10 @@
       ],
       "dependencies": [
         "@base-ui/react@1.8.0",
-        "@remixicon/react@4.9.0",
-        "class-variance-authority@0.7.1"
+        "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/navigation-menu-variants.json",
         "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
@@ -1215,6 +1217,7 @@
         "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/tabs-variants.json",
         "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
@@ -1254,7 +1257,7 @@
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/theme.json",
-        "https://faber-ui.vercel.app/r/toggle.json",
+        "https://faber-ui.vercel.app/r/toggle-variants.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -1276,6 +1279,7 @@
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/theme.json",
+        "https://faber-ui.vercel.app/r/toggle-variants.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -1313,6 +1317,22 @@
       ]
     },
     {
+      "name": "button-variants",
+      "type": "registry:lib",
+      "title": "Button Variants",
+      "description": "The Button variant config, shared by Button, Calendar and button-styled links.",
+      "files": [
+        {
+          "path": "src/lib/button-variants.ts",
+          "type": "registry:lib",
+          "target": "lib/button-variants.ts"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority@0.7.1"
+      ]
+    },
+    {
       "name": "motion",
       "type": "registry:lib",
       "title": "Motion",
@@ -1323,6 +1343,54 @@
           "type": "registry:lib",
           "target": "lib/motion.ts"
         }
+      ]
+    },
+    {
+      "name": "navigation-menu-variants",
+      "type": "registry:lib",
+      "title": "Navigation Menu Variants",
+      "description": "The NavigationMenu trigger style for links rendered as triggers.",
+      "files": [
+        {
+          "path": "src/lib/navigation-menu-variants.ts",
+          "type": "registry:lib",
+          "target": "lib/navigation-menu-variants.ts"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority@0.7.1"
+      ]
+    },
+    {
+      "name": "tabs-variants",
+      "type": "registry:lib",
+      "title": "Tabs Variants",
+      "description": "The Tabs list variant config.",
+      "files": [
+        {
+          "path": "src/lib/tabs-variants.ts",
+          "type": "registry:lib",
+          "target": "lib/tabs-variants.ts"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority@0.7.1"
+      ]
+    },
+    {
+      "name": "toggle-variants",
+      "type": "registry:lib",
+      "title": "Toggle Variants",
+      "description": "The Toggle variant config, shared by Toggle and ToggleGroup.",
+      "files": [
+        {
+          "path": "src/lib/toggle-variants.ts",
+          "type": "registry:lib",
+          "target": "lib/toggle-variants.ts"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority@0.7.1"
       ]
     },
     {

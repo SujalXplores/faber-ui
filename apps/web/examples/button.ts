@@ -11,7 +11,7 @@ export default function Example() {
 }`;
 
 export const buttonAsLink = `import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/lib/button-variants";
 
 export default function Example() {
   return (

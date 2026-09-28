@@ -19,33 +19,42 @@ function rewrite(content) {
   );
 }
 
-let rewritten = 0;
-for (const name of await readdir(OUT)) {
-  if (!name.endsWith(".json") || name === "registry.json") continue;
-  const file = path.join(OUT, name);
-  const item = JSON.parse(await readFile(file, "utf8"));
-  if (!Array.isArray(item.files)) continue;
-  let changed = false;
-  for (const entry of item.files) {
-    if (typeof entry.content !== "string") continue;
-    const next = rewrite(entry.content);
-    if (next !== entry.content) {
-      entry.content = next;
-      changed = true;
+const names = await readdir(OUT);
+const changedFlags = await Promise.all(
+  names.map(async (name) => {
+    if (!name.endsWith(".json") || name === "registry.json") return false;
+    const file = path.join(OUT, name);
+    const item = JSON.parse(await readFile(file, "utf8"));
+    if (!Array.isArray(item.files)) return false;
+    let changed = false;
+    for (const entry of item.files) {
+      if (typeof entry.content !== "string") continue;
+      const next = rewrite(entry.content);
+      if (next !== entry.content) {
+        entry.content = next;
+        changed = true;
+      }
     }
-  }
-  if (changed) {
-    await writeFile(file, `${JSON.stringify(item, null, 2)}\n`);
-    rewritten += 1;
-  }
-}
+    if (changed) {
+      await writeFile(file, `${JSON.stringify(item, null, 2)}\n`);
+      return true;
+    }
+    return false;
+  }),
+);
+const rewritten = changedFlags.filter(Boolean).length;
 
-const leftover = [];
-for (const name of await readdir(OUT)) {
-  if (!name.endsWith(".json")) continue;
-  const text = await readFile(path.join(OUT, name), "utf8");
-  if (text.includes("@workspace/")) leftover.push(name);
-}
+const jsonNames = (await readdir(OUT)).filter((name) => name.endsWith(".json"));
+const leftover = (
+  await Promise.all(
+    jsonNames.map(async (name) => ({
+      name,
+      text: await readFile(path.join(OUT, name), "utf8"),
+    })),
+  )
+)
+  .filter(({ text }) => text.includes("@workspace/"))
+  .map(({ name }) => name);
 if (leftover.length) {
   console.error(`workspace imports left in: ${leftover.join(", ")}`);
   process.exit(1);
