@@ -46,17 +46,40 @@ Most kits animate the demo and ship static defaults. Here motion is load-bearing
 
 ## Quick start
 
-`npx`, `yarn dlx` and `bunx` work the same way. The CLI reads your `components.json` for aliases, resolves dependencies between components, installs the npm packages the item needs, and copies the source into your project.
+**1. Add a component** with your package manager. The CLI reads your `components.json` for aliases, resolves dependencies between components, installs the npm packages the item needs, and copies the source into your project.
+
+```bash
+# pnpm
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/button.json
+
+# npm / yarn / bun
+npx shadcn@latest add https://faber-ui.vercel.app/r/button.json
+yarn dlx shadcn@latest add https://faber-ui.vercel.app/r/button.json
+bunx shadcn@latest add https://faber-ui.vercel.app/r/button.json
+```
+
+**2. Use it.** Variants and sizes work the shadcn way:
 
 ```tsx
 import { Button } from "@/components/ui/button";
 
-export default function Example() {
-  return <Button>Continue</Button>;
+export function Actions() {
+  return (
+    <div className="flex gap-2">
+      <Button variant="outline">Cancel</Button>
+      <Button>Continue</Button>
+    </div>
+  );
 }
 ```
 
-Every component is addressed the same way: `https://faber-ui.vercel.app/r/<name>.json`.
+**3. Stack more in one command.** Every component lives at `https://faber-ui.vercel.app/r/<name>.json`:
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/dialog.json https://faber-ui.vercel.app/r/calendar.json https://faber-ui.vercel.app/r/chart.json
+```
+
+Undecided? Try any component live in the [docs](https://faber-ui.vercel.app/docs/components/button) first. It is the same source the CLI copies.
 
 ## Browse the kit
 
