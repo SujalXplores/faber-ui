@@ -4,9 +4,9 @@
 
 # Faber UI
 
-**Components you own outright.**
+**Motion-crafted React components — engineered, not decorated.**
 
-60 React components built on Base UI primitives and Tailwind CSS v4, with a shadcn-compatible variant API. The source is copied into your repo, so there is no Faber UI package to upgrade, no provider to wrap, and nothing to override.
+60 components on Base UI primitives and Tailwind CSS v4 where every interaction ships considered motion: one shared easing/duration scale, enter _and_ exit transitions, reduced-motion that's gentler instead of gone. Vendored into your repo with the shadcn CLI — zero runtime dependencies.
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org)
@@ -14,19 +14,36 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Base UI](https://img.shields.io/badge/Base_UI-primitives-black)](https://base-ui.com)
 
-[Documentation](https://faber-ui.vercel.app/docs) · [Components](https://faber-ui.vercel.app/docs/components/button) · [Theming](https://faber-ui.vercel.app/docs/theming) · [Report a bug](https://github.com/SujalXplores/faber-ui/issues/new?template=bug_report.yml) · [Request a component](https://github.com/SujalXplores/faber-ui/issues/new?template=component_request.yml)
+[Live demo](https://faber-ui.vercel.app) · [Documentation](https://faber-ui.vercel.app/docs) · [Components](https://faber-ui.vercel.app/docs/components/button) · [Theming](https://faber-ui.vercel.app/docs/theming) · [Report a bug](https://github.com/SujalXplores/faber-ui/issues/new?template=bug_report.yml) · [Request a component](https://github.com/SujalXplores/faber-ui/issues/new?template=component_request.yml)
+
+```bash
+pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/button.json
+```
 
 </div>
 
 ---
 
+## Motion is the feature
+
+Most kits animate the demo and ship static defaults. Here motion is load-bearing — every interactive component draws from one scale, and contributions pass animation review before they merge:
+
+- **One scale, everywhere.** 7 named easings and 7 duration steps (plus a 45ms stagger), consumed as tokens — components never hardcode a curve or a millisecond value.
+- **No ease-in on enter.** The scale deliberately omits a general ease-in: it delays the first frame, the exact moment the user is watching, so anything entering would read as sluggish.
+- **Exits exist.** Menus, dialogs, and popovers ship exit transitions, not just entrances — nothing vanishes in a hard cut.
+- **Never `transition-all`.** Named properties only, so an unrelated layout change applies instead of animating by accident.
+- **Reduced-motion keeps comprehension.** Distances collapse to zero and durations shorten, but the opacity cues that aid understanding stay. Gentler, not gone.
+
+## You own the source
+
+| Traditional library                                 | Faber UI                                               |
+| --------------------------------------------------- | ------------------------------------------------------ |
+| `npm install @acme/react` adds a runtime dependency | `shadcn add …/r/button.json` copies source             |
+| Theming through provider props and CSS overrides    | Theming through data attributes and CSS tokens         |
+| Breaking majors force rewrites                      | You own the file: edit it, delete parts, keep shipping |
+| The bundle carries what you don't use               | The bundle carries exactly what you vendored           |
+
 ## Quick start
-
-Add a component with the shadcn CLI:
-
-```bash
-pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/button.json
-```
 
 `npx`, `yarn dlx` and `bunx` work the same way. The CLI reads your `components.json` for aliases, resolves dependencies between components, installs the npm packages the item needs, and copies the source into your project.
 
@@ -40,15 +57,6 @@ export default function Example() {
 
 Every component is addressed the same way: `https://faber-ui.vercel.app/r/<name>.json`.
 
-## Why Faber UI
-
-| Traditional library                                 | Faber UI                                               |
-| --------------------------------------------------- | ------------------------------------------------------ |
-| `npm install @acme/react` adds a runtime dependency | `shadcn add …/r/button.json` copies source             |
-| Theming through provider props and CSS overrides    | Theming through data attributes and CSS tokens         |
-| Breaking majors force rewrites                      | You own the file: edit it, delete parts, keep shipping |
-| The bundle carries what you don't use               | The bundle carries exactly what you vendored           |
-
 ## Features
 
 - **Accessible by default.** Base UI primitives under every interactive component handle focus, portals and keyboard support.
@@ -56,7 +64,7 @@ Every component is addressed the same way: `https://faber-ui.vercel.app/r/<name>
 - **Token-based theming.** 1,170 themes (13 hues × 5 neutrals × 6 radii × 3 densities) from 122 semantic tokens on an `oklch` ramp.
 - **RTL ready.** Right-to-left layouts work across the whole kit.
 - **One icon set.** Remixicon is wired into every component that needs an icon.
-- **Live docs.** A Fumadocs site where every preview runs the real component.
+- **Live docs.** A Fumadocs site where every preview runs the real component — toggle it, drag it, it's the source.
 
 <details>
 <summary><strong>All 60 components</strong></summary>
@@ -69,19 +77,7 @@ Accordion · Alert · AlertDialog · AspectRatio · Attachment · Avatar · Badg
 
 ## Theming
 
-Every visual decision resolves through a token, and each layer only references the one above it:
-
-| Layer      | File                    | Holds                                                        |
-| ---------- | ----------------------- | ------------------------------------------------------------ |
-| Primitives | `tokens/primitives.css` | The knobs (hue, chroma, radius, spacing) and raw color ramps |
-| Presets    | `tokens/presets.css`    | Named overrides of those knobs, addressed by data attribute  |
-| Typography | `tokens/typography.css` | Families, size scale, tracking, leading                      |
-| Motion     | `tokens/motion.css`     | Durations, easings, and the reduced-motion collapse          |
-| Elevation  | `tokens/elevation.css`  | The layered, hue-tinted shadow scale                         |
-| Semantic   | `tokens/semantic.css`   | What components consume: `--primary`, `--muted`, `--border`  |
-| Theme      | `theme.css`             | Publishes all of it as Tailwind utilities                    |
-
-Components use the semantic layer, never the primitives: `bg-primary` follows a theme change, `bg-brand-600` does not. Switch the theme with data attributes on `<html>`:
+Every visual decision resolves through a token: primitives (hue, chroma, radius, ramps) → presets → typography, motion, elevation → semantic (`--primary`, `--muted`, `--border`) → Tailwind utilities. Components consume the semantic layer only, so `bg-primary` follows a theme change and nothing hardcoded can drift.
 
 ```html
 <html data-brand="emerald" data-neutral="stone" data-radius="lg"></html>
@@ -91,7 +87,7 @@ See the [theming guide](https://faber-ui.vercel.app/docs/theming) for the full s
 
 ## Development
 
-A pnpm + Turborepo monorepo. It needs Node 20+ (`.nvmrc` pins 22) and pnpm 10+.
+A pnpm + Turborepo monorepo. It needs Node 22+ (`.nvmrc` pins 22) and pnpm 12+.
 
 | Workspace       | Path          | Purpose                                                   |
 | --------------- | ------------- | --------------------------------------------------------- |
@@ -111,7 +107,7 @@ pnpm lint && pnpm format && pnpm build && pnpm typecheck && pnpm test
 
 ## Contributing
 
-See [`CONTRIBUTING.md`](./CONTRIBUTING.md). In short: build on Base UI primitives, style with the design tokens (hardcoded colors get sent back), and name things so comments are unnecessary. Bugs and component ideas go in [issues](https://github.com/SujalXplores/faber-ui/issues/new/choose).
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md). In short: build on Base UI primitives, style with the design tokens (hardcoded colors get sent back), name things so comments are unnecessary, and put motion through the shared scale. Bugs and component ideas go in [issues](https://github.com/SujalXplores/faber-ui/issues/new/choose).
 
 ## License
 
