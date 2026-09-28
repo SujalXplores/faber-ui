@@ -14,6 +14,7 @@ export const easing = {
   drawer: [0.32, 0.72, 0, 1],
   hover: [0.4, 0, 0.2, 1],
   spring: [0.34, 1.56, 0.64, 1],
+  exit: [0.7, 0, 0.84, 0],
 } as const satisfies Record<string, readonly [number, number, number, number]>;
 
 /** Milliseconds. */
@@ -51,6 +52,12 @@ export const scale = {
   press: 0.97,
   enter: 0.96,
   exit: 0.98,
+} as const;
+
+/** Pixels. */
+export const travel = {
+  sm: 6,
+  lg: 40,
 } as const;
 
 /**

@@ -5,7 +5,6 @@
     "oxc.oxc-vscode",
     "bradlc.vscode-tailwindcss",
     "streetsidesoftware.code-spell-checker",
-    "ms-vscode.vscode-typescript-next",
     "EditorConfig.EditorConfig"
   ]
 }

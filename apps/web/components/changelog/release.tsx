@@ -110,7 +110,7 @@ function Entry({ entry }: { entry: ChangelogEntry }) {
           href={`#${entry.id}`}
           className={cn(
             metaLink,
-            "ms-auto opacity-0 group-hover/entry:opacity-100 focus-visible:opacity-100",
+            "ms-auto focus-visible:opacity-100 pointer-fine:opacity-0 pointer-fine:group-hover/entry:opacity-100",
           )}
           aria-label="Link to this change"
         >

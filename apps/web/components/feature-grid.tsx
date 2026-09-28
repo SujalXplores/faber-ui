@@ -108,14 +108,10 @@ export function FeatureGrid() {
                   aria-label="13 brand hues"
                 >
                   {BRAND_HUES.map((hue) => (
-                    /* `--primary` is declared on `:root` only, so it
-                     * substitutes there and a nested `data-brand` would
-                     * inherit it already resolved. `primitives.css` re-declares
-                     * the ramp on `[data-brand]`, so read the step directly. */
                     <span
                       key={hue}
                       data-brand={hue}
-                      className="size-3 rounded-full bg-(--brand-700) ring-1 ring-foreground/10"
+                      className="size-3 rounded-full bg-primary ring-1 ring-foreground/10"
                     />
                   ))}
                 </span>

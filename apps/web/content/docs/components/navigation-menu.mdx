@@ -6,14 +6,13 @@ description: A navigation menu with a shared viewport for content panels.
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuPositioner,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@workspace/ui/components/navigation-menu";
+import { navigationMenuTriggerStyle } from "@workspace/ui/lib/navigation-menu-variants";
 
 `NavigationMenu` is built on the Base UI `NavigationMenu` primitive. It renders a horizontal list of triggers, each opening a shared content panel below.
 
@@ -33,7 +32,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@workspace/ui/components/navigation-menu";
+} from "@/components/ui/navigation-menu";
 
 export default function Example() {
   return (
@@ -96,9 +95,7 @@ Use `navigationMenuTriggerStyle` to style a plain link as a trigger:
   <NavigationMenu>
     <NavigationMenuList>
       <NavigationMenuItem>
-        <NavigationMenuLink href="/docs" className={navigationMenuTriggerStyle()}>
-          Docs
-        </NavigationMenuLink>
+        <NavigationMenuLink href="/docs" className={navigationMenuTriggerStyle()}>Docs</NavigationMenuLink>
       </NavigationMenuItem>
     </NavigationMenuList>
   </NavigationMenu>

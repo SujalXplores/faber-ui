@@ -60,7 +60,7 @@ export default async function ChangelogPage() {
 
   return (
     <HomeLayout {...baseOptions()}>
-      <main className="w-full pb-32">
+      <div className="w-full pb-32">
         <section className="relative isolate overflow-hidden border-b">
           <div
             className="pointer-events-none absolute inset-0 -z-10 dot-field opacity-50"
@@ -83,7 +83,7 @@ export default async function ChangelogPage() {
                 <a
                   key={feed.href}
                   href={feed.href}
-                  className="inline-flex h-8 press items-center gap-1.5 rounded-md border bg-surface-2/60 px-3 text-xs font-medium transition-colors hover:bg-accent"
+                  className="inline-flex h-8 press items-center gap-1.5 rounded-md border bg-surface-2/60 px-3 text-xs font-medium hover:bg-accent"
                 >
                   <feed.icon className="size-3.5 text-muted-foreground" />
                   {feed.label}
@@ -156,7 +156,7 @@ export default async function ChangelogPage() {
             must adapt to, patches are fixes and additions.
           </p>
         </div>
-      </main>
+      </div>
     </HomeLayout>
   );
 }

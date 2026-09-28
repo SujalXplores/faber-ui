@@ -97,15 +97,13 @@ function BreadcrumbEllipsis({
   return (
     <span
       data-slot="breadcrumb-ellipsis"
-      role="presentation"
-      aria-hidden="true"
       className={cn(
         "flex size-4 items-center justify-center [&>svg]:size-3.5",
         className,
       )}
       {...props}
     >
-      <RiMoreLine />
+      <RiMoreLine aria-hidden />
       <span className="sr-only">More</span>
     </span>
   );

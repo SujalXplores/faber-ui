@@ -1,5 +1,4 @@
 import { createMDX } from "fumadocs-mdx/next";
-import { createNextStory } from "@fumadocs/story/next";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -18,6 +17,5 @@ const nextConfig: NextConfig = {
 };
 
 const withMDX = createMDX();
-const withStory = createNextStory();
 
-export default withStory(withMDX(nextConfig));
+export default withMDX(nextConfig);

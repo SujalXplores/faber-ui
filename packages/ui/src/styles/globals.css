@@ -1,31 +1,9 @@
-/* Stylesheet entry point. Import order is significant:
- *
- *   presets after primitives   both are 0-1-0, so source order picks the winner
- *   semantic after primitives  semantic tokens dereference the ramps
- *
- * The Fumadocs preset and its bridge live in apps/web, which is what depends on
- * Fumadocs. */
+/* Stylesheet entry point for this repository. apps/web imports the Fumadocs
+ * preset, then ./bridge/fumadocs.css after it. */
 
 @import "tailwindcss";
-@import "tw-animate-css";
 @import "shadcn/tailwind.css";
-
-@import "./tokens/primitives.css";
-@import "./tokens/presets.css";
-@import "./tokens/typography.css";
-@import "./tokens/motion.css";
-@import "./tokens/elevation.css";
-@import "./tokens/semantic.css";
-
-@import "./theme.css";
-@import "./utilities.css";
-@import "./base.css";
-
-@custom-variant dark (&:is(.dark *));
-
-/* Touch devices fire `:hover` on tap and leave the element stuck in it, so
- * hover-driven motion belongs behind this. */
-@custom-variant pointer-fine (@media (hover: hover) and (pointer: fine));
+@import "./faber.css";
 
 /* Paths resolve relative to this file, so four levels up is the repo root. */
 @source "../**/*.{ts,tsx}";

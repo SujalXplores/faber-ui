@@ -2,7 +2,8 @@ import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { Button, buttonVariants } from "@workspace/ui/components/button";
+import { Button } from "@workspace/ui/components/button";
+import { buttonVariants } from "@workspace/ui/lib/button-variants";
 
 describe("Button", () => {
   it("renders a native button element", () => {

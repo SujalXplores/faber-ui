@@ -14,7 +14,8 @@ export default function GlobalErrorPage({
   }, [error]);
 
   return (
-    <html lang="en">
+    <html lang="en" style={{ colorScheme: "light dark" }}>
+      <title>Something went wrong | Faber UI</title>
       <body>
         <main
           style={{

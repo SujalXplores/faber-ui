@@ -1,46 +1,31 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "ui": "tui",
   "tasks": {
     "build": {
-      "dependsOn": [
-        "^build",
-        "@workspace/ui#registry"
-      ],
+      "dependsOn": ["^build", "@workspace/ui#registry"],
       "inputs": [
         "$TURBO_DEFAULT$",
         ".env*",
         "$TURBO_ROOT$/packages/ui/CHANGELOG.md"
       ],
-      "outputs": [
-        ".next/**",
-        "!.next/cache/**"
-      ]
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
-      "dependsOn": [
-        "^lint"
-      ]
+      "dependsOn": ["^lint"]
     },
     "format": {
-      "dependsOn": [
-        "^format"
-      ]
+      "dependsOn": ["^format"],
+      "cache": false
     },
     "format:check": {
-      "dependsOn": [
-        "^format:check"
-      ]
+      "dependsOn": ["^format:check"]
     },
     "typecheck": {
-      "dependsOn": [
-        "^typecheck"
-      ]
+      "dependsOn": ["^typecheck"]
     },
     "test": {
-      "dependsOn": [
-        "^test"
-      ]
+      "dependsOn": ["^test"]
     },
     "dev": {
       "cache": false,
@@ -48,26 +33,18 @@
     },
     "registry": {
       "cache": false,
-      "inputs": [
-        "src/**",
-        "scripts/**",
-        "registry.json"
-      ],
-      "outputs": [
-        "registry.json",
-        "../../apps/web/public/r/**"
-      ]
+      "env": ["REGISTRY_BASE_URL"],
+      "inputs": ["src/**", "scripts/**", "registry.json"]
     },
     "lint:fix": {
       "cache": false,
-      "dependsOn": [
-        "^lint:fix"
-      ]
+      "dependsOn": ["^lint:fix"]
     }
   },
   "globalDependencies": [
     ".oxlintrc.json",
     "tsconfig.json",
-    ".gitattributes"
+    ".prettierrc",
+    ".prettierignore"
   ]
 }

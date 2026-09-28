@@ -16,7 +16,7 @@ npx shadcn@latest add https://faber-ui.vercel.app/r/badge.json
 ## Usage
 
 ```tsx
-import { Badge } from "@workspace/ui/components/badge";
+import { Badge } from "@/components/ui/badge";
 
 export default function Example() {
   return <Badge>New</Badge>;
@@ -41,7 +41,7 @@ export default function Example() {
 Use the `render` prop to turn the badge into an anchor:
 
 ```tsx
-import { Badge } from "@workspace/ui/components/badge";
+import { Badge } from "@/components/ui/badge";
 
 export default function Example() {
   return <Badge render={<a href="/changelog" />}>v1.0</Badge>;

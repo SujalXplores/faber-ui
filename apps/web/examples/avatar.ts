@@ -2,7 +2,7 @@ export const avatarUsage = `import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@workspace/ui/components/avatar";
+} from "@/components/ui/avatar";
 
 export default function Example() {
   return (

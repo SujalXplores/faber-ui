@@ -17,16 +17,18 @@ What runs without being asked, and the one-time setup each piece needs.
 ## One-time setup
 
 **1. Renovate** — install the app and grant it this repo:
-<https://github.com/apps/renovate>. It opens an onboarding PR; merge it. The
-config here already applies, so the onboarding PR should be near-empty.
+<https://github.com/apps/renovate>. It opens an onboarding PR that adds a root
+`renovate.json`; close it instead of merging. Renovate reads the first config
+file it finds and a root `renovate.json` wins over `.github/renovate.json5`,
+so merging it silently replaces this config with the defaults.
 
-**2. React Doctor** — nothing to install. It runs `millionco/react-doctor@v2`
+**2. React Doctor** — nothing to install. It runs `millionco/react-doctor` (v2, pinned by SHA with the CLI pinned via `version`)
 on the stock `GITHUB_TOKEN`, needs no app and no secret, and reports only the
 issues a PR introduces rather than the existing backlog. To reproduce a finding
 locally:
 
 ```
-npx react-doctor@latest
+npx react-doctor@0.9.14
 ```
 
 Rules are configurable through a `doctor.config.ts` at the repo root; there is
@@ -110,4 +112,4 @@ Renovate's `vulnerabilityAlerts`. Settings → Advanced Security → Dependabot 
 `pnpm audit` currently reports 4 high-severity transitive advisories
 (`nanoid` via `next > postcss`, `brace-expansion` via `@fumadocs/story`). Neither
 is reachable from a direct dependency. They clear on an upstream release or via
-`pnpm.overrides` in `pnpm-workspace.yaml`.
+`overrides` in `pnpm-workspace.yaml`.

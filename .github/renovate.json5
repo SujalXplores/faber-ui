@@ -7,6 +7,7 @@
     ":dependencyDashboard",
     "group:monorepos",
     "group:recommended",
+    "helpers:pinGitHubActionDigestsToSemver",
   ],
 
   timezone: "Etc/UTC",
@@ -37,7 +38,6 @@
   vulnerabilityAlerts: {
     labels: ["dependencies", "security"],
     schedule: ["at any time"],
-    prPriority: 10,
     automerge: false,
   },
 
@@ -65,7 +65,6 @@
         "prettier-plugin-tailwindcss",
         "eslint-plugin-better-tailwindcss",
         "tailwind-merge",
-        "tw-animate-css",
       ],
     },
     {
@@ -141,6 +140,21 @@
       matchPackageNames: ["pnpm", "node", "@types/node"],
       matchUpdateTypes: ["major"],
       dependencyDashboardApproval: true,
+    },
+    {
+      description: "Node follows the toolchain in .nvmrc, .github/actions/setup and Vercel; never pin engines.node.",
+      matchDepNames: ["node"],
+      enabled: false,
+    },
+    {
+      description: ".nvmrc moves with CI and Vercel, not on its own.",
+      matchManagers: ["nvm"],
+      enabled: false,
+    },
+    {
+      description: "TypeScript 7 is the native rewrite without the compiler API that packages/ui/scripts/build-registry.mjs and apps/web/lib/component-api.ts use.",
+      matchDepNames: ["typescript"],
+      allowedVersions: "<7",
     },
     {
       description: "Let a release settle before adopting it.",

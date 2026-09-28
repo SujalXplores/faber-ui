@@ -26,7 +26,7 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@workspace/ui/components/hover-card";
+} from "@/components/ui/hover-card";
 
 export default function Example() {
   return (
@@ -44,9 +44,7 @@ export default function Example() {
 
 <div className="not-prose demo">
   <HoverCard>
-    <HoverCardTrigger className="cursor-pointer text-sm font-medium underline">
-      Hover me
-    </HoverCardTrigger>
+    <HoverCardTrigger className="cursor-pointer text-sm font-medium underline">Hover me</HoverCardTrigger>
     <HoverCardContent>
       <div className="flex gap-3">
         <div className="size-10 rounded-full bg-muted" />

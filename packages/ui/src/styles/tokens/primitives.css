@@ -1,13 +1,12 @@
 /* Raw scales. The only file with color maths in it.
  *
- * The selector must include `[data-brand]` / `[data-neutral]`: custom
- * properties resolve at computed-value time, so a ramp declared only on `:root`
- * inherits already-resolved colors into nested scopes, and a scoped override
- * like `<section data-brand="amber">` would silently do nothing. */
+ * Knob defaults live on `:root` alone, so a nested `data-neutral` inherits the
+ * brand around it instead of resetting it. The ramps also match `[data-brand]`
+ * and `[data-neutral]`: custom properties resolve at computed-value time, so a
+ * ramp declared only on `:root` inherits already-resolved colors into nested
+ * scopes, and `<section data-brand="amber">` would silently do nothing. */
 
-:root,
-[data-brand],
-[data-neutral] {
+:root {
   --brand-hue: 252;
   --brand-chroma: 0.155;
 
@@ -22,7 +21,11 @@
   --warning-chroma: 0.188;
   --info-hue: 259.8;
   --info-chroma: 0.214;
+}
 
+:root,
+[data-brand],
+[data-neutral] {
   /* Chroma has a per-hue sRGB ceiling and exceeding it fails silently: the
    * browser gamut-maps the overflow, adjacent steps converge, and the ramp
    * flattens. Measured ceilings per hue are in presets.css. */

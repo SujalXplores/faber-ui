@@ -7,6 +7,15 @@ function git(...args) {
   return execFileSync("git", args, { encoding: "utf8" }).trim();
 }
 
+function isAncestor(commit, of) {
+  try {
+    execFileSync("git", ["merge-base", "--is-ancestor", commit, of]);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function pullRequestOf(commit) {
   try {
     const squashed = SQUASHED_PULL_REQUEST.exec(
@@ -14,18 +23,21 @@ function pullRequestOf(commit) {
     );
     if (squashed) return squashed[1];
 
-    const mergeSubjects = git(
+    const merges = git(
       "log",
       "--ancestry-path",
       "--merges",
       "--reverse",
-      "--format=%s",
+      "--format=%H %s",
       `${commit}..HEAD`,
     ).split("\n");
 
-    for (const subject of mergeSubjects) {
-      const merged = MERGED_PULL_REQUEST.exec(subject);
-      if (merged) return merged[1];
+    for (const line of merges) {
+      const separator = line.indexOf(" ");
+      const merged = MERGED_PULL_REQUEST.exec(line.slice(separator + 1));
+      if (merged && !isAncestor(commit, `${line.slice(0, separator)}^1`)) {
+        return merged[1];
+      }
     }
   } catch {
     return undefined;
@@ -49,7 +61,7 @@ async function getReleaseLine(changeset) {
 
   const head = `- ${referenceOf(changeset.commit)}${firstLine}`;
   if (futureLines.length === 0) return head;
-  return `${head}\n${futureLines.map((line) => `  ${line}`).join("\n")}`;
+  return `${head}\n${futureLines.map((line) => (line ? `  ${line}` : "")).join("\n")}`;
 }
 
 async function getDependencyReleaseLine(changesets, dependenciesUpdated) {

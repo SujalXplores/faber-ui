@@ -29,18 +29,23 @@
 
   /* Named properties, never `all`: `all` makes the browser watch geometry too,
    * so unrelated layout changes animate instead of applying. */
-  --transition-press: transform var(--duration-quick) var(--easing-out);
+  --transition-press: scale var(--duration-quick) var(--easing-out);
   --transition-hover:
     color var(--duration-base) var(--easing-hover),
     background-color var(--duration-base) var(--easing-hover),
     border-color var(--duration-base) var(--easing-hover);
   --transition-surface:
     opacity var(--duration-base) var(--easing-out),
-    transform var(--duration-base) var(--easing-out);
+    scale var(--duration-base) var(--easing-out);
 
   --scale-press: 0.97;
   --scale-enter: 0.96;
   --scale-exit: 0.98;
+
+  /* Distance an element travels as it enters: a nudge for cascades, a panel
+   * offset for sheets. */
+  --travel-sm: 6px;
+  --travel-lg: 2.5rem;
 }
 
 /* Gentler, not absent. Opacity transitions that aid comprehension are kept and
@@ -64,5 +69,8 @@
     --scale-press: 1;
     --scale-enter: 1;
     --scale-exit: 1;
+
+    --travel-sm: 0px;
+    --travel-lg: 0px;
   }
 }

@@ -55,7 +55,7 @@ export default function Page() {
 
   return (
     <HomeLayout {...baseOptions()}>
-      <main className="w-full pb-32">
+      <div className="w-full pb-32">
         <section className="relative isolate overflow-hidden border-b">
           <div
             className="pointer-events-none absolute inset-0 -z-10 hero-glow"
@@ -98,7 +98,7 @@ export default function Page() {
             >
               <Link
                 href="/docs"
-                className="group inline-flex h-9 press items-center gap-1.5 rounded-md bg-primary px-4 font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
+                className="group inline-flex h-9 press items-center gap-1.5 rounded-md bg-primary px-4 font-medium text-primary-foreground hover:bg-primary-hover"
               >
                 Documentation
                 <RiArrowRightLine className="size-4 transition-transform pointer-fine:group-hover:translate-x-0.5" />
@@ -234,7 +234,7 @@ export default function Page() {
                   >
                     <span className="truncate">{component.title}</span>
                     <RiArrowRightLine
-                      className="size-3.5 shrink-0 text-muted-foreground opacity-0 transition-[opacity,transform] pointer-fine:group-hover:translate-x-0.5 pointer-fine:group-hover:opacity-100"
+                      className="size-3.5 shrink-0 text-muted-foreground opacity-0 transition-[opacity,translate] pointer-fine:group-hover:translate-x-0.5 pointer-fine:group-hover:opacity-100"
                       aria-hidden
                     />
                   </Link>
@@ -243,7 +243,7 @@ export default function Page() {
             </ul>
           </section>
         </div>
-      </main>
+      </div>
     </HomeLayout>
   );
 }

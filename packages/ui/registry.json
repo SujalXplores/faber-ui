@@ -4,6 +4,67 @@
   "homepage": "https://faber-ui.vercel.app",
   "items": [
     {
+      "name": "theme",
+      "type": "registry:item",
+      "title": "Theme",
+      "description": "The design tokens, motion utilities and base styles every component uses. Import styles/faber/index.css after tailwindcss and shadcn/tailwind.css.",
+      "files": [
+        {
+          "path": "src/styles/base.css",
+          "type": "registry:file",
+          "target": "styles/faber/base.css"
+        },
+        {
+          "path": "src/styles/faber.css",
+          "type": "registry:file",
+          "target": "styles/faber/index.css"
+        },
+        {
+          "path": "src/styles/theme.css",
+          "type": "registry:file",
+          "target": "styles/faber/theme.css"
+        },
+        {
+          "path": "src/styles/tokens/elevation.css",
+          "type": "registry:file",
+          "target": "styles/faber/tokens/elevation.css"
+        },
+        {
+          "path": "src/styles/tokens/motion.css",
+          "type": "registry:file",
+          "target": "styles/faber/tokens/motion.css"
+        },
+        {
+          "path": "src/styles/tokens/presets.css",
+          "type": "registry:file",
+          "target": "styles/faber/tokens/presets.css"
+        },
+        {
+          "path": "src/styles/tokens/primitives.css",
+          "type": "registry:file",
+          "target": "styles/faber/tokens/primitives.css"
+        },
+        {
+          "path": "src/styles/tokens/semantic.css",
+          "type": "registry:file",
+          "target": "styles/faber/tokens/semantic.css"
+        },
+        {
+          "path": "src/styles/tokens/typography.css",
+          "type": "registry:file",
+          "target": "styles/faber/tokens/typography.css"
+        },
+        {
+          "path": "src/styles/utilities.css",
+          "type": "registry:file",
+          "target": "styles/faber/utilities.css"
+        }
+      ],
+      "devDependencies": [
+        "shadcn"
+      ]
+    },
+    {
       "name": "accordion",
       "type": "registry:ui",
       "title": "Accordion",
@@ -20,6 +81,7 @@
         "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -40,6 +102,7 @@
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -59,6 +122,7 @@
         "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -75,6 +139,7 @@
         }
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -96,6 +161,7 @@
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -115,6 +181,7 @@
         "@base-ui/react@1.8.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -135,6 +202,7 @@
         "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -155,6 +223,7 @@
         "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -175,6 +244,7 @@
         "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -196,6 +266,7 @@
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/separator.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -216,6 +287,8 @@
         "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/button-variants.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -238,6 +311,8 @@
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/button-variants.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -254,6 +329,7 @@
         }
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -270,11 +346,13 @@
         }
       ],
       "dependencies": [
+        "@base-ui/react@1.8.0",
         "@remixicon/react@4.9.0",
         "embla-carousel-react@8.6.0"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -291,9 +369,11 @@
         }
       ],
       "dependencies": [
+        "react-is@19.3.0",
         "recharts@3.10.1"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -314,6 +394,7 @@
         "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -331,6 +412,9 @@
       ],
       "dependencies": [
         "@base-ui/react@1.8.0"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json"
       ]
     },
     {
@@ -352,6 +436,7 @@
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
         "https://faber-ui.vercel.app/r/input-group.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -374,6 +459,7 @@
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/dialog.json",
         "https://faber-ui.vercel.app/r/input-group.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -394,6 +480,7 @@
         "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -415,6 +502,7 @@
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -432,6 +520,9 @@
       ],
       "dependencies": [
         "@base-ui/react@1.8.0"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json"
       ]
     },
     {
@@ -450,6 +541,7 @@
         "@base-ui/react@1.8.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -470,6 +562,7 @@
         "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -489,6 +582,7 @@
         "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -510,6 +604,7 @@
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/label.json",
         "https://faber-ui.vercel.app/r/separator.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -529,6 +624,7 @@
         "@base-ui/react@1.8.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -551,6 +647,7 @@
         "https://faber-ui.vercel.app/r/button.json",
         "https://faber-ui.vercel.app/r/input.json",
         "https://faber-ui.vercel.app/r/textarea.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -571,6 +668,7 @@
         "input-otp@1.5.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -590,6 +688,7 @@
         "@base-ui/react@1.8.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -611,6 +710,7 @@
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/separator.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -627,6 +727,7 @@
         }
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -643,6 +744,7 @@
         }
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -663,6 +765,7 @@
         "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -684,6 +787,7 @@
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/dropdown-menu.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -705,6 +809,7 @@
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -721,6 +826,7 @@
         }
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -740,6 +846,7 @@
         "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -757,10 +864,11 @@
       ],
       "dependencies": [
         "@base-ui/react@1.8.0",
-        "@remixicon/react@4.9.0",
-        "class-variance-authority@0.7.1"
+        "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/navigation-menu-variants.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -781,6 +889,7 @@
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -800,6 +909,7 @@
         "@base-ui/react@1.8.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -819,6 +929,7 @@
         "@base-ui/react@1.8.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -838,6 +949,7 @@
         "@base-ui/react@1.8.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -857,6 +969,7 @@
         "react-resizable-panels@4.14.1"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -876,6 +989,7 @@
         "@base-ui/react@1.8.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -896,6 +1010,7 @@
         "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -915,6 +1030,7 @@
         "@base-ui/react@1.8.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -936,6 +1052,7 @@
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/button.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -962,6 +1079,7 @@
         "https://faber-ui.vercel.app/r/separator.json",
         "https://faber-ui.vercel.app/r/sheet.json",
         "https://faber-ui.vercel.app/r/skeleton.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/tooltip.json",
         "https://faber-ui.vercel.app/r/use-mobile.json",
         "https://faber-ui.vercel.app/r/utils.json"
@@ -980,6 +1098,7 @@
         }
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -999,6 +1118,7 @@
         "@base-ui/react@1.8.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -1018,6 +1138,9 @@
         "@remixicon/react@4.9.0",
         "next-themes@0.4.6",
         "sonner@2.0.8"
+      ],
+      "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json"
       ]
     },
     {
@@ -1036,6 +1159,7 @@
         "@remixicon/react@4.9.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -1055,6 +1179,7 @@
         "@base-ui/react@1.8.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -1071,6 +1196,7 @@
         }
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -1091,6 +1217,8 @@
         "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/tabs-variants.json",
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -1107,6 +1235,7 @@
         }
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -1127,7 +1256,8 @@
         "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
-        "https://faber-ui.vercel.app/r/toggle.json",
+        "https://faber-ui.vercel.app/r/theme.json",
+        "https://faber-ui.vercel.app/r/toggle-variants.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -1148,6 +1278,8 @@
         "class-variance-authority@0.7.1"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
+        "https://faber-ui.vercel.app/r/toggle-variants.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -1167,6 +1299,7 @@
         "@base-ui/react@1.8.0"
       ],
       "registryDependencies": [
+        "https://faber-ui.vercel.app/r/theme.json",
         "https://faber-ui.vercel.app/r/utils.json"
       ]
     },
@@ -1184,6 +1317,22 @@
       ]
     },
     {
+      "name": "button-variants",
+      "type": "registry:lib",
+      "title": "Button Variants",
+      "description": "The Button variant config, shared by Button, Calendar and button-styled links.",
+      "files": [
+        {
+          "path": "src/lib/button-variants.ts",
+          "type": "registry:lib",
+          "target": "lib/button-variants.ts"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority@0.7.1"
+      ]
+    },
+    {
       "name": "motion",
       "type": "registry:lib",
       "title": "Motion",
@@ -1194,6 +1343,54 @@
           "type": "registry:lib",
           "target": "lib/motion.ts"
         }
+      ]
+    },
+    {
+      "name": "navigation-menu-variants",
+      "type": "registry:lib",
+      "title": "Navigation Menu Variants",
+      "description": "The NavigationMenu trigger style for links rendered as triggers.",
+      "files": [
+        {
+          "path": "src/lib/navigation-menu-variants.ts",
+          "type": "registry:lib",
+          "target": "lib/navigation-menu-variants.ts"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority@0.7.1"
+      ]
+    },
+    {
+      "name": "tabs-variants",
+      "type": "registry:lib",
+      "title": "Tabs Variants",
+      "description": "The Tabs list variant config.",
+      "files": [
+        {
+          "path": "src/lib/tabs-variants.ts",
+          "type": "registry:lib",
+          "target": "lib/tabs-variants.ts"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority@0.7.1"
+      ]
+    },
+    {
+      "name": "toggle-variants",
+      "type": "registry:lib",
+      "title": "Toggle Variants",
+      "description": "The Toggle variant config, shared by Toggle and ToggleGroup.",
+      "files": [
+        {
+          "path": "src/lib/toggle-variants.ts",
+          "type": "registry:lib",
+          "target": "lib/toggle-variants.ts"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority@0.7.1"
       ]
     },
     {

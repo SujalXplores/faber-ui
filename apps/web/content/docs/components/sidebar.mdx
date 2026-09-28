@@ -45,7 +45,7 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarTrigger,
-} from "@workspace/ui/components/sidebar";
+} from "@/components/ui/sidebar";
 import { RiDashboardLine, RiSettingsLine } from "@remixicon/react";
 
 export default function Example() {
@@ -59,10 +59,7 @@ export default function Example() {
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <RiDashboardLine />
-                    Dashboard
-                  </SidebarMenuButton>
+                  <SidebarMenuButton><RiDashboardLine />Dashboard</SidebarMenuButton>
                 </SidebarMenuItem>
               </SidebarMenu>
             </SidebarGroupContent>
@@ -91,16 +88,10 @@ export default function Example() {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <RiDashboardLine />
-                  Dashboard
-                </SidebarMenuButton>
+                <SidebarMenuButton><RiDashboardLine />Dashboard</SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <RiSettingsLine />
-                  Settings
-                </SidebarMenuButton>
+                <SidebarMenuButton><RiSettingsLine />Settings</SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
@@ -126,16 +117,10 @@ export default function Example() {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton isActive>
-                  <RiDashboardLine />
-                  Dashboard
-                </SidebarMenuButton>
+                <SidebarMenuButton isActive><RiDashboardLine />Dashboard</SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <RiSettingsLine />
-                  Settings
-                </SidebarMenuButton>
+                <SidebarMenuButton><RiSettingsLine />Settings</SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>

@@ -108,7 +108,6 @@ function PaginationEllipsis({
 }: React.ComponentProps<"span">) {
   return (
     <span
-      aria-hidden
       data-slot="pagination-ellipsis"
       className={cn(
         "flex size-7 items-center justify-center [&_svg:not([class*='size-'])]:size-3.5",
@@ -116,7 +115,7 @@ function PaginationEllipsis({
       )}
       {...props}
     >
-      <RiMoreLine />
+      <RiMoreLine aria-hidden />
       <span className="sr-only">More pages</span>
     </span>
   );

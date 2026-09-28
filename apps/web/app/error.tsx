@@ -1,9 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 import { Button } from "@workspace/ui/components/button";
+import { buttonVariants } from "@workspace/ui/lib/button-variants";
 
 export default function ErrorPage({
   error,
@@ -12,8 +13,6 @@ export default function ErrorPage({
   error: Error & { digest?: string };
   retry: () => void;
 }) {
-  const router = useRouter();
-
   React.useEffect(() => {
     console.error(error);
   }, [error]);
@@ -32,9 +31,9 @@ export default function ErrorPage({
       </p>
       <div className="mt-8 flex items-center gap-3">
         <Button onClick={() => retry()}>Try again</Button>
-        <Button variant="outline" onClick={() => router.push("/docs")}>
+        <Link href="/docs" className={buttonVariants({ variant: "outline" })}>
           Documentation
-        </Button>
+        </Link>
       </div>
     </main>
   );

@@ -15,7 +15,6 @@
     "source.fixAll.eslint": "explicit",
     "source.fixAll.oxc": "explicit"
   },
-  "eslint.useFlatConfig": true,
   "eslint.workingDirectories": [
     {
       "pattern": "packages/*"
@@ -57,5 +56,6 @@
     "**/.next/**",
     "**/.turbo/**"
   ],
-  "tailwindCSS.lint.suggestCanonicalClasses": "ignore"
+  "tailwindCSS.lint.suggestCanonicalClasses": "ignore",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

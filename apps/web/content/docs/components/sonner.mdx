@@ -3,6 +3,7 @@ title: Sonner
 description: Toast notifications powered by sonner.
 ---
 
+import { Toaster } from "@workspace/ui/components/sonner";
 import { SonnerActionDemo, SonnerDemo, SonnerTypesDemo } from "@/components/sonner-demo";
 
 `Sonner` is built on the [`sonner`](https://sonner.emilkowal.ski) library. The `Toaster` component sets up the viewport, and the `toast` function (imported from `sonner`) triggers notifications programmatically.
@@ -17,24 +18,28 @@ npx shadcn@latest add https://faber-ui.vercel.app/r/sonner.json
 
 Add the `Toaster` to your root layout, then call `toast()` anywhere in a client component:
 
-```tsx
-"use client";
+```tsx title="app/layout.tsx"
+import { Toaster } from "@/components/ui/sonner";
 
-import { Toaster } from "@workspace/ui/components/sonner";
-import { toast } from "sonner";
-
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      {children}
-      <Toaster />
-    </>
+    <html lang="en">
+      <body>
+        {children}
+        <Toaster />
+      </body>
+    </html>
   );
 }
+```
 
-// anywhere in a client component
-function MyButton() {
-  return <button onClick={() => toast("Event has been created")}>Show toast</button>;
+```tsx title="components/save-button.tsx"
+"use client";
+
+import { toast } from "sonner";
+
+export function SaveButton() {
+  return <button onClick={() => toast("Event has been created")}>Save</button>;
 }
 ```
 
@@ -75,3 +80,5 @@ toast.promise(myAsyncFn, { success: "Done", error: "Failed" });
 | --------- | --------------------------------------------------------------------- |
 | `Toaster` | The viewport. Drop it in your layout once.                            |
 | `toast`   | The trigger function (imported from `sonner`). Call `toast(message)`. |
+
+<Toaster />

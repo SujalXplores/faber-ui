@@ -25,22 +25,27 @@ export function CopyButton({
     <button
       type="button"
       onClick={() => {
+        if (!navigator.clipboard) return;
         void navigator.clipboard
           .writeText(value)
           .then(() => setCopied(true))
           .catch(() => setCopied(false));
       }}
       className={cn(
-        "inline-flex size-7 press items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground",
+        "group/copy inline-grid size-7 press place-items-center rounded-md text-muted-foreground hover:bg-accent hover:text-foreground",
         className,
       )}
+      data-copied={copied}
       aria-label={copied ? "Copied to clipboard" : label}
     >
-      {copied ? (
-        <RiCheckLine className="size-3.5 text-success" />
-      ) : (
-        <RiFileCopyLine className="size-3.5" />
-      )}
+      <RiFileCopyLine
+        aria-hidden
+        className="col-start-1 row-start-1 size-3.5 transition-[opacity,scale,filter] duration-base ease-out group-data-[copied=true]/copy:scale-(--scale-enter) group-data-[copied=true]/copy:opacity-0 group-data-[copied=true]/copy:blur-[2px]"
+      />
+      <RiCheckLine
+        aria-hidden
+        className="col-start-1 row-start-1 size-3.5 text-success transition-[opacity,scale,filter] duration-base ease-out group-data-[copied=false]/copy:scale-(--scale-enter) group-data-[copied=false]/copy:opacity-0 group-data-[copied=false]/copy:blur-[2px]"
+      />
       {/* The icon swap alone conveys nothing to a screen reader. */}
       <span aria-live="polite" className="sr-only">
         {copied ? "Copied" : ""}

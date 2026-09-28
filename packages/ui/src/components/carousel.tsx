@@ -4,6 +4,7 @@ import * as React from "react";
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
+import { useDirection } from "@base-ui/react/direction-provider";
 
 import { cn } from "@workspace/ui/lib/utils";
 import { Button } from "@workspace/ui/components/button";
@@ -51,8 +52,10 @@ function Carousel({
   children,
   ...props
 }: React.ComponentProps<"div"> & CarouselProps) {
+  const direction = useDirection();
   const [carouselRef, api] = useEmblaCarousel(
     {
+      direction,
       ...opts,
       axis: orientation === "horizontal" ? "x" : "y",
     },
@@ -77,15 +80,24 @@ function Carousel({
 
   const handleKeyDown = React.useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === "ArrowLeft") {
+      const target = event.target as HTMLElement;
+      if (target.isContentEditable || target.closest("input, textarea, select"))
+        return;
+      const [prevKey, nextKey] =
+        orientation === "vertical"
+          ? ["ArrowUp", "ArrowDown"]
+          : direction === "rtl"
+            ? ["ArrowRight", "ArrowLeft"]
+            : ["ArrowLeft", "ArrowRight"];
+      if (event.key === prevKey) {
         event.preventDefault();
         scrollPrev();
-      } else if (event.key === "ArrowRight") {
+      } else if (event.key === nextKey) {
         event.preventDefault();
         scrollNext();
       }
     },
-    [scrollPrev, scrollNext],
+    [orientation, direction, scrollPrev, scrollNext],
   );
 
   React.useEffect(() => {

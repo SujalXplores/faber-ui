@@ -9,12 +9,14 @@
 
 :root {
   --font-family-sans:
-    var(--font-sans-src), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-    sans-serif;
+    var(--font-sans-src, ui-sans-serif), ui-sans-serif, system-ui,
+    -apple-system, "Segoe UI", sans-serif;
   --font-family-mono:
-    var(--font-mono-src), ui-monospace, "SF Mono", "Cascadia Mono", monospace;
+    var(--font-mono-src, ui-monospace), ui-monospace, "SF Mono",
+    "Cascadia Mono", monospace;
   --font-family-display: var(--font-family-sans);
-  --font-family-serif: var(--font-serif-src), ui-serif, Georgia, serif;
+  --font-family-serif:
+    var(--font-serif-src, ui-serif), ui-serif, Georgia, serif;
 
   --weight-normal: 400;
   --weight-medium: 500;

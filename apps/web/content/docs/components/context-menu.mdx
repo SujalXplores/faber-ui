@@ -37,7 +37,7 @@ import {
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from "@workspace/ui/components/context-menu";
+} from "@/components/ui/context-menu";
 
 export default function Example() {
   return (
@@ -58,9 +58,7 @@ export default function Example() {
 
 <div className="not-prose demo">
   <ContextMenu>
-    <ContextMenuTrigger className="block w-full rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">
-      Right click here
-    </ContextMenuTrigger>
+    <ContextMenuTrigger className="block w-full rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">Right click here</ContextMenuTrigger>
     <ContextMenuContent>
       <ContextMenuItem>Back</ContextMenuItem>
       <ContextMenuItem>Forward</ContextMenuItem>
@@ -75,9 +73,7 @@ export default function Example() {
 
 <div className="not-prose demo">
   <ContextMenu>
-    <ContextMenuTrigger className="block w-full rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">
-      Right click here
-    </ContextMenuTrigger>
+    <ContextMenuTrigger className="block w-full rounded-md border border-dashed p-4 text-center text-sm text-muted-foreground">Right click here</ContextMenuTrigger>
     <ContextMenuContent>
       <ContextMenuItem>Cut</ContextMenuItem>
       <ContextMenuItem>Copy</ContextMenuItem>
