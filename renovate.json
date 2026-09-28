@@ -1,6 +1,16 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
+  "extends": ["config:recommended"],
+  "packageRules": [
+    {
+      "description": "Keep the Node 22 toolchain: do not pin engines.node, it must stay compatible with CI (.github/actions/setup) and Vercel",
+      "matchDepNames": ["node"],
+      "enabled": false
+    },
+    {
+      "description": "Keep .nvmrc on the Node 22 range used by CI and Vercel",
+      "matchManagers": ["nvm"],
+      "enabled": false
+    }
   ]
 }
