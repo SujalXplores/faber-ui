@@ -7,5 +7,16 @@ allowBuilds:
   msw: false
   sharp: true
   unrs-resolver: true
+minimumReleaseAgeExclude:
+  - '@turbo/darwin-64@2.11.5'
+  - '@turbo/darwin-arm64@2.11.5'
+  - '@turbo/gen@2.11.5'
+  - '@turbo/linux-64@2.11.5'
+  - '@turbo/linux-arm64@2.11.5'
+  - '@turbo/windows-64@2.11.5'
+  - '@turbo/windows-arm64@2.11.5'
+  - fumadocs-core@16.15.15
+  - fumadocs-ui@16.15.15
+  - turbo@2.11.5
 patchedDependencies:
   next-themes@0.4.6: patches/next-themes@0.4.6.patch

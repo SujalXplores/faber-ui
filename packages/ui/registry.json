@@ -854,7 +854,7 @@
         }
       ],
       "dependencies": [
-        "react-resizable-panels@4.13.2"
+        "react-resizable-panels@4.14.1"
       ],
       "registryDependencies": [
         "https://faber-ui.vercel.app/r/utils.json"

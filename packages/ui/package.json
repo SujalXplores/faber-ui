@@ -30,7 +30,7 @@
     "react-day-picker": "10.0.1",
     "react-dom": "19.3.0",
     "react-is": "19.3.0",
-    "react-resizable-panels": "4.13.2",
+    "react-resizable-panels": "4.14.1",
     "recharts": "3.10.1",
     "sonner": "2.0.8",
     "tailwind-merge": "3.7.0",
@@ -42,8 +42,8 @@
     "@testing-library/jest-dom": "7.0.1",
     "@testing-library/react": "16.3.3",
     "@testing-library/user-event": "14.6.7",
-    "@turbo/gen": "2.11.3",
-    "@types/node": "26.6.2",
+    "@turbo/gen": "2.11.5",
+    "@types/node": "26.6.3",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "6.1.1",
@@ -56,9 +56,9 @@
     "oxlint": "1.85.0",
     "shadcn": "4.21.0",
     "tailwindcss": "4.3.3",
-    "typescript": "5.9.3",
+    "typescript": "6.0.3",
     "typescript-eslint": "8.70.1",
-    "vitest": "4.1.11"
+    "vitest": "5.0.2"
   },
   "exports": {
     "./globals.css": "./src/styles/globals.css",
