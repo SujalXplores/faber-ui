@@ -1,5 +1,15 @@
 # @workspace/ui
 
+## 0.2.0
+
+<!-- released: 2026-09-28 -->
+
+### Minor Changes
+
+- 54607a7 (#16): Resizable pins `react-resizable-panels` to `4.14.1`.
+
+  No action needed. `ResizablePanelGroup`, `ResizablePanel`, and `ResizableHandle` keep the same props and markup; installs via `shadcn` now resolve the latest `4.x` release.
+
 ## 0.1.2
 
 <!-- released: 2026-09-24 -->
