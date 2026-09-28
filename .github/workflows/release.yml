@@ -27,14 +27,14 @@ jobs:
       # Full history brings every tag, so an already-released version is found
       # locally. The repo is private: without credentials the remote tag lookup
       # for a new version cannot authenticate.
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
 
       - uses: ./.github/actions/setup
 
       - id: select-mode
-        uses: changesets/action/select-mode@v2
+        uses: changesets/action/select-mode@v2.1.2
 
   version:
     name: Open version PR
@@ -52,7 +52,7 @@ jobs:
       # create and approve pull requests" enabled.
       - id: app-token
         if: vars.RELEASE_APP_CLIENT_ID != ''
-        uses: actions/create-github-app-token@v3
+        uses: actions/create-github-app-token@v3.2.0
         with:
           client-id: ${{ vars.RELEASE_APP_CLIENT_ID }}
           private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
@@ -61,7 +61,7 @@ jobs:
 
       # Full history lets the changelog generator trace each changeset commit
       # to the pull request that merged it.
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -70,7 +70,7 @@ jobs:
 
       # `version-packages` also stamps each new CHANGELOG heading with the
       # release date that the docs changelog page and feeds read.
-      - uses: changesets/action/version@v2
+      - uses: changesets/action/version@v2.1.2
         with:
           script: pnpm version-packages
           github-token: ${{ steps.app-token.outputs.token || github.token }}
@@ -86,7 +86,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
 
@@ -96,6 +96,6 @@ jobs:
       # nothing to npm: `privatePackages.tag` makes each new version a git tag,
       # which the action pushes and turns into a GitHub release from the
       # package's CHANGELOG entry.
-      - uses: changesets/action/publish@v2
+      - uses: changesets/action/publish@v2.1.2
         with:
           create-github-releases: true
