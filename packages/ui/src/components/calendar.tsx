@@ -53,13 +53,17 @@ function CalendarChevron({ className, orientation, ...props }: ChevronProps) {
   return <RiArrowDownSLine className={cn("size-4", className)} {...props} />;
 }
 
-function CalendarWeekNumber({ children, ...props }: WeekNumberProps) {
+function CalendarWeekNumber({
+  children,
+  week: _week,
+  ...props
+}: WeekNumberProps) {
   return (
-    <td {...props}>
+    <th scope="row" {...props}>
       <div className="flex size-(--cell-size) items-center justify-center text-center">
         {children}
       </div>
-    </td>
+    </th>
   );
 }
 
@@ -82,13 +86,11 @@ function Calendar({
     () => ({
       Root: CalendarRoot,
       Chevron: CalendarChevron,
-      DayButton: (dayButtonProps: React.ComponentProps<typeof DayButton>) => (
-        <CalendarDayButton locale={locale} {...dayButtonProps} />
-      ),
+      DayButton: CalendarDayButton,
       WeekNumber: CalendarWeekNumber,
       ...components,
     }),
-    [locale, components],
+    [components],
   );
 
   return (
@@ -211,11 +213,8 @@ function CalendarDayButton({
   className,
   day,
   modifiers,
-  locale,
   ...props
-}: React.ComponentProps<typeof DayButton> & {
-  locale?: Partial<Locale> | undefined;
-}) {
+}: React.ComponentProps<typeof DayButton>) {
   const defaultClassNames = getDefaultClassNames();
 
   const ref = React.useRef<HTMLButtonElement>(null);
@@ -227,7 +226,7 @@ function CalendarDayButton({
     <Button
       variant="ghost"
       size="icon"
-      data-day={day.date.toLocaleDateString(locale?.code)}
+      data-day={day.isoDate}
       data-selected-single={
         modifiers.selected &&
         !modifiers.range_start &&

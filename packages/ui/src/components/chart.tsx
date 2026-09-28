@@ -83,16 +83,12 @@ function ChartContainer({
 }
 
 const SAFE_CHART_KEY = /^[A-Za-z0-9_-]+$/;
-const UNSAFE_CHART_CSS = /[;"'{}]|`/;
+const SAFE_CHART_COLOR = /^[\w\s#%.,()+*/-]+$/;
 const UNSAFE_CHART_URL = /url\(/i;
 
 function sanitizeChartColor(color: string) {
   const value = color.trim();
-  if (
-    value === "" ||
-    UNSAFE_CHART_CSS.test(value) ||
-    UNSAFE_CHART_URL.test(value)
-  ) {
+  if (!SAFE_CHART_COLOR.test(value) || UNSAFE_CHART_URL.test(value)) {
     return null;
   }
   return value;

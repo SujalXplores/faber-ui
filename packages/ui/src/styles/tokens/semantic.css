@@ -1,7 +1,9 @@
 /* The layer components consume. Every value points at a primitive; keep raw
  * oklch() out of this file or theme switching stops working. */
 
-:root {
+:root,
+[data-brand],
+[data-neutral] {
   --background: var(--neutral-0);
   --foreground: var(--neutral-950);
 
@@ -88,7 +90,9 @@
   --code-border: var(--neutral-200);
 }
 
-.dark {
+.dark,
+.dark [data-brand],
+.dark [data-neutral] {
   --background: var(--neutral-950);
   --foreground: var(--neutral-50);
 
@@ -173,13 +177,17 @@
 }
 
 @media (prefers-contrast: more) {
-  :root {
+  :root,
+  [data-brand],
+  [data-neutral] {
     --border: var(--neutral-400);
     --border-strong: var(--neutral-600);
     --muted-foreground: var(--neutral-600);
   }
 
-  .dark {
+  .dark,
+  .dark [data-brand],
+  .dark [data-neutral] {
     --border: var(--neutral-500);
     --border-strong: var(--neutral-400);
     --muted-foreground: var(--neutral-300);

@@ -87,7 +87,7 @@ export function ChangelogFilter({
       <style>{filterStyles(type, component)}</style>
 
       <div
-        role="radiogroup"
+        role="group"
         aria-label="Filter by release type"
         className="inline-flex items-center gap-0.5 rounded-md border bg-surface-2 p-0.5"
       >
@@ -95,8 +95,7 @@ export function ChangelogFilter({
           <button
             key={option || "all"}
             type="button"
-            role="radio"
-            aria-checked={type === option}
+            aria-pressed={type === option}
             onClick={() => update(option, component)}
             className={cn(
               "h-6 rounded-sm px-2.5 text-xs font-medium capitalize transition-colors",

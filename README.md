@@ -4,9 +4,9 @@
 
 **React components with considered motion in every interaction.**
 
-60 components on Base UI primitives and Tailwind CSS v4 with one shared easing/duration scale, enter and exit transitions, and reduced-motion that keeps comprehension. Vendored into your repo with the shadcn CLI. Zero runtime dependencies.
+60 components on Base UI primitives and Tailwind CSS v4 with one shared easing/duration scale, enter and exit transitions, and reduced-motion that keeps comprehension. Vendored into your repo with the shadcn CLI, with no Faber package to depend on.
 
-60 components · 0 runtime deps · 122 design tokens · MIT licensed
+60 components · 122 design tokens · MIT licensed
 
 [![CI](https://github.com/SujalXplores/faber-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/SujalXplores/faber-ui/actions/workflows/ci.yml)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
@@ -58,7 +58,15 @@ yarn dlx shadcn@latest add https://faber-ui.vercel.app/r/button.json
 bunx shadcn@latest add https://faber-ui.vercel.app/r/button.json
 ```
 
-**2. Use it.** Variants and sizes work the shadcn way:
+**2. Import the theme once.** The first component also copies the tokens and motion utilities into `styles/faber/`. Import them from your global CSS, after Tailwind:
+
+```css
+@import "tailwindcss";
+@import "shadcn/tailwind.css";
+@import "../styles/faber/index.css";
+```
+
+**3. Use it.** Variants and sizes work the shadcn way:
 
 ```tsx
 import { Button } from "@/components/ui/button";
@@ -73,7 +81,7 @@ export function Actions() {
 }
 ```
 
-**3. Stack more in one command.** Every component lives at `https://faber-ui.vercel.app/r/<name>.json`:
+**4. Stack more in one command.** Every component lives at `https://faber-ui.vercel.app/r/<name>.json`:
 
 ```bash
 pnpm dlx shadcn@latest add https://faber-ui.vercel.app/r/dialog.json https://faber-ui.vercel.app/r/calendar.json https://faber-ui.vercel.app/r/chart.json
@@ -110,7 +118,7 @@ Every name links to its live docs page. Each one runs the real component, not a 
 
 [Attachment](https://faber-ui.vercel.app/docs/components/attachment) · [Bubble](https://faber-ui.vercel.app/docs/components/bubble) · [Direction](https://faber-ui.vercel.app/docs/components/direction) · [Resizable](https://faber-ui.vercel.app/docs/components/resizable) · [ScrollArea](https://faber-ui.vercel.app/docs/components/scroll-area) · [Separator](https://faber-ui.vercel.app/docs/components/separator)
 
-The registry also ships the [`use-mobile`](https://faber-ui.vercel.app/r/use-mobile.json) hook and the [`motion`](https://faber-ui.vercel.app/r/motion.json) / [`utils`](https://faber-ui.vercel.app/r/utils.json) primitives the components are built from.
+The registry also ships the [`theme`](https://faber-ui.vercel.app/r/theme.json) stylesheet, the [`use-mobile`](https://faber-ui.vercel.app/r/use-mobile.json) hook and the [`motion`](https://faber-ui.vercel.app/r/motion.json) / [`utils`](https://faber-ui.vercel.app/r/utils.json) primitives the components are built from.
 
 </details>
 

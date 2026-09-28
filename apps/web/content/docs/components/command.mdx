@@ -34,7 +34,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@workspace/ui/components/command";
+} from "@/components/ui/command";
 
 export default function Example() {
   return (
@@ -68,14 +68,8 @@ export default function Example() {
       </CommandGroup>
       <CommandSeparator />
       <CommandGroup heading="Settings">
-        <CommandItem>
-          Profile
-          <CommandShortcut>⌘P</CommandShortcut>
-        </CommandItem>
-        <CommandItem>
-          Settings
-          <CommandShortcut>⌘S</CommandShortcut>
-        </CommandItem>
+        <CommandItem>Profile<CommandShortcut>⌘P</CommandShortcut></CommandItem>
+        <CommandItem>Settings<CommandShortcut>⌘S</CommandShortcut></CommandItem>
       </CommandGroup>
     </CommandList>
   </Command>

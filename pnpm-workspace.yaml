@@ -2,15 +2,19 @@ packages:
   - "apps/*"
   - "packages/*"
 
+saveExact: true
+engineStrict: true
+strictPeerDependencies: true
+autoInstallPeers: false
+linkWorkspacePackages: true
+preferOffline: true
+
 allowBuilds:
   esbuild: true
-  msw: false
   sharp: true
-  unrs-resolver: true
 minimumReleaseAgeExclude:
   - '@turbo/darwin-64@2.11.5'
   - '@turbo/darwin-arm64@2.11.5'
-  - '@turbo/gen@2.11.5'
   - '@turbo/linux-64@2.11.5'
   - '@turbo/linux-arm64@2.11.5'
   - '@turbo/windows-64@2.11.5'

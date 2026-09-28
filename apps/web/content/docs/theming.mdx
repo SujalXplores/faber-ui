@@ -113,15 +113,29 @@ Durations and easings are tokens, so timing is adjustable kit-wide.
 --easing-in-out: cubic-bezier(0.77, 0, 0.175, 1); /* moving on screen */
 --easing-drawer: cubic-bezier(0.32, 0.72, 0, 1);  /* sheets and drawers */
 
---duration-fast: 120ms;      /* press feedback */
---duration-base: 200ms;      /* tooltips, popovers */
---duration-moderate: 250ms;  /* dropdowns, menus */
---duration-slow: 320ms;      /* modals, drawers */
+--duration-quick: 160ms;     /* press feedback, popup exits */
+--duration-base: 200ms;      /* popovers, menus, selects, tooltips */
+--duration-moderate: 250ms;  /* dialogs, sheets */
+--duration-slow: 320ms;      /* drawers */
 ```
 
-They are available as utilities (`ease-out`, `ease-drawer`, `duration-fast`,
+They are available as utilities (`ease-out`, `ease-drawer`, `duration-quick`,
 `duration-slow`), and Tailwind's transition defaults route through them, so a
 bare `transition-colors` already picks up the kit's baseline timing.
+
+Popups enter and exit through three utilities built on Base UI's
+`data-starting-style` and `data-ending-style` attributes: `motion-popup` for
+anything anchored to a trigger, `motion-modal` for centered dialogs and
+`motion-backdrop` for their overlays. They use transitions rather than
+keyframes, so a popup closed halfway through opening reverses from where it is.
+Exits run faster than entrances, and a popup marked `data-instant` skips the
+animation: Base UI sets it on a tooltip opened while another was just showing,
+and `CommandDialog` sets it because a palette opened from the keyboard should
+never animate.
+
+For press feedback, add `press` to any clickable element. It scales to
+`--scale-press` over `--duration-quick` and owns the element's hover color
+transition too, so don't pair it with `transition-colors`.
 
 There is deliberately no general `ease-in` token. It delays the first frame,
 which is the exact moment a user is watching, so an interface using it reads as
@@ -129,11 +143,11 @@ sluggish. The one legitimate case, an element accelerating away as it leaves,
 has its own token: `ease-exit`.
 
 The same values are available to JavaScript from
-`@workspace/ui/lib/motion`, including spring presets and the momentum
+`@/lib/motion` (the `motion` registry item), including spring presets and the momentum
 projection used for flick gestures:
 
 ```ts
-import { easing, durationSec, spring } from "@workspace/ui/lib/motion";
+import { easing, durationSec, spring } from "@/lib/motion";
 ```
 
 Prefer CSS where the animation is expressible in CSS. CSS animations run off the
@@ -146,9 +160,10 @@ Three user preferences are handled by the token layer, so components inherit
 them without opting in.
 
 - **`prefers-reduced-motion`** collapses the duration tokens and flattens the
-  easing curves, and the scale deltas drop to identity so elements cross-fade in
-  place rather than travelling. Reduced motion means gentler, not absent, so
-  opacity transitions that aid comprehension are kept.
+  easing curves, and the scale and travel distances drop to zero so elements
+  cross-fade in place rather than travelling. Reduced motion means gentler, not
+  absent, so opacity transitions that aid comprehension are kept, and spinners
+  pulse instead of rotating rather than stopping after one turn.
 - **`prefers-contrast: more`** swaps the low-alpha borders and tinted subtle
   surfaces for solid colors and defined edges.
 - **`prefers-reduced-transparency`** drops `backdrop-filter` on translucent

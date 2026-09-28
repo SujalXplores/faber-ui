@@ -9,7 +9,7 @@ function BrandTintedMark() {
         alt=""
         width={18}
         height={18}
-        priority
+        loading="eager"
         className="size-full grayscale"
       />
       <span

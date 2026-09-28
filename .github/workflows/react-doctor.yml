@@ -23,15 +23,16 @@ jobs:
       # fetch-depth: 0 so the scan can reach the merge base and report only the
       # issues this PR introduces. A shallow checkout silently degrades to
       # reporting every finding in the changed files.
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
 
       # The action installs its own Node and CLI, so `.github/actions/setup` is
       # not needed here — the scan reads source, not node_modules.
-      - uses: millionco/react-doctor@v2
+      - uses: millionco/react-doctor@013f7373f91a3b9e68bd1dc7d4d354f4b041b117 # v2.2.9
         with:
           # Advisory, like the review it replaces. Do not make this a required
           # check; a finding is a prompt to look, not a verdict.
           blocking: none
+          version: "0.9.14"

@@ -1,56 +1,97 @@
 /* Opt-in rather than a blanket `button:active` rule, which would fight any
- * component that animates its own transform. */
+ * component that animates its own transform. It owns the hover transition too:
+ * a `transition-colors` beside it replaces the property list and the press
+ * snaps. */
 @utility press {
-  transition: var(--transition-press);
+  transition: var(--transition-hover), var(--transition-press);
 
   &:active:not(:disabled, [aria-disabled="true"]) {
-    transform: scale(var(--scale-press));
+    scale: var(--scale-press);
   }
 }
 
-@utility press-subtle {
-  transition: var(--transition-press);
-
-  &:active:not(:disabled, [aria-disabled="true"]) {
-    transform: scale(0.99);
-  }
-}
-
-/* Replaces `transition-all`. Sets only `transition-property`, so a `duration-*`
- * class composes instead of fighting it for the same declaration. */
+/* Replaces `transition-all`. Timing reads `duration-*` and `ease-*` through the
+ * same variables Tailwind's own `transition-*` utilities use, so they compose. */
 @utility transition-control {
   transition-property:
     color, background-color, border-color, text-decoration-color, box-shadow,
     opacity;
+  transition-timing-function: var(
+    --tw-ease,
+    var(--default-transition-timing-function)
+  );
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
 }
 
-@utility transition-control-transform {
-  transition-property:
-    color, background-color, border-color, text-decoration-color, box-shadow,
-    opacity, transform;
+/* Transitions, not keyframes, so a popup closed mid-open reverses from where it
+ * is. Exits run faster than entrances. */
+@utility motion-popup {
+  transform-origin: var(--transform-origin);
+  transition: var(--transition-surface);
+
+  &[data-starting-style] {
+    opacity: 0;
+    scale: var(--scale-enter);
+  }
+
+  &[data-ending-style] {
+    opacity: 0;
+    scale: var(--scale-exit);
+    transition-duration: var(--duration-quick);
+  }
+
+  &[data-instant] {
+    transition-duration: 0ms;
+  }
+}
+
+@utility motion-modal {
+  transition:
+    opacity var(--duration-moderate) var(--easing-out),
+    scale var(--duration-moderate) var(--easing-out);
+
+  &[data-starting-style] {
+    opacity: 0;
+    scale: var(--scale-enter);
+  }
+
+  &[data-ending-style] {
+    opacity: 0;
+    scale: var(--scale-exit);
+    transition-duration: var(--duration-base);
+  }
+
+  &[data-instant] {
+    transition-duration: 0ms;
+  }
+}
+
+@utility motion-backdrop {
+  transition: opacity var(--duration-moderate) var(--easing-out);
+
+  &[data-starting-style],
+  &[data-ending-style] {
+    opacity: 0;
+  }
+
+  &[data-ending-style] {
+    transition-duration: var(--duration-base);
+  }
+
+  &:has(~ [data-instant]) {
+    transition-duration: 0ms;
+  }
 }
 
 @utility surface-popup {
   position: relative;
   background-color: color-mix(in oklab, var(--popover) 70%, transparent);
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-radius: inherit;
-    backdrop-filter: blur(40px) saturate(1.5);
-    pointer-events: none;
-  }
+  backdrop-filter: blur(40px) saturate(1.5);
 
   @media (prefers-reduced-transparency: reduce) {
     background-color: var(--popover);
+    backdrop-filter: none;
   }
-}
-
-@utility hairline {
-  box-shadow: var(--elevation-hairline);
 }
 
 /* Set `--index` per item to cascade siblings in. */
@@ -64,7 +105,7 @@
 @keyframes faber-stagger-in {
   from {
     opacity: 0;
-    transform: translateY(6px) scale(var(--scale-enter));
+    transform: translateY(var(--travel-sm)) scale(var(--scale-enter));
   }
   to {
     opacity: 1;
@@ -114,8 +155,6 @@
     );
 }
 
-/* Decorative dot field for hero sections. Fixed spacing so the texture does not
- * shift with `--density`. */
 /* Gradient hairline that fades in on hover. `mask-composite: exclude` keeps the
  * gradient to the border box only, so one element draws a ring no `border`
  * shorthand can express. */
@@ -146,6 +185,8 @@
   }
 }
 
+/* Decorative dot field for hero sections. Fixed spacing so the texture does not
+ * shift with `--density`. */
 @utility dot-field {
   background-image: radial-gradient(var(--border-strong) 1px, transparent 1px);
   background-size: 1.25rem 1.25rem;
@@ -158,10 +199,6 @@
 
 @utility mask-fade-b {
   mask-image: linear-gradient(to bottom, black 0%, black 82%, transparent 100%);
-}
-
-@utility mask-fade-t {
-  mask-image: linear-gradient(to top, black 0%, black 82%, transparent 100%);
 }
 
 @utility demo {

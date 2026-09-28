@@ -49,10 +49,10 @@ fix_index() {
   git show ":$file" > "$tmp"
   # eslint runs with the package as cwd, so it needs the package-relative path.
   tmprel=${tmp#"$pkg"/}
-  if ! (cd "$pkg" && npx eslint --fix --no-warn-ignored "$tmprel"); then
+  (cd "$pkg" && npx eslint --fix --no-warn-ignored "$tmprel") || {
     status=$?
     return 0
-  fi
+  }
   oldblob=$(git rev-parse --verify ":$file")
   newblob=$(git hash-object -w "$tmp")
   if [ "$oldblob" != "$newblob" ]; then

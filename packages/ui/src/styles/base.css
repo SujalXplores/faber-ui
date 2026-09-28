@@ -104,6 +104,18 @@
   *::after {
     animation-iteration-count: 1 !important;
   }
+
+  /* A loader stopped after one turn reads as a hung app, so loaders keep
+   * signalling, as a slow pulse in place of the rotation. */
+  .animate-spin {
+    animation: faber-loading-pulse 2s var(--easing-hover) infinite !important;
+  }
+}
+
+@keyframes faber-loading-pulse {
+  50% {
+    opacity: 0.4;
+  }
 }
 
 /* Shiki emits both themes as variables on every token and expects the consumer

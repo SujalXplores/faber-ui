@@ -35,7 +35,10 @@ function stamp(source) {
 
 for (const relative of CHANGELOGS) {
   const file = path.join(ROOT, relative);
-  const source = await readFile(file, "utf8").catch(() => null);
+  const source = await readFile(file, "utf8").catch((error) => {
+    if (error.code === "ENOENT") return null;
+    throw error;
+  });
   if (source === null) continue;
 
   const { text, added } = stamp(source);

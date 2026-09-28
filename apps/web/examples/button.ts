@@ -1,5 +1,5 @@
 export const buttonWithIcon = `import { RiArrowRightLine } from "@remixicon/react";
-import { Button } from "@workspace/ui/components/button";
+import { Button } from "@/components/ui/button";
 
 export default function Example() {
   return (
@@ -11,12 +11,12 @@ export default function Example() {
 }`;
 
 export const buttonAsLink = `import Link from "next/link";
-import { Button } from "@workspace/ui/components/button";
+import { buttonVariants } from "@/components/ui/button";
 
 export default function Example() {
   return (
-    <Button render={<Link href="/docs" />}>
+    <Link href="/docs" className={buttonVariants()}>
       Go to docs
-    </Button>
+    </Link>
   );
 }`;

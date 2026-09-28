@@ -16,7 +16,7 @@ npx shadcn@latest add https://faber-ui.vercel.app/r/input.json
 ## Usage
 
 ```tsx
-import { Input } from "@workspace/ui/components/input";
+import { Input } from "@/components/ui/input";
 
 export default function Example() {
   return <Input type="email" placeholder="you@example.com" />;
@@ -44,9 +44,9 @@ export default function Example() {
 Combine `Input` with `Label` and `Field` for accessible form rows:
 
 ```tsx
-import { Field } from "@workspace/ui/components/field";
-import { Input } from "@workspace/ui/components/input";
-import { Label } from "@workspace/ui/components/label";
+import { Field } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function Example() {
   return (

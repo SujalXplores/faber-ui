@@ -33,7 +33,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         defaultOpenLevel: 1,
         footer: <ChangelogLink />,
       }}
-      data-scroll-behavior="smooth"
     >
       {children}
     </DocsLayout>

@@ -2,7 +2,9 @@
  * maps these onto Tailwind's `--shadow-*`, so existing `shadow-md` call sites
  * pick them up with no migration. */
 
-:root {
+:root,
+[data-brand],
+[data-neutral] {
   --shadow-hue: var(--neutral-hue);
   --shadow-chroma: calc(var(--neutral-chroma) * 1.5);
 
@@ -42,7 +44,9 @@
 
 /* A dark surface has less contrast to work with, so more spread and less
  * opacity, otherwise the cast reads as a halo. */
-.dark {
+.dark,
+.dark [data-brand],
+.dark [data-neutral] {
   --shadow-tint-contact: oklch(0 0 0 / 32%);
   --shadow-tint-ambient: oklch(0 0 0 / 28%);
   --shadow-tint-deep: oklch(0 0 0 / 40%);

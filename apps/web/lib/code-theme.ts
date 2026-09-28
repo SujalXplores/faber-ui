@@ -3,18 +3,6 @@ export const codeThemes = {
   dark: "github-dark-default",
 } as const;
 
-export const codeLangs = [
-  "tsx",
-  "ts",
-  "jsx",
-  "js",
-  "bash",
-  "sh",
-  "css",
-  "json",
-  "mdx",
-] as const;
-
 const LANGUAGE_LABELS: Record<string, string> = {
   bash: "Terminal",
   sh: "Terminal",

@@ -11,13 +11,15 @@ import {
   MessageGroup,
   MessageHeader,
 } from "@workspace/ui/components/message";
+import { Avatar, AvatarFallback } from "@workspace/ui/components/avatar";
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@workspace/ui/components/avatar";
+  Bubble,
+  BubbleContent,
+  BubbleReactions,
+} from "@workspace/ui/components/bubble";
+import { RiCheckDoubleLine, RiHeartFill } from "@remixicon/react";
 
-`Message` is a chat-style message row. It pairs an avatar with a header, content, and footer, and supports left or right alignment.
+`Message` is a chat-style message row. It pairs an avatar with a header, content, and footer, and supports left or right alignment. Put [`Bubble`](/docs/components/bubble) inside `MessageContent` for the message body.
 
 ## Installation
 
@@ -28,17 +30,15 @@ npx shadcn@latest add https://faber-ui.vercel.app/r/message.json
 ## Usage
 
 ```tsx
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Bubble, BubbleContent } from "@/components/ui/bubble";
 import {
   Message,
   MessageAvatar,
   MessageContent,
   MessageGroup,
   MessageHeader,
-} from "@workspace/ui/components/message";
-import {
-  Avatar,
-  AvatarFallback,
-} from "@workspace/ui/components/avatar";
+} from "@/components/ui/message";
 
 export default function Example() {
   return (
@@ -49,8 +49,12 @@ export default function Example() {
             <AvatarFallback>AB</AvatarFallback>
           </Avatar>
         </MessageAvatar>
-        <MessageHeader>Anna</MessageHeader>
-        <MessageContent>Hello there!</MessageContent>
+        <MessageContent>
+          <MessageHeader>Anna</MessageHeader>
+          <Bubble variant="muted">
+            <BubbleContent>Hello there!</BubbleContent>
+          </Bubble>
+        </MessageContent>
       </Message>
     </MessageGroup>
   );
@@ -62,15 +66,19 @@ export default function Example() {
 ### Default
 
 <div className="not-prose demo">
-  <MessageGroup>
+  <MessageGroup className="mx-auto max-w-sm gap-4">
     <Message>
       <MessageAvatar>
         <Avatar>
           <AvatarFallback>AB</AvatarFallback>
         </Avatar>
       </MessageAvatar>
-      <MessageHeader>Anna</MessageHeader>
-      <MessageContent>Hello there!</MessageContent>
+      <MessageContent>
+        <MessageHeader>Anna</MessageHeader>
+        <Bubble variant="muted">
+          <BubbleContent>Are we still on for the design review?</BubbleContent>
+        </Bubble>
+      </MessageContent>
     </Message>
     <Message align="end">
       <MessageAvatar>
@@ -78,25 +86,76 @@ export default function Example() {
           <AvatarFallback>ME</AvatarFallback>
         </Avatar>
       </MessageAvatar>
-      <MessageHeader>You</MessageHeader>
-      <MessageContent>Hi Anna!</MessageContent>
+      <MessageContent>
+        <MessageHeader>You</MessageHeader>
+        <Bubble>
+          <BubbleContent>Yes, 3 PM in the studio.</BubbleContent>
+        </Bubble>
+      </MessageContent>
     </Message>
   </MessageGroup>
 </div>
 
-### With footer
+### Consecutive bubbles
+
+Stack several bubbles in one `MessageContent` when the same person sends messages back to back. The avatar sits beside the last one.
 
 <div className="not-prose demo">
-  <MessageGroup>
+  <MessageGroup className="mx-auto max-w-sm">
     <Message>
       <MessageAvatar>
         <Avatar>
           <AvatarFallback>AB</AvatarFallback>
         </Avatar>
       </MessageAvatar>
-      <MessageHeader>Anna</MessageHeader>
-      <MessageContent>Just landed, see you soon.</MessageContent>
-      <MessageFooter>10:42 AM</MessageFooter>
+      <MessageContent>
+        <MessageHeader>Anna</MessageHeader>
+        <Bubble variant="muted">
+          <BubbleContent>Just landed.</BubbleContent>
+        </Bubble>
+        <Bubble variant="muted">
+          <BubbleContent>Grabbing a cab now, see you in twenty minutes.</BubbleContent>
+        </Bubble>
+      </MessageContent>
+    </Message>
+  </MessageGroup>
+</div>
+
+### With footer
+
+Use `MessageFooter` for timestamps and delivery status. The avatar stays aligned with the last bubble, not the footer.
+
+<div className="not-prose demo">
+  <MessageGroup className="mx-auto max-w-sm gap-4">
+    <Message>
+      <MessageAvatar>
+        <Avatar>
+          <AvatarFallback>AB</AvatarFallback>
+        </Avatar>
+      </MessageAvatar>
+      <MessageContent>
+        <MessageHeader>Anna</MessageHeader>
+        <Bubble variant="muted">
+          <BubbleContent>Can you send the latest mockups?</BubbleContent>
+        </Bubble>
+        <MessageFooter>10:41 AM</MessageFooter>
+      </MessageContent>
+    </Message>
+    <Message align="end">
+      <MessageAvatar>
+        <Avatar>
+          <AvatarFallback>ME</AvatarFallback>
+        </Avatar>
+      </MessageAvatar>
+      <MessageContent>
+        <Bubble>
+          <BubbleContent>Uploading them now.</BubbleContent>
+          <BubbleReactions>
+            <RiHeartFill className="size-3 text-destructive" />
+          </BubbleReactions>
+        </Bubble>
+        <MessageFooter className="gap-1">10:42 AM <RiCheckDoubleLine className="size-3" /></MessageFooter>
+      </MessageContent>
     </Message>
   </MessageGroup>
 </div>

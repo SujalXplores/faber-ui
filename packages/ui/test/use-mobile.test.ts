@@ -1,5 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 import { createElement } from "react";
+import { hydrateRoot } from "react-dom/client";
 import { renderToString } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 
@@ -52,6 +53,17 @@ function mockViewport(initialWidth: number) {
       for (const listener of listeners) listener();
     },
   };
+}
+
+function renderOnServer() {
+  const win = globalThis.window;
+  // @ts-expect-error simulate server-side rendering
+  delete globalThis.window;
+  try {
+    return renderToString(createElement(Probe));
+  } finally {
+    globalThis.window = win;
+  }
 }
 
 function Probe() {
@@ -109,13 +121,26 @@ describe("useIsMobile", () => {
   });
 
   it("renders false without crashing when window is undefined", () => {
-    const win = globalThis.window;
-    // @ts-expect-error simulate server-side rendering
-    delete globalThis.window;
-    try {
-      expect(renderToString(createElement(Probe))).toContain("false");
-    } finally {
-      globalThis.window = win;
-    }
+    expect(renderOnServer()).toContain("false");
+  });
+
+  it("hydrates a phone without a mismatch, then reports mobile", async () => {
+    const html = renderOnServer();
+
+    mockViewport(375);
+    const container = document.createElement("div");
+    container.innerHTML = html;
+    document.body.append(container);
+    const onRecoverableError = vi.fn();
+
+    const root = await act(async () =>
+      hydrateRoot(container, createElement(Probe), { onRecoverableError }),
+    );
+
+    expect(onRecoverableError).not.toHaveBeenCalled();
+    expect(container.textContent).toBe("true");
+
+    act(() => root.unmount());
+    container.remove();
   });
 });

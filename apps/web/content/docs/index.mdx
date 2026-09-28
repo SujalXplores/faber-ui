@@ -12,7 +12,7 @@ Faber UI is a component library built on [shadcn/ui](https://ui.shadcn.com), [Ba
 <Cards>
   <Card
     title="shadcn-compatible API"
-    description="Variants, sizes, and asChild composition that match the conventions you already know."
+    description="Variants, sizes, and render-prop composition that match the conventions you already know."
   />
   <Card
     title="Base UI primitives"
@@ -36,33 +36,19 @@ Faber UI is a component library built on [shadcn/ui](https://ui.shadcn.com), [Ba
   />
 </Cards>
 
-## Architecture
+## How it works
 
-Faber UI lives in a pnpm monorepo with two key workspaces:
-
-| Workspace       | Path          | Purpose                                                                |
-| --------------- | ------------- | ---------------------------------------------------------------------- |
-| `@workspace/ui` | `packages/ui` | The component library. All 60 shadcn components, hooks, and utilities. |
-| `web`           | `apps/web`    | The Next.js app that hosts this documentation site.                    |
-
-Components are vendored into `packages/ui/src/components/` and consumed through the `@workspace/ui/components/*` alias. You own the source, so you can edit any component to fit your needs.
-
-## Adding components
-
-Components are added with the shadcn CLI from inside the `packages/ui` directory:
+Components are copied into your project by the shadcn CLI, so you own the
+source and can edit any of them. The first component you add also copies the
+theme, the tokens and motion utilities every component uses, into
+`styles/faber/`. [Getting Started](/docs/getting-started) walks through both.
 
 ```npm
 npx shadcn@latest add https://faber-ui.vercel.app/r/dialog.json
 ```
 
-This copies the component source into `src/components/` and updates the `@workspace/ui/components/*` export map automatically.
-
-## Using a component
-
-Import any component directly from the workspace package:
-
 ```tsx
-import { Button } from "@workspace/ui/components/button";
+import { Button } from "@/components/ui/button";
 
 export default function Example() {
   return <Button>Click me</Button>;

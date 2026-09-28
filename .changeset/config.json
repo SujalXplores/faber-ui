@@ -7,6 +7,6 @@
   "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["web"],
+  "ignore": ["web", "@workspace/eslint-config", "@workspace/typescript-config"],
   "privatePackages": { "version": true, "tag": true }
 }

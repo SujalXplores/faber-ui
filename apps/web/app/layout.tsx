@@ -4,7 +4,6 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import { cn } from "@workspace/ui/lib/utils";
-import { Toaster } from "@workspace/ui/components/sonner";
 import { ConsoleGreeting } from "@/components/console-greeting";
 
 /**
@@ -24,7 +23,7 @@ const fontSans = Inter({
 const fontSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",
-  style: ["normal", "italic"],
+  style: "italic",
   variable: "--font-serif-src",
   display: "swap",
 });
@@ -84,9 +83,8 @@ export default function RootLayout({
       )}
     >
       <body className="flex min-h-svh flex-col">
-        <RootProvider>
+        <RootProvider theme={{ hotKey: false }}>
           {children}
-          <Toaster />
           <ConsoleGreeting />
         </RootProvider>
       </body>

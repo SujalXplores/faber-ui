@@ -1,5 +1,6 @@
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
+import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import * as ts from "typescript";
@@ -8,13 +9,32 @@ const UI = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SRC = path.join(UI, "src");
 const DOCS = path.resolve(UI, "../../apps/web/content/docs/components");
 
-const BASE = (process.env.REGISTRY_BASE_URL ?? "https://faber-ui.vercel.app").replace(/\/$/, "");
+const BASE = (
+  process.env.REGISTRY_BASE_URL ?? "https://faber-ui.vercel.app"
+).replace(/\/$/, "");
 
 const EXTERNAL_IGNORE = new Set(["react", "react-dom"]);
 
-const MANIFEST = JSON.parse(await readFile(path.join(UI, "package.json"), "utf8"));
+const MANIFEST = JSON.parse(
+  await readFile(path.join(UI, "package.json"), "utf8"),
+);
 const VERSIONS = MANIFEST.dependencies ?? {};
 const undeclared = new Set();
+const require = createRequire(path.join(UI, "package.json"));
+
+/* A package's required peers ship with the item too, or the consumer's install
+ * fails on the missing peer. */
+function peersOf(pkg) {
+  try {
+    const manifest = require(`${pkg}/package.json`);
+    const optional = manifest.peerDependenciesMeta ?? {};
+    return Object.keys(manifest.peerDependencies ?? {}).filter(
+      (peer) => !optional[peer]?.optional,
+    );
+  } catch {
+    return [];
+  }
+}
 
 function versioned(pkg) {
   const version = VERSIONS[pkg];
@@ -26,16 +46,23 @@ function versioned(pkg) {
 }
 
 const GROUPS = [
-  { dir: "components", ext: ".tsx", type: "registry:ui", target: "components/ui" },
+  {
+    dir: "components",
+    ext: ".tsx",
+    type: "registry:ui",
+    target: "components/ui",
+  },
   { dir: "hooks", ext: ".ts", type: "registry:hook", target: "hooks" },
   { dir: "lib", ext: ".ts", type: "registry:lib", target: "lib" },
 ];
 
 const MANUAL_DESCRIPTIONS = {
-  utils: "The cn helper that merges class names through clsx and tailwind-merge.",
+  utils:
+    "The cn helper that merges class names through clsx and tailwind-merge.",
   motion:
     "Easing and duration tokens for JavaScript-driven animation, mirroring the motion CSS tokens.",
-  "use-mobile": "Tracks whether the viewport is below the 768px mobile breakpoint.",
+  "use-mobile":
+    "Tracks whether the viewport is below the 768px mobile breakpoint.",
 };
 
 function specifiers(source, filename) {
@@ -95,7 +122,10 @@ async function frontmatter(name) {
 }
 
 function titleCase(name) {
-  return name.replace(/(^|-)([a-z])/g, (_, sep, ch) => (sep ? " " : "") + ch.toUpperCase());
+  return name.replace(
+    /(^|-)([a-z])/g,
+    (_, sep, ch) => (sep ? " " : "") + ch.toUpperCase(),
+  );
 }
 
 async function buildItem(group, file) {
@@ -123,7 +153,13 @@ async function buildItem(group, file) {
     }
     if (specifier.startsWith("node:")) continue;
     const pkg = packageName(specifier);
-    if (!EXTERNAL_IGNORE.has(pkg)) dependencies.add(versioned(pkg));
+    if (EXTERNAL_IGNORE.has(pkg)) continue;
+    dependencies.add(versioned(pkg));
+    for (const peer of peersOf(pkg)) {
+      if (!EXTERNAL_IGNORE.has(peer) && VERSIONS[peer]) {
+        dependencies.add(versioned(peer));
+      }
+    }
   }
 
   const { title, description } = await frontmatter(name);
@@ -132,10 +168,17 @@ async function buildItem(group, file) {
     type: group.type,
     title: title ?? titleCase(name),
     description: description ?? MANUAL_DESCRIPTIONS[name],
-    files: [{ path: relative, type: group.type, target: `${group.target}/${path.basename(file)}` }],
+    files: [
+      {
+        path: relative,
+        type: group.type,
+        target: `${group.target}/${path.basename(file)}`,
+      },
+    ],
   };
   if (!item.description) delete item.description;
   if (dependencies.size) item.dependencies = [...dependencies].sort();
+  if (group.type === "registry:ui") registryDependencies.add(THEME);
   if (registryDependencies.size) {
     item.registryDependencies = [...registryDependencies]
       .sort()
@@ -144,7 +187,53 @@ async function buildItem(group, file) {
   return item;
 }
 
-const items = [];
+const THEME = "theme";
+const STYLES = path.join(SRC, "styles");
+const THEME_TARGET = "styles/faber";
+const THEME_ENTRY = "faber.css";
+const THEME_EXCLUDE = new Set(["globals.css", "bridge"]);
+
+async function stylesheetFiles(dir, prefix = "") {
+  const files = [];
+  for (const entry of (await readdir(dir, { withFileTypes: true })).sort(
+    (a, b) => a.name.localeCompare(b.name),
+  )) {
+    if (!prefix && THEME_EXCLUDE.has(entry.name)) continue;
+    const relative = path.posix.join(prefix, entry.name);
+    if (entry.isDirectory()) {
+      files.push(
+        ...(await stylesheetFiles(path.join(dir, entry.name), relative)),
+      );
+    } else if (entry.name.endsWith(".css")) {
+      files.push(relative);
+    }
+  }
+  return files;
+}
+
+async function buildTheme() {
+  const files = await stylesheetFiles(STYLES);
+  if (!files.includes(THEME_ENTRY))
+    throw new Error(`missing styles/${THEME_ENTRY}`);
+  return {
+    name: THEME,
+    type: "registry:item",
+    title: "Theme",
+    description:
+      "The design tokens, motion utilities and base styles every component uses. Import styles/faber/index.css after tailwindcss and shadcn/tailwind.css.",
+    files: files.map((file) => ({
+      path: path.posix.join("src/styles", file),
+      type: "registry:file",
+      target: path.posix.join(
+        THEME_TARGET,
+        file === THEME_ENTRY ? "index.css" : file,
+      ),
+    })),
+    devDependencies: ["shadcn"],
+  };
+}
+
+const items = [await buildTheme()];
 for (const group of GROUPS) {
   const dir = path.join(SRC, group.dir);
   if (!existsSync(dir)) continue;
@@ -161,7 +250,10 @@ const registry = {
   items,
 };
 
-await writeFile(path.join(UI, "registry.json"), `${JSON.stringify(registry, null, 2)}\n`);
+await writeFile(
+  path.join(UI, "registry.json"),
+  `${JSON.stringify(registry, null, 2)}\n`,
+);
 console.log(`registry.json: ${items.length} items, base ${BASE}`);
 
 if (undeclared.size) {

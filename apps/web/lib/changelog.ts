@@ -52,7 +52,7 @@ export interface Release {
 
 const repoUrl = `https://github.com/${gitConfig.user}/${gitConfig.repo}`;
 
-export function tagOf(version: string) {
+function tagOf(version: string) {
   return `${changelogPackage}@${version}`;
 }
 
@@ -210,7 +210,7 @@ function summarize(release: Release, previous: Release | undefined) {
   );
 }
 
-export function parseChangelog(text: string): Release[] {
+function parseChangelog(text: string): Release[] {
   const state: ParseState = { releases: [] };
 
   for (const line of text.replace(/\r\n/g, "\n").split("\n")) {
@@ -225,7 +225,7 @@ export function parseChangelog(text: string): Release[] {
   return state.releases;
 }
 
-export const getChangelogSource = cache(() => readFile(CHANGELOG_FILE, "utf8"));
+const getChangelogSource = cache(() => readFile(CHANGELOG_FILE, "utf8"));
 
 export const getReleases = cache(async () =>
   parseChangelog(await getChangelogSource()),

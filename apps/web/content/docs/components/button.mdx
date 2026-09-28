@@ -5,9 +5,9 @@ description: Displays a button or a button-styled link with multiple variants an
 
 import { Preview } from "@/components/preview";
 
-import { Button } from "@workspace/ui/components/button";
+import { Button, buttonVariants } from "@workspace/ui/components/button";
 import { TypeTable } from "fumadocs-ui/components/type-table";
-import { RiRocketLine, RiSearchLine, RiAddLine, RiSettings3Line } from "@remixicon/react";
+import { RiArrowRightLine, RiRocketLine, RiSearchLine, RiAddLine, RiSettings3Line } from "@remixicon/react";
 
 import { buttonWithIcon, buttonAsLink } from "@/examples/button";
 
@@ -22,7 +22,7 @@ npx shadcn@latest add https://faber-ui.vercel.app/r/button.json
 ## Usage
 
 ```tsx
-import { Button } from "@workspace/ui/components/button";
+import { Button } from "@/components/ui/button";
 
 export default function Example() {
   return <Button>Button</Button>;
@@ -91,20 +91,17 @@ Buttons automatically size and space child SVG icons. Drop a Remixicon component
 <Preview
   code={buttonWithIcon}
 >
-  <Button>
-    Continue
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-3.5"><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
-  </Button>
+  <Button>Continue<RiArrowRightLine /></Button>
 </Preview>
 
 ### As a link
 
-Use the `render` prop to render the button styles on a different element, such as a Next.js `Link`:
+Navigation belongs on a link, not a button, so apply `buttonVariants` to the link itself. Base UI's `Button` enforces button semantics, which a link must not take on.
 
 <Preview
   code={buttonAsLink}
 >
-  <Button nativeButton={false} render={<a href="/docs" />}>Go to docs</Button>
+  <a href="/docs" className={buttonVariants()}>Go to docs</a>
 </Preview>
 
 ### Disabled

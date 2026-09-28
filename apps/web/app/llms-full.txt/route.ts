@@ -1,7 +1,7 @@
 import { source, getLLMText } from "@/lib/source";
 import { getReleases, releasesToMarkdown } from "@/lib/changelog";
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export async function GET() {
   const scan = source.getPages().map(getLLMText);

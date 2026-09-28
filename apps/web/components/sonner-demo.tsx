@@ -3,8 +3,6 @@
 import { toast } from "sonner";
 import { Button } from "@workspace/ui/components/button";
 
-export { toast };
-
 export function SonnerDemo() {
   return (
     <Button onClick={() => toast("Event has been created")}>Show toast</Button>

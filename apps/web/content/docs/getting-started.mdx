@@ -7,13 +7,9 @@ import { Steps } from "fumadocs-ui/components/steps";
 
 ## Prerequisites
 
-Faber UI requires the following tools installed on your machine:
-
-- Node.js 20 or newer
-- pnpm 10 or newer
-- Tailwind CSS v4
-
-The documentation app (`apps/web`) runs on Next.js 16 with Turbopack.
+- A React 19 project with Tailwind CSS v4
+- A `components.json`. Run `npx shadcn@latest init` first if the project has none.
+- Node.js 22 or newer for the shadcn CLI
 
 ## Add a component
 
@@ -21,43 +17,56 @@ The documentation app (`apps/web`) runs on Next.js 16 with Turbopack.
 
 ### Run the shadcn CLI
 
-From your own project, point the shadcn CLI at the Faber UI registry:
+Point the shadcn CLI at the Faber UI registry:
 
 ```npm
 npx shadcn@latest add https://faber-ui.vercel.app/r/button.json
 ```
 
-The CLI reads your `components.json` for aliases, resolves any components the item depends on, installs the npm packages it needs, and copies the source into your project. Nothing is added to your dependency tree beyond those packages.
+The CLI reads your `components.json` for aliases, resolves any components the
+item depends on, installs the npm packages it needs, and copies the source into
+your project. The first component also brings the theme: the tokens, motion
+utilities and base styles every component uses, copied into `styles/faber/`
+(under `src/` if your project has one).
 
-### Import it
+### Import the theme
+
+Import the theme once, from the CSS file your `components.json` points at, after
+Tailwind and the shadcn variants:
+
+```css title="app/globals.css"
+@import "tailwindcss";
+@import "shadcn/tailwind.css";
+@import "../styles/faber/index.css";
+```
+
+Adjust the relative path to where the CLI placed `styles/faber`. The theme
+defines `--background`, `--primary` and the rest of the shadcn token names, so
+remove the default `:root`, `.dark` and `@theme inline` blocks that
+`shadcn init` generated, or keep them after the import only to override
+specific values.
+
+### Use it
 
 The component lands under your configured `ui` alias:
 
 ```tsx
 import { Button } from "@/components/ui/button";
-```
-
-Working inside this repository instead of your own? Run the same command from
-`packages/ui`, where every file in `src/components/` is reachable as
-`@workspace/ui/components/<name>` through the `./components/*` export.
-
-### Use it in your app
-
-Import the component from the workspace package and render it:
-
-```tsx
-import { Button } from "@workspace/ui/components/button";
 
 export default function Page() {
-  return <Button variant="default">Hello</Button>;
+  return <Button>Hello</Button>;
 }
 ```
 
 </Steps>
 
+Working inside this repository instead of your own? Every file in
+`packages/ui/src/components/` is importable as
+`@workspace/ui/components/<name>` through the `./components/*` export.
+
 ## Customizing a component
 
-Because the source lives in your repository, you can edit any component directly. Open `packages/ui/src/components/button.tsx` and adjust the `buttonVariants` cva config, the className, or the props. Changes apply everywhere the component is imported.
+Because the source lives in your repository, you can edit any component directly. Open `components/ui/button.tsx` and adjust the `buttonVariants` cva config, the className, or the props. Changes apply everywhere the component is imported.
 
 ## Theming
 
