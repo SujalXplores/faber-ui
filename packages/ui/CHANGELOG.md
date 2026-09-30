@@ -1,5 +1,93 @@
 # @workspace/ui
 
+## 0.3.0
+
+<!-- released: 2026-09-29 -->
+
+### Minor Changes
+
+- 9bae916 (#26): Calendar keeps day buttons mounted across renders and renders week numbers as row headers.
+
+  `CalendarDayButton` no longer takes a `locale` prop, and its `data-day` attribute is now the ISO date (`2026-09-28`) instead of a locale-formatted string that could differ between server and browser.
+
+- 9bae916 (#26): NavigationMenu drops the broken `NavigationMenuIndicator` export, highlights active links through `data-active`, and times its popup with the kit motion tokens.
+
+  `NavigationMenuIndicator` wrapped the trigger icon part and styled attributes Base UI never sets, so it rendered nothing useful. Remove any import of it.
+
+- 9bae916 (#26): Popover, DropdownMenu, ContextMenu, Menubar, Select, Combobox, HoverCard, Tooltip, Dialog and AlertDialog enter and exit with interruptible transitions on the kit easing tokens, and `tw-animate-css` is no longer a dependency.
+
+  A popup closed halfway through opening now reverses from where it is instead of restarting. Anchored popups scale from their trigger with `motion-popup`, dialogs use `motion-modal` and their overlays `motion-backdrop`, exits run faster than entrances, and reduced motion now collapses the scale and travel of every popup. Select skips the animation while its list is aligned over the trigger. If you target the old `animate-in`, `fade-in-0` or `zoom-in-95` classes, move your overrides to `data-starting-style` and `data-ending-style`.
+
+- 9bae916 (#26): Every component now installs the `theme` item, so the tokens and utilities it relies on reach your project instead of silently doing nothing.
+
+  The first `shadcn add` copies the stylesheet into `styles/faber/`. Import it once from your global CSS, after Tailwind:
+
+  ```css
+  @import "tailwindcss";
+  @import "shadcn/tailwind.css";
+  @import "../styles/faber/index.css";
+  ```
+
+  Remove the default `:root`, `.dark` and `@theme inline` blocks that `shadcn init` generated, or keep them after the import only to override values.
+
+- 9bae916 (#26): TooltipProvider now waits 400ms before the first tooltip opens, and tooltips opened right after it appear instantly with no animation.
+
+  Pass `delay={0}` to `TooltipProvider` to keep the previous behavior.
+
+- 63dd0b5 (#26): Button, Toggle, Tabs and NavigationMenu ship their style configs from `@workspace/ui/lib/*-variants` so component files export only components.
+
+  `buttonVariants`, `toggleVariants`, `tabsListVariants` and `navigationMenuTriggerStyle` are no longer exported from the component modules. Update imports:
+
+  ```tsx
+  import { Button } from "@/components/ui/button";
+  import { buttonVariants } from "@/lib/button-variants";
+  ```
+
+  `shadcn add` installs the matching `lib/*-variants` file alongside the component.
+
+### Patch Changes
+
+- 9bae916 (#26): Accordion panels open and close with an interruptible height transition on the kit tokens.
+- 9bae916 (#26): Button presses scale to `--scale-press` with the `press` utility instead of shifting down a pixel.
+- 9bae916 (#26): Carousel follows the document direction, maps arrow keys to its orientation, and leaves arrow keys alone inside inputs within a slide.
+- 9bae916 (#26): ChartContainer accepts only color values made of safe characters, closing an injection path through the generated style tag.
+- 9bae916 (#26): CommandDialog opens and closes without animation, as a keyboard-invoked palette should, and its accessible title renders inside the dialog.
+- 9bae916 (#26): ContextMenu highlights a submenu trigger while its submenu is open.
+- 9bae916 (#26): The `dark` variant matches with zero specificity, so hover and state classes such as `hover:bg-input/50` on the outline Button also apply in dark mode.
+- 9bae916 (#26): Checkbox, RadioGroup and Label show their disabled styles, which previously never applied because the controls render a `span`.
+- 9bae916 (#26): BreadcrumbEllipsis and PaginationEllipsis expose their "More" labels to screen readers.
+- 9bae916 (#26): The font tokens fall back to the system stacks when `--font-sans-src`, `--font-mono-src` or `--font-serif-src` is not defined.
+- 9bae916 (#26): Input, Textarea, NativeSelect, CommandInput and ComboboxChipsInput use 16px text on small screens so iOS Safari no longer zooms the page on focus.
+- cd0be38 (#28): MessageAvatar lines up with the last bubble when a MessageFooter is present, instead of sitting 8px too high.
+
+  MessageFooter now has a fixed `16px` line height and the avatar shifts by exactly the footer plus the content gap.
+
+- 9bae916 (#26): Transitions using `transition-control` now animate, Drawer and Sheet use the drawer curve, the Sidebar collapse eases instead of moving linearly, and MessageScroller exits faster than it enters.
+
+  `transition-control` set only `transition-property`, so the colors it covered changed instantly. It now reads `duration-*` and `ease-*` like the built-in transition utilities.
+
+- 9bae916 (#26): Tabs and ToggleGroup pass `orientation` to Base UI, so vertical layouts get `aria-orientation` and Up/Down arrow navigation.
+- 9bae916 (#26): Spinner and other `animate-spin` loaders pulse under reduced motion instead of stopping after one turn, and the new `--travel-sm` and `--travel-lg` tokens collapse movement to zero.
+- 9bae916 (#26): Registry components import from your own aliases, such as `@/components/ui/button` and `@/lib/utils`, instead of the unresolvable `@workspace/ui/...` paths.
+- 9bae916 (#26): Sheet, Drawer and Sidebar keep the border and the slide direction on the side named by `side`, which were reversed in right-to-left layouts.
+- 9bae916 (#26): Nested `data-brand` and `data-neutral` scopes now re-theme semantic tokens such as `--primary`, and a nested neutral no longer resets the brand around it.
+- 9bae916 (#26): SidebarProvider ignores the toggle shortcut while typing in a field, accepts it with Shift or Caps Lock, and no longer re-subscribes on every toggle; Sidebar forwards `className` and props on mobile.
+- 9bae916 (#26): Slider renders a single thumb when `value` or `defaultValue` is a number.
+- cd0be38 (#28): Slider thumb is a solid circle at every radius preset, filled with `foreground` in dark mode instead of rendering as a dark hollow square.
+
+  The thumb used `rounded-md`, which only looks round when `--radius` is large; at the default `0.3rem` it rendered as a rounded square. It now uses `rounded-full`, matching the Switch thumb.
+
+- 9bae916 (#26): KbdGroup is typed as a `kbd` element, Combobox imports its Base UI subpath, the `motion` lib mirrors the `exit` easing and `travel` tokens, and the `chart` item declares its `react-is` peer.
+
+  Unused classes that Base UI and Sonner never target were removed from Toggle, ResizablePanelGroup, Toaster and InputOTP, along with the unused `hairline`, `mask-fade-t`, `press-subtle` and `transition-control-transform` utilities.
+
+- 9bae916 (#26): Translucent menu surfaces keep their background blur while a long list scrolls.
+- cd0be38 (#28): Switch sits at a whole-pixel `16px` height, so its thumb is inset `1px` on every side instead of rendering off-center.
+
+  The default size was `16.6px` tall, which left a fractional vertical gap that browsers rounded unevenly. The `sm` size keeps its dimensions.
+
+- 9bae916 (#26): useIsMobile reads the viewport through `useSyncExternalStore`, so Sidebar no longer mismatches on hydration when a page loads on a phone.
+
 ## 0.2.0
 
 <!-- released: 2026-09-28 -->
